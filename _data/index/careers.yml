@@ -1,29 +1,65 @@
 # careers section data
 # if you don't have language feature(language.yml is empty), ignore "i18n" items
 - name:
-    detail: Company A
+    detail: Kenome Technologies
     i18n: company_a
   desc:
-    detail: I worked at Company A ...
+    detail: Making sense of and forecasting using structured and unstructured data
     i18n: company_a_desc
   date:
-    detail: Apr. 2016
+    detail: March 2018 - present
     i18n: company_a_date
   job:
-    detail: CTO
+    detail: Software Development Engineer
     i18n: company_a_job
   icon: fa-plus-square
 
 - name:
-    detail: Company B
+    detail: MathWorks - Makers of MATLAB and Simulink
+    link: https://www.mathworks.com
     i18n: company_b
   desc:
-    detail: I worked at Company B ...
+    detail: Worked on development of Simulink and allied products. Mainly using C++.
     i18n: company_b_desc
   date:
-    detail: Jun. 2015
+    detail: Jun 2016 - Jan 2018
     i18n: company_b_date
   job:
-    detail: Full Stack Developer
+    detail: Software Engineer
+    link: abc
     i18n: company_b_job
   icon: fa-plus-square
+
+- name:
+    detail: Robotics Lab, Dept. of Engineering Design, IIT Madras
+    i18n: company_b
+  desc:
+    detail: Analysis of Kinematics and Dynamics, Design, Interfacing and Control of a vehicle motion simulator based on a 3-DoF Parallel Manipulator.
+    link: abc
+    i18n: company_b_desc
+  date:
+    detail: Dec 2014 - May 2015 
+    link: abc
+    i18n: company_b_date
+  job:
+    detail: Research and Design Engineer
+    link: abc
+    i18n: company_b_job
+  icon: fa-plus-square
+
+- name:
+    detail: Department of Engineering Design, IIT Madras
+    link: https://ed.iitm.ac.in/index.html
+    i18n: company_b
+  desc:
+    detail: Analysis of Kinematics and Dynamics, Design, Interfacing and Control of a vehicle motion simulator based on a 3-DoF Parallel Manipulator.
+    i18n: company_b_desc
+  date:
+    detail: Aug 2011 - Jul 2016 
+    i18n: company_b_date
+  job:
+    detail: Dual Degree (Btech+Mtech) in Engineering Design with minor in Systems Engineering
+    i18n: company_b_job
+  icon: fa-graduation-cap
+
+
