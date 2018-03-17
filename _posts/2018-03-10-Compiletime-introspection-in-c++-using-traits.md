@@ -22,9 +22,8 @@ Traits can be used to introspect a type and provide implementation of a function
 Trait classes are not a construct provided by the language but an idiom/pattern developed by programmers. It uses two very useful techniques of template metaprogramming which are worth remembering. The first one is **_"use types to pass information at compile-time"_** and the second one is **_"use function overloading as `if-else` statement at compile-time"_**  
 
 # How do we implement them ?
-
+![Page under construction. Come back soon for complete information.]({{ "/static/assets/img/blog/page_under_construction.jpg" | absolute_url }}  "Page under construction. Come back soon for complete information.")
 
 # References
 <a name="1">[1] </a> [Item 4 from](http://www.gotw.ca/publications/mxc++-item-4.htm) : [Sutter, Herb. More exceptional C++: 40 new engineering puzzles, programming problems, and solutions. Pearson Education India, 2002.](https://www.pearson.com/us/higher-education/program/Sutter-More-Exceptional-C-40-New-Engineering-Puzzles-Programming-Problems-and-Solutions/PGM177058.html)
 
-2. 

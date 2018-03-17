@@ -195,11 +195,16 @@ var coliru = (function() {
         // Onlu update code block inside a <pre> tag and with
         // data-lang=c++ attribute
         updateCodeBlock: function(codeBlock) {
-
+			
             if (codeBlock.getAttribute('data-lang') == 'c++' &&
                 codeBlock.parentNode.tagName == 'PRE') {
                 coliru.createCompileArea(codeBlock);
-            }
+            } 
+			else if (codeBlock.parentNode.parentNode.parentNode.tagName=='DIV' &&
+					 codeBlock.parentNode.parentNode.parentNode.getAttribute('class')=='language-c++ highlighter-rouge'
+					) {
+				coliru.createCompileArea(codeBlock);
+			}
         },
 
         addRunButtonsToCodeBlocks: function() {

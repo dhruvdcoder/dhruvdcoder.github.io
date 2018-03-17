@@ -65,11 +65,11 @@ sass:
 encoding: utf-8
 
 # other settings
-highlighter: rouge
+highlighter: pygments
 markdown: kramdown
 kramdown:
   input: GFM
-  syntax_highlighter: rouge
+  syntax_highlighter: pygments
 
 plugins:
   - jekyll-feed 

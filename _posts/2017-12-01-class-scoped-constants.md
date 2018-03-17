@@ -18,7 +18,7 @@ This can be used to create an instace specific constant which occupies memory at
 
    Code:
 
-{% highlight c++ %}{% raw %} 
+```c++
 #include <iostream> 
 using namespace std; 
 class A 
@@ -33,15 +33,14 @@ int main() {
    cout<<a.getC()<<endl; 
    return 0; 
 }
-{% endraw %}{% endhighlight %}
-
+```
 
 ### 2. **Using `static const` member**
 
 If you prefer the constant to be the same for all instances of the class, make the member static. However, there are a couple of nuances one must be aware of while implementing this. 
 
 If you wish to use the member as compile-time constant, you just declare it in the class and initialize it with a value as shown in the following snippet.
-   {% highlight c++ %}{% raw %}
+```c++
 #include <iostream> 
 using namespace std; 
  
@@ -58,10 +57,10 @@ int main() {
    cout << "arr[9] = " << a.arr[9] << endl;
    return 0; 
 } 
-   {% endraw %}{% endhighlight %}
+```
 
 Here, the member `static const int C` cannot be used as an lvalue, i.e., the expression `A::C` is an rvalue expression. 
-   {% highlight c++ %}{% raw %}
+```c++
 #include <iostream> 
 using namespace std; 
  
@@ -77,10 +76,10 @@ int main() {
    cout << a.getC() << endl;
    return 0; 
 } 
-   {% endraw %}{% endhighlight %}
+```
 
 In order to be able to use it as lvalue, one needs to *define* it. 
-   {% highlight c++ %}{% raw %}
+```c++
 #include <iostream> 
 using namespace std; 
  
@@ -97,13 +96,13 @@ int main() {
    cout << a.getC() << endl;
    return 0; 
 } 
-   {% endraw %}{% endhighlight %}
+```
 
 
 ### 3. **Using `enum` member**
 
 This is similar to the case of using `const static` without definition. Here as well, `A.C` is an rvalue expression.
-   {% highlight c++ %}{% raw %}
+```c++
 #include <iostream> 
 using namespace std; 
  
@@ -120,7 +119,7 @@ int main() {
    cout<<a.getC()<<endl; 
    return 0; 
 } 
-   {% endraw %}{% endhighlight %}
+```
 
 
 
