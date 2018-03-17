@@ -374,22 +374,7 @@ def plot_for_batch_s(Dfs,labels,batch_number,learning_rates,axis):
 ```
 
 
-```python
-plt.plot(Dfs[0][0]['Step'],Dfs[0][0]['Value'],label=labels[0][0])
-plt.plot(Dfs[0][1]['Step'],Dfs[0][1]['Value'],label=labels[0][1])
-plt.ylim([0.4,2.5])
-plt.legend()
-```
 
-
-
-
-    <matplotlib.legend.Legend at 0x121b8e908>
-
-
-
-
-![abc]({{ "/static/assets/img/blog/2018-03-17-linear_reg_using_gradient-mini-batch/2018-03-17-linear_reg_using_gradient-mini-batch_29_1.png" | absolute_url }}  "asd")
 
 
 
