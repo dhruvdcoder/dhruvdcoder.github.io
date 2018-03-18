@@ -31,7 +31,7 @@ author:  # change following line to your infomation.
     - name: icon-d3
     - name: icon-python
     - name: icon-git
-  desc: I am a software engineer and this is my personal website.  I am an engineer at the core and I endeavour to find how things work. This is the place where you'd find facts about me, some of my ideas as posts and results of my random musings. I talk about all things that I find interesting; be it linux's elf binaries, concepts in C++17, even Godel's incompleteness theorems. (Page under construction. Stay tuned.)
+  desc: I am a software engineer and this is my personal website.  I am an engineer at the core and I endeavour to find how things work. This is the place where you'd find facts about me, some of my ideas as posts and results of my random musings. I talk about all things that I find interesting; be it linux's elf binaries, machine learning, even Godel's incompleteness theorems. Feel free to look around. The page is being constantly improved and any suggestions are welcome. 
 
 # comment
 disqus: 
