@@ -39,4 +39,37 @@
       enable_page_level_ads: true
     });
   </script>
+
+  <!--- Google Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "url": "https://www.dhruvdcoder.github.io",
+    "name": "Dpad",
+    "about" : {
+		"@type": "Thing",
+        "description": "Personal website of Dhruvesh Patel",
+        "image": "{{ site.url }}{{ site.baseurl }}{{ "/static/assets/img/landing/dp.jpg" }}",
+        "name": "Dhruvesh Patel"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Dhruvesh Patel",
+        "additionalName": "Nikhilkumar",
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name" : "Indian Institute Of Technology Madras",
+            "url": "https://www.iitm.ac.in"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "dhruvdplayer@gmail.com",
+            "contactType": "Personal",
+            "url": "https://dhruvdcoder.github.io"
+        }
+    }
+  }
+  </script>
+
 </head>
