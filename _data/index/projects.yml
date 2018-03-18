@@ -15,3 +15,9 @@
   img: /static/assets/img/landing/intelibugger_image.png
   desc: An intelligent debugger for C/C++ code on Linux
 
+- name: Experiments with TensorFlow
+  i18n: cpython
+  gh_user: dhruvdcoder
+  repo: TensorFlowExperiments
+  img: /static/assets/img/landing/Tensorflow_logo.png
+  desc: An aggregation of my experiments in Neural Networks and Deep Learning using TensorFlow

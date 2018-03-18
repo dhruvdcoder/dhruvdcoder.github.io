@@ -393,5 +393,10 @@ As we reduce the mini-batch size, the training algorithm finds it difficult to c
 
 Then why not use the straitforward batch gradient instead of mini-batch gradient and be done with it ? Well, for linear regression, the cost function is convex and that is why the normal batch gradient descent works perfectly. The true usefulness of mini-batch gradient descent will be seen when the cost function is more complex and is now convex.
 
+
+## Code
+
+The code for the post can be found [here](https://github.com/dhruvdcoder/TensorFlowExperiments/blob/master/basics/linear_reg_using_gradient-mini-batch.ipynb).
+
 ## References
 1. [Géron, Aurélien. Hands-on machine learning with Scikit-Learn and TensorFlow: concepts, tools, and techniques to build intelligent systems. " O'Reilly Media, Inc.", 2017.](http://shop.oreilly.com/product/0636920052289.do)

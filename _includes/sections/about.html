@@ -29,11 +29,17 @@
                     {% if site.author.linkedin_id %}
                     <li><a href="https://www.linkedin.com/in/{{ site.author.linkedin_id }}" target="blank"><i class="fab fa-linkedin"></i></a></li>
                     {% endif %}
+                    {% if site.author.quora_id %}
+                    <li><a href="https://www.quora.com/profile/{{ site.author.quora_id }}" target="blank"><i class="fab fa-quora"></i></a></li>
+                    {% endif %}
                     {% if site.author.facebook_username %}
                     <li><a href="https://www.facebook.com/{{ site.author.facebook_username }}" target="blank"><i class="fab fa-facebook"></i></a></li>
                     {% endif %}
                     {% if site.author.twitter_username %}
                     <li><a href="https://twitter.com/{{ site.author.twitter_username }}" target="blank"><i class="fab fa-twitter"></i></a></li>
+                    {% endif %}
+					{% if site.author.goodreads_username %}
+                    <li><a href="https://www.goodreads.com/{{ site.author.goodreads_username }}" target="blank"><i class="fab fa-goodreads"></i></a></li>
                     {% endif %}
                     {% if site.author.email %}
                     <li><a href="mailto:{{ site.author.email }}"><i class="fas fa-envelope"></i></a></li>
