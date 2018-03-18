@@ -4,7 +4,7 @@
     detail: Kenome Technologies
     i18n: company_a
   desc:
-    detail: Making sense of and forecasting using structured and unstructured data
+    detail: Making sense of structured and unstructured data
     i18n: company_a_desc
   date:
     detail: March 2018 - present
@@ -52,7 +52,7 @@
     link: https://ed.iitm.ac.in/index.html
     i18n: company_b
   desc:
-    detail: Analysis of Kinematics and Dynamics, Design, Interfacing and Control of a vehicle motion simulator based on a 3-DoF Parallel Manipulator.
+    detail: Trained for developing of products, be it a software or a robot, taking it from need analysis to a final prototype and beyond. Having a wide focus, learned basics of almost all the fields of engineering like computer science, electrical engineering and mechanical engineering. The interdisciplinary yet technical nature of the curriculum prepared me for diving deep into any field of engineering with focus on building products.   
     i18n: company_b_desc
   date:
     detail: Aug 2011 - Jul 2016 
