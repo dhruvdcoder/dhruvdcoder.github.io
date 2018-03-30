@@ -3,7 +3,7 @@ layout: post
 title: "Linear regression using TensorFlow"
 date: 2018-03-17
 desc: "Getting started with TensorFlow by doing Linear Regression"
-categories: [Python]
+categories: [Machinelearning]
 keywords: ""
 tags: [Python,Machine Learning,TensorFlow]
 icon: icon-html
