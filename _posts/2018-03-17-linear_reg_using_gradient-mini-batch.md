@@ -6,12 +6,13 @@ desc: "Getting started with TensorFlow by doing Linear Regression"
 categories: [Machinelearning]
 keywords: ""
 tags: [Python,Machine Learning,TensorFlow]
-icon: icon-html
 ---
+{% include table_of_contents.md %}
+# Introduction
 
 In this post I share my findings while fiddling with hyperparameters of [mini-batch](https://www.coursera.org/learn/deep-neural-network/lecture/lBXu8/understanding-mini-batch-gradient-descent) gradient descent. I use [TensorFlow](https://www.tensorflow.org/) to setup a [linear regression](https://en.wikipedia.org/wiki/Linear_regression) problem using computaional graphs. Then I go on and visualize the impact of various values of batch sizes and learning rates on the convergence of the training. 
 
-### 1. Getting the data ready
+## 1. Getting the data ready
 
 Fetch the dataset.
 
@@ -94,7 +95,7 @@ grad=tf.gradients(mse,[theta])[0]
 
 This defines the *op* as the gradient of MSE with respect to theta. We need the indexing of `[0]` because the `gradients()` returns a list which in this case will have only one entry, ie., d(mse)/d(theta).
 
-### 3. Time to run our experiments
+### 3. Running the experiments
 
 We will run the training with different mini-batch sizes and learning rates and see what happens to the convergence.
 
@@ -342,7 +343,7 @@ for index,batch_size in enumerate(batch_sizes):
      [-1.4162055 ]]
 
 
-### 4. Visualization of the results
+## 4. Visualizing Results
 
 You can see the logged values of MSE using TensorBoard using `$ tensorboard --logdir path_to_root_log_dir`. Unfortunately there is no way to export the graphs as images from tensorboard. However, it does let you export the data as csv file, which I have used to create these graphs.
 
@@ -357,7 +358,7 @@ import pandas as pd
 dir_for_csv="/Users/dhruvesh/Downloads"
 Dfs=[[pd.read_csv("/Users/dhruvesh/Downloads/run_bs_lr_{}_{}_-tag-MSE.csv".format(batch_size,learning_rate))
               for learning_rate in learning_rates]
-              for batch_size in batch_sizes]
+              for batch_size in batTime to run our experimentsch_sizes]
 labels=[["Learning_r :{}".format(learning_rate)
               for learning_rate in learning_rates]
               for batch_size in batch_sizes]
@@ -394,9 +395,9 @@ As we reduce the mini-batch size, the training algorithm finds it difficult to c
 Then why not use the straitforward batch gradient instead of mini-batch gradient and be done with it ? Well, for linear regression, the cost function is convex and that is why the normal batch gradient descent works perfectly. The true usefulness of mini-batch gradient descent will be seen when the cost function is more complex and is now convex.
 
 
-## Code
+# Code
 
 The code for the post can be found [here](https://github.com/dhruvdcoder/TensorFlowExperiments/blob/master/basics/linear_reg_using_gradient-mini-batch.ipynb).
 
-## References
+# References
 1. [Géron, Aurélien. Hands-on machine learning with Scikit-Learn and TensorFlow: concepts, tools, and techniques to build intelligent systems. " O'Reilly Media, Inc.", 2017.](http://shop.oreilly.com/product/0636920052289.do)

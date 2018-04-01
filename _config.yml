@@ -67,11 +67,11 @@ sass:
 encoding: utf-8
 
 # other settings
-highlighter: pygments
+highlighter: rogue
 markdown: kramdown
 kramdown:
   input: GFM
-  syntax_highlighter: pygments
+  syntax_highlighter: rogue
 
 plugins:
   - jekyll-feed 

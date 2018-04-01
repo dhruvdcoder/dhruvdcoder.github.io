@@ -49,6 +49,7 @@ h3, h4, h5 {
   }
   &.navbar-right > li > a {
     color: #999c9e;
+    text-transform: uppercase;
   }
   > li.active > a {
     color: #fff;
@@ -65,6 +66,7 @@ h3, h4, h5 {
 .nav.navbar-top-links > li > a {
   &:focus, &:hover {
     background-color: transparent;
+
   }
 }
 

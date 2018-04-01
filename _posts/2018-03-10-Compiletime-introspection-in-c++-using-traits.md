@@ -7,7 +7,7 @@ keywords: "template meta-programming,traits"
 categories: [Cpp]
 tags: [Cpp,C++,template-meta-programming]
 ---
-
+{% include table_of_contents.md %}
 Recently while working on a project involving computational algebra using C++, I encountered a need of mapping a data-structures to algorithms in a one-to-one way. To be concrete, my algorithm's (call it `doGreatThings()`) implementation needed to be aware of the type of the data-structure which was being used inside one of the arguments passed to my algorithm. The implementation of `doGreatThings()` would need to be very different depending upon the type of data-structure being used. I had sever data-structures and corresponding implementations of `doGreatThings()` and I needed a clean way to let the algorithm know which data-structure was being used at the compile-time. **Enter trait classes!**
 
 # What can they do ?

@@ -8,11 +8,11 @@ keywords: ""
 tags: [Cpp,C++]
 icon: icon-html
 ---
-
-
+{% include table_of_contents.md %}
+# Introduction
 There are several instances when one needs constants in their code, *compile-time* as well as *run-time*, *class-scoped* as well as *global*. Recently I found myself in the need of using class scoped constants. I've put together several ways to realise class scoped constants in C++.
 
-### 1. **Using `const` member**
+## 1. **Using `const` member**
 
 This can be used to create an instace specific constant which occupies memory at runtime.
 
@@ -35,7 +35,7 @@ int main() {
 }
 ```
 
-### 2. **Using `static const` member**
+## 2. **Using `static const` member**
 
 If you prefer the constant to be the same for all instances of the class, make the member static. However, there are a couple of nuances one must be aware of while implementing this. 
 
@@ -99,7 +99,7 @@ int main() {
 ```
 
 
-### 3. **Using `enum` member**
+## 3. **Using `enum` member**
 
 This is similar to the case of using `const static` without definition. Here as well, `A.C` is an rvalue expression.
 ```c++
