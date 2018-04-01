@@ -2410,7 +2410,7 @@ body {
     border-color: transparent;
     transition: all .3s ease-in-out 0s;
     .nav li a {
-      color: #fff;
+      color: #b7bcc4;
       font-family: 'Open Sans', helvetica, arial, sans-serif;
       font-weight: 700;
       letter-spacing: 1px;
@@ -2533,7 +2533,8 @@ body {
         transition-property: opacity;
       }
       .active {
-        opacity: 1;
+        opacity: 0.5;
+        brightness:0.5;
         &.left, &.right {
           left: 0;
           opacity: 0;
@@ -2546,8 +2547,14 @@ body {
     }
     .carousel-control {
       z-index: 2;
-    }
   }
+   }
+   .carousel-link {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%,-50%);
+   }
   .carousel-control {
     &.left, &.right {
       background: 0 0;
@@ -2651,10 +2658,11 @@ body {
     font-size: 14px;
   }
   .testimonials {
-    padding-top: 80px;
-    padding-bottom: 90px;
-    background-color: #3385FF;
-    background-image: url(../assets/img/landing/avatar_all.png);
+#    padding-top: 80px;
+#    padding-bottom: 90px;
+#    background-color: #3385FF;
+#   background-image: url(../assets/img/landing/avatar_all.png);
+    position:relative
   }
   .contact {
     background-image: url(../assets/img/landing/word_map.png);
@@ -2764,7 +2772,7 @@ body {
         color: inherit;
       }
       .nav li a {
-        color: #676a6c;
+        color: #b7bcc4;
         &:hover {
           color: #3385FF;
         }
