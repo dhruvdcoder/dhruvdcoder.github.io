@@ -5,6 +5,7 @@ date: 2018-04-01
 desc: "Describes a possible way of structuring TensorFlow code so that it can be used with TF's highlevel APIs like tf.estimator"
 categories: [Machinelearning]
 keywords: "Machine Learning, Python, TensorFlow"
+permalink: "/machinelearning/structuring-tf-code/"
 tags: [Python,Machine Learning,TensorFlow]
 ---
 {% include table_of_contents.md %}

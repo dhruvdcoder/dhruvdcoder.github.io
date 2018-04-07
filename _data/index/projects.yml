@@ -1,12 +1,6 @@
 # projects section data
 # If you don't have language feature(language.yml is empty), ignore "i18n" items
 # Suggest projects' img be located at '/static/assets/img/landing', and edit following img items.
-- name: Experiments with DS and Algoritms in C++
-  i18n: dhruvdcoder
-  gh_user: dhruvdcoder
-  repo: DSABookclub
-  img: /static/assets/img/landing/icons-c++.png
-  desc: This repository contains implementation of various data-structures and algorithms in C++. It is for learning purpose.
 
 - name: Intelibugger
   i18n: cpython
@@ -21,3 +15,17 @@
   repo: TensorFlowExperiments
   img: /static/assets/img/landing/Tensorflow_logo.png
   desc: An aggregation of my experiments in Neural Networks and Deep Learning using TensorFlow
+
+- name: Experiments with DS and Algoritms in C++
+  i18n: dhruvdcoder
+  gh_user: dhruvdcoder
+  repo: DSABookclub
+  img: /static/assets/img/landing/icons-c++.png
+  desc: This repository contains implementation of various data-structures and algorithms in C++. It is for learning purpose.
+
+- name: I-Glide, A Self-balancing Personal Transporter
+  i18n: dhruvdcoder
+  gh_user: dhruvdcoder
+  relative_url: /projects/iglide
+  img: /static/assets/img/pages/projects/iGlide/cad_1.png
+  desc: Development of a product that addresses the short distance transportation (2-7 km) issues of people

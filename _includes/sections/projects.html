@@ -22,6 +22,8 @@
                   <h4>
                   {% if project.url %}
                   <a href="{{ project.url }}" target="_blank"><span class="navy">{{ project.name }}</span></a>
+                  {% elsif project.relative_url %}
+                  <a href="{{ project.relative_url | absolute_url }}" target="_blank"><span class="navy">{{ project.name }}</span></a>
                   {% elsif project.repo %}
                   <a href="https://github.com/{{ project.gh_user }}/{{ project.repo }}" target="_blank"><span class="navy">{{ project.name }}</span></a>
                   {% else %}
