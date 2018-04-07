@@ -5,6 +5,7 @@ date: 2018-03-17
 desc: "Getting started with TensorFlow by doing Linear Regression"
 categories: [Machinelearning]
 keywords: ""
+permalink: /machinelearning/linear-reg-using-TF/
 tags: [Python,Machine Learning,TensorFlow]
 ---
 {% include table_of_contents.md %}

@@ -1,25 +1,4 @@
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1; minimum-scale=1; user-scalable=no;">
-  <meta name="google-site-verification" content="mhYGvP4z9Y1XBNcoldg0TbnWfgOuPAZ77pCT2Jqyp9U" />
-  {% if page.desc %}
-    <meta content="{{ page.desc }}" name="description">
-  {% endif %}
-  {% if page.keywords %}
-    <meta name="keywords" content="{{ page.keywords }}">
-  {% endif %}
-  <meta name="author" content="{{ site.author.name }}">
-  <meta name="baseurl" content="{{ site.baseurl }}">
-
-  <title>
-    {% if page.title != "index" %}
-        {{ site.title }}|{{ page.title }}
-    {% else %}
-        {{ site.title }}
-    {% endif %}
-  </title>
-  <!-- favicon -->
+ <!-- favicon -->
   <link rel="shortcut icon" href="{{ site.url }}{{ site.baseurl }}{{ "/static/assets/img/favicon.ico" }}">
 
   <!-- Main CSS -->
@@ -44,17 +23,3 @@
   </script>
   <!-- for AMP Validation -->
   <script async src="https://cdn.ampproject.org/v0.js"></script>
-  <!--- Google Structured data -->
-  {% if page.layout == "post" %}
-    {% 
-    include posts_jsonld.html 
-    headline=page.title
-    genre=page.categories
-    keywords=page.keywords
-    content=page.content
-    link=page.permalink
-    date=page.date
-    site=site
-    %}
-  {% endif %}
-</head>
