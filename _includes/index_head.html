@@ -9,7 +9,7 @@
   <title>{{ site.title }}</title>
   <!-- favicon -->
   <link rel="shortcut icon" href="{{ "/static/assets/img/favicon.ico" | prepend: site.baseurl }}">
-
+  
   <!-- Main CSS -->
   <link href="{{ "/static/assets/app-20180313.min.css" | prepend: site.baseurl }}" rel="stylesheet">
   <link href="{{ "/static/css/custom.css" | prepend: site.baseurl }}" rel="stylesheet">
@@ -31,6 +31,8 @@
       enable_page_level_ads: true
     });
   </script>
+  <!-- Academia icons -->
+  <link rel="stylesheet" href="{{ "/static/css/academicons.min.css" | prepend: site.baseurl }}/>
   <!-- for AMP Validation -->
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <!--- Google Structured data -->
@@ -55,13 +57,27 @@
             "name" : "Indian Institute Of Technology Madras",
             "url": "https://www.iitm.ac.in"
         },
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "email": "dhruvdplayer@gmail.com",
-            "contactType": "Personal",
-            "url": "https://dhruvdcoder.github.io"
-        }
     }
   }
+
+{
+    "@context": "http://schema.org",
+    "@type": "Person",
+    "name": "Dhruvesh Patel",
+    "url": "https://www.dhruvdcoder.github.io",
+    "jobTitle": "Software Engineer",
+    "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name" : "Indian Institute Of Technology Madras",
+            "url": "https://www.iitm.ac.in"
+        },
+    "gender": "male",
+    "image": "{{ site.url }}{{ site.baseurl }}{{ "/static/assets/img/landing/dp.jpg" }}",
+    "sameAs": [
+        "https://www.facebook.com/dhruvdplayer",
+        "https://www.linkedin.com/in/dhruveshp",
+		"https://www.researchgate.net/profile/Dhruvesh_Patel3"
+    ]
+}
   </script>
 </head>

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "I-Glide"
-date: 2014-04-01
-desc: ""
+date: 2014-05-01
+desc: "Development of a product that addresses the short distance transportation (2-7 km) issues of people"
 categories: [Projects]
 keywords: "Robotics"
 permalink: "/projects/iglide/"

@@ -32,6 +32,9 @@
                     {% if site.author.quora_id %}
                     <li><a href="https://www.quora.com/profile/{{ site.author.quora_id }}" target="blank"><i class="fab fa-quora"></i></a></li>
                     {% endif %}
+                    {% if site.author.researchgate_id %}
+                    <li><a href="https://www.researchgate.net/profile/{{ site.author.researchgate_id }}" target="blank"><i class="ai ai-researchgate"></i></a></li>
+                    {% endif %}
                     {% if site.author.facebook_username %}
                     <li><a href="https://www.facebook.com/{{ site.author.facebook_username }}" target="blank"><i class="fab fa-facebook"></i></a></li>
                     {% endif %}
