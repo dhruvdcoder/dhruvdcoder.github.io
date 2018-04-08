@@ -2,5 +2,5 @@
 
 label: Ability
 id : cs
-aspects: C++, Python, MATLAB, Machine Learning, Deep Learning, Scienfic Computation, Robotics
-percentage: 90, 65, 80, 60, 30, 75, 70
+aspects: C++, Python, MATLAB, Machine Learning, Deep Learning, Scientific Computation, Robotics, Software Architecture, Symbolic Computation, AI
+percentage: 90, 75, 80, 70, 40, 75, 70, 50, 50, 30
