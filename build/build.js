@@ -19,6 +19,11 @@ cp('-f', 'node_modules/font-mfizz/dist/font-mfizz.svg', 'static/assets/');
 cp('-f', 'node_modules/font-mfizz/dist/font-mfizz.ttf', 'static/assets/');
 cp('-f', 'node_modules/font-mfizz/dist/font-mfizz.woff', 'static/assets/');
 
+cp('-f', 'node_modules/devicon/fonts/devicon.eot', 'static/assets/');
+cp('-f', 'node_modules/devicon/fonts/devicon.woff', 'static/assets/');
+cp('-f', 'node_modules/devicon/fonts/devicon.ttf', 'static/assets/');
+cp('-f', 'node_modules/devicon/fonts/devicon.svg', 'static/assets/');
+
 // change link/src files to new file path
 sed('-i', /(.*)[0-9]{8}(.*)/, '$1' + nowDateStr + '$2', '_includes/index_head.html');
 sed('-i', /(.*)[0-9]{8}(.*)/, '$1' + nowDateStr + '$2', '_includes/head.html');
@@ -63,6 +68,9 @@ function compresscss(pagename, filename, filelist) {
                     }
                     if (propertyName == 'src' && propertyValue.indexOf('node_modules/font-mfizz/dist/') > -1) {
                         return propertyValue.replace('node_modules/font-mfizz/dist/', '');
+                    }
+                    if (propertyName == 'src' && propertyValue.indexOf('node_modules/devicon/fonts/') > -1) {
+                        return propertyValue.replace('node_modules/devicon/fonts/', '');
                     }
                     if (propertyName == 'background' && propertyValue.indexOf('static/img/') > -1) {
                         return propertyValue.replace('static/', '');

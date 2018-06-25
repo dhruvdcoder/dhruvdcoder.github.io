@@ -8,11 +8,17 @@
     </div>
     <div class="row">
         <!-- first two icons from font-awesome-->
-        {% for icon in site.author.skill_icon1 %}
-        <div class="col-xs-2 wow fadeInLeft">
+        {% for icon_obj in site.author.skill_icon1 %}
+        <div class="col-xs-1 wow fadeInLeft">
             <div class="team-member">
                 <div class="vote-icon">
-                    <i class="fab {{ icon.name }}"></i>
+                {% if icon_obj.source =='mfizz' %}
+                    <i class="{{ icon_obj.name }}"></i>
+                {% elsif icon_obj.source =='font-awesome' %}
+                    <i class="fab {{ icon_obj.name }}"></i>
+                {% elsif icon_obj.source =='devicon' %}
+                    <i class="{{ icon_obj.name }}"></i>
+                {% endif %}
                 </div>
             </div>
         </div>
@@ -55,11 +61,17 @@
             </div>
         </div>
         <!-- second two icons from mfizz -->
-        {% for icon in site.author.skill_icon2 %}
-        <div class="col-xs-2 wow fadeInRight">
+        {% for icon_obj in site.author.skill_icon2 %}
+        <div class="col-xs-1 wow fadeInRight">
             <div class="team-member">
                 <div class="vote-icon">
-                    <i class="{{ icon.name }}"></i>
+                {% if icon_obj.source =='mfizz' %}
+                    <i class="{{ icon_obj.name }}"></i>
+                {% elsif icon_obj.source =='font-awesome' %}
+                    <i class="fab {{ icon_obj.name }}"></i>
+                {% elsif icon_obj.source =='devicon' %}
+                    <i class="{{ icon_obj.name }}"></i>
+                {% endif %}
                 </div>
             </div>
         </div>
