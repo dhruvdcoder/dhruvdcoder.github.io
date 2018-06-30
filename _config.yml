@@ -2,15 +2,8 @@
 title: Dpad
 description: >- # this means to ignore newlines until "baseurl:"
   This is the personal website of Dhruvesh Patel.
-#keywords: Jack,Jalpc,blog,Jekyll,github,gh-pages
-#baseurl:  /Jalpc # if you have suburl as homepage like '/homepage', please change it to '/homepage' and your repo's name should be 'homepage'
-#url: https://jarrekk.github.io/Jalpc  # url should be 'http://<github_username>.github.io/homepage' as before
-# url: http://127.0.0.1:4000
 baseurl:  ""
 url: "dhruveshp.com"
-#img_path: /Jalpc/static/assets/img/blog  # url should be '/homepage/static/assets/img/blog' as before
-img_path: /assets
-# author -- index page "about me" section
 author:  # change following line to your infomation.
   name: Dhruvesh  # Be used at blog posts' author.
   first_name: Dhruvesh  # Be used at index page about me section.
