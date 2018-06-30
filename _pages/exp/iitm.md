@@ -67,7 +67,7 @@ During the last year of my undergrad and during my masters year I worked mainly 
  
 During my 4th year as a part of my semester-long industrial internship, I worked on building a Vehicle Motion Simulator using 3-RRS Parallel Manipulator. Kinematics of polynomial in its full generality is described by a systems of multivariate polynomials of high degrees. Hence in order to tackle problems in the domain, I learned the basics of abstract algebra and algebraic geometry, both -- delightfully enlightening topics -- contributed immensely to my understanding of geometry and towards increasing my mathematical maturity. On the implementation side, the polynomial equations representing the kinematics of parallel robot manipulators can have hundred and even thousands of terms, making them intractable using pen and paper. Hence I learned symbolic computation principles and used [Mathematica](https://www.wolfram.com/mathematica/) extensively in my work.
 
-As my final year project, I worked on the computation of Safe Working Zone for parallel manipulators which resulted in a publication. I wrote a libraray in C++ which can be used to find the Safe Working Zone of any parallel manipulator. The details of my work, link to the paper and the thesis can be found [here]({{ "/projects/swz" }}).
+As my final year project, I worked on the computation of Safe Working Zone for parallel manipulators which resulted in a publication. I wrote a libraray in C++ which can be used to find the Safe Working Zone of any parallel manipulator. The details of my work, link to the paper and the thesis can be found [here]({{ "/projects/swz" | absolute_url }}).
 
 Following are some skills which I gained during my Dual Degree (BTech+MTech):
 
@@ -89,15 +89,15 @@ Following are some skills which I gained during my Dual Degree (BTech+MTech):
 
     e. Some technical writing skills
 
-During my final year project, while writing the library for computation of SWZ of parallel manipulators, I got interesting in software engineering and decided to join MathWorks, the makers of MATLAB and Simulink -- arguably the most widely used scientific computation tools in Academia and Industry. [Here is how I spent the next 18 months of my life at MathWorks Bangalore]({{ "/exp/mw" }}).
+During my final year project, while writing the library for computation of SWZ of parallel manipulators, I got interesting in software engineering and decided to join MathWorks, the makers of MATLAB and Simulink -- arguably the most widely used scientific computation tools in Academia and Industry. [Here is how I spent the next 18 months of my life at MathWorks Bangalore]({{ "/exp/mw" | absolute_url }}).
 
 
 # Sports
 
-![IITM Hockey]({{ "static/assets/img/landing/header_four.jpg" }})
+![IITM Hockey]({{ "static/assets/img/landing/header_four.jpg" | absolute_url}})
 
 Being from a town which has a name for giving good sportsmen to the country, I was always encouraged to take up sports. I was involved in sports right from my school days and had been playing field hockey since I was ten and had already represented and captained my state at two National Level tournaments (Under-14 and Under-15) before coming to college. Fortunately, IIT Madras had a great atmosphere for sports which allowed me to continue playing hockey. I played for IIT Madras during all five years of my stay there and was part of a team which won 3 golds (2011, 2012, 2013) and 1 silver (2014) at the annual National Inter-IIT sports meet; several first as well as second place finishes at regional and state tournaments. I also captained the team during my final year. I was also the captain and mentor for my hostel's hockey tream. 
 
-![Inter-IIT at IITG]({{ "static/assets/img/landing/header_five.jpg"  }})
+![Inter-IIT at IITG]({{ "static/assets/img/landing/header_five.jpg" | absolute_url  }})
 
 Being fit and acively playing team sports has been an integral part of my upbringing and has instilled maturity and determination into my character as a person.
