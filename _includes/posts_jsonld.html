@@ -44,7 +44,7 @@
       "@type":"WebPage",
       "@id":"{{ include.link | absolute_url }}"
    },
-   "dateModified":"{{ include.date | | date: '%Y-%m-%d' }}",
-   "articleBody":"{{ include.content | strip_html | xml_escape | normalize_whitepace | strip_newlines | strip }}"
+   "dateModified":"{{ include.date | | date: '%Y-%m-%d' }}"{% comment %},
+   "articleBody":"{{ include.content | markdownify | strip_html | xml_escape | normalize_whitepace | strip_newlines | strip }}"{% endcomment %}
 }
 </script>

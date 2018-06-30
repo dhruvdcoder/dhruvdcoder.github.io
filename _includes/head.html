@@ -55,12 +55,13 @@
 </script>
   <!--- Google Structured data -->
   {% if page.layout == "post" %}
+  {% assign all_content = page.content | markdownify %}
     {% 
     include posts_jsonld.html 
     headline=page.title
     genre=page.categories
     keywords=page.keywords
-    content=page.content
+    content=all_content
     link=page.permalink
     date=page.date
     site=site
