@@ -8,6 +8,9 @@ keywords: "IITM, ED, Personal"
 permalink: "/exp/iitm/"
 tags: [Personal]
 ---
+
+![Gajendra Circle IIT Madras]({{ "static/assets/img/landing/gc_iitm.jpg" | absolute_url}})
+
 After getting through IIT-JEE 2011 with All India Rank of 1947, I enrolled into the Department of Engineering Design, IIT Madras as an undergrad student. My journey through the college was a rather busy one. Apart from the courses, which in themselves demand enormous effort to master, I was involved in various other activities like: sports, hostel student council, volunteering at college fests, participating in tech competitions -- the list goes on..
 
 {% include table_of_contents.md %}
@@ -91,6 +94,10 @@ During my final year project, while writing the library for computation of SWZ o
 
 # Sports
 
+![IITM Hockey]({{ "static/assets/img/landing/header_four.jpg" | absolute_url}})
+
 Being from a town which has a name for giving good sportsmen to the country, I was always encouraged to take up sports. I was involved in sports right from my school days and had been playing field hockey since I was ten and had already represented and captained my state at two National Level tournaments (Under-14 and Under-15) before coming to college. Fortunately, IIT Madras had a great atmosphere for sports which allowed me to continue playing hockey. I played for IIT Madras during all five years of my stay there and was part of a team which won 3 golds (2011, 2012, 2013) and 1 silver (2014) at the annual National Inter-IIT sports meet; several first as well as second place finishes at regional and state tournaments. I also captained the team during my final year. I was also the captain and mentor for my hostel's hockey tream. 
+
+![Inter-IIT at IITG]({{ "static/assets/img/landing/header_five.jpg" | absolute_url }})
 
 Being fit and acively playing team sports has been an integral part of my upbringing and has instilled maturity and determination into my character as a person.
