@@ -65,12 +65,12 @@ include: ["_pages"]
 
 # comment
 disqus: 
-  name: dpad-1
+  name: dhruveshp
 
 # analytics
 ## google analytics
 ga:
-  id: UA-115661902-1
+  id: UA-115661902-2
 
 ## google optimize
 #go:
