@@ -48,7 +48,7 @@ I had always been mathematically inclined and strived to understand everything f
 
    Introduction to computational geometry - triangularization, voronoi diagram, convex hulls, etc.; Introduction to [CGAL C++ library](https://www.cgal.org/); GPU computing for geometry; Gentle introduction to differential geometry
 
-During the last year of my undergrad and during my masters year I worked mainly on Computational aspects of Kinematics, Dynamics and control of Robot Manipulators in the Robotics Lab, IIT Madras, under the guidance of [Dr. Sandipan Bandyopadhyay](https://ed.iitm.ac.in/~sandipan/). Following are the courses which I took on the topic:
+During the last year of my undergrad and during my masters year I worked mainly on Computational aspects of Kinematics, Dynamics and control of Robot Manipulators in the <span id="rblab">Robotics Lab, IIT Madras,</span> under the guidance of [Dr. Sandipan Bandyopadhyay](https://ed.iitm.ac.in/~sandipan/). Following are the courses which I took on the topic:
 
 1. **Industrial Automation and Robotics**
 
