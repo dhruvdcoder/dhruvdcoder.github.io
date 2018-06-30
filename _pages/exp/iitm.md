@@ -9,7 +9,7 @@ permalink: "/exp/iitm/"
 tags: [Personal]
 ---
 
-![Gajendra Circle IIT Madras]({{ "/static/assets/img/landing/gc_iitm.jpg" | absolute_url}})
+![Gajendra Circle IIT Madras]({{ "/static/assets/img/landing/gc_iitm.jpg" | absolute_url }})
 
 After getting through IIT-JEE 2011 with All India Rank of 1947, I enrolled into the Department of Engineering Design, IIT Madras as an undergrad student. My journey through the college was a rather busy one. Apart from the courses, which in themselves demand enormous effort to master, I was involved in various other activities like: sports, hostel student council, volunteering at college fests, participating in tech competitions -- the list goes on..
 

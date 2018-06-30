@@ -3,7 +3,7 @@ title: Dpad
 description: >- # this means to ignore newlines until "baseurl:"
   This is the personal website of Dhruvesh Patel.
 baseurl:  ""
-url: "dhruveshp.com"
+url: "http://dhruveshp.com"
 author:  # change following line to your infomation.
   name: Dhruvesh  # Be used at blog posts' author.
   first_name: Dhruvesh  # Be used at index page about me section.
