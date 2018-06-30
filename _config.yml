@@ -51,7 +51,7 @@ author:  # change following line to your infomation.
     - icon: docker
       name: devicon-docker-plain
       source: devicon
-  desc: I am a software engineer and you've reached my lab where you'd find facts about me; some of my ideas and results of my random musings. I talk about all things that I find interesting; linux's elf binaries, machine learning; software libraries; mathematics and even Godel's incompleteness theorems.
+  desc: "Software engineer and a curious soul: that is me. You've reached my website -- a multifarous platform -- which I use as a journal; as a bulleting board for my ideas and as a placeholder for myself in this enormous space that is internet. I talk about all things that I find interesting; linux's elf binaries, machine learning; software libraries; mathematics and even Godel's incompleteness theorems."
 
 #other pages
 include: ["_pages"]
