@@ -1,8 +1,9 @@
 # careers section data
 # if you don't have language feature(language.yml is empty), ignore "i18n" items
 - name:
-    detail: Kenome Technologies
-    i18n: company_a
+    detail: Kenome
+    link: kenome.io
+    i18n: Kenome
   desc:
     detail: Making sense of structured and unstructured data
     i18n: company_a_desc
