@@ -7,6 +7,11 @@
   <meta name="keywords" content="{{ site.keywords }}">
   <meta name="author" content="{{ site.author.name }}">
   <title>{{ site.title }}</title>
+  <!-- OGP tags -->
+  <meta property="og:title" content="{{ site.title }}" />
+  <meta property="og:type" content="website" / >
+  <meta property="og:url" content="{{site.url}}" />
+  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}{{ "/static/assets/img/landing/dp.jpg" }}" />
   <!-- favicon -->
   <link rel="shortcut icon" href="{{ "/static/assets/img/favicon.ico" | prepend: site.baseurl }}">
   
@@ -90,6 +95,7 @@
     ]
 }
   </script>
+
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115661902-2"></script>
 <script>
