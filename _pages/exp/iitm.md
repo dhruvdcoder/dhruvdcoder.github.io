@@ -67,7 +67,7 @@ During the last year of my undergrad and during my masters year I worked mainly 
  
 During my 4th year as a part of my semester-long industrial internship, I worked on building a Vehicle Motion Simulator using MaPaMan, a Parallel Manipulator. Kinematics of polynomial in its full generality is described by a systems of multivariate polynomials of high degrees. Hence in order to tackle problems in the domain, I learned the basics of abstract algebra and algebraic geometry, both -- delightfully enlightening topics -- contributed immensely to my understanding of geometry and towards increasing my mathematical maturity. On the implementation side, the polynomial equations representing the kinematics of parallel robot manipulators can have hundred and even thousands of terms, making them intractable using pen and paper. Hence I learned symbolic computation principles and used [Mathematica](https://www.wolfram.com/mathematica/) extensively in my work.
 
-<iframe src="https://drive.google.com/file/d/1KqWk2QGQjLfhfkF5StcBvHZS18z4PWI8/preview" width="800" height="600"></iframe>
+<iframe id="intern" src="https://drive.google.com/file/d/1KqWk2QGQjLfhfkF5StcBvHZS18z4PWI8/preview" width="800" height="600"></iframe>
 
 As my final year project, I worked on the computation of Safe Working Zone for parallel manipulators which resulted in a publication. I wrote a libraray in C++ which can be used to find the Safe Working Zone of any parallel manipulator. The details of my work, link to the paper and the thesis can be found [here]({{ "/projects/swz" | absolute_url }}).
 
