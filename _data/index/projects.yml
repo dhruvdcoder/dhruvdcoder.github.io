@@ -2,12 +2,27 @@
 # If you don't have language feature(language.yml is empty), ignore "i18n" items
 # Suggest projects' img be located at '/static/assets/img/landing', and edit following img items.
 
+- name: Polymetic
+  i18n: dhruvdcoder
+  gh_user: dhruvdcoder
+  repo: poly-metic
+  relative_url: /poly-metic
+  img: /static/assets/img/landing/polymetic-logo-wobg.png
+  desc: A c++ library for polynomial and matrix arithmetic, focused on applications in Kinematics.
+
 - name: Intelibugger
   i18n: cpython
   gh_user: dhruvdcoder
   repo: Intelibugger
   img: /static/assets/img/landing/intelibugger_image.png
   desc: An intelligent debugger for C/C++ code on Linux
+
+- name: Computing the safe working zone of parallel manipulators
+  i18n: dhruvdcoder
+  gh_user: dhruvdcoder
+  relative_url: /projects/swz
+  img: /static/assets/img/pages/projects/swz/project_img.png
+  desc: Work in computational kinematics of parallel robot manipulators
 
 - name: Experiments with TensorFlow
   i18n: cpython
@@ -22,13 +37,6 @@
   repo: DSABookclub
   img: /static/assets/img/landing/icons-c++.png
   desc: This repository contains implementation of various data-structures and algorithms in C++. It is for learning purpose.
-
-- name: Computing the safe working zone of parallel manipulators
-  i18n: dhruvdcoder
-  gh_user: dhruvdcoder
-  relative_url: /projects/swz
-  img: /static/assets/img/pages/projects/swz/project_img.png
-  desc: Work in computational kinematics of parallel robot manipulators
 
 - name: I-Glide, A Self-balancing Personal Transporter
   i18n: dhruvdcoder
