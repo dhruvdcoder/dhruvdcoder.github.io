@@ -14,7 +14,11 @@ About the work
 ===============
 This work described here was done by [Dhruvesh Patel]({{ site.url }}) at [Robotics Lab](https://ed.iitm.ac.in/~robotics_lab/), [Department of Engineering Design](https://ed.iitm.ac.in/ ), [IIT Madras](https://www.iitm.ac.in/ ) under [Dr. Sandipan Bandyopadhyay](https://ed.iitm.ac.in/~sandipan/) as supervisor.
 
-This page gives an introduction to the work. Interested reader is encouraged to check the complete report [here]( {{ "/static/assets/img/pages/projects/swz/report.pdf" | absolute_url }}) as well as the published<sup>\[[10](#10)\]</sup> paper [here](https://www.researchgate.net/publication/305939925_Computing_the_Safe_Working_Zone_of_a_3-RRS_Parallel_Manipulator). Please [contact me]({{ site.url }}) if you are interested in colaboration or would like to have the source code for this project.
+This page gives an introduction to the work. Interested reader is encouraged to check the complete report [here]( {{ "/static/assets/img/pages/projects/swz/report.pdf" | absolute_url }}) as well as the published<sup>\[[10](#10)\]</sup> paper [here](https://www.researchgate.net/publication/305939925_Computing_the_Safe_Working_Zone_of_a_3-RRS_Parallel_Manipulator). Please [contact me]({{ site.url }}) if you are interested in colaboration or would like to have the source code for this project. 
+
+*Note: The source code is not yet public as the topic is under active research with several research papers under review.*
+
+<iframe src="https://drive.google.com/file/d/1hChG4BDRRWF5h25jI1fQ_lmVrkFl171h/preview" width="800" height="600"></iframe>
 
 Introduction
 ============
