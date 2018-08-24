@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "I-Glide"
-date: 2014-05-01
+date: 2014-07-01
 desc: "Development of a product that addresses the short distance transportation (2-7 km) issues of people"
 categories: [Projects]
 keywords: "Robotics"
@@ -414,6 +414,11 @@ Contributors
 ### 2. [Piyush Jadav](https://www.linkedin.com/in/piyush-d-jadhav-438a1a64/)
 ### 3. [Shambhuraj Sawant](https://www.linkedin.com/in/shambhuraj-sawant-70123956/)
 ### 4. [Dhruvesh Patel]({{"/" | absolute_url}})
+
+Report
+==============
+
+<iframe src="https://drive.google.com/file/d/17JpKzpUlpMip0TxUPKGUXsa0XhqmWPKf/preview" width="800" height="800"></iframe>
 
 References
 ============
