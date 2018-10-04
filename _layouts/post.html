@@ -20,6 +20,9 @@ layout: article
                             {{ page.title }}
                         </h1>
                     </div>
+                        {% if page.img %}
+						<img src="{{ page.img | absolute_url }}">
+                        {% endif %}
                     	{{ content }}
                     <hr>
                     <div class="row">
