@@ -141,14 +141,18 @@ Then what would be **the expected length** of a message when the probablity dist
 
 \$\$
 \begin{eqnarray}
-H(p,q) &=& E_p\left[\log{\frac{1}{q}} \right] \\\\\\
+C(p,q) &=& E_p\left[\log{\frac{1}{q}} \right] \\\\\\
        &=& \sum_X p(x) \log{\frac{1}{q(x)}} \\\\\\
        &=& \sum_X p(x)\left( \log{\frac{p(x)}{q(x)}} - \log{p(x)} \right) \\\\\\
        &=& D_{\mathrm{KL} }(p\|\|q) + H(p)
 \end{eqnarray}
 \$\$
 
-**Cross Entropy of \\( p \\) w.r.t \\( q \\) is denoted by \\( H(p,q) \\) and is defined as the expected length of a message when the probability distribution is \\( p \\) but the encoding is optimal for \\( q \\)**.
+**Cross Entropy of \\( p \\) w.r.t \\( q \\) is denoted by \\( C(p,q) \\) and is defined as the expected length of a message when the probability distribution is \\( p \\) but the encoding is optimal for \\( q \\)**.
+
+## Conditional Entropy
+
+
 
 ## Conditional Relative Entropy
 
