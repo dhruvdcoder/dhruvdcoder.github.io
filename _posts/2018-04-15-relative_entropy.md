@@ -152,6 +152,20 @@ C(p,q) &=& E_p\left[\log{\frac{1}{q}} \right] \\\\\\
 
 ## Conditional Entropy
 
+From here on, let \\( X \\) be a random variable on event space \\( A \\) with probablity distribution \\( p \\) and \\( X \\) be a random variable on event space \\( B \\) with probablity distribution \\( q \\). Also, lets denote \\( H(p,q) \\) as \\( H(X,Y) \\). Then
+
+\$\$
+\begin{eqnarray}
+H(X, Y) &=& \sum_{x,y \in A} P_{XY}(x, y)\log{\left( \frac{1}{P_{XY}(x,y)} \right)} \\\\\\
+        &=& \sum_{x,y \in A}  \frac{P_{XY}(x, y)}{P_X(x)} P_X(x) \log{\left( \frac{P_X(x)}{P_X(x)P_{XY}(x,y)} \right)} \\\\\\
+        &=& \sum_{x,y \in A} P_{Y\|X}(x,y) P_X(x) \log{\left( \frac{1}{P_X(x)P_{Y\|X}(x,y)} \right)} \\\\\\
+        &=& \sum_{x \in A} P_X(x) \sum_{y \in A} P_{Y\|X}(x,y) \left( \log{\left( \frac{1}{P_{Y\|X}(x,y)} \right)} + \log{\left( \frac{1}{P_X(x)} \right)} \right) \\\\\\
+        &=& \sum_{x \in A} P_X(x) \log{\left( \frac{1}{P_X(x)} \right)} \sum_{y \in A} P_{Y\|X}(x,y)  + \sum_{x \in A} P_X(x) \sum_{y \in A} P_{Y\|X}(x,y) \log{\left( \frac{1}{P_{Y\|X}(x,y)} \right)} \\\\\\
+        &=& H(X) + E_X \left[ H(Y\|X=x)\right]
+\end{eqnarray}
+\$\$
+
+**Here, \\( E_X \left[ H(Y\|X=x)\right] \\) denoted as \\( H(Y\|X)\\) is the Conditional Entropy of \\( Y \\) given \\( X \\). It is the expected (expectation w.r.t \\( X \\)) entropy left in \\( Y \\) given \\( X \\).**
 
 
 ## Conditional Relative Entropy
@@ -174,7 +188,7 @@ Just like correlation coefficient is a measure of linear relationship between tw
 
 \$\$
 \begin{eqnarray}
-\mathrm{MI}(X,Y) &=& D_{\mathrm{KL} }\left( P_{XY} \|\| P_X  P_Y \right) \\\\\\
+\mathrm{I}(X,Y) &=& D_{\mathrm{KL} }\left( P_{XY} \|\| P_X  P_Y \right) \\\\\\
                  &=& \sum_{x,y \in A} P_{XY}(x,y) \log{\frac{P_{XY}(x, y)}{P_X(x) P_Y(y)}} \\\\\\
                  &=& \sum_{x,y \in A} \frac{P_{XY}(x,y)}{P_X(x)} P_X(x) \log{\frac{P_{XY}(x, y)}{P_X(x) P_Y(y)}}\\\\\\
                  &=& \sum_{x \in A} P_X(x) \sum_{y \in A} P_{Y\|X}(x, y) \log{\frac{P_{Y\|X}(x,y)}{P_Y(y)}} \\\\\\
@@ -182,6 +196,20 @@ Just like correlation coefficient is a measure of linear relationship between tw
                  &=& D_{\mathrm{KL} }\left( P_{X\|Y} \|\| P_X \| P_Y \right) 
 \end{eqnarray}
 \$\$
+
+
+\$\$
+\begin{eqnarray}
+\mathrm{I}(X,Y) &=& D_{\mathrm{KL} }\left( P_{XY} \|\| P_X  P_Y \right) \\\\\\
+                 &=& \sum_{x,y \in A} P_{XY}(x,y) \log{\frac{P_{XY}(x, y)}{P_X(x) P_Y(y)}} \\\\\\
+                 &=& \sum_{x,y \in A} P_{XY}(x,y) \log{P_{XY}(x, y)} - \sum_{x,y \in A} P_{XY}(x,y) \log{P_{X}(x)} - \sum_{x,y \in A} P_{XY}(x,y) \log{P_{Y}(y)} \\\\\\
+                 &=& - H(X,Y)  + H(X) + H(Y) \\\\\\
+                 &=& H(Y) - H(Y\|X) \\\\\\
+                 &=& H(X) - H(X\|Y)
+\end{eqnarray}
+\$\$
+
+As mentioned earlier Entropy is a measure of uninformativeness of a distribution. Hence the equations above qualitatively translate to the statement: Mutual Information is the uninformativeness in \\( Y \\) minus uninformativeness in \\( Y \\) given \\( X \\) and symmetrically other way round. 
 
 # Relative Entropy in Machine Learning
 
