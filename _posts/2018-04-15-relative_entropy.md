@@ -65,7 +65,6 @@ The general term entropy can be thought of as the degree of uncertainty about th
 Hence, Relative Entropy can be thought of as the change (increase or decrease) in the uncertainty (information) about a random variable when moving to using a new probablity distribution \\(p\\) instead of old distribution \\(q\\). For instance, say we have a coin toss experiment and we assume that it is a fair coin, then the probablity distribution is given by \\(q(H)=0.5, q(T)=0.5\\). Now, someone comes and tells us that the coin was made defective and is biased towards heads with a probablility of \\(0.8\\) then our new probablity distribution would be \\(p(H)=0.8, p(T)=0.2\\) and the relative entropy of \\(p\\) w.r.t \\(q\\) will be \\(0.8\log _2{1.6}+0.2\log _2{0.4} =0.27\\). As the following plot shows the relative entropy for new distribution w.r.t old (uniform) distribution reaches its maximum when there is no uncretainty.
 
 ![Plot of relative entropy for the example mentioned above]({{ "/static/assets/img/blog/2018-04-15-relative_entropy/RE1.png" | absolute_url }} "Plot of relative entropy for the example mentioned above")
-/home/dhruv/Documents/website/dhruvdcoder.github.io/
 
 
 
