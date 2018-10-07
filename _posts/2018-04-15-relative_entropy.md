@@ -16,7 +16,7 @@ use_math: true
 I had been seeing terms like entropy, cross-entropy, KL-Divergence, information gain, etc., regularly in association with cost functions in machine learning tasks. For example, [cross-entropy loss](http://ml-cheatsheet.readthedocs.io/en/latest/loss_functions.html#cross-entropy) is used as the cost function in multi-class classification problems; [maximum entropy principle](https://en.wikipedia.org/wiki/Principle_of_maximum_entropy#Prior_probabilities) in Bayesian inference, etc. All these quantities seemed related and I decided to find the meaning and the origin of each of these terms. It turns out that all these quantities can be derived from the [Relative Entropy](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence) which is synonymous to KL-Divergence. 
 
 
-In this post, starts with the description of Relative Entropy and what it means when viewed from various perspectives (statistical, information theoretic, etc.). Then it goes on to derive some other related quantities like Entropy (Shannon's Entropy), Cross Entropy, Conditional Relative Entropy, etc. Then the last section talks why and how we use Cross Entropy as a loss function in classification. 
+This post, starts with the description of Relative Entropy and what it means when viewed from various perspectives (statistical, information theoretic, etc.). Then it goes on to derive some other related quantities like Entropy (Shannon's Entropy), Cross Entropy, Conditional Relative Entropy, etc. Then the last section talks why and how we use Cross Entropy as a loss function in classification. 
 
 # Relative Entropy
 
@@ -62,7 +62,7 @@ In the space ([statistical manifold](https://en.wikipedia.org/wiki/Statistical_m
 
 The general term entropy can be thought of as the degree of uncertainty about the value of a random variable: More the uncertainity about the value of a random variable, lesser informative is its probability distribution. The informativeness of a probalility density function is can be thought of as the amount of uncertainty (entropy) it can reduce by providing some knowldge about the uncertain event (value of the random variable). For example, if \\(X\\) is a discrete random variable which can take values from \\(\\{1, 2, 3\\}\\) with probabilities \\(\\{0, 1, 0\\}\\) then there is no uncertainty (entropy) in the value of \\(X\\). Instead, if the probablity distribution were to be \\(\\{1/3, 1/3, 1/3\\}\\) then all the three values are equally likely and the uncertainty about the value of \\(X\\) is maximum.
 
-Hence, Relative Entropy can be thought of as the change (increase or decrease) in the uncertainty (information) about a random variable when moving to using a new probablity distribution \\(p\\) instead of old distribution \\(q\\). For instance, say we have a coin toss experiment and we assume that it is a fair coin, then the probablity distribution is given by \\(q(H)=0.5, q(T)=0.5\\). Now, someone comes and tells us that the coin was made defective and is biased towards heads with a probablility of \\(0.8\\) then our new probablity distribution would be \\(p(H)=0.8, p(T)=0.2\\) and the relative entropy of \\(p\\) w.r.t \\(q\\) will be \\(0.8\log _2{1.6}+0.2\log _2{0.4} =0.27\\). As the following plot shows the relative entropy for new distribution w.r.t old (uniform) distribution reaches its maximum when there is no uncretainty.
+Hence, Relative Entropy can be thought of as the change (increase or decrease) in the uncertainty (information) about a random variable when moving to using a new probablity distribution \\(p\\) instead of old distribution \\(q\\). For instance, say we have a coin toss experiment and we assume that it is a fair coin, then the probablity distribution is given by \\(q(H)=0.5, q(T)=0.5\\). Now, someone comes and tells us that the coin was made defective and is biased towards heads with a probablility of \\(0.8\\) then our new probablity distribution would be \\(p(H)=0.8, p(T)=0.2\\) and the relative entropy of \\(p\\) w.r.t \\(q\\) will be \\(0.8\log _2{1.6}+0.2\log _2{0.4} =0.27\\). As the following plot shows, the relative entropy for new distribution w.r.t old (uniform) distribution reaches its maximum when there is no uncretainty.
 
 ![Plot of relative entropy for the example mentioned above]({{ "/static/assets/img/blog/2018-04-15-relative_entropy/RE1.png" | absolute_url }} "Plot of relative entropy for the example mentioned above")
 
@@ -151,7 +151,7 @@ C(p,q) &=& E_p\left[\log{\frac{1}{q}} \right] \\\\\\
 
 ## Conditional Entropy
 
-From here on, let \\( X \\) be a random variable on event space \\( A \\) with probablity distribution \\( p \\) and \\( X \\) be a random variable on event space \\( B \\) with probablity distribution \\( q \\). Also, lets denote \\( H(p,q) \\) as \\( H(X,Y) \\). Then
+From here on, let \\( X \\) be a random variable on event space \\( A \\) with probablity distribution \\( p \\) and \\( Y \\) be a random variable on event space \\( B \\) with probablity distribution \\( q \\). Also, lets denote \\( H(p,q) \\) as \\( H(X,Y) \\). Then
 
 \$\$
 \begin{eqnarray}
