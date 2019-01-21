@@ -5,14 +5,14 @@
     link: https://www.cics.umass.edu/
     i18n: 
   desc:
-    detail: Working towards a Master's in Computer Science with focus on ML and NLP
+    detail: Working towards a master's degree in Computer Science with focus on ML and NLP
     i18n: company_a_desc
     readmore: exp/umass
   date:
     detail: Jan 2019 - present
     i18n: 
   job:
-    detail: Master's of Science in Computer Science
+    detail: Master of Science in Computer Science
     i18n: 
   icon: fa-graduation-cap
 
