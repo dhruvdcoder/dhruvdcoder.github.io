@@ -3,7 +3,7 @@ layout: post
 title: "Computing the Safe Working Zone of parallel manipulators"
 date: 2016-05-01
 desc: ""
-categories: [Robotics,Projects,Computational Kinematics]
+categories: [Projects]
 keywords: "Robotics, Computational Kinematics"
 permalink: "/projects/swz/"
 tags: [Robotics]

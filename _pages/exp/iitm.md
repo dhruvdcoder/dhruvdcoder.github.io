@@ -3,7 +3,7 @@ layout: post
 title: "Life at IIT Madras"
 date: 2017-12-06
 desc: ""
-categories: [Miscellaneous]
+categories: [Life]
 keywords: "IITM, ED, Personal, IIT Madras, Engineering Design, Robotics Lab"
 permalink: "/exp/iitm/"
 tags: [Personal]

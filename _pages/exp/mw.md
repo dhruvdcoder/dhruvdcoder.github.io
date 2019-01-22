@@ -3,7 +3,7 @@ layout: post
 title: "Stint at MathWorks -- Going hard at building software"
 date: 2018-02-10
 desc: ""
-categories: [Miscellaneous]
+categories: [Life]
 keywords: "MathWorks, Personal"
 permalink: "/exp/mw"
 tags: [Personal]

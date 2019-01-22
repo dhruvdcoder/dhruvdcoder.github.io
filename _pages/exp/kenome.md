@@ -3,7 +3,7 @@ layout: post
 title: "Building intelligent software solutions at Kenome"
 date: 2018-07-10
 desc: "My projects and Kenome"
-categories: [Miscellaneous]
+categories: [Life]
 keywords: "Kenome, personal"
 permalink: "/exp/kenome"
 tags: [Personal]
