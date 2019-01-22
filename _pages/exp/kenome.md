@@ -30,7 +30,24 @@ Using **KIP-Timeseries** and **KIP-Social Sensing** (an aggregate sentiment anal
 
 <a class="twitter-grid" data-partner="tweetdeck" href="https://twitter.com/_dhruveshp/timelines/1050439707463573510?ref_src=twsrc%5Etfw">TrakCrypto</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Currently, working in a small team to develop **Kenome Insights Platform (KIP)**, a set of end-to-end pipelines for various Machine Learning tasks. It consists of data collection, data storage, ML models and deployment pipelines.
+Also worked in a small team developing **Kenome Insights Platform (KIP)**, a set of end-to-end pipelines for various Machine Learning tasks. It consists of data collection, data storage, ML models and deployment pipelines. In particular, I have developed a deep transfer-learning based model for the sentiment analysis of financial news headlines. Following are the libraries/frameworks I have been using in my work at Kenome:
+
+1. [Tensorflow](https://www.tensorflow.org/)
+
+2. [Dash](https://dash.plot.ly/)
+
+3. [Plotly](https://plot.ly/plotly-js-scientific-d3-charting-library/)
+
+4. [Mongodb](https://www.mongodb.com/)
+
+5. [ElasticSearch](https://www.elastic.co/products/elasticsearch)
+
+6. [Statsmodels](https://www.statsmodels.org/stable/index.html)
+
+7. [Flask](http://flask.pocoo.org/)
+
+8. [Python Eve](http://docs.python-eve.org/en/latest/)
+
 
 Since I was one of the first few engineers at Kenome, I was involved in selection of organization wide development tools and workflows: code style, issue tracking, testing, deployment, etc. and various other engineering decisions which are generally exclusively handled by senior managers in big companies. This additional responsibility and exposure to end-to-end development cycle of data centric software has provided me with the confidence to handle much bigger projects in future.
 
