@@ -23,6 +23,7 @@
     "chart.js": "^2.4.0",
     "colors": "^1.1.2",
     "components-font-awesome": "^4.7.0",
+    "devicon": "^2.0.0",
     "font-mfizz": "^2.4.1",
     "gritter": "^1.7.4",
     "jquery": "^3.3.1",
