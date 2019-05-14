@@ -1,6 +1,24 @@
 # careers section data
 # if you don't have language feature(language.yml is empty), ignore "i18n" items
 - name:
+    detail: Information Extraction and Synthesis Lab., CICS, UMass Amherst
+    link: http://www.iesl.cs.umass.edu/
+    i18n: 
+  desc:
+    detail: Working on learning and using representations of language data in non-euclidean spaces
+    i18n: company_a_desc
+    readmore: exp/umass
+  date:
+    detail: May 2019 - present
+    i18n: 
+  job:
+    detail: Research Assistant
+    i18n: 
+  icon: fa-plus-square
+  img: /static/assets/img/landing/UMass_IESL.png
+
+
+- name:
     detail: College of Information and Computer Science, UMass Amherst
     link: https://www.cics.umass.edu/
     i18n: 
@@ -15,6 +33,7 @@
     detail: Master of Science in Computer Science
     i18n: 
   icon: fa-graduation-cap
+  img: /static/assets/img/landing/UMassInfoandCS_horiz-RGB.png
 
 - name:
     detail: Kenome
@@ -31,6 +50,7 @@
     detail: Software Development Engineer, Machine Learning
     i18n: company_a_job
   icon: fa-plus-square
+  img: /static/assets/img/landing/kenome.png
 
 - name:
     detail: MathWorks - Makers of MATLAB and Simulink
@@ -48,6 +68,7 @@
     link: abc
     i18n: company_b_job
   icon: fa-plus-square
+  img: /static/assets/img/landing/MathWorks_logo.png
 
 - name:
     detail: Robotics Lab, Dept. of Engineering Design, IIT Madras
@@ -62,10 +83,11 @@
     link: abc
     i18n: company_b_date
   job:
-    detail: Research and Design Engineer
+    detail: Research and Design Engineer (Intern)
     link: abc
     i18n: company_b_job
   icon: fa-plus-square
+  img: /static/assets/img/landing/Robolab.png
 
 - name:
     detail: Department of Engineering Design, IIT Madras
@@ -82,5 +104,6 @@
     detail: Dual Degree (Btech+Mtech) in Engineering Design with minor in Systems Engineering
     i18n: company_b_job
   icon: fa-graduation-cap
+  img: /static/assets/img/landing/IITM_logo_center.png
 
 
