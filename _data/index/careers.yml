@@ -50,7 +50,7 @@
     detail: Software Development Engineer, Machine Learning
     i18n: company_a_job
   icon: fa-plus-square
-  img: /static/assets/img/landing/kenome.png
+  img: /static/assets/img/landing/Kenome.png
 
 - name:
     detail: MathWorks - Makers of MATLAB and Simulink
@@ -68,7 +68,7 @@
     link: abc
     i18n: company_b_job
   icon: fa-plus-square
-  img: /static/assets/img/landing/MathWorks_logo.png
+  img: /static/assets/img/landing/Mathworks_logo.png
 
 - name:
     detail: Robotics Lab, Dept. of Engineering Design, IIT Madras
