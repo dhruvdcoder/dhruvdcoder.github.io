@@ -1,9 +1,19 @@
-about_me: "I have an eclectic background involving robotics, software engineering, computer science, machine learning and natural language processing. 
+about_me: "<p>I have an eclectic background involving ^500\n 
+robotics, ^500\n 
+software engineering, ^500\n
+computer science, ^500\n
+machine learning ^500\n
+and natural language processing. ^1000\n
 
-I started off by working on computational aspects of robot kinematics and dynamics at the Robotics Lab., IIT Madras. My master's thesis on computing the safe working zone of parallel robot manipulators resulted in a publication at an international conference.
+</p>
 
-I have worked as a software engineer at MathWorks, focusing majorly on developing Simulink and related products. This bolstered my knowledge of computer science and software development. 
+<p>I started off by working on computational aspects of robot kinematics and dynamics at the <strong>Robotics Lab., IIT Madras</strong>. My master's thesis on computing the safe working zone of parallel robot manipulators resulted in a publication at an international conference. ^1000\n
+</p>
 
-For the past year, I had been working in a small team at Kenome -- a nascent but extremely driven startup founded by Prof. Partha Talukdar -- solving challenging problems using Machine Learning and NLP. There I developed and deployed an RNN based time series prediction engine which utilizes structured time series data as well as unstructured textual data to make predictions about the time series. 
+<p>I have worked as a software engineer at <strong>MathWorks</strong> focusing majorly on developing Simulink and related products. This bolstered my knowledge of computer science and software development. ^1000\n
+</p> 
 
-Currently I am pursuing a master's degree in Computer Science at the University of Massachusetts focusing my coursework/projects on NLP and Machine Learning. My current research interests lie in the intersection of geometry, deep learning and NLP. In particular, I am interested in exploiting the geometry of non-euclidean spaces to provide correct inductive bias to the representation models of natural language."
+<p>For the past year, I had been working in a small team at <strong>Kenome</strong> -- a nascent but extremely driven startup founded by Prof. Partha Talukdar -- solving challenging problems using Machine Learning and NLP. There I developed and deployed an RNN based time series prediction engine which utilizes structured time series data as well as unstructured textual data to make predictions about the time series. ^1000\n
+</p> 
+
+<p>Currently I am pursuing a master's degree in Computer Science at the <strong>University of Massachusetts Amherst </strong>focusing my coursework/projects on NLP and Machine Learning. My current research interests lie in the intersection of geometry, deep learning and NLP. In particular, I am interested in exploiting the geometry of non-euclidean spaces to provide correct inductive bias to the representation models of natural language.</p>"

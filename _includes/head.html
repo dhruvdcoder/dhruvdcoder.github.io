@@ -23,12 +23,12 @@
   <link rel="shortcut icon" href="{{ site.url }}{{ site.baseurl }}{{ "/static/assets/img/favicon.ico" }}">
 
   <!-- Main CSS -->
-  <link href="{{ "/static/assets/app-20190204.min.css" | prepend: site.baseurl }}" rel="stylesheet"> 
+  <link href="{{ "/static/assets/app-20190530.min.css" | prepend: site.baseurl }}" rel="stylesheet"> 
   <link href="{{ "/static/css/custom.css" | prepend: site.baseurl }}" rel="stylesheet">
 
   <!-- Main Scripts -->
-  <script src="{{"/static/assets/app-20190204.min.js"| prepend: site.baseurl }}"></script>
-  <script src="{{"/static/assets/blog-20190204.min.js"| prepend: site.baseurl }}"></script>
+  <script src="{{"/static/assets/app-20190530.min.js"| prepend: site.baseurl }}"></script>
+  <script src="{{"/static/assets/blog-20190530.min.js"| prepend: site.baseurl }}"></script>
   <script src={{ "/static/js/coliru.js" | absolute_url }} type="text/javascript"></script>
 
   <!-- Latex using MathJack -->
@@ -39,20 +39,29 @@
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
     (adsbygoogle = window.adsbygoogle || []).push({
-      google_ad_client: "ca-pub-6196184620190204",
+      google_ad_client: "ca-pub-6196184620190530",
       enable_page_level_ads: true
     });
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+              var typed = new Typed('#typed', {
+                stringsElement: '#typed-strings'
+              });
+            });
   </script>
   <!-- for AMP Validation -->
   <script async src="https://cdn.ampproject.org/v0.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120190204-2"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120190530-2"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-120190204-2');
+  gtag('config', 'UA-120190530-2');
 </script>
   <!--- Google Structured data -->
   {% if page.layout == "post" %}

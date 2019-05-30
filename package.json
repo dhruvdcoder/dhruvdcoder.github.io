@@ -33,6 +33,7 @@
     "pace-progress": "^1.0.2",
     "peity": "^3.2.0",
     "purify-css": "^1.1.9",
+    "typed.js": "^2.0.10",
     "wowjs": "^1.1.2"
   },
   "devDependencies": {
