@@ -11,12 +11,12 @@ author:  # change following line to your infomation.
   avatar: /static/assets/img/landing/dp.jpg  # upload your avatar at directory and edit it.
   github_username: dhruvdcoder  # Leave blank if you don't have now
   linkedin_id: dhruveshp # Leave blank if you don't have now
-  quora_id: Dhruvesh-Patel
-  researchgate_id: Dhruvesh_Patel3
-  goodreads_username: dhruvdreader
-  facebook_username: dhruvdplayer  # Leave blank if you don't have now
+  #quora_id: Dhruvesh-Patel
+  #researchgate_id: Dhruvesh_Patel3
+  #goodreads_username: dhruvdreader
+  #facebook_username: dhruvdplayer  # Leave blank if you don't have now
   twitter_username: _dhruveshp  # Leave blank if you don't have now
-  email: dhruveshp.forall@gmail.com  # Leave blank if you don't have now
+  email: dhruveshpate@umass.edu  # Leave blank if you don't have now
   cv: "https://drive.google.com/file/d/1Z8u4_wnQiLDkyiV361f-kGfxHpb6NQCE/view"   # An online CV can be printed as PDF, leave blank if you don't have now
   # skill icons are on avatar's left and right side. Reference urls are http://fontawesome.io/ and http://fizzed.com/oss/font-mfizz
   skill_icon1:
@@ -26,12 +26,15 @@ author:  # change following line to your infomation.
     - icon: linux
       name: fa-linux
       source: font-awesome
-    - icon: nginx
-      name: devicon-nginx-original
-      source: devicon
+    #- icon: nginx
+    #  name: devicon-nginx-original
+    #  source: devicon
     - icon: git
       name: icon-git
       source: mfizz
+    - icon: slack
+      name: devicon-slack-plain
+      source: devicon
   skill_icon2:
     - icon: cplusplus
       name: icon-cplusplus
@@ -39,18 +42,15 @@ author:  # change following line to your infomation.
     - icon: mongodb
       name: icon-mongodb
       source: mfizz
-    - icon: d3
-      name: icon-d3
-      source: mfizz
+    #- icon: d3
+    #  name: icon-d3
+    #  source: mfizz
     - icon: python
       name: icon-python
       source: mfizz
-    - icon: vim
-      name: devicon-vim-plain
-      source: devicon
-    - icon: slack
-      name: devicon-slack-plain
-      source: devicon
+    #- icon: vim
+    #  name: devicon-vim-plain
+    #  source: devicon
     - icon: docker
       name: devicon-docker-plain
       source: devicon

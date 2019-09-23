@@ -2,13 +2,18 @@
 # If you don't have language feature(language.yml is empty), ignore "i18n" items
 # Suggest projects' img be located at '/static/assets/img/landing', and edit following img items.
 
+- name: Using boxes for Natural Language Inference
+  gh_user: dhruvdcoder
+  repo: none
+  img: /static/assets/img/landing/boxes.png
+  desc: Using Box representation for Natural Language Inference. This is an ongoing research project at IESL UMass with updates coming soon! 
 
-- name: HyperA
+- name: HyperA -- Attention in Hyperbolic Space
   i18n: dhruvdcoder
   gh_user: dhruvdcoder
   repo: HyperA
   img: /static/assets/img/landing/HyperA_poincare.png
-  desc: A pytorch implementation of Hyperbolic Neural Networks and attention mechanisms
+  desc: A pytorch implementation of Hyperbolic Neural Networks and attention mechanisms. Hyperbolic attention applied to the task of Natural Language Inference.
 
 - name: Polymetic
   i18n: dhruvdcoder
