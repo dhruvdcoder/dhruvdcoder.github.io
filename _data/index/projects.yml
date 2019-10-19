@@ -4,7 +4,7 @@
 
 - name: Using boxes for Natural Language Inference
   gh_user: dhruvdcoder
-  repo: none
+  repo: entailment_gitlab_activity
   img: /static/assets/img/landing/boxes.png
   desc: Using Box representation for Natural Language Inference. This is an ongoing research project at IESL UMass with updates coming soon! 
 
