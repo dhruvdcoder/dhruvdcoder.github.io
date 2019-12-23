@@ -5,8 +5,9 @@
 - name: Using boxes for Natural Language Inference
   gh_user: dhruvdcoder
   repo: entailment_gitlab_activity
+  relative_url: /projects/kb_boxes
   img: /static/assets/img/landing/boxes.png
-  desc: Using Box representation for Natural Language Inference. This is an ongoing research project at IESL UMass with updates coming soon! 
+  desc: Using Box representation for Natural Language Inference. This is an ongoing research project at IESL UMass with updates coming soon!
 
 - name: HyperA -- Attention in Hyperbolic Space
   i18n: dhruvdcoder
