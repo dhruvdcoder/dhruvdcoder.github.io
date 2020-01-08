@@ -13,6 +13,7 @@
   i18n: dhruvdcoder
   gh_user: dhruvdcoder
   repo: HyperA
+  relative_url: /projects/hyperA
   img: /static/assets/img/landing/HyperA_poincare.png
   desc: A pytorch implementation of Hyperbolic Neural Networks and attention mechanisms. Hyperbolic attention applied to the task of Natural Language Inference.
 
