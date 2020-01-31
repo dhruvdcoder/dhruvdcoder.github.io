@@ -2,10 +2,19 @@
 # If you don't have language feature(language.yml is empty), ignore "i18n" items
 # Suggest projects' img be located at '/static/assets/img/landing', and edit following img items.
 
+- name: Box Embedding for Knowledge Graph Completion
+  gh_user: dhruvdcoder
+  repo: none
+  relative_url: /projects/kb_boxes
+  img: /static/assets/img/landing/boxview.png
+  desc: Improving KG representations using the inductive bias of Box Space, and analysing the issues with current datasets.
+
+
+
 - name: Using boxes for Natural Language Inference
   gh_user: dhruvdcoder
   repo: entailment_gitlab_activity
-  relative_url: /projects/kb_boxes
+  relative_url: /projects/boxes_for_nli
   img: /static/assets/img/landing/boxes.png
   desc: Using Box representation for Natural Language Inference. This is an ongoing research project at IESL UMass with updates coming soon!
 
@@ -23,7 +32,7 @@
   repo: poly-metic
   relative_url: /poly-metic
   img: /static/assets/img/landing/polymetic-logo-wobg.png
-  desc: A c++ library for polynomial and matrix arithmetic, focused on applications in Kinematics.
+  desc: A c++ library for polynomial and matrix arithmetic, focused on applications in Robot Kinematics.
 
 - name: Intelibugger
   i18n: cpython
@@ -38,7 +47,7 @@
   repo: none
   relative_url: /projects/swz
   img: /static/assets/img/pages/projects/swz/project_img.png
-  desc: Work in computational kinematics of parallel robot manipulators
+  desc: Work in computational kinematics of parallel robot manipulators<br>
 
 - name: Experiments with TensorFlow
   i18n: cpython
@@ -53,4 +62,4 @@
   repo: none
   relative_url: /projects/iglide
   img: /static/assets/img/pages/projects/iGlide/cad_1.png
-  desc: Development of a product that addresses the short distance transportation (2-7 km) issues of people
+  desc: Development of a product that addresses the short distance transportation (2-7 km) issues of people<br>

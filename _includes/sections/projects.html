@@ -30,14 +30,23 @@
                   <span class="navy">{{ project.name }}</span>
                   {% endif %}
                   </h4>
-                  <p><span data-i18n="projects.{{ project.i18n }}">{{ project.desc }}</span></p>
-                  {% if project.repo %}
+                  <p><span data-i18n="projects.{{ project.i18n }}">{{ project.desc }}  
+                    {% if project.url %}
+                    <a href="{{ project.url }}">read more...</a></span>
+                    {% elsif project.relative_url %}
+                    <a href="{{ project.relative_url | absolute_url }}">read more...</a></span>
+                    {% elsif project.repo %}
+                    <a href="https://github.com/{{ project.gh_user }}/{{ project.repo }}">read more...</a></span>
+                    {% else %}
+                    More information coming soon...
+                    {% endif %}
+                  </p>
                   <div user="{{ project.gh_user }}" repo="{{ project.repo }}" class="ghbtn">
                       <a target="_blank" style="width: 65px;" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/stargazers" class="btn btn-white btn-xs star"><i class="fas fa-star"></i> ...</a>&emsp;&emsp;
                       <a target="_blank" style="width: 65px;" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/network" class="btn btn-white btn-xs fork"><i class="fas fa-code-branch"></i> ...</a>
                       <div style="height: 10px;"></div>
                   </div>
-                  {% endif %}
+                  
               </div>
           </div>
       {% endfor %}

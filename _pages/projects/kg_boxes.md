@@ -6,12 +6,17 @@ desc: ""
 categories: [Projects]
 keywords: "NLP, Natural Language Processing, Box Embeddings, Machine Learning, Knowledge Graphs, IESL"
 permalink: "/projects/kb_boxes/"
-tags: [NLP, Natural Language Processing, Box Embeddings, Machine Learning, Knowledge Graphs, IESL]
+tags: [Box Embeddings, Machine Learning, Knowledge Graphs, IESL]
 ---
 {% include table_of_contents.md %}
 
+# Poster
+
+<iframe src="https://drive.google.com/file/d/1g6QMkOVVBL1czz7W62gLFiJOdXCPGlDk/preview" width="800" height="800"></iframe>
+
+
 # Report
 
-<iframe src="https://drive.google.com/file/d/10EmnDN6c64Cxz-9FurA-pp0MFDkySI8n/preview" width="800" height="800"></iframe>
+<iframe src="https://drive.google.com/file/d/10emndn6c64cxz-9fura-pp0mfdkysi8n/preview" width="800" height="800"></iframe>
 
 The same report can be found [here](https://drive.google.com/file/d/10EmnDN6c64Cxz-9FurA-pp0MFDkySI8n/preview).
