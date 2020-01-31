@@ -3,17 +3,17 @@
 - name:
     detail: Information Extraction and Synthesis Lab., CICS, UMass Amherst
     link: http://www.iesl.cs.umass.edu/
-    i18n: 
+    i18n:
   desc:
     detail: Working on learning and using representations of language data in non-euclidean spaces
     i18n: company_a_desc
     readmore: exp/umass
   date:
-    detail: May 2019 - present
-    i18n: 
+    detail: May 2019 - Sep 2019
+    i18n:
   job:
     detail: Research Assistant
-    i18n: 
+    i18n:
   icon: fa-plus-square
   img: /static/assets/img/landing/UMass_IESL.png
 
@@ -21,17 +21,17 @@
 - name:
     detail: College of Information and Computer Science, UMass Amherst
     link: https://www.cics.umass.edu/
-    i18n: 
+    i18n:
   desc:
     detail: Working towards a master's degree in Computer Science with focus on ML and NLP
     i18n: company_a_desc
     readmore: exp/umass
   date:
     detail: Jan 2019 - present
-    i18n: 
+    i18n:
   job:
     detail: Master of Science in Computer Science
-    i18n: 
+    i18n:
   icon: fa-graduation-cap
   img: /static/assets/img/landing/UMassInfoandCS_horiz-RGB.png
 
@@ -79,7 +79,7 @@
     i18n: company_b_desc
     readmore: exp/iitm#rblab
   date:
-    detail: Dec 2014 - May 2015 
+    detail: Dec 2014 - May 2015
     link: abc
     i18n: company_b_date
   job:
@@ -94,16 +94,14 @@
     link: https://ed.iitm.ac.in/index.html
     i18n: company_b
   desc:
-    detail: Trained for developing products, be it a software or a robot--taking it from need analysis to a final prototype and beyond. With a wide focus, learned basics of almost all the fields of engineering like computer science, electrical engineering and mechanical engineering. The interdisciplinary yet technical nature of the curriculum prepared me for diving deep into any field of engineering with focus on building products.   
+    detail: Trained for developing products, be it a software or a robot--taking it from need analysis to a final prototype and beyond. With a wide focus, learned basics of almost all the fields of engineering like computer science, electrical engineering and mechanical engineering. The interdisciplinary yet technical nature of the curriculum prepared me for diving deep into any field of engineering with focus on building products.
     i18n: company_b_desc
     readmore: exp/iitm
   date:
-    detail: Aug 2011 - Jul 2016 
+    detail: Aug 2011 - Jul 2016
     i18n: company_b_date
   job:
     detail: Dual Degree (Btech+Mtech) in Engineering Design with minor in Systems Engineering
     i18n: company_b_job
   icon: fa-graduation-cap
   img: /static/assets/img/landing/IITM_logo_center.png
-
-
