@@ -1,6 +1,17 @@
 # projects section data
 # If you don't have language feature(language.yml is empty), ignore "i18n" items
 # Suggest projects' img be located at '/static/assets/img/landing', and edit following img items.
+#
+
+
+- name: Natural Language Inference for Question Answering
+  i18n: dhruvdcoder
+  gh_user: nli-for-qa
+  repo: " "
+  relative_url: /projects/nli_for_qa
+  img: /static/assets/img/landing/nli_for_qa.png
+  desc: Solving the task of Question Answering through the knowledge of inference
+
 
 - name: Box Embedding for Knowledge Graph Completion
   gh_user: dhruvdcoder
@@ -39,7 +50,7 @@
   gh_user: dhruvdcoder
   repo: Intelibugger
   img: /static/assets/img/landing/intelibugger_image.png
-  desc: An intelligent debugger for C/C++ code on Linux
+  desc: An intelligent debugger for C/C++ code on Linux<br>
 
 - name: Computing the safe working zone of parallel manipulators
   i18n: dhruvdcoder
