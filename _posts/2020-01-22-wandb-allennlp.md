@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Hyperparameter optimization for AllenNLP with W&B"
-date: 2020-01-22
+date: 2020-03-24
 desc: "Introduces a micro-library to use W&B with AllenNLP for hyperparameter optimization"
 categories: [Machinelearning, NLP, tools]
 keywords: "Machine Learning, mathematics, NLP, AllenNLP, tools, wandb"
@@ -15,7 +15,6 @@ use_math: false
 
 Are you a fan of [AllenNLP](https://allennlp.org)? Do you have a hard time tuning the hyperparameters for your NLP projects? Well, you've come to the right place. After looking around for some time, I have found the setup that works best for my NLP projects. In this post, I will introduce this setup and a micro-library I built which can aid in using this set up in your projects.
 
-The post is structure as d
 
 # Prerequisites
 
@@ -78,14 +77,48 @@ While the solution to the first problem is a bit hacky, the solution for the sec
 
 While there is a more elaborate version of these two solutions running in my projects, I have managed to pull out a general, complete and working version of these into its own package [wandb_allennlp](https://pypi.org/project/wandb-allennlp). The rest of this post is a tutorial in using wandb_allennlp.
 
-# The wandb_allennlp package
+# Overview
+
+At a high level, we need to perform the following steps to use wandb with AllenNLP.
+
+1. Install `wandb-allennlp`
+
+2. Create an entry-point script file `run.py`
+
+3. Create your model using AllenNLP along with a *training configuration* file.
+
+4. Create a *sweep configuration* file and generate a sweep on the wandb server.
+
+5. Set the necessary environment variables.
+
+6. Start the search agents.
+
+
+The rest of the article walks through these steps using an example model.
+
 
 ## Installation
+
+1. Install the package using pip.
+
+```
+pip install wandb-allennlp
+```
+
+2. Create an entry-point file with the following content. Name it `run.py`.
+
+
+```
+from wandb_allennlp.commandline import run
+
+if __name__ == "__main__":
+    run()
+```
 
 
 ## Using with wandb sweeps
 
-We will be running, using wandb, a hyperparameter search for an LSTM based Natural Language Inference model implemented in AllenNLP. The code for this example can be found [examples folder](https://github.com/dhruvdcoder/wandb-allennlp/tree/master/examples) of the `wandb-allennlp` package.
+We will be running, using wandb, a hyperparameter search for an LSTM based Natural Language Inference model implemented in AllenNLP. The code for this example can be found in the [examples folder](https://github.com/dhruvdcoder/wandb-allennlp/tree/master/examples) of the `wandb-allennlp` package.
 
 ### Model
 
@@ -93,6 +126,23 @@ First we need to define our model which consists of an LSTM encoder, encoding bo
 
 
 ### Dummy Data
+
+The data for this example can be downloaded from [here](https://github.com/dhruvdcoder/wandb-allennlp/tree/master/examples/data/snli_1.0_test). It is a truncated version of the SNLI dataset. In order to use the configuration as it is, please keep the directory structure `data/snli_1.0_test/snli_1.0_<train/dev/test>.json`.
+
+
+After creating the model inside a *models* module and downloading the data, the project directory should look like the following:
+
+```
+├── data
+│   └── snli_1.0_test
+│       ├── snli_1.0_dev.jsonl
+│       ├── snli_1.0_test.jsonl
+│       └── snli_1.0_train.jsonl
+├── models
+│   ├── __init__.py
+│   └── lstm_nli.py
+└── run.py
+```
 
 
 ## Config
@@ -165,7 +215,14 @@ The important thing to note here is the callback `log_metrics_to_wandb` -- this 
 
 ### Creating a sweep
 
-If you have never used wandb sweeps before, please see their excellent [documentation](https://docs.wandb.com/sweeps) or comment in the comments section if you have specific questions. Once you have created a [wandb account](https://docs.wandb.com/quickstart) and initialized a wandb directory using the `wandb init` [command](https://docs.wandb.com/library/cli), in order to create a hyperparameter search sweep, we need to create a [*sweep configuration*](https://docs.wandb.com/sweeps/quickstart#2-sweep-config) file which contains details about the search ranges and the method of search. This should be a `YAML` file. For this example it looks something like [this](https://raw.githubusercontent.com/dhruvdcoder/wandb-allennlp/master/examples/configs/wandb_sweep_nli_lstm.yaml):
+If you have never used wandb sweeps before, please see their excellent [documentation](https://docs.wandb.com/sweeps) or comment in the comments section if you have specific questions. After creating a project on the wandb server, we need to initialize a wandb directory using the following command which will ask you to sign-in and select the appropriate project:
+
+```
+wandb init
+```
+
+
+Now, in order to create a hyperparameter sweep, we need to create a [*sweep configuration*](https://docs.wandb.com/sweeps/quickstart#2-sweep-config) file which contains details about the search ranges and the method of search. This should be a `YAML` file. For this example it looks something like [this](https://raw.githubusercontent.com/dhruvdcoder/wandb-allennlp/master/examples/configs/wandb_sweep_nli_lstm.yaml):
 
 ```
 name: nli_lstm
@@ -215,31 +272,65 @@ The key thing to note in the sweep configuration are the names of the parameters
 
 You will also notice parameter names which do not start with `overrides.`. These are dummy hyperparams, that is, wandb thinks of them as hyperparameters but they take constant values. We need these because `allennlp` expects its commandline arguments in a certain form. However, at this point, the two dummy parameters that you need to know and use are `subcommand` and `local_config_file`. As the names suggest, they are used to specify the subcommand for `allennlp` command and the path to our *training configuration* file.
 
-Once we create sweep configuration file, we create a sweep on the wandb server using this file using the following commad:
+
+At this point the project directory should look like the following:
 
 ```
-wandb sweep wandb_sweep_nli_lstm.yaml
+.
+├── configs
+│   ├── lstm_nli.jsonnet
+│   └── wandb_sweep_nli_lstm.yaml
+├── data
+│   └── snli_1.0_test
+│       ├── snli_1.0_dev.jsonl
+│       ├── snli_1.0_test.jsonl
+│       └── snli_1.0_train.jsonl
+├── models
+│   ├── __init__.py
+│   └── lstm_nli.py
+└── run.py
 ```
 
-INSERT THE OUTPUT HERE.
+Once we create sweep configuration file, we create a sweep on the wandb server using this file using the following command:
 
+```
+wandb sweep configs/wandb_sweep_nli_lstm.yaml
+```
+
+```
+wandb: Creating sweep from: configs/wandb_sweep_nli_lstm.yaml
+wandb: Created sweep with ID: wcssqmhh
+wandb: View sweep at: https://app.wandb.ai/dhruveshpate/allenlp-wandb-demo/sweeps/wcssqmhh
+wandb: Run sweep agent with: wandb agent dhruveshpate/allenlp-wandb-demo/wcssqmhh
+```
 
 
 ### Setting up the environment variables
 
-Information which is persistent across agent runs as well as sweeps is given to `wandb-allennlp` using environment variables. The most important one is `include-package`. If you are familiar with AllenNLP, then you know that if you define your own class and want to refer to it in the training config, then you need to tell the AllenNLP named registry about its existence. This is done by passing a keyword argument `--include-package` to the `allennlp train` command. This can be achieve through `wandb-allennlp` by setting setting the environment variable `include-package`. We need assign it a comma separated list of package names that we want included. In this example, we defined our new model (nli-seq2vec) in the `models` package. Hence we  will set the environment variable as follows:
+Information which is persistent across agent runs as well as sweeps is given to `wandb-allennlp` using environment variables. The most important one is `include_package`. If you are familiar with AllenNLP, then you know that if you define your own class and want to refer to it in the training config, then you need to tell the AllenNLP named registry about its existence. This is done by passing a keyword argument `--include-package` to the `allennlp train` command. This can be achieve through `wandb-allennlp` by setting setting the environment variable `include_package`. We need assign it a comma separated list of package names that we want included. In this example, we defined our new model (nli-seq2vec) in the `models` package. Hence we  will set the environment variable as follows:
 
 ```
-export include-package=models
+export include_package=models
 ```
 
 Moreover, we need to make sure that python is able to find the packages you are including (you can use virtual environment or PYTHONPATH to ensure this).
 
 
+We also need to set any environment variables used in the training configuration file. In this example, we have to set the `DATA_DIR` as follows:
+
+```
+export DATA_PATH=./data
+```
+
+
 ### Starting the agents
 
-By this point, all the hardwork as been done. Now we just need to [launch the search agents](https://docs.wandb.com/sweeps/quickstart#4-launch-agent-s).
+By this point, all the hardwork has been done. Now we just need to [launch the search agents](https://docs.wandb.com/sweeps/quickstart#4-launch-agent-s). We need to use the sweep id generated in the previous step. For this example it is `wcssqmhh`.
 
 ```
-wandb agent <sweep-id>
+wandb agent wcssqmhh
 ```
+
+That is it! Now see the training progress on the wandb server. The runs for this example can be found [here](https://app.wandb.ai/dhruveshpate/allenlp-wandb-demo?workspace=user-dhruveshpate).
+
+If you find this post useful, please share it with your fellow researchers and engineers.
