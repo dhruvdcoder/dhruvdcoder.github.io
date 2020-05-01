@@ -24,11 +24,11 @@
   tpl: projects.html
   css: project
 
-- id: twitter
-  i18n: nav.twitter
-  name: Chatter
-  tpl: twitter.html
-  css: testimonials
+#- id: twitter
+#  i18n: nav.twitter
+#  name: Chatter
+#  tpl: twitter.html
+#  css: testimonials
 
 - id: blog
   i18n: nav.blog
