@@ -1,0 +1,169 @@
+<!DOCTYPE html> <html ⚡ lang="en"> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1; minimum-scale=1; user-scalable=no;"> <meta name="google-site-verification" content="mhYGvP4z9Y1XBNcoldg0TbnWfgOuPAZ77pCT2Jqyp9U" /> <meta content="Introduces a micro-library to use W&B with AllenNLP for hyperparameter optimization" name="description"> <meta name="keywords" content="Machine Learning, mathematics, NLP, AllenNLP, tools, wandb"> <meta name="author" content="Dhruvesh"> <meta name="baseurl" content=""> <title> dhruveshp|Hyperparameter optimization for AllenNLP with W&B </title> <!-- favicon --> <link rel="shortcut icon" href="http://dhruveshp.com/static/assets/img/favicon.ico"> <!-- Main CSS --> <link href="/static/assets/app-20190530.min.css" rel="stylesheet"> <link href="/static/css/custom.css" rel="stylesheet"> <!-- Main Scripts --> <script src="/static/assets/app-20190530.min.js"></script> <script src="/static/assets/blog-20190530.min.js"></script> <script src=http://dhruveshp.com/static/js/coliru.js type="text/javascript"></script> <!-- Latex using MathJack --> <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML,http://dhruveshp.com/static/js/mathjax/config.js", type="text/javascript"></script> <!-- Google AdSense --> <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-6196184620190530", enable_page_level_ads: true }); </script> <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script> <script> document.addEventListener('DOMContentLoaded', function() { var typed = new Typed('#typed', { stringsElement: '#typed-strings' }); }); </script> <!-- for AMP Validation --> <script async src="https://cdn.ampproject.org/v0.js"></script> <!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120190530-2"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-120190530-2'); </script> <!--- Google Structured data --> <script type="application/ld+json"> { "@context":"http://schema.org", "@type":"BlogPosting", "headline":"Hyperparameter optimization for AllenNLP with W&B", "genre":"", "keywords":"Machine Learning, mathematics, NLP, AllenNLP, tools, wandb", "wordCount":"2105", "url":"http://dhruveshp.com/machinelearning/wandb-allennlp/", "datePublished":"2020-03-24", "author":{ "@type":"Person", "name": "Dhruvesh Patel", "sameAs":[ "https://github.com/dhruvdcoder" ,"https://www.linkedin.com/in/dhruveshp" ,"https://twitter.com/_dhruveshp" ], "image":"http://dhruveshp.com/static/assets/landing/dp.jpg" }, "publisher":{ "@type":"Organization", "name": "dhruveshp", "sameAs":[ "https://github.com/dhruvdcoder" ,"https://www.linkedin.com/in/dhruveshp" ,"https://twitter.com/_dhruveshp" ], "image":"http://dhruveshp.com/static/assets/img/landing/dp.jpg", "logo":{ "@type":"ImageObject", "contentUrl":"http://dhruveshp.com/static/assets/img/landing/site_image.png", "height":"1000", "width":"1000", "url":"http://dhruveshp.com/static/assets/img/landing/foricon.png" } }, "image":{ "@type":"ImageObject", "contentUrl":"http://dhruveshp.com/static/assets/img/landing/site_image.png", "height":"1000", "width":"1000", "url":"http://dhruveshp.com" }, "mainEntityOfPage":{ "@type":"WebPage", "@id":"http://dhruveshp.com/machinelearning/wandb-allennlp/" }, "dateModified":"2020-03-24" } </script> </head> <body id="page-top" class="article"> <div class="search-tool" style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right: 0px; opacity: 0.95; background-color: #111111; z-index: 9999; display: none;"> <input type="text" class="form-control search-content" id="search-content" style="position: fixed; top: 60px" placeholder="Search Blog"> <div style="position: fixed; top: 16px; right: 16px; z-index: 9999;"> <img src="/static/assets/img/search/cb-close.png" id="close-btn"/> </div> </div> <div style="position: fixed; right: 16px; bottom: 20px; z-index: 9999;"> <img src="/static/assets/img/search/cb-search.png" id="search-btn" title="Double click Ctrl"/> </div> <div class="navbar-wrapper"> <nav class="navbar navbar-default navbar-fixed-top" role="navigation"> <div class="container"> <div class="navbar-header page-scroll"> <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="/">dhruveshp</a> </div> <div id="navbar" class="navbar-collapse collapse"> <ul class="nav navbar-nav navbar-right"> <li><a class="page-scroll" href="recent/"></a></li> <li> <a class="page-scroll" href="/recent/">Recent</a></li> <li> <a class="page-scroll" href="/machinelearning/">MachineLearning</a></li> <li> <a class="page-scroll" href="/cpp/">Cpp</a></li> <li> <a class="page-scroll" href="/miscellaneous/">Miscellaneous</a></li> <li> <a class="page-scroll" href="/life/">Life</a></li> <li> <a class="page-scroll" href="/projects/">Projects</a></li> </ul> </div> </div> </nav> </div> <div class="wrapper wrapper-content animated fadeInRight article"> <div class="row"> <div class="col-lg-10 col-lg-offset-1"> <div class="ibox"> <div class="ibox-content"> <div class="pull-right"> <a class="btn btn-white btn-xs" href="/machinelearning" >Machinelearning</a > <a class="btn btn-white btn-xs" href="/nlp" >NLP</a > <a class="btn btn-white btn-xs" href="/tools" >tools</a > </div> <div class="text-center article-title"> <span class="text-muted" ><i class="fas fa-clock"></i> 24 Mar 2020</span > <h1> Hyperparameter optimization for AllenNLP with W&B </h1> </div> <div class="img-container"> <img src="http://dhruveshp.com/static/assets/img/blog/2020-01-22-wandb-allennlp/wandb-allennlp.png" text-align="center" /> </div> <h3 id="update-allennlp-has-discarded-callbacktrainer-which-is-heavily-used-in-this-setup-hence-this-tutorial-and-the-micro-library-will-only-work-with-allennlp-v090">Update: AllenNLP has discarded <code class="highlighter-rouge">CallbackTrainer</code> which is heavily used in this setup. Hence, this tutorial and the micro-library will only work with AllenNLP v0.9.0.</h3> <h1 id="introduction">Introduction</h1> <p>Are you a fan of <a href="https://allennlp.org">AllenNLP</a>? Do you have a hard time tuning the hyperparameters for your NLP projects? Well, you’ve come to the right place. After looking around for some time, I have found the setup that works best for my NLP projects. In this post, I will introduce this setup and a micro-library I built which can aid in using this set up in your projects.</p> <h1 id="prerequisites">Prerequisites</h1> <p>If you are not familiar with AllenNLP, I would urge you to go through their <a href="https://github.com/allenai/allennlp/tree/master/tutorials/tagger">official tutorial</a>, especially the part where the <a href="https://github.com/allenai/allennlp/tree/master/tutorials/tagger#using-config-files">use of config files</a> is explained – this is my favorite part of the AllenNLP library.</p> <p><a href="https://docs.wandb.com/quickstart">Weights and Biases (wandb)</a> provides access to a hyperparameter search server as well as a client library which can communicate with the server and launch training instances with hyperparameter sets supplied by the server. The most useful feature and the one I will be talking about is called <a href="https://docs.wandb.com/sweeps/overview">Sweep</a>. Please read about this feature in their documentation before moving further.</p> <h1 id="problem">Problem</h1> <p>The problem that I faced while trying to use wandb sweeps for one of my existing projects which was using AllenNLP was the communication between my local training script and the wandb server. Specifically, I prefer using AllenNLP’s built-in train loop via their <code class="highlighter-rouge">allennlp train</code> command. This command has the following format.</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>usage: allennlp train [-h] -s SERIALIZATION_DIR [-r] [-f] [-o OVERRIDES]
+                      [--file-friendly-logging]
+                      [--cache-directory CACHE_DIRECTORY]
+                      [--cache-prefix CACHE_PREFIX]
+                      [--include-package INCLUDE_PACKAGE]
+                      param_path
+
+Train the specified model on the specified dataset.
+
+positional arguments:
+  param_path            path to parameter file describing the model to be
+                        trained
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s SERIALIZATION_DIR, --serialization-dir SERIALIZATION_DIR
+                        directory in which to save the model and its logs
+  -r, --recover         recover training from the state in serialization_dir
+  -f, --force           overwrite the output directory if it exists
+  -o OVERRIDES, --overrides OVERRIDES
+                        a JSON structure used to override the experiment
+                        configuration
+  --file-friendly-logging
+                        outputs tqdm status on separate lines and slows tqdm
+                        refresh rate
+  --cache-directory CACHE_DIRECTORY
+                        Location to store cache of data preprocessing
+  --cache-prefix CACHE_PREFIX
+                        Prefix to use for data caching, giving current
+                        parameter settings a name in the cache, instead of
+                        computing a hash
+  --include-package INCLUDE_PACKAGE
+                        additional packages to include
+</code></pre></div></div> <p>As you can see, there are compulsory positional arguments like the name of the sub-command i.e. <code class="highlighter-rouge">train</code>, the path to the config file (<code class="highlighter-rouge">param_path</code>). Moreover, the hyperparameters that one wants to change have to be passed using multiple <code class="highlighter-rouge">--overrides</code> flags. This does not work well with wandb sweep server – it sends all the command-line arguments for your training script using <code class="highlighter-rouge">--key=value</code> format.</p> <p>Another issue with using AllenNLP’s default training script with wandb is that one needs a way to inject code in the script for it to communicate the training progress with the wandb server.</p> <h1 id="solution">Solution</h1> <p>One possible solution for the first problem is to write your own training script which accepts command-line arguments as sent by the wandb sweep server. However, I prefer sticking with AllenNLP’s training script because it is robust and well written. Then what else can we do if we want to use AllenNLP’s training script as it is? Now, this might sound <em>hacky</em>, well, it is 🙌. But it works! We can create a wrapper script that translates the command-line input from the wandb sweep server to something which <code class="highlighter-rouge">allennlp train</code> can understand. This wrapper script then calls AllenNLP’s train script using these translated commandline arguments.</p> <p>While the solution to the first problem is a bit hacky, the solution for the second problem is quite straight forward thanks to the <code class="highlighter-rouge">CallbackTrainer</code> introduced in AllenNLP <a href="https://github.com/allenai/allennlp/releases/tag/v0.8.5">v0.8.5</a>. We simply hook-up callbacks to the training events like validation end, epoch end, etc. These callbacks can send the training and validation metrics to the wandb server.</p> <p>While there is a more elaborate version of these two solutions running in my projects, I have managed to pull out a general, complete and working version of these into its own package <a href="https://pypi.org/project/wandb-allennlp">wandb_allennlp</a>. The rest of this post is a tutorial in using wandb_allennlp.</p> <h1 id="overview">Overview</h1> <p>At a high level, we need to perform the following steps to use wandb with AllenNLP.</p> <ol> <li> <p>Install <code class="highlighter-rouge">wandb-allennlp</code></p> </li> <li> <p>Create an entry-point script file <code class="highlighter-rouge">run.py</code></p> </li> <li> <p>Create your model using AllenNLP along with a <em>training configuration</em> file.</p> </li> <li> <p>Create a <em>sweep configuration</em> file and generate a sweep on the wandb server.</p> </li> <li> <p>Set the necessary environment variables.</p> </li> <li> <p>Start the search agents.</p> </li> </ol> <p>The rest of the article walks through these steps using an example model.</p> <h2 id="installation">Installation</h2> <ol> <li>Install the package using pip.</li> </ol> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install wandb-allennlp
+</code></pre></div></div> <ol> <li>Create an entry-point file with the following content. Name it <code class="highlighter-rouge">run.py</code>.</li> </ol> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from wandb_allennlp.commandline import run
+
+if __name__ == "__main__":
+    run()
+</code></pre></div></div> <h2 id="using-with-wandb-sweeps">Using with wandb sweeps</h2> <p>We will be running, using wandb, a hyperparameter search for an LSTM based Natural Language Inference model implemented in AllenNLP. The code for this example can be found in the <a href="https://github.com/dhruvdcoder/wandb-allennlp/tree/master/examples">examples folder</a> of the <code class="highlighter-rouge">wandb-allennlp</code> package.</p> <h3 id="model">Model</h3> <p>First we need to define our model which consists of an LSTM encoder, encoding both hypothesis and the premise sentences, and a feedforward layer which takes the final states of the encoded premise and hypothesis and performs the classification. We create this model and place it in a folder (package/module/submodule) called <code class="highlighter-rouge">models</code>. Since the model is irrelevant for this post, I will not be going through the code. However, the code for this can be found <a href="https://github.com/dhruvdcoder/wandb-allennlp/blob/master/examples/models/lstm_nli.py">here</a>.</p> <h3 id="dummy-data">Dummy Data</h3> <p>The data for this example can be downloaded from <a href="https://github.com/dhruvdcoder/wandb-allennlp/tree/master/examples/data/snli_1.0_test">here</a>. It is a truncated version of the SNLI dataset. In order to use the configuration as it is, please keep the directory structure <code class="highlighter-rouge">data/snli_1.0_test/snli_1.0_&lt;train/dev/test&gt;.json</code>.</p> <p>After creating the model inside a <em>models</em> module and downloading the data, the project directory should look like the following:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── data
+│   └── snli_1.0_test
+│       ├── snli_1.0_dev.jsonl
+│       ├── snli_1.0_test.jsonl
+│       └── snli_1.0_train.jsonl
+├── models
+│   ├── __init__.py
+│   └── lstm_nli.py
+└── run.py
+</code></pre></div></div> <h2 id="config">Config</h2> <p>In order to train this model using the <code class="highlighter-rouge">allennlp train</code> command, we need to create a <em>training configuration</em> file which tells it about various structural and hyperparameter choices of our training setup – dataset reader, data iterators, model, trainer, etc. I have to say it again: This is the part of AllenNLP that I like the most. If you do not know what goes into writing this config file or do not understand what one of the entries means in the config file I am about to show you, please refer to <a href="https://github.com/allenai/allennlp/blob/v0.9.0/tutorials/getting_started/walk_through_allennlp/configuration.md">this</a> tutorial or comment in the comments section of this page. Now, assuming you are familiar with writing config files for AllenNLP models, you should be able to write one for your own model. In the case of this example, it would look something like the following <a href="https://github.com/dhruvdcoder/wandb-allennlp/blob/master/examples/configs/lstm_nli.jsonnet">file</a>.</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "dataset_reader": {
+        "type": "snli",
+        "token_indexers": {
+            "tokens": {
+                "type": "single_id",
+                "lowercase_tokens": true
+            }
+        }
+    },
+  "train_data_path": std.extVar("DATA_PATH")+"/snli_1.0_test/snli_1.0_train.jsonl",
+  "validation_data_path": std.extVar("DATA_PATH")+ "/snli_1.0_test/snli_1.0_dev.jsonl",
+    "model": {
+            "type": "nli-seq2vec",
+	    "input_size": 50,
+            "hidden_size": 50,
+            "rnn": "LSTM",
+            "num_layers": 1,
+            "bidirectional": true,
+	    "projection_size": 50,
+            "debug": false
+
+    },
+    "iterator": {
+        "type": "bucket",
+        "sorting_keys": [["premise", "num_tokens"],
+                         ["hypothesis", "num_tokens"]],
+        "batch_size": 32
+    },
+    "trainer": {
+		"type":"callback",
+		"callbacks":[
+			{
+				"type": "validate"
+			},
+			{
+				"type": "checkpoint",
+				"checkpointer":{
+					"num_serialized_models_to_keep":1
+				}
+			},
+			{
+				"type": "track_metrics",
+				"patience": 10,
+				"validation_metric": "+accuracy"
+			},
+			{
+				"type": "log_metrics_to_wandb"
+			}
+		],
+		"optimizer": {
+			"type": "adam",
+			"lr":0.01,
+		},
+		"cuda_device": -1,
+		"num_epochs": 10,
+		"shuffle": true
+	}
+}
+</code></pre></div></div> <p>The important thing to note here is the callback <code class="highlighter-rouge">log_metrics_to_wandb</code> – this will log the training and validation metrics on the wandb server.</p> <h3 id="creating-a-sweep">Creating a sweep</h3> <p>If you have never used wandb sweeps before, please see their excellent <a href="https://docs.wandb.com/sweeps">documentation</a> or comment in the comments section if you have specific questions. After creating a project on the wandb server, we need to initialize a wandb directory using the following command which will ask you to sign-in and select the appropriate project:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wandb init
+</code></pre></div></div> <p>Now, in order to create a hyperparameter sweep, we need to create a <a href="https://docs.wandb.com/sweeps/quickstart#2-sweep-config"><em>sweep configuration</em></a> file which contains details about the search ranges and the method of search. This should be a <code class="highlighter-rouge">YAML</code> file. For this example it looks something like <a href="https://raw.githubusercontent.com/dhruvdcoder/wandb-allennlp/master/examples/configs/wandb_sweep_nli_lstm.yaml">this</a>:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>name: nli_lstm
+program: run.py
+method: bayes
+metric:
+  name: best_validation_accuracy
+  goal: maximize
+parameters:
+  # hyperparameters start with overrides
+  # Ranges
+  overrides.model.input_size:
+    min: 100
+    max: 500
+    distribution: q_uniform
+  overrides.model.hidden_size:
+    min: 100
+    max: 500
+    distribution: q_uniform
+  overrides.model.projection_size:
+    min: 50
+    max: 1000
+    distribution: q_uniform
+  overrides.model.num_layers:
+    values: [1,2,3]
+  overrides.model.bidirectional:
+    #values: ["true", "false"]
+    value: "true"
+  overrides.trainer.optimizer.lr:
+    min: -7.0
+    max: 0
+    distribution: log_uniform
+  overrides.trainer.optimizer.weight_decay:
+    min: -12.0
+    max: -5.0
+    distribution: log_uniform
+  overrides.model.type:
+    value: nli-lstm
+  local_config_file:
+    value: "configs/lstm_nli.jsonnet"
+  subcommand:
+    value: train
+</code></pre></div></div> <p>The key thing to note in the sweep configuration are the names of the parameters we want to tune. For instance we would like to find the best value for the <code class="highlighter-rouge">input_size</code> under the <code class="highlighter-rouge">model</code> section in the <em>training configuration</em> file. We specify this as <code class="highlighter-rouge">overrides.model.input_size</code> in the sweep configuration file. Similarly, we can search for the best value of any parameter mentioned in the <em>training configuration</em> file (even the ones which are not explicitly mentioned in the training config file but have defaults in code). For instance, <code class="highlighter-rouge">overrides.trainer.optimizer.weight_decay</code> tunes the weight decay parameter of the optimizer, even though it is not explicitly mentioned in the training config file.</p> <p>You will also notice parameter names which do not start with <code class="highlighter-rouge">overrides.</code>. These are dummy hyperparams, that is, wandb thinks of them as hyperparameters but they take constant values. We need these because <code class="highlighter-rouge">allennlp</code> expects its commandline arguments in a certain form. However, at this point, the two dummy parameters that you need to know and use are <code class="highlighter-rouge">subcommand</code> and <code class="highlighter-rouge">local_config_file</code>. As the names suggest, they are used to specify the subcommand for <code class="highlighter-rouge">allennlp</code> command and the path to our <em>training configuration</em> file.</p> <p>At this point the project directory should look like the following:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
+├── configs
+│   ├── lstm_nli.jsonnet
+│   └── wandb_sweep_nli_lstm.yaml
+├── data
+│   └── snli_1.0_test
+│       ├── snli_1.0_dev.jsonl
+│       ├── snli_1.0_test.jsonl
+│       └── snli_1.0_train.jsonl
+├── models
+│   ├── __init__.py
+│   └── lstm_nli.py
+└── run.py
+</code></pre></div></div> <p>Once we create sweep configuration file, we create a sweep on the wandb server using this file using the following command:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wandb sweep configs/wandb_sweep_nli_lstm.yaml
+</code></pre></div></div> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wandb: Creating sweep from: configs/wandb_sweep_nli_lstm.yaml
+wandb: Created sweep with ID: wcssqmhh
+wandb: View sweep at: https://app.wandb.ai/dhruveshpate/allenlp-wandb-demo/sweeps/wcssqmhh
+wandb: Run sweep agent with: wandb agent dhruveshpate/allenlp-wandb-demo/wcssqmhh
+</code></pre></div></div> <h3 id="setting-up-the-environment-variables">Setting up the environment variables</h3> <p>Information which is persistent across agent runs as well as sweeps is given to <code class="highlighter-rouge">wandb-allennlp</code> using environment variables. The most important one is <code class="highlighter-rouge">include_package</code>. If you are familiar with AllenNLP, then you know that if you define your own class and want to refer to it in the training config, then you need to tell the AllenNLP named registry about its existence. This is done by passing a keyword argument <code class="highlighter-rouge">--include-package</code> to the <code class="highlighter-rouge">allennlp train</code> command. This can be achieve through <code class="highlighter-rouge">wandb-allennlp</code> by setting setting the environment variable <code class="highlighter-rouge">include_package</code>. We need assign it a comma separated list of package names that we want included. In this example, we defined our new model (nli-seq2vec) in the <code class="highlighter-rouge">models</code> package. Hence we will set the environment variable as follows:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export include_package=models
+</code></pre></div></div> <p>Moreover, we need to make sure that python is able to find the packages you are including (you can use virtual environment or PYTHONPATH to ensure this).</p> <p>We also need to set any environment variables used in the training configuration file. In this example, we have to set the <code class="highlighter-rouge">DATA_DIR</code> as follows:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export DATA_PATH=./data
+</code></pre></div></div> <h3 id="starting-the-agents">Starting the agents</h3> <p>By this point, all the hardwork has been done. Now we just need to <a href="https://docs.wandb.com/sweeps/quickstart#4-launch-agent-s">launch the search agents</a>. We need to use the sweep id generated in the previous step. For this example it is <code class="highlighter-rouge">wcssqmhh</code>.</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wandb agent wcssqmhh
+</code></pre></div></div> <p>That is it! Now see the training progress on the wandb server. The runs for this example can be found <a href="https://app.wandb.ai/dhruveshpate/allenlp-wandb-demo?workspace=user-dhruveshpate">here</a>.</p> <p>If you find this post useful, please share it with your fellow researchers and engineers.</p> <hr /> <div class="row"> <div class="col-md-6"> <h5 style="display: inline;">Tags:</h5> <button class="btn btn-white btn-xs" type="button"> Machine Learning </button> <button class="btn btn-white btn-xs" type="button"> WandB </button> <button class="btn btn-white btn-xs" type="button"> AllenNLP </button> <button class="btn btn-white btn-xs" type="button"> tools </button> </div> <div class="col-md-6"> <div class="small text-right"> <div> <i class="fas fa-comments"> </i> <span class="disqus-comment-count" data-disqus-url="http://dhruveshp.com/machinelearning/wandb-allennlp/" >0</span > comments </div> </div> </div> </div> <br /> <div class="row"> <div class="col-lg-12"> <!-- donate --> <br /> <!-- share --> <div class="a2a_kit a2a_kit_size_32 a2a_default_style"> <a class="a2a_dd" href="https://www.addtoany.com/share"></a> <a class="a2a_button_facebook"></a> <a class="a2a_button_twitter"></a> <a class="a2a_button_google_plus"></a> <a class="a2a_button_linkedin"></a> <a class="a2a_button_email"></a> <a class="a2a_button_wechat"></a> <a class="a2a_button_sina_weibo"></a> <a class="a2a_button_pocket"></a> </div> <script> var a2a_config = a2a_config || {}; a2a_config.color_main = "D7E5ED"; a2a_config.color_border = "AECADB"; a2a_config.color_link_text = "333333"; a2a_config.color_link_text_hover = "333333"; </script> <script async src="https://static.addtoany.com/menu/page.js"></script> <br /> <!-- comment --> </div> </div> </div> </div> </div> </div> </div> <!-- Google analytics --> <script> (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-115661902-2', 'auto'); ga('require', ''); ga('send', 'pageview'); </script> <!-- GrowingIO --> <script id="dsq-count-scr" src="https://dhruveshp.disqus.com/count.js" async></script> </body> </html>
