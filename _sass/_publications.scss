@@ -1,5 +1,10 @@
 // taken from https://github.com/alshedivat/al-folio with the same license
 // All credits to the original author
+.clearfix::after, .clearfix::before {
+  content: " ";
+  clear: both;
+  display: table;
+}
 .publications {
     h2 {
         color: $brand-color;
@@ -21,14 +26,17 @@
 .bibliography {
     margin-bottom: $spacing-unit;
     margin-top: $spacing-unit;
-    list-style-type: circle;
+    list-style-type: none;
 
     li {
         margin: 10px 0;
         position: relative;
+	text-align: center;
 
         span { display: block; }
-        .title { font-weight: bolder; }
+        .title { font-weight: bolder;
+		 font-size: $base-font-size+1px;
+       		}
         .author {
             a {
                 border-bottom: 1px dashed $brand-color;
@@ -43,7 +51,7 @@
             }
         }
         a.abstract, a.bibtex { cursor: pointer; }
-        .hidden {
+        .hiddenelem {
             font-size: $small-font-size;
             max-height: 0px;
             overflow: hidden;
@@ -64,7 +72,7 @@
                 padding: 10px;
             }
         }
-        .hidden.open {
+        .hiddenelem.open {
             max-height: 100em;
             -webkit-transition: 0.15s ease;
             -moz-transition: 0.15s ease;
@@ -72,10 +80,10 @@
             -o-transition: 0.15s ease;
             transition: all 0.15s ease;
         }
-        span.abstract.hidden {
+        span.abstract.hiddenelem {
             border: dashed 1px $background-color;
         }
-        span.abstract.hidden.open {
+        span.abstract.hiddenelem.open {
             border-color: $brand-color;
         }
     }

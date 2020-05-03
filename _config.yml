@@ -112,7 +112,7 @@ scholar:
 
   last_name: Patel
 
-  style: apa
+  style: _bibliography/vancouver.csl
   locale: en
 
   sort_by: year
