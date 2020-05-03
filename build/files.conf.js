@@ -14,7 +14,8 @@ module.exports = {
             'node_modules/wowjs/dist/wow.js',
             'static/js/scroll.js',
             'static/js/count.js',
-            'static/assets/fontawesome-all.js'
+            'static/assets/fontawesome-all.js',
+            'static/js/hidden.js'
         ]
     }, {
         name: 'i18next page',

@@ -6,6 +6,13 @@
   tpl: about.html
   css:
 
+- id: pubs
+  i18n: nav.pubs
+  name: Publications
+  tpl: pubs.html
+  css:
+
+
 - id: career
   i18n: nav.career
   name: Career

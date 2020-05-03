@@ -61,7 +61,7 @@ author:  # change following line to your infomation.
 include: ["_pages"]
 
 # comment
-disqus: 
+disqus:
   name: dhruveshp
 
 # analytics
@@ -99,8 +99,34 @@ kramdown:
   syntax_highlighter: rogue
 
 plugins:
-  - jekyll-feed 
+  - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll_inline_highlight
   - jekyll-last-modified-at
+  - jekyll/scholar
+
+
+# Jekyll-Scholar
+scholar:
+
+  last_name: Patel
+
+  style: apa
+  locale: en
+
+  sort_by: year
+  order: descending
+
+  source: /_bibliography/
+  bibliography: mine.bib
+  bibliography_template: bib
+
+  replace_strings: true
+  join_strings: true
+
+  #details_dir: bibliography
+  details_layout: bibtex.html
+  details_link: Details
+
+  query: "@*"
