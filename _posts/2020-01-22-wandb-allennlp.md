@@ -86,15 +86,13 @@ At a high level, we need to perform the following steps to use wandb with AllenN
 
 1. Install `wandb-allennlp`
 
-2. Create an entry-point script file `run.py`
+2. Create your model using AllenNLP along with a *training configuration* file.
 
-3. Create your model using AllenNLP along with a *training configuration* file.
+3. Create a *sweep configuration* file and generate a sweep on the wandb server.
 
-4. Create a *sweep configuration* file and generate a sweep on the wandb server.
+4. Set the necessary environment variables.
 
-5. Set the necessary environment variables.
-
-6. Start the search agents.
+5. Start the search agents.
 
 
 The rest of the article walks through these steps using an example model.
@@ -107,17 +105,6 @@ The rest of the article walks through these steps using an example model.
 ```
 pip install wandb-allennlp
 ```
-
-2. Create an entry-point file with the following content. Name it `run.py`.
-
-
-```
-from wandb_allennlp.commandline import run
-
-if __name__ == "__main__":
-    run()
-```
-
 
 ## Using with wandb sweeps
 
@@ -229,52 +216,51 @@ Now, in order to create a hyperparameter sweep, we need to create a [*sweep conf
 
 ```
 name: nli_lstm
-program: run.py
+program: wandb_allennlp # this is a wrapper console script around allennlp commands. It is part of wandb-allennlp
 method: bayes
+command:
+  - ${program} #omit the interpreter as we use allennlp train command directly
+  - "--subcommand=train" # required
+  - "--include-package=models" # Optionally, add all packages containing your registered classes here. wandb_allennlp is always added by default
+  - "--config_file=configs/lstm_nli.jsonnet" # required
+  - ${args}
 metric:
   name: best_validation_accuracy
   goal: maximize
 parameters:
-  # hyperparameters start with overrides
-  # Ranges
-  overrides.model.input_size:
+  # hyperparameter ranges
+  # these are nested names in allennlp training config
+  model.input_size:
     min: 100
     max: 500
     distribution: q_uniform
-  overrides.model.hidden_size:
+  model.hidden_size:
     min: 100
     max: 500
     distribution: q_uniform
-  overrides.model.projection_size:
+  model.projection_size:
     min: 50
     max: 1000
     distribution: q_uniform
-  overrides.model.num_layers:
+  model.num_layers:
     values: [1,2,3]
-  overrides.model.bidirectional:
-    #values: ["true", "false"]
+  model.bidirectional:
     value: "true"
-  overrides.trainer.optimizer.lr:
+  trainer.optimizer.lr:
     min: -7.0
     max: 0
     distribution: log_uniform
-  overrides.trainer.optimizer.weight_decay:
+  trainer.optimizer.weight_decay:
     min: -12.0
     max: -5.0
     distribution: log_uniform
-  overrides.model.type:
+  model.type:
     value: nli-lstm
-  local_config_file:
-    value: "configs/lstm_nli.jsonnet"
-  subcommand:
-    value: train
+
 ```
 
 
-The key thing to note in the sweep configuration are the names of the parameters we want to tune. For instance we would like to find the best value for the `input_size` under the `model` section in the *training configuration* file. We specify this as `overrides.model.input_size` in the sweep configuration file. Similarly, we can search for the best value of any parameter mentioned in the *training configuration* file (even the ones which are not explicitly mentioned in the training config file but have defaults in code). For instance, `overrides.trainer.optimizer.weight_decay` tunes the weight decay parameter of the optimizer, even though it is not explicitly mentioned in the training config file.
-
-You will also notice parameter names which do not start with `overrides.`. These are dummy hyperparams, that is, wandb thinks of them as hyperparameters but they take constant values. We need these because `allennlp` expects its commandline arguments in a certain form. However, at this point, the two dummy parameters that you need to know and use are `subcommand` and `local_config_file`. As the names suggest, they are used to specify the subcommand for `allennlp` command and the path to our *training configuration* file.
-
+The key thing to note in the sweep configuration is the contents of the `command` dictionary this a new feature of wandb which allows you to specify how your training script is invoked by the wandb agent program on you training machine. See the [documentation](https://docs.wandb.com/sweeps/configuration#command) for the details.
 
 At this point the project directory should look like the following:
 
@@ -303,23 +289,14 @@ wandb sweep configs/wandb_sweep_nli_lstm.yaml
 ```
 wandb: Creating sweep from: configs/wandb_sweep_nli_lstm.yaml
 wandb: Created sweep with ID: wcssqmhh
-wandb: View sweep at: https://app.wandb.ai/dhruveshpate/allenlp-wandb-demo/sweeps/wcssqmhh
+wandb: View sweep at: https://app.wandb.ai/dhruveshpate/allennlp-wandb-demo/sweeps/wcssqmhh
 wandb: Run sweep agent with: wandb agent dhruveshpate/allenlp-wandb-demo/wcssqmhh
 ```
 
 
 ### Setting up the environment variables
 
-Information which is persistent across agent runs as well as sweeps is given to `wandb-allennlp` using environment variables. The most important one is `include_package`. If you are familiar with AllenNLP, then you know that if you define your own class and want to refer to it in the training config, then you need to tell the AllenNLP named registry about its existence. This is done by passing a keyword argument `--include-package` to the `allennlp train` command. This can be achieve through `wandb-allennlp` by setting setting the environment variable `include_package`. We need assign it a comma separated list of package names that we want included. In this example, we defined our new model (nli-seq2vec) in the `models` package. Hence we  will set the environment variable as follows:
-
-```
-export include_package=models
-```
-
-Moreover, we need to make sure that python is able to find the packages you are including (you can use virtual environment or PYTHONPATH to ensure this).
-
-
-We also need to set any environment variables used in the training configuration file. In this example, we have to set the `DATA_DIR` as follows:
+We need to set any environment variables used in the training configuration file. In this example, we have to set the `DATA_DIR` as follows:
 
 ```
 export DATA_PATH=./data
