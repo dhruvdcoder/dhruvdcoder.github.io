@@ -8,7 +8,8 @@
   i18n: dhruvdcoder
   gh_user: nli-for-qa
   repo: " "
-  relative_url: /projects/nli_for_qa
+  #relative_url: /projects/nli_for_qa
+  relative_url: /projects/under_review
   img: /static/assets/img/landing/nli_for_qa.png
   desc: Solving the task of Question Answering through the knowledge of inference
 
