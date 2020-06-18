@@ -1,8 +1,8 @@
-about_me: "Coming with an eclectic background involving robotics,  software engineering, computer science, machine learning and natural language processing, currently, I am pursuing a master's degree in Computer Science at the <strong>University of Massachusetts Amherst </strong>focusing my coursework/projects on Machine Learning as applied to Natural Language Processing and Knowledge Graphs. My current research interests lie in the intersection of geometry, deep learning and NLP. I am broadly interested in:
+about_me: "Coming with an eclectic background involving robotics,  software engineering, computer science, machine learning and natural language processing, currently, I am pursuing a master's degree in Computer Science at the <strong>University of Massachusetts Amherst </strong>focusing my coursework/projects on Machine Learning as applied to <strong>Natural Language Processing and Knowledge Graphs</strong>. My current research interests lie in the intersection of geometry, deep learning and NLP. I am broadly interested in:
 <br>
-1. Exploiting the geometry of non-euclidean spaces to provide better inductive bias to the representation models of natural language and Knowledge Graphs.
+1. Exploiting the geometry of <strong>non-euclidean spaces</strong> to provide better inductive bias to the representation models of natural language and Knowledge Graphs.
 <br>
-2. Evaluating and improving language understanding of deep learning models by providing the necessary inductive bias through architecture as well as data augmentation, mainly focusing on the task of Natural Language Inference, Reading Comprehension and Textual Summarization.
+2. Evaluating and improving <strong>language understanding of deep learning models</strong> by providing the necessary <strong>inductive bias through architecture as well as data augmentation</strong>, mainly focusing on the task of <strong>Natural Language Inference, Reading Comprehension and Textual Summarization</strong>.
 <br>
 3. Integrating external knowledge sources like Knowledge Graphs, ontologies and hierarchies with deep learning models using end-to-end gradient based learning.
 <br><br>
@@ -10,7 +10,7 @@ Currently, I am working as a NLP Research Intern at <a href=\"https://www.abridg
 <br><br>
 I was a summer research intern (2019) and continue to work as a Graduate Student Research Assistant at <a href=\"http://www.iesl.cs.umass.edu/people\"> <strong>Information Extraction and Synthesis Lab (IESL)</strong> </a>which is headed by <a href=\"https://people.cs.umass.edu/~mccallum/\">Prof. Andrew McCallum</a>.
 <br><br>
-Prior to starting my master's program, I worked in a small team at <a href=\"https://www.kenome.io/\"><strong>Kenome</strong></a> -- a nascent but extremely driven startup founded by <a href=\"http://talukdar.net/\">Prof. Partha Talukdar</a> -- solving challenging problems using Machine Learning and NLP. There I developed and deployed an RNN based time series prediction engine which utilizes structured time series data as well as unstructured textual data to make predictions about the time series.
+Prior to starting my master's program, I worked in a small team at <a href=\"https://www.kenome.io/\"><strong>Kenome </strong></a>-- a nascent but extremely driven startup founded by <a href=\"http://talukdar.net/\">Prof. Partha Talukdar</a> which is now a part of Google India -- solving challenging problems using Machine Learning and NLP. There I developed and deployed an RNN based time series prediction engine which utilizes structured time series data as well as unstructured textual data to make predictions about the time series.
 <br><br>
 I have also worked for ~2 years as a software engineer at <a href=\"https://www.mathworks.com/\"><strong>MathWorks</strong></a>, focusing on developing Simulink and related products. This bolstered my knowledge of computer science and software development.
 <br><br>
