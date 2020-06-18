@@ -4,14 +4,25 @@
 #
 
 
+- name: Weights and Biases with AllenNLP
+  i18n: dhruvdcoder
+  gh_user: dhruvdcoder
+  repo: wandb-allennlp
+  url: https://pypi.org/project/wandb-allennlp
+  relative_url: /machinelearning/wandb-allennlp
+  img: /static/assets/img/blog/2020-01-22-wandb-allennlp/wandb-allennlp.png
+  desc: Utilities and boilerplate code which allows using wandb to tune the hypereparameters for any AllenNLP model without a single line of extra code!
+
+
+
 - name: Natural Language Inference for Question Answering
   i18n: dhruvdcoder
-  gh_user: nli-for-qa
+  gh_user: dhruvdcoder
   repo: " "
   #relative_url: /projects/nli_for_qa
   relative_url: /projects/under_review
   img: /static/assets/img/landing/nli_for_qa.png
-  desc: Solving the task of Question Answering through the knowledge of inference
+  desc: Solving the task of Question Answering through the knowledge of inference <br> .
 
 
 - name: Box Embedding for Knowledge Graph Completion

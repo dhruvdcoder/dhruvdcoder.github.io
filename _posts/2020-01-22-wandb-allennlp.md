@@ -14,6 +14,9 @@ use_math: false
 
 ### Update: AllenNLP has discarded `CallbackTrainer` which is heavily used in this setup. Hence, this tutorial and the micro-library will only work with AllenNLP v0.9.0.
 
+### Update (06/18/2020): Working to update the wandb-allennlp package to support AllenNLP v1.0. The current WIP version can be found in the [allennlp\_v1.0](https://github.com/dhruvdcoder/wandb-allennlp/tree/allennlp_v1.0) branch. Contributions are welcome.
+
+
 # Introduction
 
 Are you a fan of [AllenNLP](https://allennlp.org)? Do you have a hard time tuning the hyperparameters for your NLP projects? Well, you've come to the right place. After looking around for some time, I have found the setup that works best for my NLP projects. In this post, I will introduce this setup and a micro-library I built which can aid in using this set up in your projects.
