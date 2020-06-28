@@ -20,3 +20,6 @@
 
 - src: landing/header_eight.jpg
   title: View from the top of Campus Center at UMass
+
+- src: landing/wandb-allennlp.png
+  title: Using Weights&Biases with AllenNLP

@@ -16,6 +16,7 @@ use_math: false
 
 ### Update (06/18/2020): Working to update the wandb-allennlp package to support AllenNLP v1.0. The current WIP version can be found in the [allennlp\_v1.0](https://github.com/dhruvdcoder/wandb-allennlp/tree/allennlp_v1.0) branch. Contributions are welcome.
 
+### Update (06/25/2020): Version 0.2.0 of wandb_allennlp works with both AllenNLP v0.9.0 and v1.0.0.
 
 # Introduction
 
