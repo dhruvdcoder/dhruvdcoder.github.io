@@ -19,11 +19,11 @@
   tpl: career.html
   css: timeline
 
-- id: skills
-  i18n: nav.skills
-  name: Skills
-  tpl: skills.html
-  css: team
+#- id: skills
+#  i18n: nav.skills
+#  name: Skills
+#  tpl: skills.html
+#  css: team
 
 - id: projects
   i18n: nav.projects
@@ -36,6 +36,14 @@
 #  name: Chatter
 #  tpl: twitter.html
 #  css: testimonials
+
+- id: inoreader
+  i18n: nav.inoreader
+  name: Reading
+  tpl: inoreader.html
+  css: testimonials
+
+
 
 - id: blog
   i18n: nav.blog
