@@ -1,7 +1,7 @@
 # Website settings
 title: dhruveshp
 description: >- # this means to ignore newlines until "baseurl:"
-  This is the personal website of Dhruvesh Patel.
+  I am graduate student at UMass Amherst working on Natural Language Processing, Knowledge Graphs and Machine Learning. This is my personal website.
 baseurl:  ""
 url: "http://dhruveshp.com"
 author:  # change following line to your infomation.
