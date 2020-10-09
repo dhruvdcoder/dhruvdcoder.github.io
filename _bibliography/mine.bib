@@ -16,6 +16,44 @@ abstract="Determination of the safe working zone (SWZ) of a parallel manipulator
 isbn="978-3-319-44156-6"
 }
 
+@inproceedings{mishra2020looking,
+      title={Looking Beyond Sentence-Level Natural Language Inference for Downstream Tasks},
+      author={*Anshuman Mishra and *Dhruvesh Patel and *Aparna Vijayakumar and Xiang Li and Pavan Kapanipathi and Kartik Talamadupula},
+      booktitle={ArXiv},
+      month="December",
+      year={2020},
+      eprint={2009.09099},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      code={https://github.com/nli-for-qa},
+      url={https://arxiv.org/abs/2009.09099},
+      abstract={In recent years, the Natural Language Inference (NLI) task has garnered significant attention, with new datasets and models achieving near human-level performance on it. However, the full promise of NLI -- particularly that it learns knowledge that should be generalizable to other downstream NLP tasks -- has not been realized. In this paper, we study this unfulfilled promise from the lens of two downstream tasks: question answering (QA), and text summarization. We conjecture that a key difference between the NLI datasets and these downstream tasks concerns the length of the premise; and that creating new long premise NLI datasets out of existing QA datasets is a promising avenue for training a truly generalizable NLI model. We validate our conjecture by showing competitive results on the task of QA and obtaining the best reported results on the task of Checking Factual Correctness of Summaries.}
+
+}
+
+@inproceedings{mishra2020reading,
+      title={Reading Comprehension as Natural Language Inference: A Semantic Analysis},
+      author={Anshuman Mishra and Dhruvesh Patel and Aparna Vijayakumar and Xiang Li and Pavan Kapanipathi and Kartik Talamadupula},
+      booktitle={StarSem 2020 Workshop at COLING },
+      year={2020 (To Appear)},
+      eprint={2010.01713},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      code={https://github.com/nli-for-qa},
+      url={https://arxiv.org/abs/2010.01713},
+      abstract={In the recent past, Natural language Inference (NLI) has gained significant attention, particularly given its promise for downstream NLP tasks. However, its true impact is limited and has not been well studied. Therefore, in this paper, we explore the utility of NLI for one of the most prominent downstream tasks, viz. Question Answering (QA). We transform the one of the largest available MRC dataset (RACE) to an NLI form, and compare the performances of a state-of-the-art model (RoBERTa) on both these forms. We propose new characterizations of questions, and evaluate the performance of QA and NLI models on these categories. We highlight clear categories for which the model is able to perform better when the data is presented in a coherent entailment form, and a structured question-answer concatenation form, respectively.}
+}
+
+@inproceedings{patel2020-mr-extraction,
+    title = {Weakly Supervised Medication Regimen Extraction from Medical Conversations},
+    author = {Dhruvesh Patel and Sandeep Konam and Sai Prabhakar Selvaraj},
+    booktitle = "Proceedings of the 3rd Clinical Natural Language Processing Workshop",
+    month = {November},
+    year = {2020 (To Appear)},
+    publisher = "Association for Computational Linguistics",
+    abstract = "Automated Medication Regimen (MR) extraction from medical conversations can improve recall and care-plan compliance for patients, and reduce documentation burden for doctors. In this paper, we focus on extracting spans for frequency, route and change, corresponding to medications discussed in the conversation. We first describe a unique dataset of annotated doctor-patient conversations and then present a weakly supervised model architecture that can perform span extraction using noisy classification data. The model utilizes an attention bottleneck inside a classification model to perform the extraction.We experiment with several variants of attention scoring and projection functions and propose a novel transformer-based attention scoring function (TAScore). The proposed combination of TAScore and Fusedmax projection achieves a 10 point increase in Longest Common Substring F1 compared to the baseline of additive scoring plus softmax projection.",
+}
+
 @inproceedings{
 dhruveshbox2020,
 title={Representing Joint Hierarchies with Box Embeddings},

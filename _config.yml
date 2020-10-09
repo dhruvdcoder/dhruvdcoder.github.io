@@ -19,46 +19,60 @@ author:  # change following line to your infomation.
   email: dhruveshpate@umass.edu  # Leave blank if you don't have now
   cv: "https://drive.google.com/file/d/1Z8u4_wnQiLDkyiV361f-kGfxHpb6NQCE/view"   # An online CV can be printed as PDF, leave blank if you don't have now
   # skill icons are on avatar's left and right side. Reference urls are http://fontawesome.io/ and http://fizzed.com/oss/font-mfizz
-  skill_icon1:
-    - icon: aws
-      name: fa-aws
-      source: font-awesome
-    - icon: linux
-      name: fa-linux
-      source: font-awesome
-    #- icon: nginx
-    #  name: devicon-nginx-original
-    #  source: devicon
-    - icon: git
-      name: icon-git
-      source: mfizz
-    - icon: slack
-      name: devicon-slack-plain
-      source: devicon
-  skill_icon2:
-    - icon: cplusplus
-      name: icon-cplusplus
-      source: mfizz
-    - icon: mongodb
-      name: icon-mongodb
-      source: mfizz
-    #- icon: d3
-    #  name: icon-d3
-    #  source: mfizz
-    - icon: python
-      name: icon-python
-      source: mfizz
-    #- icon: vim
-    #  name: devicon-vim-plain
-    #  source: devicon
-    - icon: docker
-      name: devicon-docker-plain
-      source: devicon
+  # skill_icon1:
+  #   - icon: aws
+  #     name: fa-aws
+  #     source: font-awesome
+  #   - icon: linux
+  #     name: fa-linux
+  #     source: font-awesome
+  #   #- icon: nginx
+  #   #  name: devicon-nginx-original
+  #   #  source: devicon
+  #   - icon: git
+  #     name: icon-git
+  #     source: mfizz
+  #   - icon: slack
+  #     name: devicon-slack-plain
+  #     source: devicon
+  # skill_icon2:
+  #   - icon: cplusplus
+  #     name: icon-cplusplus
+  #     source: mfizz
+  #   - icon: mongodb
+  #     name: icon-mongodb
+  #     source: mfizz
+  #   #- icon: d3
+  #   #  name: icon-d3
+  #   #  source: mfizz
+  #   - icon: python
+  #     name: icon-python
+  #     source: mfizz
+  #   #- icon: vim
+  #   #  name: devicon-vim-plain
+  #   #  source: devicon
+  #   - icon: docker
+  #     name: devicon-docker-plain
+  #     source: devicon
 
   desc: "Software engineer and a curious soul—that is me. You've reached my website which I use as a journal; as a bulletin board for my ideas and as a placeholder for myself in this enormous space that is internet. I talk about all things that I find interesting: Linux's ELF binaries, machine learning, software libraries, mathematics, etc. I come from an interdisciplinary background involving Robotics, Software Engineering, Machine Learning and Data Science. For a year, I was developing a set of Machine Learning (ML) and Natural Language Processing (NLP) based products at a nascent startup—-Kenome. Currently, I am pursuing my master's degree in Computer Science at UMass. Through 2+ years of experience in developing software and end-to-end machine learning pipelines, I have bolstered my understanding of the fundamentals of computer science with practical knowledge. I now am looking for bigger challenges on the unexplored frontiers of NLP and ML."
 
+
+# Collections
+collections:
+  news:
+    defaults:
+      layout: post
+    output: true
+    permalink: /news/:path/
+
 #other pages
 include: ["_pages"]
+
+
+
+# news
+news_limit: 5
 
 # comment
 disqus:

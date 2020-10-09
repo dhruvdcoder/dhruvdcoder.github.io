@@ -6,6 +6,12 @@
   tpl: about.html
   css:
 
+- id: news
+  i18n: nav.news
+  name: News
+  tpl: news.html
+  css:
+
 - id: pubs
   i18n: nav.pubs
   name: Publications
@@ -52,8 +58,8 @@
   page: recent/
   css: testimonials
 
-- id: links
+- id: Connect
   i18n: nav.link
-  name: Links
+  name: Connect
   tpl: links.html
   css: contact

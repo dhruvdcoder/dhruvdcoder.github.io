@@ -1,98 +1,120 @@
 <div class="container" id="i18_about_me">
-    <div class="row m-b-lg">
-        <div class="col-lg-12 text-center">
-            <div class="navy-line"></div>
-            <h1><span data-i18n="about_me.about_me">About Me</span></h1>
-        </div>
+  <div class="row m-b-lg">
+    <div class="col-lg-12 text-center">
+      <div class="navy-line"></div>
+      <!--<h1><span data-i18n="about_me.about_me">About Me</span></h1>-->
     </div>
-    <div class="row">
-        <!-- first two icons from font-awesome-->
-        {% for icon_obj in site.author.skill_icon1 %}
-        <div class="col-xs-1 wow fadeInLeft">
-            <div class="team-member">
-                <div class="vote-icon">
-                {% if icon_obj.source =='mfizz' %}
-                    <i class="{{ icon_obj.name }}"></i>
-                {% elsif icon_obj.source =='font-awesome' %}
-                    <i class="fab {{ icon_obj.name }}"></i>
-                {% elsif icon_obj.source =='devicon' %}
-                    <i class="{{ icon_obj.name }}"></i>
-                {% endif %}
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-        <!-- avatar -->
-        <div class="col-xs-4">
-            <div class="team-member wow zoomIn">
-                <img src="{{ site.author.avatar | prepend: site.baseurl }}" height="210" width="210" class="img-responsive img-rounded" alt="">
-                <h4><span class="navy">{{ site.author.first_name }}</span> {{ site.author.last_name }}</h4>
-                <ul class="list-inline social-icon">
-                    {% if site.author.github_username %}
-                    <li><a href="https://github.com/{{ site.author.github_username }}" target="blank"><i class="fab fa-github"></i></a></li>
-                    {% endif %}
-                    {% if site.author.linkedin_id %}
-                    <li><a href="https://www.linkedin.com/in/{{ site.author.linkedin_id }}" target="blank"><i class="fab fa-linkedin"></i></a></li>
-                    {% endif %}
-                    {% if site.author.quora_id %}
-                    <li><a href="https://www.quora.com/profile/{{ site.author.quora_id }}" target="blank"><i class="fab fa-quora"></i></a></li>
-                    {% endif %}
-                    {% if site.author.researchgate_id %}
-                    <li><a href="https://www.researchgate.net/profile/{{ site.author.researchgate_id }}" target="blank"><i class="ai ai-researchgate"></i></a></li>
-                    {% endif %}
-                    {% if site.author.facebook_username %}
-                    <li><a href="https://www.facebook.com/{{ site.author.facebook_username }}" target="blank"><i class="fab fa-facebook"></i></a></li>
-                    {% endif %}
-                    {% if site.author.twitter_username %}
-                    <li><a href="https://twitter.com/{{ site.author.twitter_username }}" target="blank"><i class="fab fa-twitter"></i></a></li>
-                    {% endif %}
-					{% if site.author.goodreads_username %}
-                    <li><a href="https://www.goodreads.com/{{ site.author.goodreads_username }}" target="blank"><i class="fab fa-goodreads"></i></a></li>
-                    {% endif %}
-                    {% if site.author.email %}
-                    <li><a href="mailto:{{ site.author.email }}"><i class="fas fa-envelope"></i></a></li>
-                    {% endif %}
-                    <li><a href="{{ site.baseurl }}/feed.xml" target="blank"><i class="fas fa-rss"></i></a></li>
-                    {% if site.author.cv %}
-                    <li><a href="{{ site.author.cv }}" target="blank"><i class="fas fa-file-pdf"></i></a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-        <!-- second two icons from mfizz -->
-        {% for icon_obj in site.author.skill_icon2 %}
-        <div class="col-xs-1 wow fadeInRight">
-            <div class="team-member">
-                <div class="vote-icon">
-                {% if icon_obj.source =='mfizz' %}
-                    <i class="{{ icon_obj.name }}"></i>
-                {% elsif icon_obj.source =='font-awesome' %}
-                    <i class="fab {{ icon_obj.name }}"></i>
-                {% elsif icon_obj.source =='devicon' %}
-                    <i class="{{ icon_obj.name }}"></i>
-                {% endif %}
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+  </div>
+  <div class="row">
+    <!-- avatar -->
+    <div class="col-lg-8 col-lg-offset-2 text-left m-t-lg m-b-lg">
+      <div class="team-member wow zoomIn">
+        <img
+          src="{{ site.author.avatar | prepend: site.baseurl }}"
+          height="210"
+          width="210"
+          class="img-responsive img-rounded"
+          alt=""
+        />
+        <h4>
+          <span class="navy">{{ site.author.first_name }}</span> {{
+          site.author.last_name }}
+        </h4>
+        <ul class="list-inline social-icon">
+          {% if site.author.github_username %}
+          <li>
+            <a
+              href="https://github.com/{{ site.author.github_username }}"
+              target="blank"
+              ><i class="fab fa-github"></i
+            ></a>
+          </li>
+          {% endif %} {% if site.author.linkedin_id %}
+          <li>
+            <a
+              href="https://www.linkedin.com/in/{{ site.author.linkedin_id }}"
+              target="blank"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+          </li>
+          {% endif %} {% if site.author.quora_id %}
+          <li>
+            <a
+              href="https://www.quora.com/profile/{{ site.author.quora_id }}"
+              target="blank"
+              ><i class="fab fa-quora"></i
+            ></a>
+          </li>
+          {% endif %} {% if site.author.researchgate_id %}
+          <li>
+            <a
+              href="https://www.researchgate.net/profile/{{ site.author.researchgate_id }}"
+              target="blank"
+              ><i class="ai ai-researchgate"></i
+            ></a>
+          </li>
+          {% endif %} {% if site.author.facebook_username %}
+          <li>
+            <a
+              href="https://www.facebook.com/{{ site.author.facebook_username }}"
+              target="blank"
+              ><i class="fab fa-facebook"></i
+            ></a>
+          </li>
+          {% endif %} {% if site.author.twitter_username %}
+          <li>
+            <a
+              href="https://twitter.com/{{ site.author.twitter_username }}"
+              target="blank"
+              ><i class="fab fa-twitter"></i
+            ></a>
+          </li>
+          {% endif %} {% if site.author.goodreads_username %}
+          <li>
+            <a
+              href="https://www.goodreads.com/{{ site.author.goodreads_username }}"
+              target="blank"
+              ><i class="fab fa-goodreads"></i
+            ></a>
+          </li>
+          {% endif %} {% if site.author.email %}
+          <li>
+            <a href="mailto:{{ site.author.email }}"
+              ><i class="fas fa-envelope"></i
+            ></a>
+          </li>
+          {% endif %}
+          <li>
+            <a href="{{ site.baseurl }}/feed.xml" target="blank"
+              ><i class="fas fa-rss"></i
+            ></a>
+          </li>
+          {% if site.author.cv %}
+          <li>
+            <a href="{{ site.author.cv }}" target="blank"
+              ><i class="fas fa-file-pdf"></i
+            ></a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
     </div>
-    
-    <div class="row">
-        
-        <div class="col-lg-8 col-lg-offset-2 text-left m-t-lg m-b-lg wow zoomIn">
-            
-            <!-- <div id="typed-strings" > -->
-            <div>
-                {{ site.data.about_me.about_me }}
-            </div>
-            <span id="typed" ></span> 
-            
-            
-            
-            <!--
+    <!-- second two icons from mfizz -->
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 text-left m-t-lg m-b-lg wow zoomIn">
+      <!-- <div id="typed-strings" > -->
+      <div class="long-text">
+        <p>
+          {{ site.data.about_me.about_me }}
+        </p>
+      </div>
+      <span id="typed"></span>
+
+      <!--
             <p><span data-i18n="about_me.des">{{ site.data.about_me.about_me }}</span></p>
             -->
-        </div>
     </div>
-    
+  </div>
 </div>

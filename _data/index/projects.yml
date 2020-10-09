@@ -22,7 +22,7 @@
   #relative_url: /projects/nli_for_qa
   relative_url: /projects/under_review
   img: /static/assets/img/landing/nli_for_qa.png
-  desc: Solving the task of Question Answering through the knowledge of inference <br> .
+  desc: Solving the task of Question Answering through the knowledge of inference.
 
 
 - name: Box Embedding for Knowledge Graph Completion
@@ -70,19 +70,19 @@
   repo: none
   relative_url: /projects/swz
   img: /static/assets/img/pages/projects/swz/project_img.png
-  desc: Work in computational kinematics of parallel robot manipulators<br>
+  desc: Work in computational kinematics of parallel robot manipulators.
 
-- name: Experiments with TensorFlow
-  i18n: cpython
-  gh_user: dhruvdcoder
-  repo: TensorFlowExperiments
-  img: /static/assets/img/landing/Tensorflow_logo.png
-  desc: An aggregation of my experiments in Neural Networks and Deep Learning using TensorFlow
+  #- name: Experiments with TensorFlow
+  #  i18n: cpython
+  #  gh_user: dhruvdcoder
+  #  repo: TensorFlowExperiments
+  #  img: /static/assets/img/landing/Tensorflow_logo.png
+  #  desc: An aggregation of my experiments in Neural Networks and Deep Learning using TensorFlow
 
-- name: I-Glide, A Self-balancing Personal Transporter
-  i18n: dhruvdcoder
-  gh_user: dhruvdcoder
-  repo: none
-  relative_url: /projects/iglide
-  img: /static/assets/img/pages/projects/iGlide/cad_1.png
-  desc: Development of a product that addresses the short distance transportation (2-7 km) issues of people<br>
+  #- name: I-Glide, A Self-balancing Personal Transporter
+  #  i18n: dhruvdcoder
+  #  gh_user: dhruvdcoder
+  #  repo: none
+  #  relative_url: /projects/iglide
+  #  img: /static/assets/img/pages/projects/iGlide/cad_1.png
+  #  desc: Development of a product that addresses the short distance transportation (2-7 km) issues of people<br>
