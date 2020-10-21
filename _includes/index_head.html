@@ -126,4 +126,64 @@
 
 <!-- Crisp chatbox -->
 <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="459ca45f-1782-4eec-ba74-ec2cf308f0a6";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+
+<!-- For parsing inoreader rss-->
+<!-- see: https://css-tricks.com/how-to-fetch-and-parse-rss-feeds-in-javascript/ -->
+<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-rss/3.3.0/jquery.rss.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+<script>
+      jQuery(function($) {
+        $("#inoreader_feed").rss(
+        "https://www.inoreader.com/stream/user/1004645651/tag/user-broadcasted",
+		{
+			limit: 5,
+			support: false,
+			dateFormat: 'dddd, MMM Do YYYY',
+			tokens: {
+			      previewImage: function(entry, tokens) {
+				      console.log(tokens);
+				      var target = tokens.url;
+				      var key    = "f924a170f2831bcd65e047842dad78cd";
+				      var img = "{{ site.url }}{{ site.baseurl }}{{ "/static/assets/img/landing/typewritter.jpg" }}";
+				      const resp = $.ajax({
+				      url: "https://api.linkpreview.net",
+				      dataType: "jsonp",
+				      data: {q: target, key: key},
+				      success: function (response) {
+				        if (response.status != 200) { img=resp.responseJSON.image; }
+					    }
+				      });
+			      return encodeURI(img);
+			      }
+			},
+			entryTemplate: `
+				<div class="article_magazine_content_wraper">
+					
+					<div class="article_magazine_picture_wrapper pull_left">
+						<a href="{url}" target="_blank">
+							<div class="article_picture" style="background-image:url({previewImage})">
+							</div>
+						</a>
+					</div>
+					<div class="article_title_content">
+						<div class="article_title">
+							<a class="article_magazine_title_link" target="_blank" href="{url}"><span class="navy">{title}</span></a>
+						</div>
+						
+					<div>
+						<p><span>{shortBodyPlain}</span></p>
+					</div>
+						<div class="article_magazine_footer">
+							<span>Published by {author} on {date}</span>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				`
+		}
+  	);    
+      });
+</script>
 </head>
