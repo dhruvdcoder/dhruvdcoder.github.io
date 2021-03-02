@@ -1,17 +1,173 @@
----
-layout: null
-title : Sitemap
----
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{% for post in site.posts %}
+
     <url>
-        <loc>{{site.url}}{{ post.url }}</loc>
+        <loc>http://dhruveshp.com/machinelearning/wandb-allennlp/</loc>
     </url>
-{% endfor %}
-{% for page in site.pages %}
+
     <url>
-        <loc>{{site.url}}{{ page.url }}</loc>
+        <loc>http://dhruveshp.com/miscellaneous/vim_setup/</loc>
     </url>
-{% endfor %}
+
+    <url>
+        <loc>http://dhruveshp.com/exp/kenome</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/machinelearning/word2vec/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/machinelearning/relative-entropy/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/machinelearning/structuring-tf-code/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/machinelearning/linear-reg-using-TF/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/cpp/2018/03/10/Compiletime-introspection-in-c++-using-traits.html</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/exp/mw</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/exp/iitm/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/cpp/2017/12/01/class-scoped-constants.html</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/projects/swz/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/projects/iglide/</loc>
+    </url>
+
+
+    <url>
+        <loc>http://dhruveshp.com/404.html</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/projects/swz/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/exp/abridge</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/projects/boxes_for_nli/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/cpp/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/static/css/custom.css</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/database/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/donate/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/feed.xml</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/html/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/projects/HyperA/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/projects/iglide/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/exp/iitm/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/exp/kenome</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/projects/kb_boxes/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/life/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/linux/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/machinelearning/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/miscellaneous/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/exp/mw</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/projects/nli_for_qa/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/projects/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/recent/</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/robots.txt</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/search.json</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/sitemap.xml</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/exp/umass</loc>
+    </url>
+
+    <url>
+        <loc>http://dhruveshp.com/assets/css/style.css</loc>
+    </url>
+
 </urlset>

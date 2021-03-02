@@ -1,17 +1,108 @@
----
-layout: null
----
 {
     "code" : 0 ,
     "data" : [
-     {% for post in site.posts %}
+     
     {
-        "title" : "{{ post.title }} - {{ post.date | date_to_utc | date: '%Y-%m-%d'}}",
-        "url" : "{{ site.baseurl }}{{ post.url }}"
+        "title" : "Hyperparameter optimization for AllenNLP with W&B - 2020-03-24",
+        "url" : "/machinelearning/wandb-allennlp/"
     }
-    {% if forloop.rindex != 1  %}
+    
     ,
-    {% endif %}
-    {% endfor %}
+    
+    
+    {
+        "title" : "VIMing on Mac - 2019-01-21",
+        "url" : "/miscellaneous/vim_setup/"
+    }
+    
+    ,
+    
+    
+    {
+        "title" : "Building intelligent software solutions at Kenome - 2018-07-10",
+        "url" : "/exp/kenome"
+    }
+    
+    ,
+    
+    
+    {
+        "title" : "When words become vectors - 2018-06-20",
+        "url" : "/machinelearning/word2vec/"
+    }
+    
+    ,
+    
+    
+    {
+        "title" : "Relative Entropy and its role as a cost function for machine learning tasks - 2018-04-15",
+        "url" : "/machinelearning/relative-entropy/"
+    }
+    
+    ,
+    
+    
+    {
+        "title" : "Structuring TensorFlow code to use high-level APIs - 2018-04-01",
+        "url" : "/machinelearning/structuring-tf-code/"
+    }
+    
+    ,
+    
+    
+    {
+        "title" : "Linear regression using TensorFlow - 2018-03-17",
+        "url" : "/machinelearning/linear-reg-using-TF/"
+    }
+    
+    ,
+    
+    
+    {
+        "title" : "Compile-time Introspection in C++ using Traits - 2018-03-10",
+        "url" : "/cpp/2018/03/10/Compiletime-introspection-in-c++-using-traits.html"
+    }
+    
+    ,
+    
+    
+    {
+        "title" : "Stint at MathWorks -- Going hard at building software - 2018-02-10",
+        "url" : "/exp/mw"
+    }
+    
+    ,
+    
+    
+    {
+        "title" : "Life at IIT Madras - 2017-12-06",
+        "url" : "/exp/iitm/"
+    }
+    
+    ,
+    
+    
+    {
+        "title" : "Class scoped constants in C++ - 2017-12-01",
+        "url" : "/cpp/2017/12/01/class-scoped-constants.html"
+    }
+    
+    ,
+    
+    
+    {
+        "title" : "Computing the Safe Working Zone of parallel manipulators - 2016-05-01",
+        "url" : "/projects/swz/"
+    }
+    
+    ,
+    
+    
+    {
+        "title" : "I-Glide - 2014-07-01",
+        "url" : "/projects/iglide/"
+    }
+    
+    
     ]
 }
