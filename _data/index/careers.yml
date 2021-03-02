@@ -1,5 +1,24 @@
 # careers section data
 # if you don't have language feature(language.yml is empty), ignore "i18n" items
+#
+- name:
+    detail: Information Extraction and Synthesis Lab., UMass Amherst
+    link: http://www.iesl.cs.umass.edu/
+    i18n:
+  desc:
+    detail: Machine Learning for NLP and Knowledge Graphs
+    i18n: company_a_desc
+    readmore: exp/umass
+  date:
+    detail: Jan 2021 - Present
+    i18n:
+  job:
+    detail: PhD Student and Research Assistant
+    i18n:
+  icon: fa-plus-square
+  img: /static/assets/img/landing/UMass_IESL.png
+
+
 - name:
     detail: Abridge AI
     link: http://www.abridge.com/
@@ -9,7 +28,7 @@
     i18n: company_a_desc
     readmore: exp/abrdige
   date:
-    detail: May 2019 - Sep 2019
+    detail: May 2020 - Dec 2020
     i18n:
   job:
     detail: Natural Language Processing Research Intern
