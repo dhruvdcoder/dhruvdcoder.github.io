@@ -59,10 +59,6 @@ jobs:
                                 "prefix":"### 👷 Build and CI",
                                 "labels":["ci", "build", "build/deployment"]
                         },
-                        "configs":{
-                                "prefix":"### ⚙️  Model and sweep configs",
-                                "labels":["configs", "config"]
-                        },
                 }
         # See: emojipedia.org for emoji codes
     - name: Commit CHANGELOG.md
