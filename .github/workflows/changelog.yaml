@@ -58,7 +58,7 @@ jobs:
                         "ci":{
                                 "prefix":"### 👷 Build and CI",
                                 "labels":["ci", "build", "build/deployment"]
-                        },
+                        }
                 }
         # See: emojipedia.org for emoji codes
     - name: Commit CHANGELOG.md
