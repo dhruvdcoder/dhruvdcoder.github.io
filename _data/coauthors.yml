@@ -1,18 +1,51 @@
-"Adams":
-  - firstname: ["Edwin", "E.", "E. P.", "Edwin Plimpton"]
-    url: https://en.wikipedia.org/wiki/Edwin_Plimpton_Adams
+Dasgupta:
+  - firstname: ["Shib Sankar", "Shib"]
+    url: https://ssdasgupta.github.io
 
-"Podolsky":
-  - firstname: ["Boris", "B.", "B. Y.", "Boris Yakovlevich"]
-    url: https://en.wikipedia.org/wiki/Boris_Podolsky
+Boratko:
+  - firstname: ["Michael"]
+    url: https://people.cs.umass.edu/~mboratko
 
-"Rosen":
-  - firstname: ["Nathan", "N."]
-    url: https://en.wikipedia.org/wiki/Nathan_Rosen
+Li:
+  - firstname: ["Xiang", "Lorraine", "Xiang Lorraine"]
+    url: https://people.cs.umass.edu/~xiangl
 
-"Bach": 
-  - firstname: ["Johann Sebastian", "J. S."]
-    url: https://en.wikipedia.org/wiki/Johann_Sebastian_Bach
+Vilnis:
+  - firstname: ["Luke"]
+    url: https://people.cs.umass.edu/~luke
 
-  - firstname: ["Carl Philipp Emanuel", "C. P. E."]
-    url: https://en.wikipedia.org/wiki/Carl_Philipp_Emanuel_Bach
+McCallum:
+  - firstname: ["Andrew"]
+    url: https://people.cs.umass.edu/~mccallum
+
+Bandyopadhyay:
+  - firstname: ["Sandipan"]
+    url: https://ed.iitm.ac.in/~sandipan
+
+Talamadupula:
+  - firstname: ["Kartik"]
+    url: https://researcher.watson.ibm.com/researcher/view.php?person=us-krtalamad
+
+Kapanipathi:
+  - firstname: ["Pavan"]
+    url: https://researcher.watson.ibm.com/researcher/view.php?person=us-kapanipa
+
+Selvaraj:
+  - firstname: ["Sai Prabhakar", "Sai"]
+    url: http://saiprabhakar.github.io/
+
+Prabhakar:
+  - firstname: ["Sai"]
+    url: http://saiprabhakar.github.io/
+
+Konam:
+  - firstname: ["Sandeep"]
+    url: https://skonam.github.io/
+
+Mishra:
+  - firstname: ["Anshuman"]
+    url: https://www.linkedin.com/in/thisisanshuman/
+
+Vijayakumar:
+  - firstname: ["Aparana"]
+    url: https://www.linkedin.com/in/aparna-vijayakumar/
