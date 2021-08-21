@@ -1,5 +1,17 @@
 # Changelog
 
+## [🚧Unreleased🚧](https://github.com/dhruvdcoder/dhruvdcoder.github.io/tree/HEAD)
+
+[Full Changelog](https://github.com/dhruvdcoder/dhruvdcoder.github.io/compare/v0.2.1...HEAD)
+
+### 💄 cosmetic
+
+- Added about me and publications. [\#4](https://github.com/dhruvdcoder/dhruvdcoder.github.io/pull/4) ([dhruvdcoder](https://github.com/dhruvdcoder))
+
+### 👷 Build and CI
+
+- Add labeller and CHANGELOG [\#2](https://github.com/dhruvdcoder/dhruvdcoder.github.io/issues/2)
+
 ## [v0.2.1](https://github.com/dhruvdcoder/dhruvdcoder.github.io/tree/v0.2.1) (2017-09-08)
 
 [Full Changelog](https://github.com/dhruvdcoder/dhruvdcoder.github.io/compare/v0.2.0...v0.2.1)
