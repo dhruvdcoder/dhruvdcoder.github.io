@@ -16,8 +16,14 @@ pagination:
 <div class="post">
 
   <div class="header-bar">
+    {% if site.blog_logo %}
+    <div >
+	<img class="img-fluid rounded" src="{{ site.baseurl }}{{ site.blog_logo }}" >
+    </div>
+    {% else %}
     <h1>{{ site.blog_name }}</h1>
     <h2>{{ site.blog_description }}</h2>
+    {% endif %}
   </div>
 
 

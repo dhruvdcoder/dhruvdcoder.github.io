@@ -52,6 +52,7 @@ blockquote {
 
 .profile {
   margin-left: 1rem;
+  margin-right: 1rem;
   width: 100%;
 
   .address {
@@ -82,6 +83,56 @@ blockquote {
     &:hover {
       color: var(--global-theme-color);
       text-decoration: none;
+    }
+  }
+}
+
+
+.inline-photo {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  width: 100%;
+
+  .caption {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-family: monospace;
+    p {
+      display: inline-block;
+      margin: 0;
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .inline-photo {
+    width: 30%;
+    .caption {
+      p { display: block; }
+    }
+  }
+}
+
+.inline-banner-photo {
+  width: 100%;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  .caption {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-family: monospace;
+    p {
+      display: inline-block;
+      margin: 0;
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .inline-banner-photo {
+    width: 100%;
+    .caption {
+      p { display: block; }
     }
   }
 }
@@ -516,4 +567,45 @@ html.transition *:before,
 html.transition *:after {
   transition: all 750ms !important;
   transition-delay: 0 !important;
+}
+
+
+// Table adapted from distill
+// https://github.com/distillpub/template/blob/master/src/styles/d-article.css
+
+table {
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+table th {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+table td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+table tr:last-of-type td {
+  border-bottom: none;
+}
+
+table th,
+table td {
+  font-size: 15px;
+  padding: 2px 8px;
+}
+
+table tbody :first-child td {
+  padding-top: 2px;
+}
+
+.btn-group-xs {
+  .btn-xs {
+    padding-top: 0.50rem;
+    padding-right: 1.2rem;
+    padding-bottom: 0.50rem;
+    padding-left: 1.2rem;
+  }
 }

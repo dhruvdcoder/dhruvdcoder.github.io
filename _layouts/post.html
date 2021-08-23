@@ -16,6 +16,12 @@ layout: default
   </header>
 
   <article class="post-content">
+    {% if page.img %}
+          <div >
+	    <img class="img-fluid rounded z-depth-1" src="{{ site.baseurl }}/assets/img/blog/{{ page.img }}" >
+          </div>
+    {% endif %}
+
     {{ content }}
   </article>
 

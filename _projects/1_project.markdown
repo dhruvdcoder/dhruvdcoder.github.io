@@ -53,7 +53,7 @@ You describe how you toiled, sweated, *bled* for your project, and then... you r
         <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/6.jpg' | relative_url }}" alt="" title="example image"/>
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/11.jpg' | relative_url }}" alt="" title="example image"/>
+        <img class="img-fluid rounded z-depth-1 medium-zoom-image" src="{{ '/assets/img/11.jpg' | relative_url }}" alt="" title="example image" data-zoomable/>
     </div>
 </div>
 <div class="caption">

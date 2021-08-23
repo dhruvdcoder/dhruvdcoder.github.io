@@ -14,10 +14,15 @@ footer_text: >
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
 
 icon: 🤓 # the emoji used as the favicon
+icon_image: /assets/img/icon.png
 url:  # the base hostname & protocol for your site
 baseurl:  # the subpath of your site, e.g. /blog/
 last_updated: true # set to true if you want to display last updated in the footer
 impressum_path:  # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
+
+
+# for github-metadata plugin
+repository: dhruvdcoder/dhruvdcoder.github.io
 
 # -----------------------------------------------------------------------------
 # RSS Feed
@@ -51,13 +56,13 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 github_username: dhruvdcoder # your GitHub user name
 gitlab_username: # your GitLab user name
 twitter_username: _dhruveshp # your Twitter handle
-linkedin_username: in/dhruveshp # your LinkedIn user name
+linkedin_username: #in/dhruveshp # your LinkedIn user name
 scholar_userid: 6F2CvwoAAAAJ # your Google Scholar ID
-orcid_id: 0000-0003-3062-2292 # your ORCID ID
+orcid_id: # 0000-0003-3062-2292 # your ORCID ID
 medium_username: # your Medium username
 quora_username: # your Quora username
 publons_id: # your ID on Publons
-research_gate_profile: Dhruvesh-Patel-6 # your profile on ResearchGate
+research_gate_profile: #Dhruvesh-Patel-6 # your profile on ResearchGate
 blogger_url: # your blogger URL
 work_url: iesl.umass.edu # work page URL
 keybase_username: # your keybase user name
@@ -75,8 +80,9 @@ panelbear_analytics: XXXXXXXXX # panelbear analytics site ID
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: Artificial Specific Intelligence   # your blog must have a name for it to show up in the nav bar
-blog_description: Collection of technical articles focussing on machine learning, natural language processing, productivity tools and hacks.
+blog_name: The zanylytical scientist  # your blog must have a name for it to show up in the nav bar
+blog_description: math, machine learning, natural language processing, productivity tools and hacks.
+blog_logo: /assets/img/blog/The_zanylytical_scientist_logo_transparent_blog_banner.png
 permalink: /blog/:year/:title/
 
 # Pagination
@@ -100,6 +106,11 @@ collections:
   projects:
     output: true
     permalink: /projects/:path/
+  timeline:
+    output: true
+    permalink: /timeline/:path/
+
+
 
 news_limit: 5
 
@@ -143,9 +154,10 @@ plugins:
   - jekyll-twitter-plugin
   - jekyll-sitemap
   - jemoji
+  - jekyll-redirect-from
 
 # Extras
-github: [metadata]
+#github: [metadata]
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar
