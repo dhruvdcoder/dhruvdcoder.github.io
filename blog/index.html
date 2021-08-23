@@ -17,12 +17,18 @@ pagination:
 
   <div class="header-bar">
     {% if site.blog_logo %}
-    <div >
-	<img class="img-fluid rounded" src="{{ site.baseurl }}{{ site.blog_logo }}" >
+    <div class="row">
+    <div class="col-sm-3 mt-3 mt-md-0">
+    <img id="blog-logo" class="img-fluid rounded" src="{{ site.baseurl }}{{ site.blog_logo }}" >
+    </div>
+    <div class="col-sm-7 mt-3 mt-md-0">
+        <h2>{{ site.blog_name }}</h1>
+        <h3>{{ site.blog_description }}</h2>
+    </div>
     </div>
     {% else %}
-    <h1>{{ site.blog_name }}</h1>
-    <h2>{{ site.blog_description }}</h2>
+    <h2>{{ site.blog_name }}</h1>
+    <h3>{{ site.blog_description }}</h2>
     {% endif %}
   </div>
 

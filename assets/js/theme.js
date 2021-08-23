@@ -1,3 +1,5 @@
+---
+---
 // Has to be in the head tag, otherwise a flicker effect will occur.
 
 let toggleTheme = (theme) => {
@@ -18,13 +20,22 @@ let setTheme = (theme) =>  {
     document.documentElement.removeAttribute("data-theme");
   }
   localStorage.setItem("theme", theme);
-  
+
   // Updates the background of medium-zoom overlay.
   if (typeof medium_zoom !== 'undefined') {
     medium_zoom.update({
       background: getComputedStyle(document.documentElement)
           .getPropertyValue('--global-bg-color') + 'ee',  // + 'ee' for trasparency.
     })
+  }
+  var logo = document.getElementById('blog-logo');
+  if (theme == 'light') {
+    logo.src = "{{ site.baseurl }}{{ site.blog_logo }}";
+  }
+  else {
+    if (theme == 'dark') {
+      logo.src = "{{ site.baseurl }}{{ site.blog_logo_dark }}"
+    }
   }
 };
 

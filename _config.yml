@@ -82,7 +82,8 @@ panelbear_analytics: XXXXXXXXX # panelbear analytics site ID
 
 blog_name: The zanylytical scientist  # your blog must have a name for it to show up in the nav bar
 blog_description: math, machine learning, natural language processing, productivity tools and hacks.
-blog_logo: /assets/img/blog/The_zanylytical_scientist_logo_transparent_blog_banner.png
+blog_logo: /assets/img/blog_logo.png
+blog_logo_dark: /assets/img/blog_logo_cyan.png
 permalink: /blog/:year/:title/
 
 # Pagination
