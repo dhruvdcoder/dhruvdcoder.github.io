@@ -240,3 +240,18 @@ popper:
 medium_zoom:
   version: "1.0.6"
   integrity: "sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM="
+
+
+# -----------------------------------------------------------------------------
+# Jekyll compose
+# -----------------------------------------------------------------------------
+jekyll_compose:
+  default_front_matter:
+    drafts:
+      layout: post
+      title:  # Title with multiple words
+      description:
+      categories: [Machinelearning, mathematics]
+      keywords: "Machine Learning, mathematics"
+      tags: [Machine Learning, mathematics]
+      img: # Optional
