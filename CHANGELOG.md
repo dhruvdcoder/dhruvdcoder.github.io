@@ -8,6 +8,10 @@
 
 - Added about me and publications. [\#4](https://github.com/dhruvdcoder/dhruvdcoder.github.io/pull/4) ([dhruvdcoder](https://github.com/dhruvdcoder))
 
+### 📦 Dependencies
+
+- Add jekyll-compose [\#5](https://github.com/dhruvdcoder/dhruvdcoder.github.io/issues/5)
+
 ### 👷 Build and CI
 
 - Add labeller and CHANGELOG [\#2](https://github.com/dhruvdcoder/dhruvdcoder.github.io/issues/2)
