@@ -1,20 +1,25 @@
-<div class="grid-item">
-  {% if project.redirect %}
-  <a href="{{ project.redirect }}" target="_blank">
-  {% else %}
-  <a href="{{ project.url | relative_url }}">
-  {% endif %}
-    <div class="card hoverable">
-      {% if project.img %}
-      <img src="{{ project.img | relative_url }}" alt="project thumbnail">
-      {% endif %}
-      <div class="card-body">
-        <h2 class="card-title">{{ project.title }}</h2>
-        <p class="card-text">{{ project.description }}</p>
-          {% if project.github_repo %}
-	  {% include github_info_row.html project=project %}
+
+    <!-- _includes/projects.html -->
+    <div class="grid-item">
+      {% if project.redirect -%}
+      <a href="{{ project.redirect }}">
+      {%- else -%}
+      <a href="{{ project.url | relative_url }}">
+      {%- endif %}
+        <div class="card hoverable">
+          {%- if project.img %}
+            {%- include figure.html 
+              path=project.img 
+              alt="project thumbnail" -%}
+          {%- endif %}
+          <div class="card-body">
+            <h2 class="card-title">{{ project.title }}</h2>
+            <p class="card-text">{{ project.description }}</p>
+            {% if project.github_repo %}
+    {% include github_info_row.html project=project %}
           {% endif %}
-      </div>
+          </div>
+        </div>
+      </a>
     </div>
-  </a>
-</div>
+
