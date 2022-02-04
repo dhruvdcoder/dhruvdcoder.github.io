@@ -6,8 +6,9 @@ description: publications by categories in reversed chronological order. generat
 years: [2017, 2020, 2021]
 nav: true
 ---
-
+<!-- _pages/publications.md -->
 <div class="publications">
+
 {% assign sortedyears = page.years | sort | reverse %}
 {% for y in sortedyears %}
   <h2 class="year">{{y}}</h2>
