@@ -1,15 +1,14 @@
 ---
 layout: post
-title: 
+title:
 description: the right way to send signals to a slurm job
 categories:
-- Machinelearning
-- mathematics
-keywords: Machine Learning, mathematics
+- tools
+keywords: slurm, computing
 tags:
-- Machine Learning
-- mathematics
-img: 
+- hacks
+- tools
+img:
 date: 2021-08-24 22:13 -0400
 ---
 ## Issue with signal propagation to inner script on slurm.
