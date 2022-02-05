@@ -16,6 +16,10 @@
 
 - Add labeller and CHANGELOG [\#2](https://github.com/dhruvdcoder/dhruvdcoder.github.io/issues/2)
 
+**Merged pull requests:**
+
+- Fetch upstream [\#9](https://github.com/dhruvdcoder/dhruvdcoder.github.io/pull/9) ([dhruvdcoder](https://github.com/dhruvdcoder))
+
 ## [v0.2.1](https://github.com/dhruvdcoder/dhruvdcoder.github.io/tree/v0.2.1) (2017-09-08)
 
 [Full Changelog](https://github.com/dhruvdcoder/dhruvdcoder.github.io/compare/v0.2.0...v0.2.1)
