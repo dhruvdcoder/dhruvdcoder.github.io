@@ -68,11 +68,11 @@ quora_username: # your Quora username
 publons_id: # your ID on Publons
 research_gate_profile: #Dhruvesh-Patel-6 # your profile on ResearchGate
 blogger_url: # your blogger URL
-work_url: iesl.umass.edu # work page URL
+work_url: https://iesl.umass.edu # work page URL
 keybase_username: # your keybase user name
 wikidata_id: # your wikidata id
 dblp_url: # your DBLP profile url
-stackoverflow_id: #your stackoverflow id
+stackoverflow_id: 5299351/zanylytical-scientist #your stackoverflow id
 
 contact_note: >
   I am always on the lookout for interesting conversations and fruitful collaborations. Feel free to use my email to reach out.
@@ -199,7 +199,7 @@ sass:
 # -----------------------------------------------------------------------------
 
 jekyll-archives:
-  enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them). 
+  enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
   layouts:
     year: archive-year
     tag: archive-tag
