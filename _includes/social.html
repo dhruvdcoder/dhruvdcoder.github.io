@@ -55,3 +55,6 @@
             {%- if site.rss_icon -%}
             <a href="{{ site.baseurl | prepend: site.url }}/feed.xml" title="RSS Feed"><i class="fas fa-rss-square"></i></a>
             {% endif %}
+            {%- if site.cv -%}
+	    <a href="{{site.cv}}" title="CV"><i class="far fa-file"></i></a>
+            {% endif %}
