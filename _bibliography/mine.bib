@@ -1,20 +1,77 @@
 ---
 ---
 
-@InProceedings{10.1007/978-3-319-44156-6_12,
-author={Dhruvesh Patel and Rohit Kalla and Tetik Halil  and  Kiper  G{\"o}khan  and Sandipan Bandyopadhyay},
-editor="Wenger, Philippe
-and Flores, Paulo",
-title="Computing the Safe Working Zone of a 3-RRS Parallel Manipulator",
-booktitle="New Trends in Mechanism and Machine Science",
-year="2017",
-publisher="Springer International Publishing",
-address="Cham",
-pages="113--120",
-url="https://link.springer.com/chapter/10.1007/978-3-319-44156-6_12",
-abstract="Determination of the safe working zone (SWZ) of a parallel manipulator is a one-time computational task with several permanent benefits. As this subspace of the workspace of the manipulator is free of both the loss- and gain-type singularities, link interference, as well as physical joint limits, the manipulator can move freely in this space. Moreover, if the natural choice of a convex-shaped SWZ is adhered to, then point-to-point path planning inside the SWZ always has a trivial solution, namely, a segment joining the two points, which is guaranteed to be inside the workspace. In this paper, the SWZ of the 3-RRS existing in the {\.{I}}zmir Institute of Technology has been computed. Starting with the geometry of the manipulator, the loop-closure constraint equations have been derived. The singularity conditions are obtained based on the singularity of certain Jacobian matrices associated with the constraint functions. The interference between the links are detected by first encapsulating the links in rectangular parallelepipeds, which are then discretized into triangles, and subjected to collision tests between the relevant pairs of triangles. Using these theoretical developments, the SWZ is computed. The numerical results are depicted graphically.",
-isbn="978-3-319-44156-6"
+@inproceedings{
+patel2022modeling,
+   title={Modeling Label Space Interactions in Multi-label Classification using Box Embeddings},
+   author={Dhruvesh Patel and Pavitra Dangati and Jay-Yoon Lee and Michael Boratko and Andrew McCallum},
+   booktitle={International Conference on Learning Representations (To Appear)},
+   year={2022},
+   url={https://openreview.net/forum?id=tyTH9kOxcvh},
+   abstract = {Multi-label classification is a challenging structured prediction task in which a set of output class labels are predicted for each input. Real-world datasets often have natural or latent taxonomic relationships between labels, making it desirable for models to employ label representations capable of capturing such taxonomies. Most existing multi-label classification methods do not do so, resulting in label predictions that are inconsistent with the taxonomic constraints, thus failing to accurately represent the fundamentals of problem setting. In this work, we introduce the multi-label box model (MBM), a multi-label classification method that combines the encoding power of neural networks with the inductive bias and probabilistic semantics of box embeddings (Vilnis, et al 2018).  Box embeddings can be understood as trainable Venn-diagrams based on hyper-rectangles.  Representing labels by boxes rather than vectors, MBM is able to capture taxonomic relations among labels.  Furthermore, since box embeddings allow these relations to be learned by stochastic gradient descent from data, and to be read as calibrated conditional probabilities, our model is endowed with a high degree of interpretability. This interpretability also facilitates the injection of partial information about label-label relationships into model training, to further improve its consistency. We provide theoretical grounding for our method and show experimentally the model's ability to learn the true latent taxonomic structure from data. Through extensive empirical evaluations on both small and large-scale multi-label classification datasets, we show that BBM can significantly improve taxonomic consistency while preserving or surpassing the state-of-the-art predictive performance.},
+   selected=true,
+   abbr="ICLR",
+   bibtex_show=true,
 }
+
+@inproceedings{
+lee2022structured,
+title={Structured Energy Network as a dynamic loss function. A case study with multi-label Classification},
+author={Jay-Yoon Lee and Dhruvesh Patel and Purujit Goyal and Andrew McCallum},
+booktitle={ICML (Under Review)},
+year={2022},
+url={https://openreview.net/forum?id=dEOeQgQTyvt},
+abstract={Belanger et. al. (2016) and Gygli et al. (2017) have shown that an energy network can capture arbitrary dependencies amongst the output variables in structured prediction; however, their reliance on gradient based inference (GBI) makes the inference slow and unstable. To take advantage of the expressivity of energy networks without incurring the high inference cost, in this work, we propose using Structured Energy As Loss (SEAL). This is a novel learning framework that uses energy network as a trainable loss function (loss-net) to train a separate neural network (task-net), which is then used to perform the inference through a forward pass. We establish SEAL as a general framework wherein various learning strategies like margin-based, regression, and noise-contrastive, could be employed to learn the parameters of loss-net. Through extensive evaluation on ten multi-label classification datasets, we demonstrate that SEAL as a general framework provides various useful design choices, is faster at inference than GBI, and leads to significant performance gains over the baselines.},
+abbr="Preprint",
+selected=true,
+}
+
+@inproceedings{
+eventevent,
+title={Event-Event Relation Extraction using Probabilistic Box Embedding},
+author={EunJeong Hwang and Jay-Yoon Lee and Tianyi Yang and Dhruvesh Patel and Dongxu Zhang and Andrew McCallum},
+booktitle={ACL (Under Review)},
+year={2022},
+url={https://openreview.net/forum?id=USuyAFWEuY},
+abstract={To understand a story with multiple events, it is important to capture the proper relations across these events. However, existing event relation extraction (ERE) framework regards it as a multi-class classification task and do not guarantee any coherence between different relation types, such as anti-symmetry. If a phone line "died" after "storm", then it is obvious that the "storm" happened before the "died". Current framework of event relation extraction do not guarantee this coherence and thus enforces it via constraint loss function (Wang et al., 2020). In this work, we propose to modify the underlying ERE model to guarantee coherence by representing each event as a box representation (BERE) without applying explicit constraints. From our experiments, BERE also shows stronger conjunctive constraint satisfaction while performing on par or better in F1 compared to previous models with constraint injection.},
+abbr="Preprint",
+}
+
+
+@inproceedings{dasgupta2021word2box,
+    title={Word2Box: Learning Word Representation Using Box Embeddings},
+    author={Shib Sankar Dasgupta and Michael Boratko and Shriya Atmakuri and Xiang Li and Dhruvesh Patel and Andrew McCallum},
+    booktitle={ArXiv},
+    year={2021},
+    eprint={2106.14361},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL},
+    url={https://arxiv.org/pdf/2106.14361},
+    abbr ="Preprint"
+}
+
+@inproceedings{chheda-etal-2021-box,
+    title = "Box Embeddings: An open-source library for representation learning using geometric structures",
+    author = "*Tejas  Cheda and
+      *Purujit Goyal and
+      *Trang  Tran, and
+      Dhruvesh  Patel and
+      Michael  Boratko and
+      Shib Sankar Dasgupta and
+      Andrew McCallum",
+    booktitle = "Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing: System Demonstrations",
+    month = nov,
+    year = "2021",
+    address = "Online and Punta Cana, Dominican Republic",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2021.emnlp-demo.24",
+    doi = "10.18653/v1/2021.emnlp-demo.24",
+    pages = "203--211",
+    abstract = "A fundamental component to the success of modern representation learning is the ease of performing various vector operations. Recently, objects with more geometric structure (eg. distributions, complex or hyperbolic vectors, or regions such as cones, disks, or boxes) have been explored for their alternative inductive biases and additional representational capacity. In this work, we introduce Box Embeddings, a Python library that enables researchers to easily apply and extend probabilistic box embeddings. Fundamental geometric operations on boxes are implemented in a numerically stable way, as are modern approaches to training boxes which mitigate gradient sparsity. The library is fully open source, and compatible with both PyTorch and TensorFlow, which allows existing neural network layers to be replaced with or transformed into boxes easily. In this work, we present the implementation details of the fundamental components of the library, and the concepts required to use box representations alongside existing neural network architectures.",
+    abbr="EMNLP",
+    code={https://github.com/iesl/box-embeddings},
+}
+
 
 @inproceedings{mishra2020looking,
       title={Looking Beyond Sentence-Level Natural Language Inference for Downstream Tasks},
@@ -62,7 +119,6 @@ isbn="978-3-319-44156-6"
     doi = "10.18653/v1/2021.naacl-main.104",
     pages = "1322--1336",
     abstract = "Natural Language Inference (NLI) has garnered significant attention in recent years; however, the promise of applying NLI breakthroughs to other downstream NLP tasks has remained unfulfilled. In this work, we use the multiple-choice reading comprehension (MCRC) and checking factual correctness of textual summarization (CFCS) tasks to investigate potential reasons for this. Our findings show that: (1) the relatively shorter length of premises in traditional NLI datasets is the primary challenge prohibiting usage in downstream applications (which do better with longer contexts); (2) this challenge can be addressed by automatically converting resource-rich reading comprehension datasets into longer-premise NLI datasets; and (3) models trained on the converted, longer-premise datasets outperform those trained using short-premise traditional NLI datasets on downstream tasks primarily due to the difference in premise lengths.",
-    selected=true,
     abbr="NAACL",
     bibtex_show=true,
 }
@@ -86,6 +142,8 @@ isbn="978-3-319-44156-6"
     bibtex_show=true,
 }
 
+
+
 @inproceedings{
 dhruveshbox2020,
 title={Representing Joint Hierarchies with Box Embeddings},
@@ -102,13 +160,19 @@ abbr={AKBC},
 bibtex_show=true,
 }
 
-@inproceedings{dasgupta2021word2box,
-    title={Word2Box: Learning Word Representation Using Box Embeddings},
-    author={Shib Sankar Dasgupta and Michael Boratko and Shriya Atmakuri and Xiang Li and Dhruvesh Patel and Andrew McCallum},
-    booktitle={ArXiv},
-    year={2021},
-    eprint={2106.14361},
-    archivePrefix={arXiv},
-    primaryClass={cs.CL},
-    url={https://arxiv.org/pdf/2106.14361},
+
+
+@InProceedings{10.1007/978-3-319-44156-6_12,
+author={Dhruvesh Patel and Rohit Kalla and Tetik Halil  and  Kiper  G{\"o}khan  and Sandipan Bandyopadhyay},
+editor="Wenger, Philippe
+and Flores, Paulo",
+title="Computing the Safe Working Zone of a 3-RRS Parallel Manipulator",
+booktitle="New Trends in Mechanism and Machine Science",
+year="2017",
+publisher="Springer International Publishing",
+address="Cham",
+pages="113--120",
+url="https://link.springer.com/chapter/10.1007/978-3-319-44156-6_12",
+abstract="Determination of the safe working zone (SWZ) of a parallel manipulator is a one-time computational task with several permanent benefits. As this subspace of the workspace of the manipulator is free of both the loss- and gain-type singularities, link interference, as well as physical joint limits, the manipulator can move freely in this space. Moreover, if the natural choice of a convex-shaped SWZ is adhered to, then point-to-point path planning inside the SWZ always has a trivial solution, namely, a segment joining the two points, which is guaranteed to be inside the workspace. In this paper, the SWZ of the 3-RRS existing in the {\.{I}}zmir Institute of Technology has been computed. Starting with the geometry of the manipulator, the loop-closure constraint equations have been derived. The singularity conditions are obtained based on the singularity of certain Jacobian matrices associated with the constraint functions. The interference between the links are detected by first encapsulating the links in rectangular parallelepipeds, which are then discretized into triangles, and subjected to collision tests between the relevant pairs of triangles. Using these theoretical developments, the SWZ is computed. The numerical results are depicted graphically.",
+isbn="978-3-319-44156-6"
 }
