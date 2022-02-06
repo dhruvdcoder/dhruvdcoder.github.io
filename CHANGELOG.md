@@ -6,6 +6,7 @@
 
 ### 💄 cosmetic
 
+- Improve OG and Schema.org [\#11](https://github.com/dhruvdcoder/dhruvdcoder.github.io/pull/11) ([dhruvdcoder](https://github.com/dhruvdcoder))
 - Added about me and publications. [\#4](https://github.com/dhruvdcoder/dhruvdcoder.github.io/pull/4) ([dhruvdcoder](https://github.com/dhruvdcoder))
 
 ### 📦 Dependencies
@@ -18,6 +19,7 @@
 
 **Merged pull requests:**
 
+- Updated about page [\#12](https://github.com/dhruvdcoder/dhruvdcoder.github.io/pull/12) ([dhruvdcoder](https://github.com/dhruvdcoder))
 - Fetch upstream [\#9](https://github.com/dhruvdcoder/dhruvdcoder.github.io/pull/9) ([dhruvdcoder](https://github.com/dhruvdcoder))
 
 ## [v0.2.1](https://github.com/dhruvdcoder/dhruvdcoder.github.io/tree/v0.2.1) (2017-09-08)
