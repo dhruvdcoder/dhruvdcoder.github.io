@@ -19,8 +19,15 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-<span id="current_affiliations">I am a first year Computer Science PhD student at UMass Amherst working with [Prof. Andrew McCallum](https://people.cs.umass.edu/~mccallum).
-I have an eclectic academic background involving robotics, software engineering, machine learning and natural language processing. My current research focuses on Machine Learning as applied to Natural Language Processing (NLP) and Knowledge Graphs (KGs).
-I am broadly interested in (1) exploiting the geometry of non-euclidean spaces to provide better inductive bias to the representation models of natural language and Knowledge Graphs, and in (2) integrating external knowledge sources like Knowledge Graphs, ontologies and hierarchies with deep learning models using end-to-end gradient based learning to create **explainable, instructable and data efficient learning machines**.</span>
+## bio
 
-<span id="past_affiliations">Prior to starting my PhD, I was a master's student at UMass. During this time I worked as a research intern (2019) at [Information Extraction and Synthesis Lab (IESL)](http://www.iesl.cs.umass.edu/people) and [Abridge AI](https://www.abridge.com/machine-learning). Prior to starting my master's program, I worked in a small team at [Kenome](https://www.kenome.io/)--a nascent but extremely driven startup founded by [Prof. Partha Talukdar](http://talukdar.net)--solving challenging problems using Machine Learning and NLP. I have also worked for ~2 years as a software engineer at [MathWorks](https://www.mathworks.com/), focusing on developing Simulink and related products. During my undergrad at [IIT Madras](https://www.iitm.ac.in), I worked with [Prof. Bandyopadhyay](https://ed.iitm.ac.in/~sandipan) on problems in Robotics.</span>
+I am a second year Computer Science PhD student at UMass Amherst working with [Prof. Andrew McCallum](https://people.cs.umass.edu/~mccallum).
+During my time as a master's student at UMass, I worked as a research intern at [Information Extraction and Synthesis Lab (IESL)](http://www.iesl.cs.umass.edu/people) and [Abridge AI](https://www.abridge.com/machine-learning). Prior to starting my master's program I had spent a year working with [Prof. Partha Talukdar](http://talukdar.net) on various NLP problems.
+I obtained by undergrad from [IIT Madras](https://www.iitm.ac.in), where, under the guidance of [Prof. Bandyopadhyay](https://ed.iitm.ac.in/~sandipan), my research primarily focused on problems in Robotics. I have also worked for 2 years as a software engineer at [MathWorks](https://www.mathworks.com/).
+
+## research
+
+Coming with an eclectic background–a mix of robotics, software engineering, natural language processing, and mathematics–I like to think about foundational aspects of machine learning, especially, representation learning.
+While most representation learning methods only focus on metric learning, my work on box embeddings aims to show that representation learning can also capture algebraic structure thereby allowing models to perform compositional reasoning.
+Apart from representation learning, I have also worked with energy models, where the goal is to utilize energy as a *learned* loss function to train feedforward prediction network.
+My most recent empirical explorations have been on NLP and structured prediction tasks.
