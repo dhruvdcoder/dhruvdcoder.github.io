@@ -3,7 +3,7 @@ layout: page
 title: timeline
 permalink: /timeline/
 description: Professional journey
-nav: false
+nav: true
 ---
 
 <div class="timeline">

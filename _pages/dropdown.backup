@@ -1,0 +1,12 @@
+#---
+#layout: page
+#title: life
+#nav: true
+#dropdown: false
+#children:
+#    - title: timeline
+#      permalink: /timeline/
+#    - title: divider
+#    - title: teaching
+#      permalink: /teaching/
+#---
