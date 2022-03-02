@@ -1,6 +1,18 @@
 ---
 ---
 
+@inproceedings{dasgupta2021word2box,
+    title={Word2Box: Capturing Set-Theoretic Semantics of Words using BoxEmbeddings},
+    author={Shib Sankar Dasgupta and Michael Boratko and Siddhartha Mishra and Shriya Atmakuri and Dhruvesh Patel and Xiang Li and  Andrew McCallum},
+   booktitle={Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (To Appear)},
+   conferenceShort={ACL},
+    year={2022},
+    url={https://openreview.net/forum?id=zStYzJqYq9c},
+    abstract = {Learning representations of words in a continuous space is perhaps the most fundamental task in NLP, a prerequisite for nearly all modern machine-learning techniques. Often the objective is to capture distributional similarity via vector dot product, however this is just one relation between word meanings we may wish to capture.  It is natural to consider words as (soft) equivalence classes based on similarity, it is natural to expect the ability to perform set-theoretic operations (intersection, union, difference) on these representations. This is particularly relevant for words which are homographs- for example, “tongue”∩“body” should be similar to “mouth”, while “tongue”∩“language” should  be  similar  to  “dialect”. Box embeddings are a novel region-based representation which provide the capability to perform these set-theoretic operations. In this work, we provide a fuzzy-set interpretation of box embeddings, and train box embeddings with a CBOW objective where contexts are represented using intersection. We demonstrate improved performance on various word similarity tasks, particularly on less common words, and perform a quantitative and qualitative analysis exploring the additional unique expressivity provided by Word2Box.},
+    author+an =	 {5=highlight},
+    abbr="ACL",
+}
+
 @inproceedings{
 patel2022modeling,
    title={Modeling Label Space Interactions in Multi-label Classification using Box Embeddings},
@@ -30,11 +42,11 @@ selected=true,
 eventevent,
 title={Event-Event Relation Extraction using Probabilistic Box Embedding},
 author={EunJeong Hwang and Jay-Yoon Lee and Tianyi Yang and Dhruvesh Patel and Dongxu Zhang and Andrew McCallum},
-booktitle={ACL (Under Review)},
+booktitle={Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (To Appear)},
 year={2022},
 url={https://openreview.net/forum?id=USuyAFWEuY},
 abstract={To understand a story with multiple events, it is important to capture the proper relations across these events. However, existing event relation extraction (ERE) framework regards it as a multi-class classification task and do not guarantee any coherence between different relation types, such as anti-symmetry. If a phone line "died" after "storm", then it is obvious that the "storm" happened before the "died". Current framework of event relation extraction do not guarantee this coherence and thus enforces it via constraint loss function (Wang et al., 2020). In this work, we propose to modify the underlying ERE model to guarantee coherence by representing each event as a box representation (BERE) without applying explicit constraints. From our experiments, BERE also shows stronger conjunctive constraint satisfaction while performing on par or better in F1 compared to previous models with constraint injection.},
-abbr="Preprint",
+abbr="ACL",
 }
 
 
