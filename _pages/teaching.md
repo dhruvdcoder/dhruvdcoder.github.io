@@ -11,10 +11,11 @@ During my final year at IIT Madras, I provided mentorship to 10 groups of sophom
 
 # mentorship
 
-I have been fortune to have collaborated and provided mentorship to a group of excellent M.S. students.
+I have been fortune to have found great collaborators and mentees. I have provided mentorship to the following M.S. students through various projects and independent studies at UMass Amherst.
 
 1. [Tejas Chheda](https://in.linkedin.com/in/tejas-chh)
 2. [Purujit Goyal](https://www.cics.umass.edu/people/goyal-purujit)
+3. [Trang Tran]()
 3. [Elliot Tower](https://www.linkedin.com/in/elliot-tower/)
 4. [Hitesh Golchha](https://hitzkrieg.github.io/website/)
 5. [Eunjeong Hwang](https://eujhwang.github.io/)

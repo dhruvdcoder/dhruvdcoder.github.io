@@ -27,7 +27,7 @@ I obtained by undergrad from [IIT Madras](https://www.iitm.ac.in), where, under 
 
 ## research
 
-Coming with an eclectic background–a mix of robotics, software engineering, natural language processing, and mathematics–I like to think about foundational aspects of machine learning, especially, representation learning.
-While most representation learning methods only focus on metric learning, my work on box embeddings aims to show that representation learning can also capture algebraic structure thereby allowing models to perform compositional reasoning.
-Apart from representation learning, I have also worked with energy models, where the goal is to utilize energy as a *learned* loss function to train feedforward prediction network.
-My most recent empirical explorations have been on NLP and structured prediction tasks.
+Coming with an eclectic background–a mix of robotics, software engineering, natural language processing, and mathematics–I like to think about foundational aspects of machine learning, with major focus on representation learning.
+While most representation learning methods only focus on metric learning, my work on box embeddings aims to show that representation learning can also capture various other kinds of structures like algebraic and relational structure, thereby allowing models to perform compositional reasoning.
+I have also worked with energy models, where the goal is to utilize energy as a *learned* loss function to train feedforward prediction network. My most recent empirical explorations have been on NLP and structured prediction tasks.
+Going forward, I am most interested analysing deep representation learning in rich non-Euclidean spaces through the lens of the burgeoning theory of deep learning.
