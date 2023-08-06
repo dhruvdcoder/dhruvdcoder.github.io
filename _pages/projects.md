@@ -5,7 +5,7 @@ permalink: /projects/
 description: my research and software projects
 nav: true
 display_categories: [research, tools]
-horizontal: false
+horizontal: true
 ---
 
 <!-- pages/projects.md -->
