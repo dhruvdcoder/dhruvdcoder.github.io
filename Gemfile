@@ -24,7 +24,6 @@ group :jekyll_plugins do
     gem 'jekyll-compose'
     gem 'htmlcompressor'
     gem 'htmlbeautifier'
-    gem 'jekyll-github-metadata'
 end
 group :other_plugins do
     gem 'feedjira'

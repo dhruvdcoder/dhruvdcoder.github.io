@@ -23,9 +23,6 @@ lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 keywords: personal-website # add your own keywords or leave empty
 impressum_path: # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
 
-# for github-metadata plugin
-#repository: dhruvdcoder/dhruvdcoder.github.io
-
 # -----------------------------------------------------------------------------
 # Theme
 # -----------------------------------------------------------------------------
@@ -255,7 +252,6 @@ plugins:
   - jekyll-twitter-plugin
   - jemoji
   - jekyll-redirect-from
-  - jekyll-github-metadata
 
 # Sitemap settings
 defaults:
