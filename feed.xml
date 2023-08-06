@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://dhruveshp.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dhruveshp.com/" rel="alternate" type="text/html" /><updated>2023-08-06T03:00:27+00:00</updated><id>https://dhruveshp.com/feed.xml</id><title type="html">blank</title><subtitle>Personal website of Dhruvesh Patel, a computer science graduate student.
+</subtitle><entry><title type="html">Signal Propagation On Slurm</title><link href="https://dhruveshp.com/blog/2021/signal-propagation-on-slurm/" rel="alternate" type="text/html" title="Signal Propagation On Slurm" /><published>2021-08-25T02:13:00+00:00</published><updated>2021-08-25T02:13:00+00:00</updated><id>https://dhruveshp.com/blog/2021/signal-propagation-on-slurm</id><content type="html" xml:base="https://dhruveshp.com/blog/2021/signal-propagation-on-slurm/"><![CDATA[<h2 id="issue-with-signal-propagation-to-inner-script-on-slurm">Issue with signal propagation to inner script on slurm.</h2>
+
+<p>When one runs <code class="language-plaintext highlighter-rouge">scancel</code> or when the job reaches its time limit, slurm will send SIGTERM to the job and wait for certain amount of time before it sends the final SIGKILL. During this time between SIGTERM and SIGKILL, the job can do some cleanup/saving etc to exit gracefully. This is all good. However, when we run a python script in sbatch</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">see_signal</span><span class="p">.</span><span class="n">py</span>
+<span class="o">-------------</span>
+<span class="kn">import</span> <span class="n">signal</span>
+<span class="kn">import</span> <span class="n">time</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">start script</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">print_signal</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+	<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Script recieved signal:</span><span class="sh">"</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">sig</span> <span class="o">==</span> <span class="mi">15</span><span class="p">:</span>
+		<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">SIGTERM recieved, raising SIGINT</span><span class="sh">"</span><span class="p">)</span>
+		<span class="k">raise</span> <span class="nb">KeyboardInterrupt</span>
+
+<span class="n">signal</span><span class="p">.</span><span class="nf">signal</span><span class="p">(</span><span class="n">signal</span><span class="p">.</span><span class="n">SIGTERM</span><span class="p">,</span> <span class="n">print_signal</span><span class="p">)</span>
+<span class="n">signal</span><span class="p">.</span><span class="nf">signal</span><span class="p">(</span><span class="n">signal</span><span class="p">.</span><span class="n">SIGCONT</span><span class="p">,</span> <span class="n">print_signal</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+
+	<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">script started</span><span class="sh">"</span><span class="p">)</span>
+
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">):</span>
+		<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">working...</span><span class="sh">"</span><span class="p">)</span>
+		<span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="nb">KeyboardInterrupt</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+	<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">SIGINT recieved in script. We will exit gracefully</span><span class="sh">"</span><span class="p">)</span>
+	<span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="c">#SBATCH --output=t.log</span>
+
+python see_signal.py
+
+</code></pre></div></div>
+
+<p>The python script never receives the SIGTERM, but dies a painful and sudden death when the job receives the SIGKILL. Also, changing the execution of the python script to a proper job step by using <code class="language-plaintext highlighter-rouge">srun python see_signal.py</code> instead of <code class="language-plaintext highlighter-rouge">python see_signal.py</code> does not help either.</p>
+
+<h2 id="solutions">Solutions:</h2>
+
+<ol>
+  <li>
+    <p>Start the process in background and use its PID to sent the relevant signal <sup id="fnref:signal" role="doc-noteref"><a href="#fn:signal" class="footnote" rel="footnote">1</a></sup></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c">#!/bin/bash</span>
+ <span class="c">#SBATCH --output=t.log</span>
+ <span class="c">#SBATCH --signal=B:TERM@60 # tells the controller</span>
+                            <span class="c"># to send SIGTERM to the job 60 secs</span>
+                            <span class="c"># before its time ends to give it a</span>
+                            <span class="c"># chance for better cleanup.</span>
+
+ <span class="c"># Install trap for the signals INT and TERM to</span>
+ <span class="c"># the main BATCH script here.</span>
+ <span class="c"># Send SIGTERM using kill to the internal script's</span>
+ <span class="c"># process and wait for it to close gracefully.</span>
+
+ <span class="c"># Note: Most python scripts don't install handler</span>
+ <span class="c"># for SIGTERM and hence might die a quick painful death</span>
+ <span class="c"># on recieveing SIGTERM (kill -15).</span>
+ <span class="c"># To avoid this, you can send SIGINT,</span>
+ <span class="c"># i.e., KeyboardInterrupt using (kill -2).</span>
+ <span class="nb">trap</span> <span class="s1">'echo signal recieved in BATCH!; kill -15 "${PID}"; wait "${PID}";'</span> SIGINT SIGTERM
+
+ <span class="c"># Start the work in background process and get its PID</span>
+ python see_signal.py &amp;
+
+ <span class="c"># Set the PID var so that the trap can use it</span>
+ <span class="nv">PID</span><span class="o">=</span><span class="s2">"</span><span class="nv">$!</span><span class="s2">"</span>
+ <span class="nb">wait</span> <span class="s2">"</span><span class="k">${</span><span class="nv">PID</span><span class="k">}</span><span class="s2">"</span>
+</code></pre></div>    </div>
+
+    <p>If you cancel the job manually, make sure that you specify the signal as TERM like so <code class="language-plaintext highlighter-rouge">scancel --signal=TERM &lt;jobid&gt;</code>.</p>
+  </li>
+  <li>
+    <p>If you only have one jobstep, a much cleaner solution is to  use <code class="language-plaintext highlighter-rouge">exec</code> to start that step in the main BATCH process (solution courtesy Michael Boratko.)</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c">#!/bin/bash</span>
+ <span class="c">#SBATCH --output=t.log</span>
+ <span class="c">#SBATCH --signal=B:TERM@60 # tells the controller</span>
+                            <span class="c"># to send SIGTERM to the job 60 secs</span>
+                            <span class="c"># before its time ends to give it a</span>
+                            <span class="c"># chance for better cleanup.</span>
+
+
+ <span class="nb">exec </span>python see_signal.py
+
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>By default all the signals to a job are only sent to main BATCH script. If the job-steps inside this script use <code class="language-plaintext highlighter-rouge">srun</code>, then the signals are propagated to the job-steps. However, if the main BATCH script does not handle the signal, it will not wait for the job-steps to handle the propagated signals. Hence, ultimately, the job-steps will still not get a chance to end gracefully.
+ So, the recommended way for such a case is to install a trap for the signal in the main BATCH script and in it ask the job to wait for all the subprocesses/job-steps to end.<sup id="fnref:mailinglist" role="doc-noteref"><a href="#fn:mailinglist" class="footnote" rel="footnote">2</a></sup></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c">#!/bin/bash</span>
+ <span class="c">#SBATCH --output=t.log</span>
+ <span class="c">#SBATCH --signal=B:TERM@60 # tells the controller</span>
+                            <span class="c"># to send SIGTERM to the job 60 secs</span>
+                            <span class="c"># before its time ends to give it a</span>
+                            <span class="c"># chance for better cleanup.</span>
+
+ <span class="c"># trap the signal to the main BATCH script here.</span>
+ sig_handler<span class="o">()</span>
+ <span class="o">{</span>
+  <span class="nb">echo</span> <span class="s2">"BATCH interrupted"</span>
+  <span class="nb">wait</span> <span class="c"># wait for all children, this is important!</span>
+ <span class="o">}</span>
+
+ <span class="nb">trap</span> <span class="s1">'sig_handler'</span> SIGINT SIGTERM SIGCONT
+
+ srun python see_signal.py
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="references">References</h2>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:signal" role="doc-endnote">
+      <p><a href="https://hpc-discourse.usc.edu/t/signalling-a-job-before-time-limit-is-reached/314">https://hpc-discourse.usc.edu/t/signalling-a-job-before-time-limit-is-reached/314</a> <a href="#fnref:signal" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:mailinglist" role="doc-endnote">
+      <p><a href="https://lists.schedmd.com/pipermail/slurm-users/2020-April/005237.html">https://lists.schedmd.com/pipermail/slurm-users/2020-April/005237.html</a> <a href="#fnref:mailinglist" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name></name></author><category term="tools" /><category term="hacks" /><category term="tools" /><summary type="html"><![CDATA[the right way to send signals to a slurm job]]></summary></entry><entry><title type="html">VIMing on Mac</title><link href="https://dhruveshp.com/blog/2019/vim_setup/" rel="alternate" type="text/html" title="VIMing on Mac" /><published>2019-01-21T00:00:00+00:00</published><updated>2019-01-21T00:00:00+00:00</updated><id>https://dhruveshp.com/blog/2019/vim_setup</id><content type="html" xml:base="https://dhruveshp.com/blog/2019/vim_setup/"><![CDATA[<h1 id="what-is-it-about">What is it about?</h1>
+
+<p>I have been using VIM to write C++ as well as python code for years. However, after I upgraded my Mac a few days ago, I had to redo the entire setup one again. Yes, one might say that it should be as simple as copying the <code class="language-plaintext highlighter-rouge">.vimrc</code> file but such is not the case.</p>
+
+<p>In this post, I describe how one could turn VIM into a powerful python IDE. This is a live page and I will keep updating it as I find better plugins and tools. That being said, the information given here is compiled by me and this setup suits my workflow. There are tons of other posts on the Internet catering to the same use case and it is up to you to decide what works for you.</p>
+
+<h1 id="steps">Steps</h1>
+
+<h2 id="install-macvim">Install MacVim</h2>
+
+<p>Grab the latest version of MacVim directly for their <a href="https://github.com/macvim-dev/macvim/releases">releases page</a></p>
+
+<h2 id="basic-indentation-settings-for-python">Basic indentation settings for python</h2>
+
+<p>Add the following lines to the <code class="language-plaintext highlighter-rouge">.vimrc</code> file in your home directory</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>filetype plugin indent on
+syntax enable
+au BufNewFile,BufRead *.py
+     \set tabstop=4
+     \set softtabstop=4
+     \set shiftwidth=4
+     \set textwidth=79
+     \set expandtab
+     \set autoindent
+set encoding=utf-8
+set fileformat=unix
+set backspace=indent,eol,start
+</code></pre></div></div>
+
+<h2 id="install-vundle">Install Vundle</h2>
+
+<p>Vundle is a great plugin manager for VIM. Install it using the official <a href="https://github.com/VundleVim/Vundle.vim">instructions</a> or using the following steps:</p>
+
+<ol>
+  <li>
+    <p>Clone the repo</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Add the bundle directory to VIM’s runtime path by adding the following line at the beginning of the <code class="language-plaintext highlighter-rouge">.vimrc</code> file located in your home folder.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> set rtp+=~/.vim/bundle/Vundle.vim
+ call vundle#begin()
+ call vundle#end()
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="install-vim-plugins">Install VIM plugins</h2>
+<ol>
+  <li>
+    <p><a href="https://valloric.github.io/YouCompleteMe/">YCM</a></p>
+
+    <p>There are two components to installing YCM. First is the client which can be installed using Vundle and second is the server which has to be compiled (this would require installing X-code and the command-line tools).</p>
+
+    <ol>
+      <li>
+        <p>Install YCM client by adding the following line in <code class="language-plaintext highlighter-rouge">.vimrc</code> and executing <code class="language-plaintext highlighter-rouge">:PluginInstall</code> in vim.</p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> call vundle#begin()
+ Plugin 'Valloric/YouCompleteMe'
+ call vundle#end()
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Install XCode if you already have not</p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ xcode-select --install
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Build the YCM server</p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> cd ~/.vim/bundle/YouCompleteMe
+ ./install.py --all
+</code></pre></div>        </div>
+      </li>
+    </ol>
+
+    <p>NOTE: See YCM’s <a href="https://valloric.github.io/YouCompleteMe/#python-semantic-completion">documentation</a> to enable Jedi based autocomplete in virtual environments</p>
+  </li>
+  <li>
+    <p>ALE</p>
+
+    <ol>
+      <li>
+        <p>Add the following line between <code class="language-plaintext highlighter-rouge">call vundle#begin()</code> and <code class="language-plaintext highlighter-rouge">call vundle#end()</code> in the <code class="language-plaintext highlighter-rouge">.vimrc</code> and execute <code class="language-plaintext highlighter-rouge">:PluginInstall</code></p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Plugin 'w0rp/ale'
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Install linters and fixers</p>
+
+        <p>Install autopep8 or flake8 using pip: <code class="language-plaintext highlighter-rouge">pip install autopep8</code> or <code class="language-plaintext highlighter-rouge">pip install flake8</code>.</p>
+
+        <p>Install the yapf fixer: <code class="language-plaintext highlighter-rouge">pip install yapf</code></p>
+
+        <p>Use the following configuration lines in <code class="language-plaintext highlighter-rouge">.vimrc</code></p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> let g:ale_fixers = {'python': ['yapf']}
+ let g:ale_fix_on_save=1
+</code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<p>To be update….</p>]]></content><author><name></name></author><category term="Miscellaneous" /><category term="VIM" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Relative Entropy and its role as a cost function for machine learning tasks</title><link href="https://dhruveshp.com/blog/2018/relative_entropy/" rel="alternate" type="text/html" title="Relative Entropy and its role as a cost function for machine learning tasks" /><published>2018-04-15T00:00:00+00:00</published><updated>2018-04-15T00:00:00+00:00</updated><id>https://dhruveshp.com/blog/2018/relative_entropy</id><content type="html" xml:base="https://dhruveshp.com/blog/2018/relative_entropy/"><![CDATA[<h1 class="no_toc" id="contents">Contents</h1>
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#relative-entropy" id="markdown-toc-relative-entropy">Relative Entropy</a>    <ul>
+      <li><a href="#statistical-perspective" id="markdown-toc-statistical-perspective">Statistical perspective</a></li>
+      <li><a href="#information-theoretic-perspective" id="markdown-toc-information-theoretic-perspective">Information theoretic perspective</a></li>
+    </ul>
+  </li>
+  <li><a href="#quantities-derived-from-relative-entropy" id="markdown-toc-quantities-derived-from-relative-entropy">Quantities derived from Relative Entropy</a>    <ul>
+      <li><a href="#shannons-entropy" id="markdown-toc-shannons-entropy">Shannon’s Entropy</a></li>
+      <li><a href="#cross-entropy" id="markdown-toc-cross-entropy">Cross Entropy</a></li>
+      <li><a href="#conditional-entropy" id="markdown-toc-conditional-entropy">Conditional Entropy</a></li>
+      <li><a href="#conditional-relative-entropy" id="markdown-toc-conditional-relative-entropy">Conditional Relative Entropy</a></li>
+      <li><a href="#mutual-information" id="markdown-toc-mutual-information">Mutual Information</a></li>
+    </ul>
+  </li>
+  <li><a href="#relative-entropy-in-machine-learning" id="markdown-toc-relative-entropy-in-machine-learning">Relative Entropy in Machine Learning</a>    <ul>
+      <li><a href="#multiclass-classification" id="markdown-toc-multiclass-classification">Multiclass classification</a></li>
+    </ul>
+  </li>
+  <li><a href="#references" id="markdown-toc-references">References</a></li>
+</ul>
+
+<h1 id="introduction">Introduction</h1>
+<p>I had been seeing terms like entropy, cross-entropy, KL-Divergence, information gain, etc., regularly in association with cost functions in machine learning tasks. For example, <a href="http://ml-cheatsheet.readthedocs.io/en/latest/loss_functions.html#cross-entropy">cross-entropy loss</a> is used as the cost function in multi-class classification problems; <a href="https://en.wikipedia.org/wiki/Principle_of_maximum_entropy#Prior_probabilities">maximum entropy principle</a> in Bayesian inference, etc. All these quantities seemed related and I decided to find the meaning and the origin of each of these terms. It turns out that all these quantities can be derived from the <a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">Relative Entropy</a> which is synonymous to KL-Divergence.</p>
+
+<p>This post, starts with the description of Relative Entropy and what it means when viewed from various perspectives (statistical, information theoretic, etc.). Then it goes on to derive some other related quantities like Entropy (Shannon’s Entropy), Cross Entropy, Conditional Relative Entropy, etc. Then the last section talks why and how we use Cross Entropy as a loss function in classification.</p>
+
+<h1 id="relative-entropy">Relative Entropy</h1>
+
+<p>Firstly, it needs to be noted that Relative Entropy has various names which stem from its use in various fields of study. Following are all synonymous:</p>
+
+<ul>
+  <li>
+    <p>Relative Entropy</p>
+  </li>
+  <li>
+    <p>KL-Divergence</p>
+  </li>
+  <li>
+    <p>Information Gain</p>
+  </li>
+  <li>
+    <p>KL-Distance (its not a true metric)</p>
+  </li>
+  <li>
+    <p>Discrimination</p>
+  </li>
+</ul>
+
+<p>Relative entropy of a probability distribution \(p(x)\) with respect to \(q(x)\), where \(p, q\) are defined on the same set \(X\) is defined as follows,</p>
+
+<p>$$
+D_{\mathrm {KL} }(P||Q)=\int _{X}\log {\frac {dP}{dQ}}\,dP
+$$</p>
+
+<p>which for the case of continuous probability distributions over \(X\) becomes,</p>
+
+<p>$$
+D_{\mathrm {KL} }(p||q)=\int_{X} p(x)\log{\frac{p(x)}{q(x)}}\,dx
+$$</p>
+
+<p>and for discrete distributions, the integration changes to sum,</p>
+
+<p>$$
+D_{\mathrm {KL} }(p||q)=\sum_{X} p(x)\log{\frac{p(x)}{q(x)}}
+$$</p>
+
+<p>Another point to note here is that this quantity is always greater than or equal to zero. It is zero when \(p=q\). This result is called the <a href="https://en.wikipedia.org/wiki/Gibbs%27_inequality">Gibbs inequality</a>.
+Now, let us understand the meaning of the quantity from different perspectives.</p>
+
+<h2 id="statistical-perspective">Statistical perspective</h2>
+
+<p>In the space (<a href="https://en.wikipedia.org/wiki/Statistical_manifold">statistical manifold</a>) of probability distributions (where each distributions is a point) defined over set of events \(X\), relative entropy is <strong>like</strong> <em>distance</em> between two distributions. It is not a true distance metric because it does not satisfy the requirements of a metric (like symmetry). Nevertheless, it is an asymmetric measure of how much a probability distribution diverges from another. Derivation of KL-divergence is beyond the scope of this post, however interested reader is encouraged to check Kullback’s book<sup>[<a href="#1">1</a>]</sup>. If one sees closely, \( D_{\mathrm {KL} }(p||q)\), is the expected value (expectation w.r.t \(p\)) of the random variable \(y=\log{\frac{p(x)}{q(x)}}\) which is a function of the random variable \(X\). \(y\) is nothing but the logarithmic difference of the probablilities of \(X=x\) given by two probability distributions, ie. \(p\) and \(q\). Hence, roughly speaking, Relative Entropy is the expected value (expectation w.r.t \(p\)) of the difference in the probalilities w.r.t \(p\) and \(q\) respectively, for random variable \(X\).</p>
+
+<h2 id="information-theoretic-perspective">Information theoretic perspective</h2>
+
+<p>The general term entropy can be thought of as the degree of uncertainty about the value of a random variable: More the uncertainity about the value of a random variable, lesser informative is its probability distribution. The informativeness of a probalility density function is can be thought of as the amount of uncertainty (entropy) it can reduce by providing some knowldge about the uncertain event (value of the random variable). For example, if \(X\) is a discrete random variable which can take values from \(\{1, 2, 3\}\) with probabilities \(\{0, 1, 0\}\) then there is no uncertainty (entropy) in the value of \(X\). Instead, if the probablity distribution were to be \(\{1/3, 1/3, 1/3\}\) then all the three values are equally likely and the uncertainty about the value of \(X\) is maximum.</p>
+
+<p>Hence, Relative Entropy can be thought of as the change (increase or decrease) in the uncertainty (information) about a random variable when moving to using a new probablity distribution \(p\) instead of old distribution \(q\). For instance, say we have a coin toss experiment and we assume that it is a fair coin, then the probablity distribution is given by \(q(H)=0.5, q(T)=0.5\). Now, someone comes and tells us that the coin was made defective and is biased towards heads with a probablility of \(0.8\) then our new probablity distribution would be \(p(H)=0.8, p(T)=0.2\) and the relative entropy of \(p\) w.r.t \(q\) will be \(0.8\log _2{1.6}+0.2\log _2{0.4} =0.27\). As the following plot shows, the relative entropy for new distribution w.r.t old (uniform) distribution reaches its maximum when there is no uncretainty.</p>
+
+<p><img src="https://dhruveshp.com/assets/img/blog/relative_entropy/RE1.png" alt="Plot of relative entropy for the example mentioned above" title="Plot of relative entropy for the example mentioned above" /></p>
+
+<p>Another good perspective to relative entropy can be from the coding theory. Assume that we have a bag full of balls of colors red, blue, green and orange. We are supposed to draw one ball with replacement and send the result (color of the ball) to our friend sitting faraway in the form of a message using a binary channel. First we need to choose an encoding for the colors and while doing so we wish to minimize the number of bits required per message on average. Let the probability distribution \(q\), for the colors showing up be,</p>
+
+<p>$$
+q(x) = \begin{cases} 0.4 &amp; \text{,if $ x=$ red} \\\<br />
+                     0.4 &amp; \text{,if $x=$ blue} \\\<br />
+                     0.1 &amp; \text{,if $ x=$ green} \\\<br />
+                     0.1 &amp; \text{,if $ x=$ orange}
+\end{cases}
+$$</p>
+
+<p>Given this probability distribution, an optimal encoding would have different lengths for different colors with the length of the message for red being shorter than that of orange and so on.</p>
+
+<p>Now supose we add a few more balls into the bag and the probablility distribution now changes to \(p\) as follows,
+$$
+p(x) = \begin{cases} 0.1 &amp; \text{,if $ x=$ red} \\\<br />
+                     0.05 &amp; \text{,if $x=$ blue} \\\<br />
+                     0.8 &amp; \text{,if $ x=$ green} \\\<br />
+                     0.05 &amp; \text{,if $ x=$ orange}
+\end{cases}
+$$</p>
+
+<p>If we still use the same encoding which was designed to be optimal for \(q\) then the expected length of a message would increase. Here, the relative entropy of \(p\) w.r.t \(q\), i.e. \(D_{\mathrm{KL} }(p||q)\)  is the <strong>expected change in the length of a message</strong> due to the change in probability distribution.</p>
+
+<h1 id="quantities-derived-from-relative-entropy">Quantities derived from Relative Entropy</h1>
+
+<h2 id="shannons-entropy">Shannon’s Entropy</h2>
+
+<p>Suppose we have a uniform probability distribution:</p>
+
+<p>$$ q(x) = \begin{cases} 1/4 &amp; \text{,if $ x=$ red} \\\<br />
+                     1/4 &amp; \text{,if $x=$ blue} \\\<br />
+                     1/4 &amp; \text{,if $ x=$ green} \\\<br />
+                     1/4 &amp; \text{,if $ x=$ orange}
+\end{cases}
+$$</p>
+
+<p>If we have another distribution \( p \) (which is different from \(q\)) for the same random variable \(X\), then Relative Entropy of \( p \) w.r.t \( q \) would be:</p>
+
+<p>$$
+\begin{eqnarray}
+D_{\mathrm{KL} }(p||q)&amp;=&amp;\sum_{X} p(x)\log{\frac{p(x)}{q(x)}} \\<br />
+&amp;=&amp; \sum_{X} p(x)\log{\frac{p(x)}{1/4}} \\<br />
+&amp;=&amp;\sum_{X} \left( p(x)\log{p(x)}-\log{1/4} \right) \\<br />
+&amp;=&amp; \mathrm{constant}-\sum_{X} p(x)\log{\frac{1}{p(x)}} \\<br />
+&amp;\geq&amp; 0 ~~\text{(using Gibbs’ inequality for relative entropy)}
+\end{eqnarray}
+$$</p>
+
+<p>Hence, we can say that according to KL-Distance (relative entropy), the distribution \( p \) departs from uniform distribution by \( \sum_{X} p(x)\log{\frac{1}{p(x)}} \) amount. This quantity is denoted as \(H(p)\) and is called Shannon Entropy of probability distribution \( p \). Also, as a consequence of Gibbs’ inequality, it can be seen that the Shannon Entropy of Uniform Distribution is highest amongst all the possible distributions for a random variable.</p>
+
+<p>Shannon’s Entropy – sometimes referred to as Entropy of a probability distribution – can be seen from another perspective. It gives the <strong>minimum expected</strong> bits required to encode (on a binary channel) an event taken from an event space with probability distribution \(p\). Here, we say “minimum” because the encoding is optimized for \(p\), i.e., events with higher probability have less number of bits in their encoding and vise versa.</p>
+
+<p>$$
+H(p) = E_p\left[\log{\frac{1}{p(X)}} \right]
+$$</p>
+
+<h2 id="cross-entropy">Cross Entropy</h2>
+
+<p>From information theory perspective, we have seen that</p>
+
+<ol>
+  <li>
+    <p>Relative Entropy \( D_{\mathrm{KL} }(p||q) \) is the <strong>difference/change in the expected length</strong> of a message when we change the probablity distribution from \( q \) to \( p \) with encoding optimal for \( q \)</p>
+  </li>
+  <li>
+    <p>Entropy \( H(p) \) is <strong>the expected length</strong> of message when the probablity distribution is \( p \) and the <strong>encoding is optimal for \( p \)</strong></p>
+  </li>
+</ol>
+
+<p>Then what would be <strong>the expected length</strong> of a message when the probablity distribution is \( p \) but <strong>the encoding is optimal for \( q \)</strong>?</p>
+
+<p>$$
+\begin{eqnarray}
+C(p,q) &amp;=&amp; E_p\left[\log{\frac{1}{q}} \right] \\<br />
+       &amp;=&amp; \sum_X p(x) \log{\frac{1}{q(x)}} \\<br />
+       &amp;=&amp; \sum_X p(x)\left( \log{\frac{p(x)}{q(x)}} - \log{p(x)} \right) \\<br />
+       &amp;=&amp; D_{\mathrm{KL} }(p||q) + H(p)
+\end{eqnarray}
+$$</p>
+
+<p><strong>Cross Entropy of \( p \) w.r.t \( q \) is denoted by \( C(p,q) \) and is defined as the expected length of a message when the probability distribution is \( p \) but the encoding is optimal for \( q \)</strong>.</p>
+
+<h2 id="conditional-entropy">Conditional Entropy</h2>
+
+<p>From here on, let \( X \) be a random variable on event space \( A \) with probablity distribution \( p \) and \( Y \) be a random variable on event space \( B \) with probablity distribution \( q \). Also, lets denote \( H(p,q) \) as \( H(X,Y) \). Then</p>
+
+<p>$$
+\begin{eqnarray}
+H(X, Y) &amp;=&amp; \sum_{x,y \in A} P_{XY}(x, y)\log{\left( \frac{1}{P_{XY}(x,y)} \right)} \\<br />
+        &amp;=&amp; \sum_{x,y \in A}  \frac{P_{XY}(x, y)}{P_X(x)} P_X(x) \log{\left( \frac{P_X(x)}{P_X(x)P_{XY}(x,y)} \right)} \\<br />
+        &amp;=&amp; \sum_{x,y \in A} P_{Y|X}(x,y) P_X(x) \log{\left( \frac{1}{P_X(x)P_{Y|X}(x,y)} \right)} \\<br />
+        &amp;=&amp; \sum_{x \in A} P_X(x) \sum_{y \in A} P_{Y|X}(x,y) \left( \log{\left( \frac{1}{P_{Y|X}(x,y)} \right)} + \log{\left( \frac{1}{P_X(x)} \right)} \right) \\<br />
+        &amp;=&amp; \sum_{x \in A} P_X(x) \log{\left( \frac{1}{P_X(x)} \right)} \sum_{y \in A} P_{Y|X}(x,y)  + \sum_{x \in A} P_X(x) \sum_{y \in A} P_{Y|X}(x,y) \log{\left( \frac{1}{P_{Y|X}(x,y)} \right)} \\<br />
+        &amp;=&amp; H(X) + E_X \left[ H(Y|X=x)\right]
+\end{eqnarray}
+$$</p>
+
+<p><strong>Here, \( E_X \left[ H(Y|X=x)\right] \) denoted as \( H(Y|X)\) is the Conditional Entropy of \( Y \) given \( X \). It is the expected (expectation w.r.t \( X \)) entropy left in \( Y \) given \( X \).</strong></p>
+
+<h2 id="conditional-relative-entropy">Conditional Relative Entropy</h2>
+
+<p>As mentioned earlier, Relative Entropy is the expected value of the logarithmic difference in the probabilities with respect to two different probability distributions for a random variable. Just like expectation of any function of random variables, we can condition this expectation on another random variable and take outer expectation w.r.t to that variable. For instance, suppose we have three random variables, \( X, Y, Z \) where \(Y\) and \(Z\) are defined on same event space \(B\) and \(X\) is defined on \( A \). We also have probability distributions \( P_{Y|X}, P_{Z|X}, P_X \). Then the conditional relative entropy between \( P_{Y|X} \) and \( P_{Z|X} \) is:</p>
+
+<p>$$
+\begin{eqnarray}
+D_{\mathrm{KL} }\left( P_{Y|X} || P_{Z|X} | P_X \right) &amp;=&amp; E_X \left[ D_{\mathrm{KL} } \left( P_{Y|X} || P_{Z|X} \right) \right] \\<br />
+                                                             &amp;=&amp; \sum_{a \in A} P_X(a) \sum_{b \in B} P_{Y|X}(b) \log{\frac{P_{Y|X}(b)}{P_{Z|X}(b)}} \\<br />
+                                                             &amp;=&amp; \sum_{a \in A} \sum_{b \in B} P_X(a) P_{Y|X}(b) \log{\frac{P_{Y|X}(b) P_X{a}}{P_{Z|X}(b) P_X{a}}} \\<br />
+                                                             &amp;=&amp; \sum_{a \in A} \sum_{b \in B} P_{XY}(a, b) \log{\frac{P_{XY}(a, b)}{P_{XZ}(a, b)}} \\<br />
+                                                             &amp;=&amp; D_{\mathrm{KL} }\left( P_{XY} || P_{XZ} \right)
+\end{eqnarray}
+$$</p>
+
+<h2 id="mutual-information">Mutual Information</h2>
+
+<p>Just like correlation coefficient is a measure of linear relationship between two random variables, Mutual Information is the most general measure of relationship between two random variables. It is the KL-Distance between the joint distribution and the product of marginals.</p>
+
+<p>$$
+\begin{eqnarray}
+\mathrm{I}(X,Y) &amp;=&amp; D_{\mathrm{KL} }\left( P_{XY} || P_X  P_Y \right) \\<br />
+                 &amp;=&amp; \sum_{x,y \in A} P_{XY}(x,y) \log{\frac{P_{XY}(x, y)}{P_X(x) P_Y(y)}} \\<br />
+                 &amp;=&amp; \sum_{x,y \in A} \frac{P_{XY}(x,y)}{P_X(x)} P_X(x) \log{\frac{P_{XY}(x, y)}{P_X(x) P_Y(y)}}\\<br />
+                 &amp;=&amp; \sum_{x \in A} P_X(x) \sum_{y \in A} P_{Y|X}(x, y) \log{\frac{P_{Y|X}(x,y)}{P_Y(y)}} \\<br />
+                 &amp;=&amp; D_{\mathrm{KL} }\left( P_{Y|X} || P_Y | P_X \right)  \\<br />
+                 &amp;=&amp; D_{\mathrm{KL} }\left( P_{X|Y} || P_X | P_Y \right)
+\end{eqnarray}
+$$</p>
+
+<p>$$
+\begin{eqnarray}
+\mathrm{I}(X,Y) &amp;=&amp; D_{\mathrm{KL} }\left( P_{XY} || P_X  P_Y \right) \\<br />
+                 &amp;=&amp; \sum_{x,y \in A} P_{XY}(x,y) \log{\frac{P_{XY}(x, y)}{P_X(x) P_Y(y)}} \\<br />
+                 &amp;=&amp; \sum_{x,y \in A} P_{XY}(x,y) \log{P_{XY}(x, y)} - \sum_{x,y \in A} P_{XY}(x,y) \log{P_{X}(x)} - \sum_{x,y \in A} P_{XY}(x,y) \log{P_{Y}(y)} \\<br />
+                 &amp;=&amp; - H(X,Y)  + H(X) + H(Y) \\<br />
+                 &amp;=&amp; H(Y) - H(Y|X) \\<br />
+                 &amp;=&amp; H(X) - H(X|Y)
+\end{eqnarray}
+$$</p>
+
+<p>As mentioned earlier Entropy is a measure of uninformativeness of a distribution. Hence the equations above qualitatively translate to the statement: Mutual Information is the uninformativeness in \( Y \) minus uninformativeness in \( Y \) given \( X \) and symmetrically other way round.</p>
+
+<h1 id="relative-entropy-in-machine-learning">Relative Entropy in Machine Learning</h1>
+
+<p>In Machine Learning, we are often trying to find the best set of parameters (through optimization) for the probability distribution which best describes the observed data. Since, relative entropy behaves like a distance metric (again, it is not a true metric but is <em>like</em> a metric) in the space of probability distributions, it is a good candidate to be used as the loss function for this optimization. However, in order to use relative entropy as the loss function we require two distributions. They can be:</p>
+
+<ol>
+  <li>
+    <p>prior and posterior distributions, in that case we maximize the relative entropy,</p>
+  </li>
+  <li>
+    <p>or one of them can be a non-parametric (empirical) distribution obtained from observed data with the other being the parametric distribution whose parameters we are trying to find</p>
+  </li>
+</ol>
+
+<p>The second case often arises in classification task and we will have a look at this in detail.</p>
+
+<h2 id="multiclass-classification">Multiclass classification</h2>
+
+<p>A typical multiclass classification problem can be described as follows:</p>
+
+<ol>
+  <li>
+    <p>The output \(y\) can take values from a set of \(k\) categories, say \( \{1, 2,  … , k\}\)</p>
+  </li>
+  <li>
+    <p>The input is a vector \(x \in R^{r}\)</p>
+  </li>
+  <li>
+    <p>We have \(N\) samples in our dataset: \(\{(y^1, \mathbf{x}^1), (y^2, \mathbf{x}^2), …, (y^N, \mathbf{x}^N) \}\)</p>
+  </li>
+  <li>
+    <p>Given an input \(\mathbf{x}\) our model \(P(Y| X; \theta)\) outputs the probability distribution for \(y\) over the categories \( \{1, 2,  … , k\}\). We pick the category with the highest probability as the predicted output. Here, \(P\) is the parametric probability distribution for the output \(Y\) given the input \(X\). Now, this function \(P\) can be modeled in any form: logistic regression, neutral network, etc. Whatever, the model be, it will have a set of parameters \(\mathbf{\theta}\) which we are interested in finding through optimization.</p>
+  </li>
+</ol>
+
+<p>In order to use relative entropy as the loss function, we first construct a categorical distribution \(G_{Y|X=\mathbf{x}}\) for every sample \( (y^i, \mathbf{x}^i) \).</p>
+
+<p>$$
+G_{Y|X=\mathbf{x}^i}(y) = \left[y \equiv y^i \right] = \begin{cases} 1 &amp; \text{,if } y = y^i \\\\ 0 &amp; \text{otherwise}\end{cases}
+$$</p>
+
+<p>It has to be noted that \( G\) is non-parametric and hence a constant w.r.t \( \theta \) consequently \( H(G) \) is also constant w.r.t \( \theta \). Hence \( \underset{\theta}\arg \min D_{\mathrm{KL}}\left(G_{Y|X=\mathbf{x}^i}(y)||P_{Y|X=\mathbf{x}^i}(y;\theta) \right) \) becomes \( \underset{\theta}\arg \min H\left(G_{Y|X=\mathbf{x}^i}(y), P_{Y|X=\mathbf{x}^i}(y;\theta)\right)\). So the loss function can be taken as the following:</p>
+
+<p>$$
+\begin{eqnarray}
+L(\theta) &amp;=&amp; \sum_{i=1}^{N} H(G_{Y|X=\mathbf{x}^i}(y), P_{Y|X=\mathbf{x}^i}(y;\theta)) \\<br />
+          &amp;=&amp; \sum_{i=1}^{N} \sum_{j=1}^{k}  G_{Y|X=\mathbf{x}^i}(j) \left[-\log{\left(P_{Y|X=\mathbf{x}^i}(j;\theta)\right)} \right] \\<br />
+          &amp;=&amp; \sum_{i=1}^{N} \sum_{j=1}^{k}  \left[j \equiv y^i \right] \left[-\log{\left(P_{Y|X=\mathbf{x}^i}(j;\theta)\right)} \right]
+\end{eqnarray}
+$$</p>
+
+<p>You can take the two class classification problem and logistic regression model for \( P \) and substitute these into the loss function mentioned above. It will simplify to give the familiar negative log-likelyhood loss function of logistic regression.</p>
+
+<h1 id="references">References</h1>
+
+<p><a name="1">[1]</a> Kullback, S. (1959), Information Theory and Statistics, John Wiley &amp; Sons. Republished by Dover Publications in 1968; reprinted in 1978: ISBN 0-8446-5625-9.</p>
+
+<p><a name="2">[2]</a>  <a href="http://videolectures.net/nips09_verdu_re/"> Lecture on Relative Entropy by Sergio Verdu in NIPS 2009 </a></p>]]></content><author><name></name></author><category term="Machinelearning" /><category term="mathematics" /><category term="Machine Learning" /><category term="mathematics" /><summary type="html"><![CDATA[Explains Relative Entropy from different perspectives and how it is used to derive cost functions for various ML tasks like classification, etc,.]]></summary></entry></feed>

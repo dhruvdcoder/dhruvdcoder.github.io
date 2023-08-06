@@ -1,5 +1,3 @@
----
----
 // Has to be in the head tag, otherwise a flicker effect will occur.
 
 let toggleTheme = (theme) => {
@@ -30,11 +28,11 @@ let setTheme = (theme) =>  {
   }
   var logo = document.getElementById('blog-logo');
   if (theme == 'light') {
-    logo.src = "{{ site.baseurl }}{{ site.blog_logo }}";
+    logo.src = "/assets/img/blog_logo.png";
   }
   else {
     if (theme == 'dark') {
-      logo.src = "{{ site.baseurl }}{{ site.blog_logo_dark }}"
+      logo.src = "/assets/img/blog_logo_cyan.png"
     }
   }
 };
