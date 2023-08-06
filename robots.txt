@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://dhruveshp.com/pages/dhruvdcoder/sitemap.xml
+Sitemap: https://dhruveshp.com/sitemap.xml
