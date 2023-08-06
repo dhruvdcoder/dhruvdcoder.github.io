@@ -4,6 +4,7 @@ permalink: /repositories/
 title: repositories
 description: Selected code repositories.
 nav: false
+redirect_to: https://notes.dhruveshp.com
 ---
 
 ## GitHub users
