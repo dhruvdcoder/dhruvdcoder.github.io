@@ -4,6 +4,7 @@ permalink: /teaching/
 title: teaching
 description:
 nav: true
+nav_order: 5
 ---
 
 As a graduate teaching assistant in-charge of grading, I formulated the rubrics as well as performed the grading for [Prof Justin Domke's](https://people.cs.umass.edu/~domke/) course [COMPSCI 688: Probabilistic Graphical Models](https://people.cs.umass.edu/~domke/courses/compsci688/) in Spring 2020. I also performed grading for COMPSCI 688: Research Methods in Empirical Computer Science taught by [Prof. David Jensen](https://groups.cs.umass.edu/jensen/) in Spring 2019.
