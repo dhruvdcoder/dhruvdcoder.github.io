@@ -55,3 +55,23 @@ Mishra:
 Vijayakumar:
   - firstname: ["Aparana"]
     url: https://www.linkedin.com/in/aparna-vijayakumar/
+
+Eghbalzadeh:
+  - firstname: ["Hamid"]
+    url: https://eghbalz.github.io/
+
+Desai:
+  - firstname: ["Ruta"]
+    url: https://rutadesai.github.io/
+
+Kamra:
+  - firstname: ["Nitin"]
+    url: https://nitinkamra1992.github.io/
+
+Iuzzolino:
+  - firstname: ["Michael", "Michael L."]
+    url: https://michael-iuzzolino.github.io/
+
+Jain:
+  - firstname: ["Unnat"]
+    url: https://unnat.github.io/
