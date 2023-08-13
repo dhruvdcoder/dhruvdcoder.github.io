@@ -1,6 +1,6 @@
 ---
 layout: page
-title: my-notes
+title: notes
 description: Obsidian notes.
 permalink: /my-notes/
 nav: true
