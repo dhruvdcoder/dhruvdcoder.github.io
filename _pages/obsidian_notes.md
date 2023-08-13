@@ -1,8 +1,8 @@
 ---
 layout: page
-title: notes
+title: my-notes
 description: Obsidian notes.
-permalink: /notes/
+permalink: /my-notes/
 nav: true
 redirect_to: https://notes.dhruveshp.com
 ---
