@@ -1,7 +1,7 @@
 ---
 layout: distill
 title: Pretrained Language Models as Visual Planners for Human Assistance
-permalink: /projects/vlamp_iccv_2023
+permalink: /projects/vlamp
 github_repo: https://github.com/iesl/box-mlc-iclr-2022
 img: "/assets/img/vlamp_teaser.png"
 importance:  1
