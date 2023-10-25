@@ -4,10 +4,9 @@ title:
 description: the right way to send signals to a slurm job
 categories:
 - tools
-keywords: slurm, computing
 tags:
 - hacks
-- tools
+- slurm
 img:
 date: 2021-08-24 22:13 -0400
 ---

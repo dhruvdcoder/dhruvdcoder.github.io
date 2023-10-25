@@ -38,7 +38,12 @@ bibliography: vlamp.bib
 
 ---
 
-[[Code]](https://github.com/facebookresearch/VLaMP)
+<div style="display: flex; justify-content: center; align-items: center;">
+  <a href="https://github.com/facebookresearch/VLaMP" style="margin: 0 15px;">[Code]</a>
+  <a href="https://arxiv.org/abs/2304.09179" style="margin: 0 15px;">[ArXiv]</a>
+  <a href="https://openaccess.thecvf.com/content/ICCV2023/papers/Patel_Pretrained_Language_Models_as_Visual_Planners_for_Human_Assistance_ICCV_2023_paper.pdf" style="margin: 0 15px;">[PDF]</a>
+  <!-- Add more links as you like -->
+</div>
 
 
 <br><br><br>
@@ -55,6 +60,15 @@ Moreover, through extensive ablations, we also isolate the value of language pre
 We release our data, model, and code to enable future research on Visual Planning for Assistance.
 <hr> 
 
-## Model
+### Cite
 
-{% include figure.html path="assets/img/vlamp_encoders.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+```bibtex
+@InProceedings{Patel_2023_ICCV,
+    author    = {Patel, Dhruvesh and Eghbalzadeh, Hamid and Kamra, Nitin and Iuzzolino, Michael Louis and Jain, Unnat and Desai, Ruta},
+    title     = {Pretrained Language Models as Visual Planners for Human Assistance},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2023},
+    pages     = {15302-15314}
+}
+```

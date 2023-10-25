@@ -7,6 +7,7 @@ categories: [Machinelearning, mathematics]
 keywords: "Machine Learning, mathematics"
 tags: [Machine Learning, mathematics]
 img: /relative_entropy/binary_channel.jpg
+thumbnail: assets/img/blog/relative_entropy/binary_channel.jpg
 include_toc: true
 giscus_comments: true
 ---
