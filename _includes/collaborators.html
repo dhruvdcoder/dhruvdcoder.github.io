@@ -1,0 +1,17 @@
+I have been fortunate to work have worked with many amazing people over the years. Here is a list of my current and previous collaborators.
+
+<br>
+{% assign current_year = 'now' | date: "%Y" | plus: 0 %}
+
+{% for collaborator in site.data.collaborators %}
+{% if collaborator.year_from <= current_year and collaborator.year_to >= current_year and collaborator.role == "mentor" %}
+<a href="{{ collaborator.url }}">{{ collaborator.name }}</a> [{{ collaborator.org }}] ({{ collaborator.year_from }} - {{ collaborator.year_to }})<br>
+{% endif %}
+{% endfor %}
+
+{% for collaborator in site.data.collaborators %}
+{% if collaborator.year_to < current_year and collaborator.role == "mentor" %}
+<a href="{{ collaborator.url }}">{{ collaborator.name }}</a> [{{ collaborator.org }}] ({{ collaborator.year_from }} - {{ collaborator.year_to }})<br>
+{% endif %}
+{% endfor %}
+<br>

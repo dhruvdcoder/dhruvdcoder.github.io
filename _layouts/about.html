@@ -41,6 +41,12 @@ layout: default
             {{ content }}
           </div>
 
+          <!-- Affiliations -->
+          {% if page.timeline  -%}
+            <h2><a href="{{ '/timeline/' | relative_url }}" style="color: inherit;">affiliations and internships</a></h2>
+            {%- include horizontal_timeline.html %}
+          {%- endif %}
+
           <!-- News -->
           {% if page.news and site.announcements.enabled -%}
             <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a></h2>
@@ -51,6 +57,11 @@ layout: default
           {% if page.latest_posts -%}
             <h2><a href="{{ '/blog/' | relative_url }}" style="color: inherit;">latest posts</a></h2>
             {%- include latest_posts.html %}
+          {%- endif %}
+          <!-- Collaborators -->
+          {% if page.collaborators -%}
+            <h2>mentors and collaborators</h2>
+            {%- include collaborators.html %}
           {%- endif %}
 
           <!-- Selected papers -->

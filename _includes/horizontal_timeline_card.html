@@ -1,0 +1,16 @@
+<div class="horizontal-timeline-card">
+    <a href="{{ step.permalink }}">
+        <div class="card-body">
+            <div class="logo-container">
+              <img src="{{ step.img | relative_url }}" alt="step thumbnail" class="timeline-logo">
+            </div>
+            <div class="date-container">
+                <p class="card-date">{{ step.title }}</p>
+            </div>
+          <div class="date-container">
+            <p class="card-date">{{ step.date | date: '%m/%Y' }} - {% if step.enddate %} {{ step.enddate | date: '%m/%Y' }} {% else %} present {% endif %}</p>
+          </div>
+        </div>
+    </a>
+  </div>
+  

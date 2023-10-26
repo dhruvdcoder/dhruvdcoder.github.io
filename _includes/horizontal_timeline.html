@@ -1,0 +1,12 @@
+<!-- _includes/timeline.html -->
+{% assign steps = site.data.affiliations | sort: "date" | reverse %}
+
+<div class="horizontal-timeline">
+    {% for step in steps %}
+    <div class="horizontal-timeline-entry">
+        <!-- Including the horizontal-timeline-card here -->
+        {% include horizontal_timeline_card.html %}
+    </div>
+    {% endfor %}
+
+</div>

@@ -14,20 +14,29 @@ profile:
 
 
 news: true  # includes a list of news items
-latest_posts: true  # includes a list of the newest posts
+latest_posts: false  # includes a list of the newest posts
 selected_papers: true # includes a list of papers marked as "selected={true}"
+collaborators: true
+timeline: true
 social: true  # includes social icons at the bottom of the page
 ---
 
-## bio
 
-I am a second year Computer Science PhD student at UMass Amherst working with [Prof. Andrew McCallum](https://people.cs.umass.edu/~mccallum).
-During my time as a master's student at UMass, I worked as a research intern at [Information Extraction and Synthesis Lab (IESL)](http://www.iesl.cs.umass.edu/people) and [Abridge AI](https://www.abridge.com/machine-learning). Prior to starting my master's program I had spent a year working with [Prof. Partha Talukdar](http://talukdar.net) on various NLP problems.
-I obtained by undergrad from [IIT Madras](https://www.iitm.ac.in), where, under the guidance of [Prof. Bandyopadhyay](https://ed.iitm.ac.in/~sandipan), my research primarily focused on problems in Robotics. I have also worked for 2 years as a software engineer at [MathWorks](https://www.mathworks.com/).
+I am currently a third-year Computer Science PhD student at [UMass Amherst](https://www.umass.edu/), where I have the privilege of working under the guidance of [Prof. Andrew McCallum](https://people.cs.umass.edu/~mccallum) alongside some amazing colleagues at the [Information Extraction and Synthesis Laboratory](https://iesl.cs.umass.edu/).
+Before embarking on my doctoral journey, I completed my undergraduate studies at [IIT Madras](https://www.iitm.ac.in).
+During my time there, I delved deep into Robotics research, mentored by [Prof. Bandyopadhyay](https://ed.iitm.ac.in/~sandipan).
+
+Outside of my academic pursuits, I've been fortunate to have worked with some amazing collaborators from the industry. I have worked as a research scientist inter at [Meta Reality Labs](https://ai.meta.com/) and [Abridge AI](https://www.abridge.com/machine-learning).
+Before beginning my master's program at UMass, I worked for two years as a software engineer at [MathWorks](https://www.mathworks.com/).
+I also dedicated a year to collaborating with [Prof. Partha Talukdar](http://talukdar.net) on solving various NLP problems in the industry.
+
 
 ## research
 
-Coming with an eclectic background–a mix of robotics, software engineering, natural language processing, and mathematics–I like to think about foundational aspects of machine learning, with major focus on representation learning.
+As someone who has a deep fascination for the abstract concepts of mathematics and a strong drive to create tangible impact in the world, I strive for a balanced approach in my research. My focus revolves around bridging the gap between abstract ideas and tangible applications of machine learning. This dual approach has led me to explore the applications of machine learning in robotics, NLP, and knowledge graphs, while also nurturing my passion for foundational aspects of machine learning such as representation learning.
 While most representation learning methods only focus on metric learning, my work on box embeddings aims to show that representation learning can also capture various other kinds of structures like algebraic and relational structure, thereby allowing models to perform compositional reasoning.
-I have also worked with energy models, where the goal is to utilize energy as a *learned* loss function to train feedforward prediction network. My most recent empirical explorations have been on NLP and structured prediction tasks.
-Going forward, I am most interested analysing deep representation learning in rich non-Euclidean spaces through the lens of the burgeoning theory of deep learning.
+I have also worked with energy models, where the goal is to utilize energy as a *learned* loss function to train a feedforward prediction network. This is analogous to RLHF but for structured prediction tasks.
+My current research interest lies in developing fundamentally new approaches to model uncertainty in transformer based models.
+I'm also interesting in identifying the limits of compositional generalization that can be achieved using in-context learning with transformers.
+
+

@@ -1,0 +1,83 @@
+- name: Tahira Naseem
+  org: IBM
+  url: https://scholar.google.com/citations?user=IoVlb40AAAAJ&hl=en
+  role: mentor
+  year_from: 2023
+  year_to: 2023
+
+- name: Akash Srivastava
+  org: MIT-IBM Research
+  url: https://akashgit.github.io/
+  role: mentor
+  year_from: 2023
+  year_to: 2023
+
+- name: Keerthiram Murugesan
+  org: IBM
+  url: https://scholar.google.com/citations?user=-698GEMAAAAJ&hl=en
+  role: mentor
+  year_from: 2022
+  year_to: 2023
+
+- name: Kenneth Clarkson
+  org: IBM
+  url: https://researcher.watson.ibm.com/researcher/view.php?person=us-klclarks
+  role: mentor
+  year_from: 2023
+  year_to: 2023
+
+- name: Kartik Talamadupula
+  org: IBM
+  url: https://scholar.google.com/citations?user=OGEfX0UAAAAJ&hl=en
+  role: mentor
+  year_from: 2019
+  year_to: 2019
+
+- name: Pavan Kapanipathi
+  org: IBM
+  url: https://researcher.watson.ibm.com/researcher/view.php?person=us-kapanipa
+  role: mentor
+  year_from: 2019
+  year_to: 2019
+
+- name: Michael Boratko
+  org: Google
+  url: https://www.mboratko.com/
+  role: mentor
+  year_from: 2019
+  year_to: 2025
+
+- name: Jay-Yoon Lee
+  org: Seoul National University
+  url: https://leejayyoon.github.io/
+  role: mentor
+  year_from: 2020
+  year_to: 2022
+
+- name: Partha Talukdar
+  org: IISc Bangalore/Google Research
+  url: https://parthatalukdar.github.io/
+  role: mentor
+  year_from: 2018
+  year_to: 2018
+
+- name: Sandipan Bandyopadhyay
+  org: IIT Madras
+  url: https://ed.iitm.ac.in/~sandipan
+  role: mentor
+  year_from: 2016
+  year_to: 2016
+
+- name: Ruta Desai
+  org: Meta AI
+  url: https://rutadesai.github.io/
+  role: mentor
+  year_from: 2022
+  year_to: 2023
+
+- name: Unnat Jain
+  org: Meta AI
+  url: https://unnat.github.io/
+  role: mentor
+  year_from: 2023
+  year_to: 2023

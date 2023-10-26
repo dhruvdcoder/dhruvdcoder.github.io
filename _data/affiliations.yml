@@ -1,0 +1,45 @@
+- title: Abridge AI
+  type: internship
+  title_url: http://abridge.ai
+  img: /assets/img/abridge_logo.png
+  permalink: /timeline/abridge
+  date: 2020-05-11
+  enddate: 2020-12-04
+
+- title: IESL
+  type: affiliation
+  title_url: http://iesl.cs.umass.edu
+  img: /assets/img/IESL.png
+  permalink: /timeline/iesl
+  date: 2019-05-11 
+
+- title: IIT Madras
+  type: affiliation
+  title_url: https://www.iitm.ac.in
+  img: /assets/img/IITM_logo_center.png
+  permalink: /timeline/iitm
+  date: 2011-06-04
+  enddate: 2016-01-05
+
+- title: CICS UMass 
+  type: affiliation
+  title_url: https://www.cics.umass.edu/
+  img: /assets/img/UMassInfoandCS_horiz-RGB.png
+  permalink: /timeline/umass
+  date: 2019-01-14
+
+- title: Meta Reality Labs
+  type: internship
+  title_url: https://about.meta.com/realitylabs
+  img: /assets/img/meta-logo.png
+  permalink: /timeline/meta_internship
+  date: 2022-09-11
+  enddate: 2022-12-04
+
+- title: Mathworks
+  type: affiliation
+  title_url: https://www.mathworks.com
+  img: /assets/img/Mathworks_logo.png
+  permalink: /timeline/mathworks
+  date: 2016-06-04
+  enddate: 2018-01-05
