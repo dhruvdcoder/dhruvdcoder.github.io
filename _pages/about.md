@@ -35,8 +35,11 @@ I also dedicated a year to collaborating with [Prof. Partha Talukdar](http://tal
 
 As someone who has a deep fascination for the abstract concepts of mathematics and a strong drive to create tangible impact in the world, I strive for a balanced approach in my research. My focus revolves around bridging the gap between abstract ideas and tangible applications of machine learning. This dual approach has led me to explore the applications of machine learning in robotics, NLP, and knowledge graphs, while also nurturing my passion for foundational aspects of machine learning such as representation learning.
 While most representation learning methods only focus on metric learning, my work on box embeddings aims to show that representation learning can also capture various other kinds of structures like algebraic and relational structure, thereby allowing models to perform compositional reasoning.
-I have also worked with energy models, where the goal is to utilize energy as a *learned* loss function to train a feedforward prediction network. This is analogous to RLHF but for structured prediction tasks.
-My current research interest lies in developing fundamentally new approaches for modeling uncertainty in transformer based models.
-I'm also interesting in identifying the limits of compositional generalization that can be achieved using in-context learning with transformers.
+I believe that learning objectives and uncertainty quantification methods based solely on probability are restrictive. As a result, I have explored energy models, where the objective is to use energy model as a learned loss function to train a feedforward prediction network. 
+Various frameworks quantifying uncertainty have been proposed over the years.
+However, none of these frameworks are suited to measure the uncertainty in modern deep learning models like transformers. 
+My current research focuses on creating novel methods to model uncertainty in transformer-based models.
+I am also interested in analyzing the limits of compositional generalization achievable through in-context learning with transformers, approaching it from the perspective of minimum description length and compression.
 
 
+**I'm looking for internship opportunities for Summer 2024. Here is my [CV](https://drive.google.com/file/d/1Z8u4_wnQiLDkyiV361f-kGfxHpb6NQCE/view).**
