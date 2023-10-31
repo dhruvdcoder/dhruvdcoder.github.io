@@ -22,6 +22,8 @@ social: true  # includes social icons at the bottom of the page
 ---
 
 
+🌟 **I'm looking for internship opportunities for Summer 2024. Here is my [CV](https://drive.google.com/file/d/1Z8u4_wnQiLDkyiV361f-kGfxHpb6NQCE/view).** 🌟 
+<br><br>
 I am currently a third-year Computer Science PhD student at [UMass Amherst](https://www.umass.edu/), where I have the privilege of working under the guidance of [Prof. Andrew McCallum](https://people.cs.umass.edu/~mccallum) alongside some amazing colleagues at the [Information Extraction and Synthesis Laboratory](https://iesl.cs.umass.edu/).
 Before embarking on my doctoral journey, I completed my undergraduate studies at [IIT Madras](https://www.iitm.ac.in).
 During my time there, I delved deep into Robotics research, mentored by [Prof. Bandyopadhyay](https://ed.iitm.ac.in/~sandipan).
@@ -42,4 +44,3 @@ My current research focuses on creating novel methods to model uncertainty in tr
 I am also interested in analyzing the limits of compositional generalization achievable through in-context learning with transformers, approaching it from the perspective of minimum description length and compression.
 
 
-**I'm looking for internship opportunities for Summer 2024. Here is my [CV](https://drive.google.com/file/d/1Z8u4_wnQiLDkyiV361f-kGfxHpb6NQCE/view).**
