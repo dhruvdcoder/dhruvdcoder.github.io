@@ -27,4 +27,4 @@ I have been fortune to have found great collaborators and mentees. I have provid
 
 # services
 
-1. Reviewer for [NeurIPS 2023](https://nips.cc/)
+1. One of the [top reviewers](https://neurips.cc/Conferences/2023/ProgramCommittee#top-reivewers) at [NeurIPS 2023](https://nips.cc/)
