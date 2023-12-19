@@ -111,7 +111,8 @@ discord_id: # your discord id (18-digit unique numerical identifier)
 zotero_username: # your zotero username
 
 contact_note: >
-  I am always on the lookout for interesting conversations and fruitful collaborations. Feel free to use my email to reach out.
+  I am always on the lookout for interesting conversations and fruitful collaborations. 
+  Feel free to use my email to reach out. Looking to work with <a href="https://iesl.cs.umass.edu">IESL</a>? please read <a href="https://dhruveshp.com/teaching/">this</a> first.
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
