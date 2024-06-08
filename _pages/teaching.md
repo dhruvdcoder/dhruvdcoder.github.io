@@ -29,6 +29,10 @@ I have been fortune to have found great collaborators and mentees. I have provid
 
 1. One of the [top reviewers](https://neurips.cc/Conferences/2023/ProgramCommittee#top-reivewers) at [NeurIPS 2023](https://nips.cc/)
 
+2. Reviewer for ARR December 2023 (NAACL, ACL 2024)
+
+3. Reviewer for ICML 2024
+
 
 # A note for student collaborators
 
