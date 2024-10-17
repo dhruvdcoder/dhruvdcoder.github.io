@@ -23,15 +23,16 @@ I have been fortune to have found great collaborators and mentees. I have provid
 4. [Hitesh Golchha (2022)](https://hitzkrieg.github.io/website/)
 5. [Eunjeong Hwang (2021)](https://eujhwang.github.io/)
 6. [Alan Sempruch (2021)]()
-7. [Varad Pimplekhute (2023)](https://nightlessbaron.github.io/)
+7. [Varad Pimplekhute (2023-2024)](https://nightlessbaron.github.io/)
+8. [Sahil Yerawar (2024)](https://www.linkedin.com/in/sahil-yerawar-275222101)
 
 # services
 
-1. One of the [top reviewers](https://neurips.cc/Conferences/2023/ProgramCommittee#top-reivewers) at [NeurIPS 2023](https://nips.cc/)
+## reviewing
 
-2. Reviewer for ARR December 2023 (NAACL, ACL 2024)
 
-3. Reviewer for ICML 2024
+
+[top reviewer](https://neurips.cc/Conferences/2023/ProgramCommittee#top-reivewers) at [NeurIPS 2023](https://neurips.cc/Conferences/2023/ProgramCommittee), Reviewer for ARR December 2023 (NAACL, ACL 2024), [ICML 2024](https://icml.cc/Conferences/2024/Reviewers), Reviewer for AAAI 2025, Reviewer for ICLR 2025
 
 
 # A note for student collaborators
