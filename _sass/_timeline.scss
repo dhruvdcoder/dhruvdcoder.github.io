@@ -163,35 +163,35 @@
 }
 
 .horizontal-timeline .timeline-logo {
-	width: 150px;
-	height: 100px;
-	object-fit: contain;
-	object-position: center;
-	margin: 0 auto;
-	display: block;
-	border-radius: 8px;
-	background-color: rgba(255, 255, 255, 0.1);
-	padding: 10px;
+    width: 150px !important;
+    height: 100px !important;
+    object-fit: contain;
+    object-position: center;
+    margin: 0 auto;
+    display: block;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
 }
 
 /* Responsive adjustments for timeline logo */
 @media (max-width: 768px) {
-	.horizontal-timeline .timeline-logo {
-		width: 120px;
-		height: 75px;
-		padding: 8px;
-	}
+    .horizontal-timeline .timeline-logo {
+        width: 120px !important;
+        height: 75px !important;
+        padding: 8px;
+    }
 }
 
 @media (max-width: 480px) {
-	.horizontal-timeline .timeline-logo {
-		width: 100px;
-		height: 65px;
-		padding: 6px;
-	}
+    .horizontal-timeline .timeline-logo {
+        width: 100px !important;
+        height: 65px !important;
+        padding: 6px;
+    }
 }
 
 .horizontal-timeline .date-container {
 	width: 100%;
 	text-align: center;
-}
+}/* Cache busting comment - Wed Sep  3 00:48:38 EDT 2025 */
