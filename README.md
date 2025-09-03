@@ -527,6 +527,125 @@ To do this, edit the collections in the `_config.yml` file, create a correspondi
 
 **al-folio** comes with stylish layouts for pages and blog posts.
 
+#### Paper Project Layout
+
+**al-folio** includes a `paper_project.html` layout based on the [Academic Project Page Template](https://github.com/eliahuhorwitz/Academic-project-page-template) for creating comprehensive academic paper project pages. This layout provides:
+
+- Hero section with title, authors, and links
+- Teaser video section
+- Abstract display
+- Image and video carousels
+- YouTube video embedding
+- Poster display
+- BibTeX citation
+- Custom content sections
+
+**Usage:**
+
+Create a markdown file with the layout specified in the front matter:
+
+```yaml
+---
+layout: paper_project
+title: "Your Paper Title"
+
+# Authors
+authors:
+  - name: "First Author"
+    url: "https://author-website.com"
+    equal_contrib: true
+  - name: "Second Author"
+    url: "https://example.com/second-author"
+
+# Affiliations
+affiliations:
+  - name: "University Name"
+    conference: "Conference Name 2024"
+
+# Links section
+links:
+  - name: "Paper"
+    url: "https://arxiv.org/pdf/XXXX.XXXX.pdf"
+    icon: "fas fa-file-pdf"
+  - name: "Code"
+    url: "https://github.com/your-repo"
+    icon: "fab fa-github"
+  - name: "arXiv"
+    url: "https://arxiv.org/abs/XXXX.XXXX"
+    icon: "ai ai-arxiv"
+
+# Teaser video
+teaser_video:
+  url: "/assets/video/teaser.mp4"
+  poster: "/assets/img/poster.jpg"
+  autoplay: true
+  controls: true
+  muted: true
+  loop: true
+  caption: "Video description"
+
+# Abstract
+abstract: "Your paper abstract text here..."
+
+# Image carousel
+image_carousel:
+  title: "Results Gallery"
+  images:
+    - url: "/assets/img/result1.jpg"
+      alt: "Alt text"
+      caption: "Image description"
+    - url: "/assets/img/result2.jpg"
+      caption: "Another description"
+
+# YouTube video
+youtube_video:
+  title: "Video Presentation"
+  url: "https://www.youtube.com/embed/VIDEO_ID"
+
+# Video carousel
+video_carousel:
+  title: "Demonstrations"
+  videos:
+    - url: "/assets/video/demo1.mp4"
+      autoplay: true
+      controls: true
+      muted: true
+      loop: true
+      caption: "Demo description"
+
+# Poster
+poster:
+  title: "Poster"
+  url: "/assets/pdf/poster.pdf"
+  height: "600"
+
+# BibTeX citation
+bibtex: |
+  @article{yourname2024paper,
+    title={Your Paper Title},
+    author={Author One and Author Two},
+    journal={Conference/Journal Name},
+    year={2024}
+  }
+
+# Optional external dependencies
+include_bulma_css: true
+include_carousel_js: true
+---
+
+Your additional markdown content here...
+```
+
+**Key Features:**
+- **Responsive Design**: Mobile-friendly layout with adaptive components
+- **Asset Flexibility**: All asset paths are configurable via front matter variables (no hardcoded paths)
+- **Multiple Media Types**: Support for images, videos, YouTube embeds, and PDF displays
+- **Interactive Elements**: Carousels, expandable sections, and smooth scrolling
+- **Academic Focus**: BibTeX citations, author highlighting, and conference information
+- **Customizable Styling**: Built-in CSS with options for custom styles via `_styles` front matter
+
+The layout automatically handles responsive design, proper semantic markup, and provides a professional appearance suitable for academic project showcases.
+
 #### The iconic style of Distill
 
 The theme allows you to create blog posts in the [distill.pub](https://distill.pub/) style:
