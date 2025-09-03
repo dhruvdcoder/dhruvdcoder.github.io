@@ -22,8 +22,6 @@ social: true  # includes social icons at the bottom of the page
 ---
 
 
-🌟 **I'm looking for internship opportunities for Spring and Summer 2025. Here is my [CV](https://drive.google.com/file/d/1Z8u4_wnQiLDkyiV361f-kGfxHpb6NQCE/view).** 🌟 
-<br><br>
 I am currently a fourth-year Computer Science PhD student at [UMass Amherst](https://www.umass.edu/) working with [Prof. Andrew McCallum](https://people.cs.umass.edu/~mccallum) alongside some amazing colleagues at the [Information Extraction and Synthesis Laboratory](https://iesl.cs.umass.edu/).
 I completed my undergraduate at [IIT Madras](https://www.iitm.ac.in), where I worked on Robotics research, mentored by [Prof. Bandyopadhyay](https://ed.iitm.ac.in/~sandipan).
 
@@ -31,6 +29,8 @@ Outside of my academic pursuits, I've been fortunate to have worked with some am
 Before beginning my master's program at UMass, I worked for two years as a software engineer at [MathWorks](https://www.mathworks.com/).
 I also dedicated a year to collaborating with [Prof. Partha Talukdar](http://talukdar.net) on solving various NLP problems in the industry.
 
+<br><br>
+CV available at the bottom of this page.
 
 ## research
 

@@ -1,0 +1,423 @@
+---
+layout: default
+---
+<!-- _layouts/paper_project.html -->
+<!-- Academic Project Page Template adapted for Jekyll -->
+
+{% if page._styles %}
+<!-- Page/Post style -->
+<style type="text/css">
+    {
+            {
+            page._styles
+        }
+    }
+</style>
+{% endif %}
+
+<div class="post">
+    <!-- Hero Section -->
+    <header class="post-header">
+        <h1 class="post-title">{{ page.title }}</h1>
+
+        {% if page.authors %}
+        <div class="authors">
+            {% for author in page.authors %}
+            <span class="author-block">
+                {% if author.url %}
+                <a href="{{ author.url }}" target="_blank">{{ author.name }}</a>
+                {% else %}
+                {{ author.name }}
+                {% endif %}
+                {% if author.equal_contrib %}<sup>*</sup>{% endif %}{% unless forloop.last %}, {% endunless %}
+            </span>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if page.affiliations %}
+        <div class="affiliations">
+            {% for affiliation in page.affiliations %}
+            <span class="affiliation">{{ affiliation.name }}{% if affiliation.conference %} • {{ affiliation.conference
+                }}{% endif %}</span>{% unless forloop.last %}<br>{% endunless %}
+            {% endfor %}
+            {% if page.equal_contrib_note %}
+            <div class="equal-contrib"><small><sup>*</sup>{{ page.equal_contrib_note }}</small></div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if page.links %}
+        <div class="paper-links">
+            {% for link in page.links %}
+            <a href="{{ link.url }}" target="_blank" class="btn btn-sm z-depth-0" role="button">
+                <i class="{{ link.icon }}"></i> {{ link.name }}
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </header>
+
+    <article class="post-content">
+
+        {% if page.teaser_video %}
+        <!-- Teaser Video Section -->
+        <div class="teaser-video mb-4">
+            <video class="img-fluid rounded z-depth-1"
+                poster="{% if page.teaser_video.poster %}{{ page.teaser_video.poster }}{% endif %}" id="teaser-video" {%
+                if page.teaser_video.autoplay %}autoplay{% endif %} {% if page.teaser_video.controls %}controls{% endif
+                %} {% if page.teaser_video.muted %}muted{% endif %} {% if page.teaser_video.loop %}loop{% endif %}>
+                <source src="{{ page.teaser_video.url }}" type="video/mp4">
+            </video>
+            {% if page.teaser_video.caption %}
+            <div class="caption">
+                {{ page.teaser_video.caption }}
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if page.abstract %}
+        <!-- Abstract Section -->
+        <div class="abstract-section mb-4">
+            <h2>Abstract</h2>
+            <div class="abstract-content">
+                <p>{{ page.abstract }}</p>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if page.image_carousel %}
+        <!-- Image Carousel Section -->
+        <div class="image-carousel mb-4">
+            {% if page.image_carousel.title %}
+            <h2>{{ page.image_carousel.title }}</h2>
+            {% endif %}
+            <div class="carousel-container">
+                {% for image in page.image_carousel.images %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img src="{{ image.url }}" alt="{{ image.alt | default: 'Project Image' }}"
+                        class="img-fluid rounded z-depth-1" />
+                    {% if image.caption %}
+                    <div class="caption">
+                        {{ image.caption }}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if page.youtube_video %}
+        <!-- YouTube Video Section -->
+        <div class="youtube-video mb-4">
+            <h2>{{ page.youtube_video.title | default: 'Video Presentation' }}</h2>
+            <div class="video-container">
+                <iframe src="{{ page.youtube_video.url }}" frameborder="0" allow="autoplay; encrypted-media"
+                    allowfullscreen class="rounded z-depth-1"></iframe>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if page.video_carousel %}
+        <!-- Video Carousel Section -->
+        <div class="video-carousel mb-4">
+            <h2>{{ page.video_carousel.title | default: 'Video Carousel' }}</h2>
+            <div class="carousel-container">
+                {% for video in page.video_carousel.videos %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <video class="img-fluid rounded z-depth-1"
+                        poster="{% if video.poster %}{{ video.poster }}{% endif %}" {% if video.autoplay %}autoplay{%
+                        endif %} {% if video.controls %}controls{% endif %} {% if video.muted %}muted{% endif %} {% if
+                        video.loop %}loop{% endif %}>
+                        <source src="{{ video.url }}" type="video/mp4">
+                    </video>
+                    {% if video.caption %}
+                    <div class="caption">
+                        {{ video.caption }}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Main Content (from markdown) -->
+        {% if content and content != empty %}
+        <div class="markdown-content">
+            {{ content }}
+        </div>
+        {% endif %}
+
+        {% if page.poster %}
+        <!-- Poster Section -->
+        <div class="poster-section mb-4">
+            <h2>{{ page.poster.title | default: 'Poster' }}</h2>
+            <iframe src="{{ page.poster.url }}" width="100%" height="{{ page.poster.height | default: '550' }}"
+                class="rounded z-depth-1"></iframe>
+        </div>
+        {% endif %}
+
+        {% if page.bibtex %}
+        <!-- BibTeX Citation Section -->
+        <div class="bibtex-section mb-4" id="BibTeX">
+            <h2>BibTeX</h2>
+            <div class="highlight">
+                <pre><code>{{ page.bibtex }}</code></pre>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if page.acknowledgments %}
+        <!-- Acknowledgments Section -->
+        <div class="acknowledgments-section mb-4">
+            <h2>Acknowledgments</h2>
+            <p>{{ page.acknowledgments }}</p>
+        </div>
+        {% endif %}
+    </article>
+</div>
+
+<!-- Include required CSS and JS for the template -->
+{% if page.include_bulma_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+{% endif %}
+
+{% if page.include_carousel_js %}
+<script>
+    // Carousel functionality for paper project layout
+    document.addEventListener('DOMContentLoaded', function () {
+        const carousels = document.querySelectorAll('.carousel-container');
+
+        carousels.forEach(function (carousel) {
+            const items = carousel.querySelectorAll('.carousel-item');
+            const totalItems = items.length;
+
+            if (totalItems <= 1) return;
+
+            let currentIndex = 0;
+
+            // Create navigation buttons
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'carousel-nav prev';
+            prevBtn.innerHTML = '‹';
+
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'carousel-nav next';
+            nextBtn.innerHTML = '›';
+
+            carousel.appendChild(prevBtn);
+            carousel.appendChild(nextBtn);
+
+            function showItem(index) {
+                items.forEach(item => item.classList.remove('active'));
+                items[index].classList.add('active');
+            }
+
+            function nextItem() {
+                currentIndex = (currentIndex + 1) % totalItems;
+                showItem(currentIndex);
+            }
+
+            function prevItem() {
+                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                showItem(currentIndex);
+            }
+
+            nextBtn.addEventListener('click', nextItem);
+            prevBtn.addEventListener('click', prevItem);
+
+            // Auto-advance carousel
+            setInterval(nextItem, 5000);
+        });
+    });
+</script>
+{% endif %}
+
+<style>
+    /* Paper project layout styles - adapted for al-folio theme */
+    .post .authors {
+        color: var(--global-text-color-light);
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .post .authors a {
+        color: var(--global-theme-color);
+        text-decoration: none;
+    }
+
+    .post .authors a:hover {
+        color: var(--global-hover-color);
+        text-decoration: underline;
+    }
+
+    .post .affiliations {
+        color: var(--global-text-color-light);
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .post .equal-contrib {
+        color: var(--global-text-color-light);
+        margin-top: 0.5rem;
+    }
+
+    .post .paper-links {
+        margin: 1.5rem 0;
+    }
+
+    .post .paper-links .btn {
+        margin: 0.25rem 0.5rem 0.25rem 0;
+        background-color: var(--global-theme-color);
+        color: var(--global-hover-text-color);
+        border: none;
+    }
+
+    .post .paper-links .btn:hover {
+        background-color: var(--global-hover-color);
+        color: var(--global-hover-text-color);
+    }
+
+    .post .teaser-video video {
+        width: 100%;
+        max-height: 500px;
+    }
+
+    .post .abstract-section {
+        background-color: var(--global-card-bg-color);
+        padding: 2rem;
+        border-radius: 6px;
+        border: 1px solid var(--global-divider-color);
+    }
+
+    .post .abstract-content p {
+        text-align: justify;
+        line-height: 1.6;
+    }
+
+    .post .carousel-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 6px;
+    }
+
+    .post .carousel-item {
+        display: none;
+        text-align: center;
+    }
+
+    .post .carousel-item.active {
+        display: block;
+    }
+
+    .post .carousel-item img,
+    .post .carousel-item video {
+        width: 100%;
+        height: auto;
+    }
+
+    .post .video-container {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%;
+        /* 16:9 aspect ratio */
+        overflow: hidden;
+        border-radius: 6px;
+    }
+
+    .post .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    .post .poster-section iframe {
+        border: 1px solid var(--global-divider-color);
+        border-radius: 6px;
+    }
+
+    .post .bibtex-section .highlight {
+        margin: 1rem 0;
+    }
+
+    .post .bibtex-section pre {
+        background-color: var(--global-code-bg-color);
+        border: 1px solid var(--global-divider-color);
+        border-radius: 6px;
+        padding: 1rem;
+        overflow-x: auto;
+        font-size: 0.875rem;
+    }
+
+    .post .bibtex-section code {
+        background-color: transparent;
+        color: var(--global-text-color);
+    }
+
+    .post h2 {
+        color: var(--global-text-color);
+        margin: 2rem 0 1rem 0;
+        font-weight: 600;
+    }
+
+    .post .mb-4 {
+        margin-bottom: 2rem;
+    }
+
+    /* Navigation buttons for carousels */
+    .post .carousel-container:hover .carousel-nav {
+        opacity: 1;
+    }
+
+    .post .carousel-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 10;
+    }
+
+    .post .carousel-nav:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .post .carousel-nav.prev {
+        left: 10px;
+    }
+
+    .post .carousel-nav.next {
+        right: 10px;
+    }
+
+    /* Responsive design */
+    @media screen and (max-width: 768px) {
+        .post .paper-links .btn {
+            display: block;
+            width: 100%;
+            margin: 0.5rem 0;
+        }
+
+        .post .abstract-section {
+            padding: 1.5rem;
+        }
+
+        .post .carousel-nav {
+            opacity: 1;
+        }
+    }
+</style>

@@ -3,7 +3,7 @@ layout: page
 permalink: /teaching/
 title: teaching and services
 description: Teaching and other services.
-nav: false
+nav: true
 ---
 
 
@@ -14,17 +14,26 @@ During my final year at IIT Madras, I provided mentorship to 10 groups of sophom
 
 # mentorship
 
-I have been fortune to have found great collaborators and mentees. I have provided mentorship to the following M.S. students through various projects and independent studies at UMass Amherst.
+I have had the fortune of working with some great collaborators and mentees. I have provided mentorship to the following students through various projects and independent studies at UMass Amherst.
 
-1. [Tejas Chheda (2021)](https://in.linkedin.com/in/tejas-chh)
-2. [Purujit Goyal (2021-22)](https://www.cics.umass.edu/people/goyal-purujit)
+** M.S. students**:
+
+1. [Tejas Chheda (2021)](https://in.linkedin.com/in/tejas-chh): ML SWE at Meta
+2. [Purujit Goyal (2021-22)](https://www.cics.umass.edu/people/goyal-purujit): ML Engineer at Birch.ai
 3. [Trang Tran (2021) ]()
-3. [Elliot Tower (2021)](https://www.linkedin.com/in/elliot-tower/)
-4. [Hitesh Golchha (2022)](https://hitzkrieg.github.io/website/)
-5. [Eunjeong Hwang (2021)](https://eujhwang.github.io/)
+3. [Elliot Tower (2021)](https://www.linkedin.com/in/elliot-tower/): Senior Software Engineer at Farama.
+4. [Hitesh Golchha (2022)](https://hitzkrieg.github.io/website/): Applied Research Scientist at Amazon.
+5. [Eunjeong Hwang (2021)](https://eujhwang.github.io/): PhD student at UBC.
 6. [Alan Sempruch (2021)]()
-7. [Varad Pimplekhute (2023-2024)](https://nightlessbaron.github.io/)
+7. [Varad Pimplekhute (2023-2024)](https://nightlessbaron.github.io/): Research Engineer at MBZUAI.
 8. [Sahil Yerawar (2024)](https://www.linkedin.com/in/sahil-yerawar-275222101)
+9. [Avinash Amballa](https://www.linkedin.com/in/avinashamballa/): Research Engineer at Samsung.
+10. [Aishwarya Sahoo](https://www.linkedin.com/in/aishwarya-sahoo-x/): Applied Research Scientist at Amazon.
+
+** Undergraduate students**:
+1. [Vihaan Sejwani]()
+2. [Eric Chen]()
+3. [Pornnapin Tangkoskul]()
 
 # services
 

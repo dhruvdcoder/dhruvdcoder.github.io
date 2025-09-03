@@ -3,7 +3,7 @@ layout: page
 title: notes
 description: Obsidian notes.
 permalink: /my-notes/
-nav: true
+nav: false
 redirect_to: https://notes.dhruveshp.com
 ---
 

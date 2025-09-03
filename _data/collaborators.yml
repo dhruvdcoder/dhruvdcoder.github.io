@@ -81,3 +81,31 @@
   role: mentor
   year_from: 2023
   year_to: 2023
+
+- name: Aishwarya Sahoo
+  org: UMass Amherst
+  url: https://www.linkedin.com/in/aishwarya-sahoo-x/
+  role: mentee
+  year_from: 2024
+  year_to: 2025
+
+- name: Avinash Amballa
+  org: UMass Amherst
+  url: https://www.linkedin.com/in/avinashamballa/
+  role: mentee
+  year_from: 2024
+  year_to: 2025
+
+- name: Tim Rudner
+  org: NYU
+  url: https://timrudner.com/
+  role: mentor
+  year_from: 2024
+  year_to: 2025
+
+- name: Ramon Astudillo
+  org: IBM Research
+  url: https://ramon-astudillo.github.io/
+  role: mentor
+  year_from: 2025
+  year_to: 2025

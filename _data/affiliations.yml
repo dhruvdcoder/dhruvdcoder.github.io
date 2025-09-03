@@ -1,3 +1,11 @@
+- title: IBM Research
+  type: internship
+  title_url: https://research.ibm.com/
+  img: /assets/img/ibm_logo.png
+  permalink: /timeline/ibm_internship
+  date: 2025-05-08
+  enddate: 2025-08-18
+
 - title: Abridge AI
   type: internship
   title_url: http://abridge.ai
@@ -11,7 +19,7 @@
   title_url: http://iesl.cs.umass.edu
   img: /assets/img/IESL.png
   permalink: /timeline/iesl
-  date: 2019-05-11 
+  date: 2019-05-11
 
 - title: IIT Madras
   type: affiliation
@@ -21,7 +29,7 @@
   date: 2011-06-04
   enddate: 2016-01-05
 
-- title: CICS UMass 
+- title: CICS UMass
   type: affiliation
   title_url: https://www.cics.umass.edu/
   img: /assets/img/UMassInfoandCS_horiz-RGB.png

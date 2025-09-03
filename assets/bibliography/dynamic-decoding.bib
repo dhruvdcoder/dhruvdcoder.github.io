@@ -1,0 +1,142 @@
+
+@inproceedings{welleckNeuralTextGeneration2019,
+  title    = {Neural {Text} {Generation} {With} {Unlikelihood} {Training}},
+  url      = {https://openreview.net/forum?id=SJeYe0NtvH},
+  abstract = {Neural text generation is a key tool in natural language applications, but it is well known there are major problems at its core. In particular, standard likelihood training and decoding leads to dull and repetitive outputs. While some post-hoc fixes have been proposed, in particular top-k and nucleus sampling, they do not address the fact that the token-level probabilities predicted by the model are poor. In this paper we show that the likelihood objective itself is at fault, resulting in a model that assigns too much probability to sequences containing repeats and frequent words, unlike those from the human training distribution. We propose a new objective, unlikelihood training, which forces unlikely generations to be assigned lower probability by the model. We show that both token and sequence level unlikelihood training give less repetitive, less dull text while maintaining perplexity, giving superior generations using standard greedy or beam search. According to human evaluations, our approach with standard beam search also outperforms the currently popular decoding methods of nucleus sampling or beam blocking, thus providing a strong alternative to existing techniques.},
+  language = {en},
+  urldate  = {2023-06-28},
+  author   = {Welleck, Sean and Kulikov, Ilia and Roller, Stephen and Dinan, Emily and Cho, Kyunghyun and Weston, Jason},
+  month    = sep,
+  year     = {2019},
+  keywords = {🚧InProgress, LLM alignment, text generation, LM decoding},
+  file     = {Welleck et al (2019) Neural Text Generation With Unlikelihood Training.pdf:/Users/dhruveshpatel/Zotero/storage/92YW2XBM/Welleck et al (2019) Neural Text Generation With Unlikelihood Training.pdf:application/pdf}
+}
+
+@misc{qinCOLDDecodingEnergybased2022b,
+  title      = {{COLD} {Decoding}: {Energy}-based {Constrained} {Text} {Generation} with {Langevin} {Dynamics}},
+  shorttitle = {{COLD} {Decoding}},
+  url        = {http://arxiv.org/abs/2202.11705},
+  abstract   = {Many applications of text generation require incorporating different constraints to control the semantics or style of generated text. These constraints can be hard (e.g., ensuring certain keywords are included in the output) and soft (e.g., contextualizing the output with the left- or right-hand context). In this paper, we present Energy-based Constrained Decoding with Langevin Dynamics (COLD), a decoding framework which unifies constrained generation as specifying constraints through an energy function, then performing efficient differentiable reasoning over the constraints through gradient-based sampling. COLD decoding is a flexible framework that can be applied directly to off-the-shelf left-to-right language models without the need for any task-specific fine-tuning, as demonstrated through three challenging text generation applications: lexically-constrained generation, abductive reasoning, and counterfactual reasoning. Our experiments on these constrained generation tasks point to the effectiveness of our approach, both in terms of automatic and human evaluation.},
+  urldate    = {2023-07-29},
+  publisher  = {arXiv},
+  author     = {Qin, Lianhui and Welleck, Sean and Khashabi, Daniel and Choi, Yejin},
+  month      = oct,
+  year       = {2022},
+  note       = {arXiv:2202.11705 [cs]},
+  keywords   = {🚧InProgress, text generation, LM decoding},
+  file       = {arXiv.org Snapshot:/Users/dhruveshpatel/Zotero/storage/4TV7ZLRW/2202.html:text/html}
+}
+
+@inproceedings{ravfogelConformalNucleusSampling2023,
+  address   = {Toronto, Canada},
+  title     = {Conformal nucleus sampling},
+  url       = {https://aclanthology.org/2023.findings-acl.3},
+  doi       = {10.18653/v1/2023.findings-acl.3},
+  abstract  = {Language models generate text based on successively sampling the next word. A decoding procedure based on nucleus (top-p) sampling chooses from the smallest possible set of words whose cumulative probability exceeds the probability p. In this work, we assess whether a top-p set is indeed aligned with its probabilistic meaning in various linguistic contexts.We employ conformal prediction, a calibration procedure that focuses on the construction of minimal prediction sets according to a desired confidence level, to calibrate the parameter p as a function of the entropy of the next word distribution. We find that OPT models are overconfident, and that calibration shows a moderate inverse scaling with model size.},
+  booktitle = {Findings of the association for computational linguistics: {ACL} 2023},
+  publisher = {Association for Computational Linguistics},
+  author    = {Ravfogel, Shauli and Goldberg, Yoav and Goldberger, Jacob},
+  month     = jul,
+  year      = {2023},
+  keywords  = {Set Valued Classification, 🚧InProgress, 📥Inbox, text generation, LM decoding, conformal prediction},
+  pages     = {27--34},
+  file      = {arXiv.org Snapshot:/Users/dhruveshpatel/Zotero/storage/WD7ZGCKV/2305.html:text/html;Ravfogel et al (2023) Conformal Nucleus Sampling.pdf:/Users/dhruveshpatel/Zotero/storage/BRXEAV6A/Ravfogel et al (2023) Conformal Nucleus Sampling.pdf:application/pdf}
+}
+
+@misc{vilnisArithmeticSamplingParallel2023,
+  title      = {Arithmetic {Sampling}: {Parallel} {Diverse} {Decoding} for {Large} {Language} {Models}},
+  shorttitle = {Arithmetic {Sampling}},
+  url        = {http://arxiv.org/abs/2210.15458},
+  doi        = {10.48550/arXiv.2210.15458},
+  abstract   = {Decoding methods for large language models often trade-off between diversity of outputs and parallelism of computation. Methods such as beam search and Gumbel top-k sampling can guarantee a different output for each element of the beam, but are not easy to parallelize. Alternatively, methods such as temperature sampling and its modifications (top-k sampling, nucleus sampling, typical decoding, and others), are embarrassingly parallel, but have no guarantees about duplicate samples. We present a framework for sampling according to an arithmetic code book implicitly defined by a large language model, compatible with common sampling variations, with provable beam diversity under certain conditions, as well as being embarrassingly parallel and providing unbiased and consistent expectations from the original model. We demonstrate the effectiveness of our approach on WMT machine translation, more than halving the standard deviation when estimating expected BLEU score reward, and closing the BLEU score gap between independent sampling and beam search by up to 63\%.},
+  urldate    = {2023-08-16},
+  publisher  = {arXiv},
+  author     = {Vilnis, Luke and Zemlyanskiy, Yury and Murray, Patrick and Passos, Alexandre and Sanghai, Sumit},
+  month      = jun,
+  year       = {2023},
+  note       = {arXiv:2210.15458 [cs, stat]},
+  keywords   = {🚧InProgress, text generation, LM decoding},
+  file       = {arXiv.org Snapshot:/Users/dhruveshpatel/Zotero/storage/QGB5BS8R/Vilnis et al. - 2023 - Arithmetic Sampling Parallel Diverse Decoding for.html:text/html;Vilnis et al (2023) Arithmetic Sampling.pdf:/Users/dhruveshpatel/Zotero/storage/HB4SBPBR/Vilnis et al (2023) Arithmetic Sampling.pdf:application/pdf}
+}
+
+@inproceedings{basuMIROSTATNEURALTEXT2020,
+  title      = {{MIROSTAT}: {A} {NEURAL} {TEXT} {DECODING} {ALGORITHM} {THAT} {DIRECTLY} {CONTROLS} {PERPLEXITY}},
+  shorttitle = {{MIROSTAT}},
+  url        = {https://openreview.net/forum?id=W1G1JZEIy5_},
+  abstract   = {Neural text decoding algorithms strongly influence the quality of texts generated using language models, but popular algorithms like top-k, top-p (nucleus), and temperature-based sampling may yield texts that have objectionable repetition or incoherence. Although these methods generate high-quality text after ad hoc parameter tuning that depends on the language model and the length of generated text, not much is known about the control they provide over the statistics of the output. This is important, however, since recent reports show that humans prefer when perplexity is neither too much nor too little and since we experimentally show that cross-entropy (log of perplexity) has a near-linear relation with repetition. First, we provide a theoretical analysis of perplexity in top-k, top-p, and temperature sampling, under Zipfian statistics. Then, we use this analysis to design a feedback-based adaptive top-k text decoding algorithm called mirostat that generates text (of any length) with a predetermined target value of perplexity without any tuning. Experiments show that for low values of k and p, perplexity drops significantly with generated text length and leads to excessive repetitions (the boredom trap). Contrarily, for large values of k and p, perplexity increases with generated text length and leads to incoherence (confusion trap). Mirostat avoids both traps. Specifically, we show that setting target perplexity value beyond a threshold yields negligible sentence-level repetitions. Experiments with human raters for fluency, coherence, and quality further verify our findings.},
+  language   = {en},
+  urldate    = {2023-08-16},
+  author     = {Basu, Sourya and Ramachandran, Govardana Sachitanandam and Keskar, Nitish Shirish and Varshney, Lav R.},
+  month      = oct,
+  year       = {2020},
+  keywords   = {📥Inbox, text generation, LM decoding},
+  file       = {Full Text:/Users/dhruveshpatel/Zotero/storage/FND4K4XB/Basu et al. (2020) MIROSTAT A NEURAL TEXT DECODING ALGORITHM THAT DIRECTLY CONTROLS PERPLEXITY.pdf:application/pdf}
+}
+
+@article{liDiffusionLMImprovesControllable2022,
+  title    = {Diffusion-{LM} {Improves} {Controllable} {Text} {Generation}},
+  volume   = {35},
+  url      = {https://proceedings.neurips.cc/paper_files/paper/2022/hash/1be5bc25d50895ee656b8c2d9eb89d6a-Abstract-Conference.html},
+  language = {en},
+  urldate  = {2023-09-25},
+  journal  = {Advances in Neural Information Processing Systems},
+  author   = {Li, Xiang and Thickstun, John and Gulrajani, Ishaan and Liang, Percy S. and Hashimoto, Tatsunori B.},
+  month    = dec,
+  year     = {2022},
+  keywords = {📥Inbox, text generation, LM decoding},
+  pages    = {4328--4343},
+  file     = {Li et al (2022) Diffusion-LM Improves Controllable Text Generation.pdf:/Users/dhruveshpatel/Zotero/storage/C22UZ6S3/Li et al (2022) Diffusion-LM Improves Controllable Text Generation.pdf:application/pdf}
+}
+
+@inproceedings{hewittTruncationSamplingLanguage2022,
+  address   = {Abu Dhabi, United Arab Emirates},
+  title     = {Truncation {Sampling} as {Language} {Model} {Desmoothing}},
+  url       = {https://aclanthology.org/2022.findings-emnlp.249},
+  doi       = {10.18653/v1/2022.findings-emnlp.249},
+  abstract  = {Long samples of text from neural language models can be of poor quality. Truncation sampling algorithms–like top-p or top-k—address this by setting some words' probabilities to zero at each step. This work investigates why these methods are important, and how to improve them. We propose thinking of a neural language model as a mixture of a true distribution and a smoothing distribution that avoids infinite perplexity. In this light, truncation algorithms aim to perform desmoothing, estimating a subset of the support of the true distribution. Finding a good subset is crucial: we show that top-p unnecessarily truncates high-probability words, for example causing it to truncate all words but Trump for a document that starts with Donald. We introduce eta-sampling, which truncates words below an entropy-dependent probability threshold. Compared to previous algorithms, our eta-sampling generates more plausible long documents according to humans, is better at breaking out of repetition, and behaves more reasonably on a battery of test distributions.},
+  urldate   = {2023-10-20},
+  booktitle = {Findings of the {Association} for {Computational} {Linguistics}: {EMNLP} 2022},
+  publisher = {Association for Computational Linguistics},
+  author    = {Hewitt, John and Manning, Christopher and Liang, Percy},
+  month     = dec,
+  year      = {2022},
+  keywords  = {Sampling, text generation, LM decoding},
+  pages     = {3414--3427},
+  file      = {Full Text PDF:/Users/dhruveshpatel/Zotero/storage/ZLKJTCCK/Hewitt et al. (2022) Truncation Sampling as Language Model Desmoothing.pdf:application/pdf}
+}
+
+@inproceedings{holtzmanCuriousCaseNeural2019,
+  title    = {The {Curious} {Case} of {Neural} {Text} {Degeneration}},
+  url      = {https://openreview.net/forum?id=rygGQyrFvH},
+  abstract = {Despite considerable advances in neural language modeling, it remains an open question what the best decoding strategy is for text generation from a language model (e.g. to generate a story). The counter-intuitive empirical observation is that even though the use of likelihood as training objective leads to high quality models for a broad range of language understanding tasks, maximization-based decoding methods such as beam search lead to degeneration — output text that is bland, incoherent, or gets stuck in repetitive loops. To address this we propose Nucleus Sampling, a simple but effective method to draw considerably higher quality text out of neural language models than previous decoding strategies. Our approach avoids text degeneration by truncating the unreliable tail of the probability distribution, sampling from the dynamic nucleus of tokens containing the vast majority of the probability mass. To properly examine current maximization-based and stochastic decoding methods, we compare generations from each of these methods to the distribution of human text along several axes such as likelihood, diversity, and repetition. Our results show that (1) maximization is an inappropriate decoding objective for open-ended text generation, (2) the probability distributions of the best current language models have an unreliable tail which needs to be truncated during generation and (3) Nucleus Sampling is currently the best available decoding strategy for generating long-form text that is both high-quality — as measured by human evaluation — and as diverse as human-written text.},
+  language = {en},
+  urldate  = {2023-10-20},
+  author   = {Holtzman, Ari and Buys, Jan and Du, Li and Forbes, Maxwell and Choi, Yejin},
+  month    = sep,
+  year     = {2019},
+  keywords = {text generation, LM decoding},
+  file     = {Full Text PDF:/Users/dhruveshpatel/Zotero/storage/2URZSABI/Holtzman et al. (2019) The Curious Case of Neural Text Degeneration.pdf:application/pdf}
+}
+
+
+@article{meister2023locally,
+  title   = {Locally typical sampling},
+  volume  = {11},
+  journal = {Transactions of the Association for Computational Linguistics},
+  author  = {Meister, Clara Isabel and Pimentel, Tiago and Wiher, Gian and Cotterell, Ryan},
+  year    = {2023},
+  pages   = {102--121}
+}
+
+@book{shaferMathematicalTheoryEvidence1976,
+  title     = {A {Mathematical} {Theory} of {Evidence}},
+  isbn      = {978-0-691-10042-5},
+  url       = {http://www.jstor.org/stable/j.ctv10vm1qb},
+  abstract  = {Both in science and in practical affairs we reason by combining facts only inconclusively supported by evidence. Building on an abstract understanding of this process of combination, this book constructs a new theory of epistemic probability. The theory draws on the work of A. P. Dempster but diverges from Depster's viewpoint by identifying his "lower probabilities" as epistemic probabilities and taking his rule for combining "upper and lower probabilities" as fundamental. The book opens with a critique of the well-known Bayesian theory of epistemic probability. It then proceeds to develop an alternative to the additive set functions and the rule of conditioning of the Bayesian theory: set functions that need only be what Choquet called "monotone of order of infinity." and Dempster's rule for combining such set functions. This rule, together with the idea of "weights of evidence," leads to both an extensive new theory and a better understanding of the Bayesian theory. The book concludes with a brief treatment of statistical inference and a discussion of the limitations of epistemic probability. Appendices contain mathematical proofs, which are relatively elementary and seldom depend on mathematics more advanced that the binomial theorem.},
+  urldate   = {2023-07-09},
+  publisher = {Princeton University Press},
+  author    = {Shafer, Glenn},
+  year      = {1976},
+  doi       = {10.2307/j.ctv10vm1qb},
+  keywords  = {Belief Functions, 📥Inbox}
+}
