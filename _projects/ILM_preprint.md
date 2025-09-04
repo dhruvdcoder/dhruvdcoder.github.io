@@ -88,11 +88,13 @@ abstract: |
 
 # BibTeX citation
 bibtex: |
-  @article{yourname2024paper,
-    title={Your Paper Title},
-    author={Author One and Author Two},
-    journal={Conference/Journal Name},
-    year={2024}
+  @misc{patel2025insertion,
+    title={Insertion Language Models: Sequence Generation with Arbitrary-Position Insertions},
+    author={Dhruvesh Patel and Aishwarya Sahoo and Avinash Amballa and Tahira Naseem and Tim G. J. Rudner and Andrew McCallum},
+    year={2025},
+    eprint={2505.05755},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL}
   }
 
 # Use al-folio's native styling instead of external frameworks
