@@ -3,9 +3,9 @@ layout: page
 title: projects
 permalink: /projects/
 description: my research and software projects
-nav: true
+nav: false
 display_categories: [research, tools]
-nav_order: 3
+#nav_order: 3
 horizontal: false
 ---
 

@@ -3,7 +3,7 @@ layout: page
 permalink: /teaching/
 title: teaching and services
 description: Teaching and other services.
-nav: true
+nav: false
 ---
 
 

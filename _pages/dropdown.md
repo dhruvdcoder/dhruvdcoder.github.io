@@ -13,4 +13,7 @@ children:
     - title: divider
     - title: teaching
       permalink: /teaching/
+    - title: divider
+    - title: projects
+      permalink: /projects/
 ---
