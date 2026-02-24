@@ -12,3 +12,6 @@ vendor
 .vscode/settings.json
 DILM_.pdf
 mdm_samplers.pdf
+.specstory/history/**
+.cursorindexingignore
+.specstory/
