@@ -3,7 +3,7 @@ layout: paper_project
 title: "A Continuous-Time Markov Chain Framework for Insertion Language Models"
 importance: 1
 category: research
-permalink: /projects/ctmc-ilm
+permalink: /projects/ctmc-dilm
 
 # Authors
 authors:
