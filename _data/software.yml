@@ -1,0 +1,25 @@
+intro: >
+  Selected open-source research code and utilities.
+  See my GitHub profile for the full list.
+
+sections:
+  - title: research code
+    repos:
+      - dhruvdcoder/xlm-core
+      - dhruvdcoder/LoFlexMDM
+      - dhruvdcoder/ctmc_dilm
+      - dhruvdcoder/ILM
+      - dhruvdcoder/HyperA
+      - repo: iesl/box-embeddings
+        description: Box Embeddings as Modules
+        stars: 113
+      - repo: iesl/box-mlc-iclr-2022
+        description: Official repository for the paper "Modeling Label Space Interactions in Multi-label Classification using Box Embeddings".
+        stars: 12
+
+  - title: tools
+    repos:
+      - dhruvdcoder/wandb-utils
+      - dhruvdcoder/wandb-allennlp
+      - dhruvdcoder/poly-metic
+      - dhruvdcoder/manimpress

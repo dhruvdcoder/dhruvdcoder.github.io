@@ -18,26 +18,33 @@ latest_posts: false  # includes a list of the newest posts
 selected_papers: true # includes a list of papers marked as "selected={true}"
 collaborators: true
 timeline: true
+reviewing: true
 social: true  # includes social icons at the bottom of the page
 ---
 
 
-I am currently a fourth-year Computer Science PhD student at [UMass Amherst](https://www.umass.edu/) working with [Prof. Andrew McCallum](https://people.cs.umass.edu/~mccallum) alongside some amazing colleagues at the [Information Extraction and Synthesis Laboratory](https://iesl.cs.umass.edu/).
-I completed my undergraduate at [IIT Madras](https://www.iitm.ac.in), where I worked on Robotics research, mentored by [Prof. Bandyopadhyay](https://ed.iitm.ac.in/~sandipan).
+I am a Computer Science PhD Researcher at [UMass Amherst](https://www.umass.edu/), advised by [Prof. Andrew McCallum](https://people.cs.umass.edu/~mccallum) at the [Information Extraction and Synthesis Laboratory](https://iesl.cs.umass.edu/), and a Visiting Researcher at [IBM Research](https://research.ibm.com/).
+My research focuses on generative modeling for discrete sequences, especially alternatives to left-to-right language modeling.
+Before UMass, I completed my undergraduate and first master's degree at [IIT Madras](https://www.iitm.ac.in), where I worked on robotics research with [Prof. Sandipan Bandyopadhyay](https://ed.iitm.ac.in/~sandipan).
 
-Outside of my academic pursuits, I've been fortunate to have worked with some amazing collaborators from the industry. I have worked as a research scientist inter at [Meta Reality Labs](https://ai.meta.com/) and [Abridge AI](https://www.abridge.com/ai/publications).
-Before beginning my master's program at UMass, I worked for two years as a software engineer at [MathWorks](https://www.mathworks.com/).
-I also dedicated a year to collaborating with [Prof. Partha Talukdar](http://talukdar.net) on solving various NLP problems in the industry.
+I have also been fortunate to work with collaborators across industry research labs, including [Meta Reality Labs](https://ai.meta.com/) and [Abridge AI](https://www.abridge.com/ai/publications).
+Before graduate school, I spent two years as a software engineer at [MathWorks](https://www.mathworks.com/) and a year collaborating with [Prof. Partha Talukdar](http://talukdar.net) on applied NLP problems.
 
-<br><br>
 CV available at the bottom of this page.
 
 ## research
 
-Autoregressive models dominate the scene for generative modeling of non-ordinal discrete data, like text, mostly due to the scalability of pre-training.
-However, as generative models they have many limitations: limited conditioning and control at inference time, inefficient use of inference time computation by tying the sequence length to the computation, and inability to support non-sequential forms of interaction like edits or deletions.
-I'm interested in scaling non-autoregessive models like discrete diffusion and flows for text generation either by adapting pre-trained AR models through continued training or by making non-AR pre-training more efficient.
+Most language models generate text one token at a time, from left to right.
+I am interested in models that can draft, revise, infill, and reason over text in more flexible ways.
+My current work focuses on probabilistic models for non-autoregressive sequence generation, with an emphasis on making generation faster and more controllable.
 
-Prior to this, I have worked on non-Euclidean representation learning, energy-based models for discrete data, and compositional generalization in-context learning.
+I am especially interested in how to make these alternatives practical at scale: adapting pre-trained autoregressive LLMs, designing efficient non-autoregressive pre-training objectives, and improving sampling for discrete diffusion models.
 
+Much of my earlier work studies the same question from a more fundamental angle: how should neural models represent, score, and search over structured discrete spaces?
+This includes structured prediction with energy-based models, geometric representations such as box embeddings, and models for label spaces, hierarchies, and relational structure.
 
+<div class="soft-callout-card" markdown="1">
+
+Together with [Benjamin Rozonoyer](https://brozonoyer.github.io/), I run [dIESL](https://www.iesl.cs.umass.edu/diffusion), a reading and working group on non-autoregressive LLMs at IESL.
+
+</div>

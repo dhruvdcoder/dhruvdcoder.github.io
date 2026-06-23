@@ -654,7 +654,12 @@ footer.sticky-bottom {
       .preview {
         width: 100%;
         min-width: 80px;
-        max-width: 200px;
+        max-width: 100%;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
       }
 
       .abbr {
@@ -674,6 +679,13 @@ footer.sticky-bottom {
               text-decoration: none;
             }
           }
+        }
+
+        abbr.workshop {
+          background-color: transparent !important;
+          color: var(--global-theme-color) !important;
+          border: 1px solid var(--global-theme-color);
+          margin-left: 0.4rem;
         }
 
         .award {
@@ -1161,4 +1173,23 @@ nav[data-toggle="toc"] {
     margin-bottom: 0;
     padding-top: 0.5rem;
   }
+}
+
+// News / announcements
+.news-scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: block;
+
+  table {
+    margin-bottom: 0;
+  }
+}
+
+.news-scroll--compact {
+  max-height: 16rem;
+}
+
+.news-scroll--full {
+  max-height: 70vh;
 }

@@ -1,0 +1,19 @@
+<p class="software-intro">{{ site.data.software.intro }}</p>
+
+<div class="software-sections">
+  {% for section in site.data.software.sections %}
+  <div class="software-section">
+    <h2 class="software-section-title">{{ section.title }}</h2>
+    <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
+      {% for repo in section.repos %}
+        {% include software_repo.html repo=repo %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<p class="software-footer">
+  More at
+  <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer">github.com/{{ site.github_username }}</a>.
+</p>

@@ -43,35 +43,56 @@ layout: default
 
           <!-- Affiliations -->
           {% if page.timeline  -%}
-            <h2><a href="{{ '/timeline/' | relative_url }}" style="color: inherit;">affiliations and internships</a></h2>
+          <section class="page-section">
+            <h2 class="page-section-title"><a href="{{ '/timeline/' | relative_url }}">affiliations and internships</a></h2>
             {%- include horizontal_timeline.html %}
+          </section>
           {%- endif %}
 
           <!-- News -->
           {% if page.news and site.announcements.enabled -%}
-            <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a></h2>
+          <section class="page-section">
+            <h2 class="page-section-title"><a href="{{ '/news/' | relative_url }}">news</a></h2>
             {%- include news.html limit=true %}
+          </section>
           {%- endif %}
 
           <!-- Latest posts -->
           {% if page.latest_posts -%}
-            <h2><a href="{{ '/blog/' | relative_url }}" style="color: inherit;">latest posts</a></h2>
+          <section class="page-section">
+            <h2 class="page-section-title"><a href="{{ '/blog/' | relative_url }}">latest posts</a></h2>
             {%- include latest_posts.html %}
+          </section>
           {%- endif %}
+
           <!-- Collaborators -->
           {% if page.collaborators -%}
-            <h2>mentors and collaborators</h2>
+          <section class="page-section">
+            <h2 class="page-section-title">mentors and collaborators</h2>
             {%- include collaborators.html %}
+          </section>
           {%- endif %}
 
           <!-- Selected papers -->
           {% if page.selected_papers -%}
-            <h2><a href="{{ '/publications/' | relative_url }}" style="color: inherit;">selected publications</a></h2>
+          <section class="page-section">
+            <h2 class="page-section-title"><a href="{{ '/publications/' | relative_url }}">selected publications</a></h2>
             {%- include selected_papers.html %}
+          </section>
+          {%- endif %}
+
+          <!-- Reviewing -->
+          {% if page.reviewing -%}
+          <section class="page-section">
+            <h2 class="page-section-title">services</h2>
+            <h3 class="page-subsection-title">reviewing</h3>
+            {%- include reviewing.html %}
+          </section>
           {%- endif %}
 
           <!-- Social -->
           {%- if page.social %}
+          <section class="page-section page-section--contact">
             <div class="social">
               <div class="contact-icons">
                 {% include social.html %}
@@ -82,6 +103,7 @@ layout: default
               </div>
 
             </div>
+          </section>
           {%- endif %}
         </article>
 

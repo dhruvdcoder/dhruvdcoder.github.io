@@ -8,7 +8,7 @@ middle_name:
 last_name: Patel
 email: dhruveshpate@umass.edu
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Personal website of Dhruvesh Patel, a computer science graduate student.
+  Personal website of Dhruvesh Patel. Machine Learning Researcher.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
@@ -112,7 +112,7 @@ zotero_username: # your zotero username
 
 contact_note: >
   I am always on the lookout for interesting conversations and fruitful collaborations. 
-  Feel free to use my email to reach out. Looking to work with <a href="https://iesl.cs.umass.edu">IESL</a>? please read <a href="https://dhruveshp.com/teaching/">this</a> first.
+  Feel free to use my email to reach out. Looking to work with <a href="https://iesl.cs.umass.edu">IESL</a>? please read <a href="https://dhruveshp.com/mentorship/">this</a> first.
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
@@ -198,7 +198,7 @@ collections:
 announcements:
   enabled: true
   scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
+  limit: # leave blank to include all the news in the `_news` folder
 
 latest_posts:
   enabled: true
@@ -321,8 +321,8 @@ scholar:
   group_order: descending
 
 badges: # Display different badges for your publications
-  altmetric_badge: true # Altmetric badge (https://www.altmetric.com/products/altmetric-badges/)
-  dimensions_badge: true # Dimensions badge (https://badge.dimensions.ai/)
+  altmetric_badge: false # Altmetric badge (https://www.altmetric.com/products/altmetric-badges/)
+  dimensions_badge: false # Dimensions badge (https://badge.dimensions.ai/)
 
 # Filter out certain bibtex entry keywords used internally from the bib output
 filtered_bibtex_keywords:
@@ -342,6 +342,8 @@ filtered_bibtex_keywords:
     website,
     preview,
     altmetric,
+    workshop,
+    conferenceshort,
   ]
 
 # Maximum number of authors to be shown for each publication (more authors are visible on click)

@@ -1,0 +1,62 @@
+.people-intro {
+  color: var(--global-text-color-light);
+  margin-bottom: 1rem;
+}
+
+.people-section {
+  margin-bottom: 1.25rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.people-section-title {
+  margin: 0 0 0.5rem;
+}
+
+.people-list {
+  margin: 0;
+  padding-left: 0.75rem;
+}
+
+.people-entry {
+  line-height: 1.55;
+  padding: 0.08rem 0;
+}
+
+.people-entry-name {
+  font-weight: inherit;
+  color: var(--global-text-color);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--global-theme-color);
+    text-decoration: none;
+  }
+}
+
+.people-entry-meta {
+  color: var(--global-text-color-light);
+  margin-left: 0.3rem;
+}
+
+.people-entry-note {
+  color: var(--global-text-color-light);
+  margin-left: 0.3rem;
+}
+
+.people-entry-years {
+  color: var(--global-text-color-light);
+  margin-left: 0.3rem;
+}
+
+.people-entry-badge {
+  font-size: 0.85em;
+  color: var(--global-theme-color);
+  margin-left: 0.45rem;
+}
+
+.people-sections {
+  margin-top: 0.25rem;
+}

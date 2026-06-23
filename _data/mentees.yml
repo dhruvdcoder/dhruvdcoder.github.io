@@ -1,0 +1,110 @@
+- name: Benjamin Rozonoyer
+  level: phd
+  url: https://brozonoyer.github.io/
+  year_from: 2024
+  year_to: 2026
+
+- name: Tejas Chheda
+  level: ms
+  url: https://in.linkedin.com/in/tejas-chh
+  year_from: 2021
+  year_to: 2021
+  note: ML SWE at Meta
+
+- name: Purujit Goyal
+  level: ms
+  url: https://www.cics.umass.edu/people/goyal-purujit
+  year_from: 2021
+  year_to: 2022
+  note: ML Engineer at Birch.ai
+
+- name: Trang Tran
+  level: ms
+  year_from: 2021
+  year_to: 2021
+
+- name: Elliot Tower
+  level: ms
+  url: https://www.linkedin.com/in/elliot-tower/
+  year_from: 2021
+  year_to: 2021
+  note: Senior Software Engineer at Farama.
+
+- name: Hitesh Golchha
+  level: ms
+  url: https://hitzkrieg.github.io/website/
+  year_from: 2022
+  year_to: 2022
+  note: Applied Research Scientist at Amazon.
+
+- name: Eunjeong Hwang
+  level: ms
+  url: https://eujhwang.github.io/
+  year_from: 2021
+  year_to: 2021
+  note: PhD student at UBC.
+
+- name: Alan Sempruch
+  level: ms
+  year_from: 2021
+  year_to: 2021
+
+- name: Varad Pimplekhute
+  level: ms
+  url: https://nightlessbaron.github.io/
+  year_from: 2023
+  year_to: 2024
+  note: Research Engineer at MBZUAI.
+
+- name: Sahil Yerawar
+  level: ms
+  url: https://www.linkedin.com/in/sahil-yerawar-275222101
+  year_from: 2024
+  year_to: 2024
+
+- name: Avinash Amballa
+  level: ms
+  url: https://www.linkedin.com/in/avinashamballa/
+  year_from: 2024
+  year_to: 2025
+  note: Research Engineer at Samsung.
+
+- name: Aishwarya Sahoo
+  level: ms
+  url: https://www.linkedin.com/in/aishwarya-sahoo-x/
+  year_from: 2024
+  year_to: 2025
+  note: Applied Research Scientist at Amazon.
+
+- name: Soumitra Das
+  level: ms
+  url: https://www.linkedin.com/in/soumitra-das-043bb8184/
+  year_from: 2025
+  year_to: 2026
+
+- name: Durga Prasad Maram
+  level: ms
+  url: https://www.cics.umass.edu/people/maram-durga-prasad
+  year_from: 2025
+  year_to: 2026
+
+- name: Sai Sreenivas Chintha
+  level: ms
+  url: https://www.cics.umass.edu/people/chintha-sai-sreenivas
+  year_from: 2025
+  year_to: 2026
+
+- name: Jacopo Minniti
+  level: undergrad
+  url: https://jacopominniti.com/
+  year_from: 2026
+  year_to: 2026
+
+- name: Vihaan Sejwani
+  level: undergrad
+
+- name: Eric Chen
+  level: undergrad
+
+- name: Pornnapin Tangkoskul
+  level: undergrad

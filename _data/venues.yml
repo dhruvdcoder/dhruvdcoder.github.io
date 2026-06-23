@@ -1,43 +1,58 @@
+# Venue badge colors — approximated from each conference's primary web branding.
+# Used as inline background-color on publication abbr badges (white link text).
+
+"ICML":
+  url: https://icml.cc/
+  color: "#001473" # ICML style guide hyperlink blue (icml2026.sty)
+
+"NeurIPS":
+  url: https://neurips.cc/
+  color: "#8F7338" # NeurIPS site gold / tan accent
+
+"ICLR":
+  url: https://iclr.cc/
+  color: "#059669" # ICLR green accent
+
+"ICCV":
+  url: https://www.thecvf.com/
+  color: "#009B3A" # CVF green
+
+"AISTATS":
+  url: https://aistats.org/
+  color: "#1D4ED8" # AISTATS blue header tone
+
+"ACL":
+  url: https://aclanthology.org/venues/acl/
+  color: "#B80000" # ACL Anthology red
+
+"EMNLP":
+  url: https://aclanthology.org/venues/emnlp/
+  color: "#7C3AED" # EMNLP purple branding
+
+"NAACL":
+  url: https://aclanthology.org/venues/naacl/
+  color: "#0369A1" # NAACL sky blue (distinct from ACL red)
+
+"EACL":
+  url: https://aclanthology.org/venues/eacl/
+  color: "#0891B2" # EACL teal accent
+
+"COLING":
+  url: https://aclanthology.org/venues/coling/
+  color: "#5B21B6" # COLING deep violet
+
+"AKBC":
+  url: https://akbc.ws/
+  color: "#854D0E" # AKBC warm brown / amber
+
+"NTMM":
+  url: https://www.springer.com/series/13084
+  color: "#EA580C" # Springer orange accent
+
+# Legacy / unused template entries
 "AJP":
   url: https://aapt.scitation.org/journal/ajp
   color: "#00369f"
 
 "PhysRev":
   url: https://journals.aps.org/
-
-"ICCV":
-  url: https://www.thecvf.com/
-  color: "#00b300" # Green color for CV conferences is code
-
-"EMNLP":
-  url: https://aclanthology.org/venues/emnlp/
-  color: "#0000ff" # slight dark blue but not too dark blue
-
-"ACL":
-  url: https://aclanthology.org/venues/acl/
-  color: "#0000ff" # Code for coral color
-
-"NAACL":
-  url: https://aclanthology.org/venues/naacl/
-  color: "#0000ff" # Code for coral color
-
-"COLING":
-  url: https://aclanthology.org/venues/coling/
-  color: "#0000ff" # Code for coral color
-
-"ICML":
-  url: https://icml.cc/
-  color: "#ff7f50" # Code for coral color
-
-"NeurIPS":
-  url: https://nips.cc/
-  color: "#ff7f50" # Code for coral color
-
-"ICLR":
-  url: https://iclr.cc/
-  color: "#ff7f50" # Code for coral color
-
-"AKBC":
-  url: https://akbc.ws/
-  color: "#b28080" # AKBC, KDD, WW, etc.
-

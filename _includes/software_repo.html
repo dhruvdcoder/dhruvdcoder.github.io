@@ -1,0 +1,29 @@
+{% if repo.repo %}
+  {% assign repo_id = repo.repo %}
+{% else %}
+  {% assign repo_id = repo %}
+{% endif %}
+
+{% assign repo_parts = repo_id | split: '/' %}
+{% assign repo_owner = repo_parts[0] %}
+{% assign repo_name = repo_parts[1] %}
+
+{% if repo_owner == site.github_username %}
+  {% include repository/repo.html repository=repo_id %}
+{% else %}
+<div class="software-repo p-2">
+  <a class="software-repo-card" href="https://github.com/{{ repo_id }}" target="_blank" rel="noopener noreferrer">
+    <div class="software-repo-header">
+      <span class="software-repo-owner">{{ repo_owner }}</span><span class="software-repo-slash">/</span><span class="software-repo-name">{{ repo_name }}</span>
+    </div>
+    {% if repo.description %}
+    <p class="software-repo-description">{{ repo.description }}</p>
+    {% endif %}
+    {% if repo.stars %}
+    <div class="software-repo-meta">
+      <i class="fas fa-star" aria-hidden="true"></i> {{ repo.stars }}
+    </div>
+    {% endif %}
+  </a>
+</div>
+{% endif %}

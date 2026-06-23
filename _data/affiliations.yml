@@ -1,4 +1,11 @@
 - title: IBM Research
+  type: affiliation
+  title_url: https://research.ibm.com/
+  img: /assets/img/ibm_logo.png
+  permalink: /timeline/ibm_visiting
+  date: 2025-09-01
+
+- title: IBM Research
   type: internship
   title_url: https://research.ibm.com/
   img: /assets/img/ibm_logo.png

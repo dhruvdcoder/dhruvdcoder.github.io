@@ -1,17 +1,48 @@
-I have been fortunate to work have worked with many amazing people over the years. Here is a list of my current and previous collaborators.
+{%- assign current_year = 'now' | date: "%Y" | plus: 0 -%}
+{%- assign mentors = site.data.collaborators | where: "role", "mentor" | sort: "year_to" | reverse -%}
 
-<br>
-{% assign current_year = 'now' | date: "%Y" | plus: 0 %}
+<p class="people-intro">I have been fortunate to work with many amazing people over the years. Here are my mentors and collaborators.</p>
 
-{% for collaborator in site.data.collaborators %}
-{% if collaborator.year_from <= current_year and collaborator.year_to >= current_year and collaborator.role == "mentor" %}
-<a href="{{ collaborator.url }}">{{ collaborator.name }}</a> [{{ collaborator.org }}] ({{ collaborator.year_from }} - {{ collaborator.year_to }})<br>
-{% endif %}
-{% endfor %}
+<div class="people-sections">
+{%- assign has_current = false -%}
+{%- for person in mentors -%}
+  {%- if person.year_from <= current_year and person.year_to >= current_year -%}
+    {%- assign has_current = true -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
 
-{% for collaborator in site.data.collaborators %}
-{% if collaborator.year_to < current_year and collaborator.role == "mentor" %}
-<a href="{{ collaborator.url }}">{{ collaborator.name }}</a> [{{ collaborator.org }}] ({{ collaborator.year_from }} - {{ collaborator.year_to }})<br>
-{% endif %}
-{% endfor %}
-<br>
+{%- if has_current -%}
+<div class="people-section">
+  <h4 class="people-section-title">Current</h4>
+  <div class="people-list">
+    {%- for person in mentors -%}
+      {%- if person.year_from <= current_year and person.year_to >= current_year -%}
+        {%- include people_entry.html person=person subtitle=person.org current=true -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+{%- endif -%}
+
+{%- assign has_past = false -%}
+{%- for person in mentors -%}
+  {%- if person.year_to < current_year -%}
+    {%- assign has_past = true -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if has_past -%}
+<div class="people-section">
+  <h4 class="people-section-title">Previous</h4>
+  <div class="people-list">
+    {%- for person in mentors -%}
+      {%- if person.year_to < current_year -%}
+        {%- include people_entry.html person=person subtitle=person.org -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+{%- endif -%}
+</div>

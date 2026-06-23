@@ -1,0 +1,76 @@
+// Main page section spacing (typography inherits from theme defaults)
+
+.post article {
+  .page-section-title,
+  .clearfix > h2,
+  > h2 {
+    margin: 2.25rem 0 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--global-divider-color);
+  }
+
+  .page-section {
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  .page-section-title a {
+    color: inherit;
+
+    &:hover {
+      color: var(--global-theme-color);
+      text-decoration: none;
+    }
+  }
+
+  .page-section .publications {
+    margin-top: 0;
+  }
+
+  .page-subsection-title {
+    margin: 0 0 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .reviewing-list {
+    margin: 0;
+    padding-left: 1.25rem;
+
+    li {
+      margin-bottom: 0.35rem;
+      line-height: 1.55;
+    }
+  }
+
+  .soft-callout-card {
+    margin: 1.5rem 0 0;
+    padding: 0.9rem 1.1rem;
+    border-radius: 0.5rem;
+    background-color: rgba($purple-color, 0.05);
+    border: 1px solid rgba($purple-color, 0.08);
+    color: var(--global-text-color-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: var(--global-theme-color);
+
+      &:hover {
+        color: var(--global-hover-color);
+      }
+    }
+  }
+}
+
+html[data-theme='dark'] {
+  .post article .soft-callout-card {
+    background-color: rgba($cyan-color, 0.07);
+    border-color: rgba($cyan-color, 0.12);
+  }
+}

@@ -1,0 +1,22 @@
+<div class="people-sections">
+{%- assign levels = "phd,ms,undergrad" | split: "," -%}
+{%- assign level_titles = "Ph.D. students,M.S. students,Undergraduate students" | split: "," -%}
+{%- assign level_labels = "Ph.D.,M.S.,Undergraduate" | split: "," -%}
+
+{%- for level in levels -%}
+  {%- assign level_mentees = site.data.mentees | where: "level", level -%}
+  {%- if level_mentees.size > 0 -%}
+    {%- assign level_index = forloop.index0 -%}
+    {%- assign subtitle = level_labels[level_index] -%}
+    {%- assign mentees_sorted = level_mentees | sort: "year_to" | reverse -%}
+    <div class="people-section">
+      <h4 class="people-section-title">{{ level_titles[level_index] }}</h4>
+      <div class="people-list">
+        {%- for person in mentees_sorted -%}
+          {%- include people_entry.html person=person subtitle=subtitle -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+{%- endfor -%}
+</div>
