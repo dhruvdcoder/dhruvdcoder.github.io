@@ -45,6 +45,6 @@ This includes structured prediction with energy-based models, geometric represen
 
 <div class="soft-callout-card" markdown="1">
 
-Together with [Benjamin Rozonoyer](https://brozonoyer.github.io/), I run [dIESL](https://www.iesl.cs.umass.edu/diffusion), a reading and working group on non-autoregressive LLMs at IESL.
+Together with [Benjamin Rozonoyer](https://brozonoyer.github.io/), I host [dIESL](https://www.iesl.cs.umass.edu/diffusion), a reading and working group on non-autoregressive LLMs at IESL.
 
 </div>
