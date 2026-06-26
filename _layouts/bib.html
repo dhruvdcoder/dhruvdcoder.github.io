@@ -20,6 +20,9 @@
       {%- if entry.workshop -%}
       <abbr class="badge workshop">Workshop</abbr>
       {%- endif -%}
+      {%- if entry.award -%}
+      <abbr class="badge award">{{ entry.award }}</abbr>
+      {%- endif -%}
     </div>
     {%- endif -%}
     {%- if entry.preview -%}

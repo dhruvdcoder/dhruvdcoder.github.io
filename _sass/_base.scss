@@ -688,9 +688,11 @@ footer.sticky-bottom {
           margin-left: 0.4rem;
         }
 
-        .award {
-          color: var(--global-theme-color) !important;
-          border: 1px solid var(--global-theme-color);
+        abbr.award {
+          background-color: #B45309 !important;
+          color: #fff !important;
+          border: 1px solid #B45309;
+          margin-left: 0.4rem;
         }
       }
 
