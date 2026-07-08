@@ -41,6 +41,14 @@ layout: default
             {{ content }}
           </div>
 
+          <!-- Selected papers -->
+          {% if page.selected_papers -%}
+          <section class="page-section">
+            <h2 class="page-section-title"><a href="{{ '/publications/' | relative_url }}">selected publications</a></h2>
+            {%- include selected_papers.html %}
+          </section>
+          {%- endif %}
+
           <!-- Affiliations -->
           {% if page.timeline  -%}
           <section class="page-section">
@@ -70,14 +78,6 @@ layout: default
           <section class="page-section">
             <h2 class="page-section-title">mentors and collaborators</h2>
             {%- include collaborators.html %}
-          </section>
-          {%- endif %}
-
-          <!-- Selected papers -->
-          {% if page.selected_papers -%}
-          <section class="page-section">
-            <h2 class="page-section-title"><a href="{{ '/publications/' | relative_url }}">selected publications</a></h2>
-            {%- include selected_papers.html %}
           </section>
           {%- endif %}
 
