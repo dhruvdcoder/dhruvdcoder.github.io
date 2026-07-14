@@ -1,6 +1,6 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // Override styles of the footnotes.
-    document.querySelectorAll("d-footnote").forEach(function(footnote) {
+    document.querySelectorAll("d-footnote").forEach(function (footnote) {
         footnote.shadowRoot.querySelector("sup > span")
             .setAttribute("style", "color: var(--global-theme-color);");
         footnote.shadowRoot.querySelector("d-hover-box").shadowRoot.querySelector("style").sheet
@@ -9,7 +9,7 @@ $(document).ready(function() {
             .insertRule(".panel {border-color: var(--global-divider-color) !important;}");
     });
     // Override styles of the citations.
-    document.querySelectorAll("d-cite").forEach(function(cite) {
+    document.querySelectorAll("d-cite").forEach(function (cite) {
         cite.shadowRoot.querySelector("div > span")
             .setAttribute("style", "color: var(--global-theme-color);");
         cite.shadowRoot.querySelector("style").sheet
@@ -21,4 +21,4 @@ $(document).ready(function() {
         cite.shadowRoot.querySelector("d-hover-box").shadowRoot.querySelector("style").sheet
             .insertRule(".panel {border-color: var(--global-divider-color) !important;}");
     });
-})
+});

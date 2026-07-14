@@ -35,6 +35,52 @@ d-article {
     display: inline;
   }
 
+  .mathbox {
+    grid-column: text;
+    margin: 1.25rem 0 1.5rem;
+    padding: 0.9rem 1rem 1rem;
+    border: 1px solid var(--global-divider-color);
+    border-left-width: 4px;
+    border-radius: 6px;
+    background-color: var(--mathbox-bg);
+    border-left-color: var(--mathbox-accent);
+
+    .mathbox-header {
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--mathbox-accent);
+    }
+
+    .mathbox-body {
+      > :first-child {
+        margin-top: 0;
+      }
+
+      > :last-child {
+        margin-bottom: 0;
+      }
+
+      p, li, table {
+        color: var(--global-text-color) !important;
+      }
+    }
+
+    .mathbox-qed {
+      float: right;
+      margin-top: 0.35rem;
+      color: var(--mathbox-accent);
+      font-size: 1.1em;
+      line-height: 1;
+    }
+  }
+
+  @each $env in definition, theorem, proposition, lemma, corollary, remark, example, proof {
+    .mathbox-#{$env} {
+      --mathbox-accent: var(--mathbox-#{$env}-accent);
+      --mathbox-bg: var(--mathbox-#{$env}-bg);
+    }
+  }
+
   // Style taken from code blocks
   details {  
     color: var(--global-text-color);
@@ -115,6 +161,33 @@ d-article {
 
   d-footnote {
     scroll-margin-top: 66px;
+  }
+
+  d-figure {
+    text-align: center;
+    margin: 2rem 0;
+
+    figcaption {
+      margin-top: 0.75em;
+      color: var(--global-distill-app-color);
+      text-align: left;
+    }
+
+    // Panel around the rendered diagram; wrap the tikz <script> tag in
+    // <div class="tikz-panel"> inside <d-figure>. Padding lives on the div
+    // (padding directly on the replaced <svg> breaks its layout height).
+    // Background stays light in both themes because TikZJax draws in black.
+    .tikz-panel {
+      background-color: #fcfcfd;
+      border: 1px solid var(--global-divider-color);
+      border-radius: 6px;
+      padding: 1.25rem 1rem;
+    }
+
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
   }
 }
 
