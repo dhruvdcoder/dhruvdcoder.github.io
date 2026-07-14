@@ -25,7 +25,7 @@
 [ Shared k-axis label + legend row at bottom ]
 ```
 
-**Minimal embed** (see `_posts/2026-05-10-ctmc.md` for full TikZ):
+**Minimal embed** (see [examples.md](examples.md) for full TikZ):
 
 ```html
 <d-figure>

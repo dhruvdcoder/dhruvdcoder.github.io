@@ -188,6 +188,82 @@ d-article {
       max-width: 100%;
       height: auto;
     }
+
+    .stochviz-panel {
+      background-color: var(--global-card-bg-color);
+      border: 1px solid var(--global-divider-color);
+      border-radius: 6px;
+      padding: 1rem 1rem 0.75rem;
+      text-align: left;
+
+      .stochviz-controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem 1.25rem;
+        margin-bottom: 0.75rem;
+        font-size: 0.9rem;
+        color: var(--global-text-color);
+      }
+
+      .stochviz-control-group {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex: 1 1 220px;
+        min-width: 200px;
+      }
+
+      .stochviz-n-slider {
+        flex: 1;
+        min-width: 120px;
+        accent-color: var(--global-theme-color);
+      }
+
+      .stochviz-meta {
+        font-variant-numeric: tabular-nums;
+        color: var(--global-text-color-light);
+      }
+
+      .stochviz-presets {
+        display: flex;
+        gap: 0.35rem;
+        flex-wrap: wrap;
+      }
+
+      .stochviz-preset {
+        padding: 0.2rem 0.55rem;
+        border: 1px solid var(--global-divider-color);
+        border-radius: 4px;
+        background: var(--global-bg-color);
+        color: var(--global-text-color);
+        font-size: 0.82rem;
+        cursor: pointer;
+        line-height: 1.4;
+
+        &:hover {
+          border-color: var(--global-theme-color);
+          color: var(--global-theme-color);
+        }
+
+        &.active {
+          border-color: var(--global-theme-color);
+          background: var(--global-theme-color);
+          color: var(--global-hover-text-color);
+        }
+      }
+
+      .stochviz-plot {
+        width: 100%;
+        overflow-x: auto;
+
+        svg {
+          display: block;
+          max-width: 100%;
+          height: auto;
+        }
+      }
+    }
   }
 }
 

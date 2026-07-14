@@ -125,3 +125,14 @@ html[data-theme='dark'] {
     display: block;
   }
 }
+
+// Stochviz plot tokens — alias existing theme colors so light/dark track automatically.
+:root,
+html[data-theme='dark'] {
+  --stochviz-bar-stroke: var(--mathbox-definition-accent);
+  --stochviz-bar-fill: color-mix(in srgb, var(--mathbox-definition-accent) 40%, transparent);
+  --stochviz-ref-fill: var(--global-danger-block);
+  --stochviz-axis: var(--mathbox-remark-accent);
+  --stochviz-text: var(--global-distill-app-color);
+  --stochviz-grid: color-mix(in srgb, var(--global-divider-color) 80%, transparent);
+}

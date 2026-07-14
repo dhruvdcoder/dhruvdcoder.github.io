@@ -31,7 +31,7 @@ Create client-rendered TikZ diagrams for Distill posts using [TikZJax](https://t
 | TikZJax loader | `_includes/scripts/tikzjax.html` |
 | Included from | `_includes/head.html` |
 | Distill figure CSS | `_sass/_distill.scss` (`d-figure`, `svg`) |
-| Reference example | `_posts/2026-05-10-ctmc.md` (binomial → Poisson) |
+| Reference example | [examples.md](examples.md) (binomial → Poisson bar chart) |
 
 Enable per post:
 
