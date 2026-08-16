@@ -34,6 +34,26 @@
     font-weight: 600;
   }
 
+  .talk-kind {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.35;
+    vertical-align: middle;
+    margin-right: 0.45rem;
+    padding: 0.05rem 0.4rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--global-theme-color);
+    color: var(--global-theme-color);
+    white-space: nowrap;
+  }
+
+  .talk-kind--contributed {
+    color: var(--global-text-color-light);
+    border-color: rgba(0, 0, 0, 0.18);
+  }
+
   .reviewing-list {
     margin: 0;
     padding-left: 1.25rem;

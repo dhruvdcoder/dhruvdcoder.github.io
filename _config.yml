@@ -202,7 +202,7 @@ announcements:
   scrollable: true # adds a vertical scroll bar if there are more than 3 news items
   limit: # leave blank to include all the news in the `_news` folder
 
-invited_talks:
+talks_section:
   enabled: true
   scrollable: true # adds a vertical scroll bar if there are more than 3 talks
   limit: # leave blank to include all the talks in the `_talks` folder

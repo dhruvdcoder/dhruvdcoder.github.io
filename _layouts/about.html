@@ -65,10 +65,10 @@ layout: default
           </section>
           {%- endif %}
 
-          <!-- Invited talks -->
-          {% if page.invited_talks and site.invited_talks.enabled -%}
+          <!-- Talks -->
+          {% if page.talks and site.talks_section.enabled -%}
           <section class="page-section">
-            <h2 class="page-section-title"><a href="{{ '/talks/' | relative_url }}">invited talks</a></h2>
+            <h2 class="page-section-title"><a href="{{ '/talks/' | relative_url }}">talks</a></h2>
             {%- include talks.html limit=true %}
           </section>
           {%- endif %}
