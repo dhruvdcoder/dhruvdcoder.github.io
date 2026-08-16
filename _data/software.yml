@@ -1,37 +1,21 @@
+# Curated list of featured repositories.
+# Descriptions and star counts are fetched from GitHub when the site is built.
+# Optional per-repo `description` overrides the GitHub text if you ever need one.
+
 sections:
   - title: research code
     repos:
-      - repo: dhruvdcoder/xlm-core
-        description: A modular framework for developing and comparing non-autoregressive language models.
-        stars: 28
-      - repo: dhruvdcoder/LoFlexMDM
-        description: Official implementation for Insertion Based Sequence Generation with Learnable Order Dynamics.
-      - repo: dhruvdcoder/ctmc_dilm
-        description: Official implementation for A Continuous-Time Markov Chain Framework for Insertion Language Models.
-        stars: 2
-      - repo: dhruvdcoder/ILM
-        description: Official implementation for Insertion Language Models — sequence generation with arbitrary-position insertions.
-        stars: 6
-      - repo: dhruvdcoder/HyperA
-        description: A PyTorch implementation of hyperbolic neural networks and attention mechanisms.
-        stars: 12
-      - repo: iesl/box-embeddings
-        description: Box Embeddings as Modules.
-        stars: 114
-      - repo: iesl/box-mlc-iclr-2022
-        description: Official repository for Modeling Label Space Interactions in Multi-label Classification using Box Embeddings.
-        stars: 13
+      - dhruvdcoder/xlm-core
+      - dhruvdcoder/LoFlexMDM
+      - dhruvdcoder/ctmc_dilm
+      - dhruvdcoder/ILM
+      - dhruvdcoder/HyperA
+      - iesl/box-embeddings
+      - iesl/box-mlc-iclr-2022
 
   - title: tools
     repos:
-      - repo: dhruvdcoder/wandb-utils
-        description: Utility functions and a command-line interface built on the official Weights & Biases API.
-        stars: 11
-      - repo: dhruvdcoder/wandb-allennlp
-        description: Utilities and boilerplate for tuning AllenNLP models with Weights & Biases.
-        stars: 21
-      - repo: dhruvdcoder/poly-metic
-        description: A C++ library for polynomial and matrix arithmetic, focused on applications in robot kinematics.
-        stars: 1
-      - repo: dhruvdcoder/manimpress
-        description: Slot-based slide layouts for Manim and Manim Slides.
+      - dhruvdcoder/wandb-utils
+      - dhruvdcoder/wandb-allennlp
+      - dhruvdcoder/poly-metic
+      - dhruvdcoder/manimpress

@@ -16,10 +16,10 @@
     {% if repo.description %}
     <p class="software-repo-description">{{ repo.description }}</p>
     {% endif %}
-    {% if repo.stars %}
+    {% unless repo.stars == nil %}
     <div class="software-repo-meta">
       <i class="fas fa-star" aria-hidden="true"></i> {{ repo.stars }}
     </div>
-    {% endif %}
+    {% endunless %}
   </a>
 </div>
