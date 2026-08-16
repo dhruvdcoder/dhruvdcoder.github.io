@@ -65,6 +65,14 @@ layout: default
           </section>
           {%- endif %}
 
+          <!-- Invited talks -->
+          {% if page.invited_talks and site.invited_talks.enabled -%}
+          <section class="page-section">
+            <h2 class="page-section-title"><a href="{{ '/talks/' | relative_url }}">invited talks</a></h2>
+            {%- include talks.html limit=true %}
+          </section>
+          {%- endif %}
+
           <!-- Latest posts -->
           {% if page.latest_posts -%}
           <section class="page-section">
