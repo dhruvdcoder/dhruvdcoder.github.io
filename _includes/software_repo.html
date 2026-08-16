@@ -8,9 +8,6 @@
 {% assign repo_owner = repo_parts[0] %}
 {% assign repo_name = repo_parts[1] %}
 
-{% if repo_owner == site.github_username %}
-  {% include repository/repo.html repository=repo_id %}
-{% else %}
 <div class="software-repo p-2">
   <a class="software-repo-card" href="https://github.com/{{ repo_id }}" target="_blank" rel="noopener noreferrer">
     <div class="software-repo-header">
@@ -26,4 +23,3 @@
     {% endif %}
   </a>
 </div>
-{% endif %}
