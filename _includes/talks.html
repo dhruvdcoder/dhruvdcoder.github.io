@@ -24,8 +24,9 @@
                     {% if item.inline -%}
                       {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
                     {%- else -%}
-                      {%- if item.url -%}
-                        <a class="news-title" href="{{ item.url }}"{% if item.url contains '://' %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ item.title }}</a>
+                      {%- assign talk_link = item.talk_url | default: item.link -%}
+                      {%- if talk_link -%}
+                        <a class="news-title" href="{{ talk_link }}"{% if talk_link contains '://' %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ item.title }}</a>
                       {%- else -%}
                         <span class="news-title">{{ item.title }}</span>
                       {%- endif -%}
