@@ -1,6 +1,6 @@
-intro: >
-  Selected open-source research code and utilities.
-  See my GitHub profile for the full list.
+# Curated list of featured repositories.
+# Descriptions and star counts are fetched from GitHub when the site is built.
+# Optional per-repo `description` overrides the GitHub text if you ever need one.
 
 sections:
   - title: research code
@@ -10,12 +10,8 @@ sections:
       - dhruvdcoder/ctmc_dilm
       - dhruvdcoder/ILM
       - dhruvdcoder/HyperA
-      - repo: iesl/box-embeddings
-        description: Box Embeddings as Modules
-        stars: 113
-      - repo: iesl/box-mlc-iclr-2022
-        description: Official repository for the paper "Modeling Label Space Interactions in Multi-label Classification using Box Embeddings".
-        stars: 12
+      - iesl/box-embeddings
+      - iesl/box-mlc-iclr-2022
 
   - title: tools
     repos:

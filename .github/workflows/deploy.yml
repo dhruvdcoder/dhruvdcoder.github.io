@@ -10,6 +10,9 @@ on:
       - master
       - main
   workflow_dispatch:
+  # Rebuild weekly so software-page star counts stay current.
+  schedule:
+    - cron: '17 6 * * 1'
 
 permissions:
   contents: write
@@ -27,10 +30,12 @@ jobs:
         ruby-version: '3.2.2'
         bundler-cache: true
     - name: Install and Build 🔧
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        JEKYLL_ENV: production
       run: |
         pip3 install --upgrade jupyter
         npm install -g mermaid.cli
-        export JEKYLL_ENV=production
         bundle exec jekyll build
     - name: Deploy 🚀
       if: github.event_name != 'pull_request'
