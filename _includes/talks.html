@@ -1,0 +1,66 @@
+          <div class="news talks">
+            {% if site.talks != blank -%}
+            {%- assign talks_size = site.talks | size -%}
+            {%- assign talks_scroll_class = "" -%}
+            {%- if site.talks_section.scrollable -%}
+              {%- if include.limit -%}
+                {%- assign talks_scroll_class = "news-scroll news-scroll--compact" -%}
+              {%- else -%}
+                {%- assign talks_scroll_class = "news-scroll news-scroll--full" -%}
+              {%- endif -%}
+            {%- endif -%}
+            <div class="table-responsive {{ talks_scroll_class }}">
+              <table class="table table-sm table-borderless">
+              {%- assign talks = site.talks | sort: "date" | reverse -%}
+              {% if include.limit and site.talks_section.limit %}
+              {% assign talks_limit = site.talks_section.limit %}
+              {% else %}
+              {% assign talks_limit = talks_size %}
+              {% endif %}
+              {% for item in talks limit: talks_limit %}
+                {%- assign talk_kind = item.kind | default: item.talk_type | downcase | strip -%}
+                <tr>
+                  <th scope="row">{% if item.display_date %}{{ item.display_date }}{% else %}{{ item.date | date: "%b %-d, %Y" }}{% endif %}</th>
+                  <td>
+                    {%- if talk_kind == "invited" or talk_kind == "contributed" -%}
+                      <span class="talk-kind talk-kind--{{ talk_kind }}">{{ talk_kind }}</span>
+                    {%- endif -%}
+                    {% if item.inline -%}
+                      {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
+                    {%- else -%}
+                      {%- assign talk_link = item.talk_url | default: item.link -%}
+                      {%- if talk_link -%}
+                        <a class="news-title" href="{{ talk_link }}"{% if talk_link contains '://' %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ item.title }}</a>
+                      {%- else -%}
+                        <span class="news-title">{{ item.title }}</span>
+                      {%- endif -%}
+                      {%- if item.venue -%}
+                        , {{ item.venue }}
+                      {%- endif -%}
+                      {%- if item.location -%}
+                        , {{ item.location }}
+                      {%- endif -%}
+                      {%- if item.slides -%}
+                        {%- assign slides_href = item.slides -%}
+                        {%- unless slides_href contains '://' -%}
+                          {%- assign slides_href = slides_href | relative_url -%}
+                        {%- endunless -%}
+                        &nbsp;[<a href="{{ slides_href }}">slides</a>]
+                      {%- endif -%}
+                      {%- if item.video -%}
+                        {%- assign video_href = item.video -%}
+                        {%- unless video_href contains '://' -%}
+                          {%- assign video_href = video_href | relative_url -%}
+                        {%- endunless -%}
+                        &nbsp;[<a href="{{ video_href }}"{% if item.video contains '://' %} target="_blank" rel="noopener noreferrer"{% endif %}>video</a>]
+                      {%- endif -%}
+                    {%- endif %}
+                  </td>
+                </tr>
+              {%- endfor %}
+              </table>
+            </div>
+          {%- else -%}
+            <p>No talks so far...</p>
+          {%- endif %}
+          </div>
