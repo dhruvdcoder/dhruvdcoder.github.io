@@ -5,3 +5,8 @@ _site/
 .bundle/
 vendor/
 .DS_Store
+.specstory/
+.tweet-cache/
+.vscode/
+.claude/
+.cursorindexingignore
