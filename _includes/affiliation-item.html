@@ -1,0 +1,9 @@
+{% comment %} Usage: {% include affiliation-item.html item=item %} {% endcomment %}
+{% assign item = include.item %}
+<div class="timeline-row">
+  <span class="timeline-row__date">{{ item.start }}&ndash;{{ item.end | default: "present" }}</span>
+  <span>
+    <strong>{{ item.org }}</strong>{% if item.role %} &mdash; {{ item.role }}{% endif %}
+    {% if item.location %}<span class="text-faint"> · {{ item.location }}</span>{% endif %}
+  </span>
+</div>

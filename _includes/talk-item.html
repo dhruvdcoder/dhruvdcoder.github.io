@@ -1,0 +1,9 @@
+{% comment %} Usage: {% include talk-item.html item=item %} {% endcomment %}
+{% assign item = include.item %}
+<div class="timeline-row">
+  <span class="timeline-row__date">{{ item.date }}</span>
+  <span>
+    {% if item.tag %}<span class="tag tag--magenta">{{ item.tag }}</span>{% endif %}
+    {{ item.text }}
+  </span>
+</div>

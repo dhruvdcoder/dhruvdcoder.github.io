@@ -1,0 +1,12 @@
+{%- if site.enable_math -%}
+<script type="text/javascript">
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script defer type="text/javascript" id="MathJax-script"
+  src="https://cdn.jsdelivr.net/npm/mathjax@{{ site.mathjax.version | default: '3.2.0' }}/es5/tex-mml-chtml.js"></script>
+{%- endif %}

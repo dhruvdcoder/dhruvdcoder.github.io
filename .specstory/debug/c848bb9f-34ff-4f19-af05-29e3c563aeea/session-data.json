@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "1.0",
+  "provider": {
+    "id": "cursoride",
+    "name": "Cursor IDE",
+    "version": "unknown"
+  },
+  "sessionId": "c848bb9f-34ff-4f19-af05-29e3c563aeea",
+  "createdAt": "2026-07-22T23:27:26-04:00",
+  "slug": "blog-entry-draft-process",
+  "workspaceRoot": "/Users/dhruveshpatel/Files/dhruvdcoder.github.io",
+  "exchanges": [
+    {
+      "exchangeId": "c848bb9f-34ff-4f19-af05-29e3c563aeea:0",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "How do I make a blog entry a draft?"
+            }
+          ]
+        },
+        {
+          "role": "agent",
+          "model": "grok-4.5",
+          "content": [
+            {
+              "type": "thinking",
+              "text": "The user wants to know how to set a blog entry to draft status.\n\nChecking their Jekyll setup to determine whether to use the `_drafts/` folder or `published: false` in front matter."
+            }
+          ],
+          "metadata": {
+            "mode": "Agent"
+          }
+        },
+        {
+          "role": "agent",
+          "model": "grok-4.5",
+          "content": [
+            {
+              "type": "text",
+              "text": "Checking how this Jekyll site handles drafts."
+            }
+          ],
+          "metadata": {
+            "mode": "Agent"
+          }
+        },
+        {
+          "role": "agent",
+          "model": "grok-4.5",
+          "tool": {
+            "name": "ripgrep_raw_search",
+            "type": "unknown",
+            "summary": "Tool use: **ripgrep_raw_search**",
+            "formattedMarkdown": "\nParameters:\n\n```json\n{\n  \"caseInsensitive\": false,\n  \"glob\": \"*.{yml,yaml,md,html}\",\n  \"path\": \"/Users/dhruveshpatel/Files/dhruvdcoder.github.io\",\n  \"pattern\": \"draft|published\"\n}\n```\nAdditional data:\n\n```json\n{\n  \"isPruned\": true,\n  \"outputMode\": \"content\",\n  \"path\": \"/Users/dhruveshpatel/Files/dhruvdcoder.github.io\",\n  \"pattern\": \"draft|published\",\n  \"topFiles\": [\n    {\n      \"matchCount\": 4,\n      \"uri\": \"./.cursor/skills/obsidian-to-distill/SKILL.md\"\n    },\n    {\n      \"matchCount\": 3,\n      \"uri\": \"./.cursor/skills/distill-d3-widget/SKILL.md\"\n    },\n    {\n      \"matchCount\": 2,\n      \"uri\": \"./.cursor/skills/distill-tikz/SKILL.md\"\n    },\n    {\n      \"matchCount\": 1,\n      \"uri\": \"./_layouts/distill.html\"\n    },\n    {\n      \"matchCount\": 1,\n      \"uri\": \"./_pages/about.md\"\n    },\n    {\n      \"matchCount\": 1,\n      \"uri\": \"./_config.yml\"\n    },\n    {\n      \"matchCount\": 1,\n      \"uri\": \"./_includes/scripts/progressBar.html\"\n    },\n    {\n      \"matchCount\": 2,\n      \"uri\": \"./_drafts/DILM_preprint.md\"\n    },\n    {\n      \"matchCount\": 1,\n      \"uri\": \"./README.md\"\n    },\n    {\n      \"matchCount\": 1,\n      \"uri\": \"./_posts/2018-04-15-relative_entropy.md\"\n    },\n    {\n      \"matchCount\": 1,\n      \"uri\": \"./_projects/swz.md\"\n    }\n  ],\n  \"totalFiles\": 11,\n  \"totalMatches\": 18\n}\n```\nStatus: **completed**\n\n"
+          },
+          "metadata": {
+            "mode": "Agent"
+          }
+        },
+        {
+          "role": "agent",
+          "model": "grok-4.5",
+          "tool": {
+            "name": "glob_file_search",
+            "type": "search",
+            "summary": "Tool use: **glob_file_search** • Searched codebase \"\" • **3** results in **1** directory",
+            "formattedMarkdown": "\nDirectory: **`/Users/dhruveshpatel/Files/dhruvdcoder.github.io`** (3 files)\n\n| File |\n|------|\n| `_drafts/DILM_preprint.md` |\n| `_drafts/2023-12-25-dynamic-decoding.md` |\n| `_drafts/2023-10-20-history-of-uncertainty.md` |\n"
+          },
+          "metadata": {
+            "mode": "Agent"
+          }
+        },
+        {
+          "role": "agent",
+          "model": "grok-4.5",
+          "tool": {
+            "name": "read_file_v2",
+            "type": "read",
+            "summary": "Tool use: **read_file_v2** • Read file: /Users/dhruveshpatel/Files/dhruvdcoder.github.io/_posts/2026-05-10-ctmc.md",
+            "formattedMarkdown": ""
+          },
+          "metadata": {
+            "mode": "Agent"
+          }
+        },
+        {
+          "role": "agent",
+          "model": "grok-4.5",
+          "tool": {
+            "name": "glob_file_search",
+            "type": "search",
+            "summary": "Tool use: **glob_file_search** • Searched codebase \"\" • **1** result in **1** directory",
+            "formattedMarkdown": "\nDirectory: **`/Users/dhruveshpatel/Files/dhruvdcoder.github.io`** (1 file)\n\n| File |\n|------|\n| `_config.yml` |\n"
+          },
+          "metadata": {
+            "mode": "Agent"
+          }
+        },
+        {
+          "role": "agent",
+          "model": "grok-4.5",
+          "content": [
+            {
+              "type": "thinking",
+              "text": "This is a Jekyll or al-folio site. Draft posts belong in the `_drafts/` folder."
+            }
+          ],
+          "metadata": {
+            "mode": "Agent"
+          }
+        },
+        {
+          "role": "agent",
+          "model": "grok-4.5",
+          "content": [
+            {
+              "type": "text",
+              "text": "Move the post into `_drafts/` instead of `_posts/`.\n\nThis site already uses that pattern (e.g. `_drafts/2023-12-25-dynamic-decoding.md`). Jekyll skips `_drafts/` on a normal build/deploy, so the post won’t go live.\n\n**To draft an existing post**\n\n1. Move it from `_posts/` → `_drafts/`\n2. You can keep or drop the date prefix; drafts don’t need a publish date until you ship them\n\nExample for your CTMC post:\n\n```bash\nmv _posts/2026-05-10-ctmc.md _drafts/2026-05-10-ctmc.md\n```\n\n**To preview drafts locally**\n\n```bash\nbundle exec jekyll serve --drafts\n```\n\n**To publish later**\n\nMove the file back to `_posts/` with a `YYYY-MM-DD-slug.md` name (and set `date` in the front matter if you use it)."
+            }
+          ],
+          "metadata": {
+            "mode": "Agent"
+          }
+        }
+      ]
+    }
+  ]
+}

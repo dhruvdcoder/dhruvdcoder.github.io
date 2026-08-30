@@ -1,0 +1,367 @@
+---
+title: "Continuous-Time Markov Chains: An Intuitive Guide"
+subtitle: "A gentle introduction to continuous-time Markov chains, built up from the Poisson process."
+kicker: "Probability Theory"
+role: "PhD Researcher, UMass Amherst"
+date: 2026-05-10
+tags: [stochastic-processes, markov-chains]
+excerpt: "We go over the basics of continuous-time Markov chains, building intuition from the Poisson process up. The proofs use only basic calculus — no measure theory required."
+d3: true
+redirect_from:
+  - /blog/2026/ctmc/
+cite: "Patel, D. (2026). Continuous-time Markov chains: an intuitive guide. Working Notes."
+bibtex: |
+  @misc{patel2026ctmc,
+    author = {Patel, Dhruvesh},
+    title  = {Continuous-Time Markov Chains: An Intuitive Guide},
+    year   = {2026},
+    note   = {Working Notes}
+  }
+---
+
+## Overview
+
+In this post, we will go over the basics of continuous-time Markov chains (CTMCs).
+The main goal is to provide an intuitive view of CTMCs.
+There are some proofs but they don't use any measure theory---just basic calculus.
+
+<details class="callout callout--note" markdown="1">
+<summary class="callout__label">Prerequisites</summary>
+
+This post assumes a basic understanding of:
+
+- probability (random variables, expectation, conditional probability)
+- calculus (limits, derivatives, integrals)
+- discrete-time Markov chains (transition matrices, stationary distributions)
+</details>
+
+## Poisson Processes
+
+The Poisson process is the simplest CTMC, and provides most of the intuition needed for the general case.
+
+### Counting process definition
+
+<div class="callout" markdown="1">
+<div class="callout__label">Definition &mdash; Counting process</div>
+
+A counting process $C_t$ is a [stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) that:
+
+1. takes values in the non-negative integers, i.e., $C_t \in \mathbb{Z}_{\geq 0}$;
+2. is non-decreasing: $C_t \geq C_{t^{\prime}}$ for $t \geq t^{\prime}$.
+</div>
+
+A counting process is said to have **independent increments** if the number of events occurring in disjoint time intervals are independent.
+That is, $C(t+s) - C(t)$ is independent of $C(t)$: the number of events between $t$ and $t+s$ is independent of the number of events between time $0$ and $t$, and vice versa.
+
+A counting process is said to have **stationary increments** (also called time-homogeneous or simply homogeneous) if increments depend only on the length of the time interval and not on its position.
+That is, for all $t_1, t_2, s > 0$ and $n \geq 0$,
+
+$$
+\operatorname{Prob}\bigl(C(t_1+s) - C(t_1) = n\bigr) = \operatorname{Prob}\bigl(C(t_2+s) - C(t_2) = n\bigr).
+$$
+
+Together, independent and stationary increments mean that increments on disjoint intervals are IID.
+
+### Poisson process
+
+<div class="callout" markdown="1">
+<div class="callout__label">Definition &mdash; Poisson Process</div>
+
+A counting process $N(t)$ is a Poisson process with rate $\lambda$ if [[1]](#references):
+
+1. $N(0) = 0$, i.e., $\operatorname{Prob}(N(0) = 0) = 1$;
+2. it has independent and stationary increments;
+3. for small $t$, $\operatorname{Prob}(N(t) = 1) = \lambda t + o(t)$;
+4. for small $t$, $\operatorname{Prob}(N(t) \geq 2) = o(t)$,
+</div>
+
+where $o(t) = \{ f \in \mathbb{R}^{\mathbb{R}} \mid \lim_{t \to 0} f(t)/t = 0 \}$, and in (3) and (4) the notation $o(t)$ means any function from this set.
+
+Therefore,
+
+$$
+\operatorname{Prob}(N(t) = 1) = \lambda t + o(t) \implies \lim_{t \to 0} \frac{\operatorname{Prob}(N(t) = 1)}{t} = \lambda.
+$$
+
+One can also show that the following definition is equivalent.
+
+<div class="callout" markdown="1">
+<div class="callout__label">Definition &mdash; Poisson Process (2)</div>
+
+A counting process $\{N(t), t > 0\}$ is said to be a **Poisson process** with rate $\lambda$ if [[1]](#references):
+
+1. $N(0) = 0$ a.s., i.e., $\operatorname{Prob}(N(0) = 0) = 1$;
+2. it has independent increments;
+3. $\operatorname{Prob}(N(s+t) - N(s) = n) = e^{-\lambda t}\frac{(\lambda t)^n}{n!}$ for all $s, t > 0$.
+</div>
+
+That is, the number of events in an interval of length $t$ has a Poisson distribution with rate $\lambda t$.
+Note that (3) implies stationary increments.
+To get some intuition, we show that the first definition implies the second.
+
+<details class="callout callout--proof" markdown="1">
+<summary class="callout__label">Proof</summary>
+
+Call the two definitions D1 and D2.
+We will show that D1(2, 3, 4) implies D2(3).
+Let $T_1$ be the first arrival time and denote $p_t(k):=\operatorname{Prob}(N(t)=k)$. Then D1(3) implies:
+$$
+\lim_{t \to 0} \frac{p_t(1)}{t} = \lambda. \qquad (3)
+$$
+From D1(1) we have $p_0(1) = 0$.
+
+Note that
+
+$$
+\begin{aligned}
+\operatorname{Prob}(N(t+h) - N(t) = 0) &= \operatorname{Prob}(N(h) - N(0) = 0) ~~\text{(by D1(2))}\\
+&= \operatorname{Prob}(N(h) = 0) = p_h(0) ~~\text{(by D1(3))}
+\end{aligned}
+$$
+
+Therefore,
+
+$$
+\begin{aligned}
+\operatorname{Prob}(T_1 > t+h) &= \operatorname{Prob}(T_1 > t) \operatorname{Prob}(T_1 > t+h \mid T_1 > t)\\
+&= \operatorname{Prob}(T_1 > t) \operatorname{Prob}(N(t+h) - N(t) = 0)\\
+&= \operatorname{Prob}(T_1 > t) p_h(0)\\
+&= \operatorname{Prob}(T_1 > t) (1 - \lambda h + o(h))
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\implies \lim_{h \to 0} \frac{\operatorname{Prob}(T_1 > t+h) - \operatorname{Prob}(T_1 > t)}{h} &= \lim_{h \to 0} \frac{\operatorname{Prob}(T_1 > t)[-\lambda h+ o(h)]}{h}\\
+\implies \frac{\partial \operatorname{Prob}(T_1 > t)}{\partial t} &= -\lambda \operatorname{Prob}(T_1 > t)\\
+\implies \operatorname{Prob}(T_1 > t) &= e^{-\lambda t}\\
+\implies \operatorname{Prob}(T_1 \leq t) &= 1 - e^{-\lambda t} \qquad (4)
+\end{aligned}
+$$
+
+That is, the time of first arrival is exponentially distributed with rate $\lambda$ and density $f(t) = \lambda e^{-\lambda t}$.
+
+Now,
+
+$$
+\begin{aligned}
+p_t(1) &= \operatorname{Prob}(N(t) = 1) = \int_0^t f(s) \operatorname{Prob}(N(t) - N(s) = 0) \mathrm{d}s ~~\text{by D1(2)}\\
+&= \int_0^t \lambda e^{-\lambda s} e^{-\lambda (t-s)} \mathrm{d}s\\
+&= \lambda t e^{-\lambda t}
+\end{aligned}
+$$
+
+Similarly,
+
+$$
+\begin{aligned}
+p_t(n) &= \int_{0}^t \lambda e^{-\lambda s} p_{t-s}(n-1) \mathrm{d}s
+\end{aligned}
+$$
+
+Assume that $p_{t-s}(n-1) = \frac{(\lambda (t-s))^{n-1}}{(n-1)!} e^{-\lambda (t-s)}$. Then we obtain the desired result using induction.
+
+<span class="callout__qed">&#8718;</span>
+</details>
+
+Following are some properties of the Poisson process.
+
+1. Let $T_1, ..., T_n$ denote the arrival times of the first $n$ events. Then the inter-arrival times $D_i = T_i - T_{i-1}$ are independent and exponentially distributed with parameter $\lambda$. We have already shown this for $D_1$ in the proof above. It applies to all $D_i$ by independence and stationarity.
+
+2. The number of events in a time interval of length $t$ has Poisson distribution with rate $\lambda t$.
+
+3. Poisson counts in an interval are a type of rare-event limit of binomial trials. See the next section for what this means.
+
+### Poisson approximation of the Binomial
+
+The Binomial distribution models the number of heads $K$ in a sequence of $n$ independent coin tosses with success probability $p$:
+
+$$
+\text{Binomial}(k; n, p) = {n \choose k} p^k (1-p)^{n-k}.
+$$
+
+Now suppose the probability of a head is $p=\lambda/n$.
+As the number of trials $n$ grows, $p$ goes to $0$, but the probability remains well defined at the limit.
+
+To see this, expand the binomial pmf and take the limit as $n \to \infty$:
+
+$$
+\begin{aligned}
+p(k; n, \lambda/n)
+  &= \frac{n(n-1)\cdots(n-k+1)}{k!} \frac{\lambda^k}{n^k}\left(1-\frac{\lambda}{n}\right)^{n-k} \\
+  &= \frac{\lambda^k}{k!}\left(\frac{n}{n}\frac{n-1}{n}\cdots \frac{n-k+1}{n}\right)\left(1+\frac{-\lambda}{n}\right)^n \left(1-\frac{\lambda}{n}\right)^{-k} \\
+  &\implies \lim_{n \to \infty} p(k; n, \lambda/n)= \frac{\lambda^k}{k!} \exp(-\lambda).
+\end{aligned}
+$$
+
+So for large $n$, the binomial distribution with $p = \lambda/n$ is approximately Poisson with rate $\lambda$.
+Letting $p = \lambda/n$ means that the probability of an individual head slowly reduces to $0$ as $n \to \infty$.
+
+The figure below shows the intuition: drag $n$ to see the unit interval split into $n$ equal subintervals of length $1/n$, each with success probability $p = \lambda/n$, while the <span style="color:#5b8fd4">Binomial pmf</span> tracks the <span style="color:#e03131">Poisson$(\lambda)$ pmf</span> as the limit.
+
+<figure>
+<div class="stochviz-panel" id="binom-poisson-widget">
+  <div class="stochviz-controls">
+    <div class="stochviz-control-group">
+      <label for="binom-poisson-n">$n$</label>
+      <input class="stochviz-n-slider" id="binom-poisson-n" type="range" min="5" max="500" step="5" value="10" aria-label="Number of subintervals n">
+      <span class="stochviz-meta"><span class="stochviz-n-out">10</span> subintervals, $p =$ <span class="stochviz-p-out">0.3</span></span>
+    </div>
+  </div>
+  <div class="stochviz-interval" aria-hidden="false"></div>
+  <div class="stochviz-plot" aria-hidden="false"></div>
+</div>
+  <figcaption>
+    <b>Figure 1.</b>
+    As $n$ grows, the subintervals shrink and the Binomial$(n,\lambda/n)$ pmf (blue bars) converges to the Poisson$(\lambda)$ pmf (red dots).
+  </figcaption>
+</figure>
+
+<script src="{{ '/assets/js/stochviz/distributions.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/posts/ctmc/binomial-poisson-convergence.js' | relative_url }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var root = document.getElementById('binom-poisson-widget');
+  if (root && window.createBinomialPoissonConvergenceWidget) {
+    createBinomialPoissonConvergenceWidget(root, { lambda: 3, n: 10 });
+  }
+});
+</script>
+
+## Non-homogeneous Poisson processes
+
+In a homogeneous Poisson process, events arrive at a constant rate $\lambda$, and the number of events in an interval depends only on its length:
+
+$$
+N(s,t] \sim \operatorname{Poisson}\bigl(\lambda(t-s)\bigr).
+$$
+
+A **non-homogeneous Poisson process** allows the rate to vary with time [[1]](#references).
+It keeps independent increments, but loses stationary increments: an interval during a high-rate period contains more events on average than an equally long interval during a low-rate period.
+
+More formally, let $\lambda(t) \geq 0$ be a locally integrable rate function.
+A counting process $N(t)$ is a non-homogeneous Poisson process with rate $\lambda(t)$ if $N(0)=0$, it has independent increments, and as $h \downarrow 0$,
+
+$$
+\begin{aligned}
+\operatorname{Prob}\bigl(N(t,t+h]=1\bigr) &= \lambda(t)h+o(h),\\
+\operatorname{Prob}\bigl(N(t,t+h]>1\bigr) &= o(h).
+\end{aligned}
+$$
+
+Thus $\lambda(t)h$ is approximately the probability of one event in a short interval of length $h$ beginning at $t$. Compare this to the definition of homogeneous Poisson process in the previous section.
+
+### A nonuniform clock
+
+The cleanest way to understand this process is as an ordinary Poisson process running on a nonuniform clock.
+Define the **cumulative intensity**
+
+$$
+\Lambda(t)=\int_0^t\lambda(r)\,\mathrm{d}r,
+$$
+
+and let $M(u)$ be a homogeneous Poisson process with rate $1$.
+Then
+
+$$
+N(t)=M\bigl(\Lambda(t)\bigr)
+$$
+
+is a non-homogeneous Poisson process with rate $\lambda(t)$.
+Physical time passes quickly on the Poisson clock when $\lambda(t)$ is large and slowly when $\lambda(t)$ is small.
+
+This time change immediately gives the distribution of every increment:
+
+$$
+\begin{aligned}
+N(s,t]
+&=M\bigl(\Lambda(t)\bigr)-M\bigl(\Lambda(s)\bigr)\\
+&\sim \operatorname{Poisson}\bigl(\Lambda(t)-\Lambda(s)\bigr)\\
+&=\operatorname{Poisson}\left(\int_s^t\lambda(r)\,\mathrm{d}r\right).
+\end{aligned}
+$$
+
+Disjoint physical-time intervals map to disjoint intervals on the Poisson clock, so independent increments are preserved.
+In particular,
+
+$$
+\mathbb{E}[N(s,t]]
+=\operatorname{Var}(N(s,t])
+=\int_s^t\lambda(r)\,\mathrm{d}r.
+$$
+
+The cumulative intensity therefore plays the same role for a non-homogeneous process that $\lambda t$ plays for a homogeneous process.
+
+### Arrival and waiting times
+
+Let $S_n$ and $T_n$ denote the $n$th arrival times of $M$ and $N$, respectively.
+If $\Lambda$ is strictly increasing, then
+
+$$
+T_n=\Lambda^{-1}(S_n),
+\qquad
+\Lambda(T_n)=S_n\sim\operatorname{Gamma}(n,1).
+$$
+
+When $\lambda$ vanishes on an interval, the same statement holds using the generalized inverse of $\Lambda$.
+Arrival times are therefore Gamma-distributed on the cumulative-intensity clock, though generally not in physical time.
+
+For the first arrival, we can derive the survival probability directly from the event that no arrivals have occurred:
+
+$$
+\operatorname{Prob}(T_1>t)
+=\operatorname{Prob}(N(t)=0)
+=e^{-\Lambda(t)}.
+$$
+
+Differentiating gives
+
+$$
+f_{T_1}(t)
+=\lambda(t)e^{-\Lambda(t)}.
+$$
+
+Equivalently, $\Lambda(T_1)\sim\operatorname{Exponential}(1)$.
+More generally, if the last observed time is $s$, then
+
+$$
+\operatorname{Prob}(T_{\mathrm{next}}>t\mid T_{\mathrm{next}}>s)
+=\exp\left(-\int_s^t\lambda(r)\,\mathrm{d}r\right),
+\qquad t\geq s.
+$$
+
+Thus waiting times are exponential on the cumulative-intensity clock, but they are generally neither exponential nor identically distributed in physical time.
+
+### Prescribing the first-arrival distribution
+
+This is an important special case used throughout the literature on discrete flow matching and discrete diffusion.
+
+Suppose that time is bounded to $[0,1]$ and we want a single event to occur with a chosen arrival-time distribution.
+Let $F$ be an absolutely continuous CDF with density $f$, where $F(0)=0$ and $F(1)=1$.
+We seek an intensity whose first arrival $T_1$ has CDF $F$.
+
+The desired survival probability is
+
+$$
+S(t)=1-F(t)=e^{-\Lambda(t)}.
+$$
+
+Taking a derivative shows that the required intensity is precisely the hazard rate:
+
+$$
+\lambda(t) = \frac{f(t)}{1 - F(t)}.
+$$
+
+Conversely, substituting this rate into the first-arrival density recovers the chosen distribution:
+
+$$
+f(t) = \lambda(t)(1 - F(t)) = \lambda(t) S(t) = \lambda(t) e^{-\int_0^t \lambda(s)\,\mathrm{d}s}.
+$$
+
+Guaranteeing an arrival by time $1$ requires $\Lambda(t)\to\infty$ as $t\uparrow1$, so the hazard generally diverges near the endpoint.
+The underlying Poisson process does not stop after this arrival and may produce further events.
+To obtain a genuine one-event process, stop it at $T_1$, or equivalently use the binary process $X(t)=\mathbf{1}\{T_1\leq t\}$.
+
+### References
+
+1. Ross, S. M. (2007). *Stochastic Processes* (2nd ed.). Wiley.

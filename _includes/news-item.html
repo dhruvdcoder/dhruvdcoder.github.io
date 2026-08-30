@@ -1,0 +1,6 @@
+{% comment %} Usage: {% include news-item.html item=item %} {% endcomment %}
+{% assign item = include.item %}
+<div class="timeline-row">
+  <span class="timeline-row__date">{{ item.date }}</span>
+  <span>{{ item.text }}</span>
+</div>

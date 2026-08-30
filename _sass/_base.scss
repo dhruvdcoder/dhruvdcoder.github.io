@@ -1,0 +1,70 @@
+// Base element styles: near-black serif type on paper-white, no boxes or
+// dividers except .card (per Broadsheet design system).
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bs-paper);
+  color: var(--bs-ink);
+  font-family: var(--bs-font-serif);
+  font-size: var(--bs-fs-body);
+  line-height: var(--bs-lh-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+// Body-copy links use the deep, readable accent step (--bs-cyan =
+// --color-accent-700 in the source system) rather than the vivid base
+// accent, which the design system's own readme notes falls short of
+// body-text contrast. Components that need an inherited/neutral link
+// color (nav, footer) override this locally.
+a {
+  color: var(--bs-cyan);
+  text-decoration-color: var(--bs-ink-45);
+  text-underline-offset: 0.15em;
+}
+a:hover { color: var(--bs-magenta); text-decoration-color: var(--bs-magenta); }
+
+h1, h2, h3, h4 {
+  font-family: var(--bs-font-serif);
+  line-height: var(--bs-lh-tight);
+  margin: 0 0 var(--bs-space-4);
+  font-weight: 600;
+}
+h1 { font-size: var(--bs-fs-h1); }
+h2 { font-size: var(--bs-fs-h2); }
+h3 { font-size: var(--bs-fs-h3); }
+
+p { margin: 0 0 var(--bs-space-4); }
+
+.content {
+  max-width: var(--bs-content-width);
+  margin: 0 auto;
+  padding: var(--bs-space-8) var(--bs-space-4) var(--bs-space-16);
+  position: relative;
+}
+.content--wide { max-width: var(--bs-wide-width); }
+
+img { max-width: 100%; display: block; }
+
+.mono { font-family: var(--bs-font-mono); }
+.text-muted { color: var(--bs-ink-70); }
+.text-faint { color: var(--bs-ink-45); }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

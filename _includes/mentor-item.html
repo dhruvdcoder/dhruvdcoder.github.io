@@ -1,0 +1,6 @@
+{% comment %} Usage: {% include mentor-item.html item=item %} {% endcomment %}
+{% assign item = include.item %}
+<li class="mentor-item">
+  {% if item.url %}<a href="{{ item.url }}">{{ item.name }}</a>{% else %}{{ item.name }}{% endif %}
+  {% if item.affiliation %}<span class="mentor-item__affil"> — {{ item.affiliation }}</span>{% endif %}
+</li>

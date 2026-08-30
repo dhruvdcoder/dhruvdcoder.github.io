@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<div class="content">
+  <div style="position: relative; z-index: 1;">
+    <h1>
+      Tag: <span class="tag">{{ page.tag }}</span>
+    </h1>
+
+    {% assign filtered = site.posts | where_exp: "p", "p.tags contains page.tag" %}
+    <ul class="post-list">
+      {% for post in filtered %}
+        <li class="post-list__item">
+          <span class="post-list__date">{{ post.date | date: "%b %-d, %Y" }}</span>
+          <h2 style="margin-bottom: 0;"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <p><a href="{{ '/blog/' | relative_url }}">&larr; All posts</a></p>
+  </div>
+</div>

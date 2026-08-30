@@ -1,0 +1,37 @@
+# News items for the About page "News" section. date + text.
+- date: "Jul 8, 2026"
+  text: 'Presenting <a href="https://aclanthology.org/2026.eacl-demo.31/">xLM</a> at the Bridging Research and Open Source social at ICML 2026 in Seoul!'
+- date: "Jun 23, 2026"
+  text: 'The new <a href="https://www.iesl.cs.umass.edu/diffusion">dIESL</a> page is up — our reading and working group on non-autoregressive LLMs at IESL.'
+- date: "May 15, 2026"
+  text: "Learned Relay Representations for Forward-Thinking Discrete Diffusion Models was accepted at the ICML 2026 Workshop on Foundations of Deep Generative Models!"
+- date: "May 1, 2026"
+  text: "Insertion Based Sequence Generation with Learnable Order Dynamics was accepted at ICML 2026!"
+- date: "Mar 10, 2026"
+  text: "xLM: A Python Package for Non-Autoregressive Language Models was accepted at the EACL 2026 System Demonstrations track!"
+- date: "Jan 15, 2026"
+  text: "A Continuous-Time Markov Chain Framework for Insertion Language Models was accepted as a <strong>spotlight</strong> paper (top 6%) at AISTATS 2026!"
+- date: "Oct 1, 2025"
+  text: "Presenting Improved Sampling from Masked Diffusion Models with Position Contrastive Guidance at the SPIGM workshop at NeurIPS 2025."
+- date: "Jun 1, 2025"
+  text: 'Work on <a href="/projects/ilm/">Insertion Language Models (ILMs)</a> is out on arXiv! It will be presented at the SPIGM workshop at NeurIPS 2025.'
+- date: "Oct 1, 2024"
+  text: '<a href="https://openreview.net/forum?id=HFS800reZK">Learning Representations for Hierarchies with Minimal Support</a> was accepted at NeurIPS 2024!'
+- date: "Apr 1, 2024"
+  text: '<a href="https://arxiv.org/abs/2403.03141">Language Guided Exploration for RL Agents in Text Environments</a> was accepted at NAACL (findings) 2024.'
+- date: "Aug 1, 2023"
+  text: 'My work on <a href="/projects/vlamp/">Pre-trained language models for Visual Planning for Human Assistance</a>, done as a research intern at Meta Reality Labs, has been accepted at ICCV 2023.'
+- date: "Sep 7, 2022"
+  text: 'Super excited to start my internship at <a href="https://about.meta.com/realitylabs/">Meta Reality Labs</a>!'
+- date: "Apr 25, 2022"
+  text: 'Excited to present our work on <a href="https://openreview.net/forum?id=tyTH9kOxcvh">multi-label classification using box embeddings</a> at ICLR 2022!'
+- date: "Nov 1, 2020"
+  text: 'Happy to announce that I will be starting my Ph.D. in Spring (January) 2021 at UMass Amherst with <a href="https://people.cs.umass.edu/~mccallum/">Prof. Andrew McCallum</a> as my advisor.'
+- date: "Oct 1, 2020"
+  text: 'Internship work done at <a href="https://www.abridge.com/">Abridge AI</a> is accepted at the Clinical NLP workshop 2020.'
+- date: "Sep 30, 2020"
+  text: '<a href="https://arxiv.org/abs/2010.01713">Reading Comprehension as Natural Language Inference: A Semantic Analysis</a> is accepted at *SEM 2020.'
+- date: "May 10, 2020"
+  text: 'Excited to start a research internship at <a href="https://www.abridge.com/">Abridge AI</a>.'
+- date: "Jan 15, 2020"
+  text: "Paper titled Representing Joint Hierarchies using Box Embeddings is accepted at AKBC 2020."

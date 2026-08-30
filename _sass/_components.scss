@@ -1,0 +1,320 @@
+// Broadsheet components: .btn, .tag, .card, .nav, .table, .dialog
+// plus structural helpers used by the theme's layouts/includes
+// (.hero, .section-heading, .timeline-row, .pub-item, .news-item …)
+
+// -- nav --------------------------------------------------------------
+.nav {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--bs-space-4);
+  max-width: var(--bs-wide-width);
+  margin: 0 auto;
+  padding: var(--bs-space-6) var(--bs-space-4) var(--bs-space-4);
+  flex-wrap: wrap;
+}
+.nav__brand {
+  color: inherit;
+  font-family: var(--bs-font-serif);
+  font-weight: 600;
+  font-size: 1.125rem;
+  text-decoration: none;
+}
+.nav__links {
+  display: flex;
+  gap: var(--bs-space-4);
+  list-style: none;
+  margin: 0; padding: 0;
+  font-family: var(--bs-font-serif);
+  font-size: var(--bs-fs-small);
+}
+.nav__links a { text-decoration: none; color: inherit; }
+.nav__links a:hover, .nav__links a[aria-current="page"] { color: var(--bs-cyan); }
+
+// -- buttons ------------------------------------------------------------
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bs-space-2);
+  padding: var(--bs-space-2) calc(var(--bs-space-3) * 1.2);
+  border: 1px solid transparent;
+  border-radius: var(--bs-radius-md);
+  background: transparent;
+  color: var(--bs-ink);
+  font-family: var(--bs-font-serif);
+  font-weight: 600;
+  font-size: var(--bs-fs-small);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+// Default (.btn with no modifier) mirrors the design system's
+// .btn-secondary: an outlined neutral button.
+.btn { border-color: var(--bs-ink-15); }
+.btn:hover { background: rgba(32, 30, 29, 0.07); }
+.btn--accent { background: var(--bs-cyan-500); color: var(--bs-paper); border-color: var(--bs-cyan-500); }
+.btn--accent:hover { background: var(--bs-cyan); border-color: var(--bs-cyan); }
+.btn--ghost { border-color: transparent; color: var(--bs-cyan); padding-inline: var(--bs-space-1); }
+.btn--ghost:hover { background: rgba(0, 136, 176, 0.1); }
+
+// -- tag ------------------------------------------------------------
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.19em 0.625em;
+  border-radius: calc(var(--bs-radius-md) * 0.75);
+  font-family: var(--bs-font-serif);
+  font-size: 0.6875rem;
+  letter-spacing: 0.02em;
+  color: var(--bs-cyan-800);
+  background: var(--bs-cyan-100);
+}
+.tag--magenta { color: var(--bs-magenta-800); background: var(--bs-magenta-100); }
+.tag--outline { background: transparent; border: 1px solid var(--bs-cyan-500); color: var(--bs-cyan); }
+
+// -- card ------------------------------------------------------------
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bs-space-2);
+  background: var(--bs-surface);
+  border-radius: var(--bs-radius-md);
+  padding: var(--bs-space-4);
+  transition: box-shadow 0.15s ease;
+}
+a:has(> .card):hover .card { box-shadow: var(--bs-shadow-sm); }
+.card-kicker { font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bs-cyan); }
+.card-title { font-family: var(--bs-font-serif); font-weight: 600; font-size: 1.0625rem; line-height: 1.25; }
+.card-body { margin: 0; font-size: 0.8125rem; color: var(--bs-ink-70); flex: 1; }
+.card-meta { display: flex; align-items: center; gap: var(--bs-space-2); font-size: 0.6875rem; color: var(--bs-ink-70); }
+
+// -- table ------------------------------------------------------------
+.table { width: 100%; border-collapse: collapse; font-size: var(--bs-fs-small); }
+.table th, .table td { text-align: left; padding: var(--bs-space-2) var(--bs-space-3); border-bottom: 1px solid var(--bs-ink-15); }
+.table th { font-family: var(--bs-font-serif); font-weight: 600; text-transform: uppercase; font-size: 0.6875rem; letter-spacing: 0.08em; color: var(--bs-ink-70); }
+
+// -- dialog / lightbox ------------------------------------------------------------
+// Timings/easing match the source design's lbFade/lbZoom keyframes exactly.
+.dialog-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(32, 30, 29, 0.82);
+  display: flex; align-items: center; justify-content: center;
+  padding: var(--bs-space-6);
+  opacity: 0;
+  z-index: 100;
+  // Invisible when closed, but still in the DOM (built once and reused) —
+  // without this it silently intercepts every click after the first
+  // close, since a `position: fixed; inset: 0` box still sits on top of
+  // the whole page at opacity 0.
+  pointer-events: none;
+  transition: opacity 0.18s ease-out;
+}
+.dialog-backdrop.is-open { opacity: 1; pointer-events: auto; }
+.dialog {
+  max-width: min(90vw, 56.25rem);
+  max-height: 85vh;
+  transform: scale(0.86);
+  opacity: 0;
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.dialog-backdrop.is-open .dialog { transform: scale(1); opacity: 1; }
+.dialog img { max-height: 85vh; width: auto; border-radius: var(--bs-radius-md); box-shadow: var(--bs-shadow-lg); }
+
+// -- hero / section structure ----------------------------------------------------
+.hero {
+  display: flex;
+  gap: var(--bs-space-8);
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: var(--bs-space-12);
+}
+.hero__body { flex: 1 1 22rem; max-width: 56ch; }
+.hero__email { display: inline-block; font-size: var(--bs-fs-small); margin-bottom: var(--bs-space-3); text-decoration: none; }
+.hero__actions { display: flex; gap: var(--bs-space-3); flex-wrap: wrap; margin-top: var(--bs-space-4); }
+// Discrete-diffusion pixel portrait: the canvas fills this whole frame,
+// stretched to the full height of the text column beside it (see
+// _includes/diffusion-photo.html).
+.hero__photo-frame {
+  position: relative;
+  overflow: hidden;
+  align-self: stretch;
+  flex: 1 1 17.5rem;
+  min-height: 17.5rem;
+}
+.hero__diffusion-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+.section { margin-bottom: var(--bs-space-12); }
+.section p { max-width: 68ch; }
+
+// On pages with the cursor-shadow canvas (About, Blog — see
+// assets/js/cursor-shadow.js), give content blocks a translucent card so
+// that layer reads through the negative space around the text instead of
+// disappearing behind an opaque background.
+.has-particle-layer .hero,
+.has-particle-layer .section,
+.has-particle-layer .featured-post {
+  position: relative;
+  z-index: 1;
+  background: rgba(243, 242, 242, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: var(--bs-radius-lg);
+  box-shadow: var(--bs-shadow-card);
+  padding: var(--bs-space-6);
+  margin-left: calc(var(--bs-space-6) * -1);
+  margin-right: calc(var(--bs-space-6) * -1);
+}
+// Cyan streak across the top edge, with a soft glow bleeding upward —
+// echoes the accent color of the cursor-shadow particles behind the card.
+.has-particle-layer .hero::before,
+.has-particle-layer .section::before,
+.has-particle-layer .featured-post::before,
+.has-particle-layer .card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--bs-cyan-500) 50%, transparent);
+}
+.has-particle-layer .hero::after,
+.has-particle-layer .section::after,
+.has-particle-layer .featured-post::after {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: 36%;
+  right: 36%;
+  height: 32px;
+  background: radial-gradient(ellipse at center, rgba(0, 136, 176, 0.2), transparent 70%);
+  pointer-events: none;
+}
+.has-particle-layer .hero { margin-bottom: var(--bs-space-8); }
+
+// Post-grid cards get the same translucent surface and streak, without the
+// full-bleed negative margins (they already sit inside a grid cell).
+.has-particle-layer .card {
+  position: relative;
+  z-index: 1;
+  background: rgba(243, 242, 242, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: var(--bs-shadow-card);
+}
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: var(--bs-space-2);
+  margin-bottom: var(--bs-space-4);
+}
+// The heading's own margin-bottom would otherwise inflate this flex
+// item's box and shift the icon (centered against that taller box)
+// below the text's visual center.
+.section-heading h2 { margin-bottom: 0; }
+
+// -- repeating list rows (news, talks, affiliations, mentors) ------------
+.timeline-row {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: var(--bs-space-4);
+  padding: var(--bs-space-2) 0;
+  font-size: var(--bs-fs-small);
+}
+.timeline-row__date { color: var(--bs-ink-70); font-size: 0.8125rem; }
+
+// -- publication item ------------------------------------------------------------
+.pub-item {
+  display: flex;
+  gap: var(--bs-space-4);
+  padding: var(--bs-space-4) 0;
+  border-top: 1px solid var(--bs-ink-15);
+}
+.pub-item:first-child { border-top: none; }
+// Without this, a flex item's default min-width:auto refuses to shrink
+// below its text's intrinsic width, so a long title/author line pushes
+// the row wider than its container instead of wrapping.
+.pub-item__body { flex: 1 1 0%; min-width: 0; }
+// Rectangular (not square) and reserved even when a publication has no
+// thumbnail, so titles stay aligned across a mixed list — matches the
+// source design's 108x78 figure crop, scaled up for legibility.
+.pub-item__thumb { flex: 0 0 14rem; width: 14rem; height: 10rem; overflow: hidden; border-radius: var(--bs-radius-sm); background: var(--bs-surface); }
+// Below this width the 14rem thumbnail leaves too little room for
+// readable text beside it — stack thumbnail above body instead of
+// squeezing the row horizontally.
+@media (max-width: 32rem) {
+  .pub-item { flex-direction: column; }
+  .pub-item__thumb { width: 100%; height: auto; aspect-ratio: 14 / 10; }
+}
+// contain (not cover) so wide diagrams/screenshots aren't cropped —
+// publication figures vary wildly in aspect ratio, unlike photos.
+.pub-item__thumb img { width: 100%; height: 100%; object-fit: contain; }
+.pub-item__meta { display: flex; gap: var(--bs-space-2); align-items: center; margin-bottom: var(--bs-space-1); font-size: var(--bs-fs-small); }
+// Title links stay ink-colored (only the underline says "link"), same
+// as the source design's inline color:inherit on publication titles —
+// unlike prose links, which use the cyan accent.
+.pub-item__title { font-size: 1.05rem; margin: 0; }
+.pub-item__title a { color: inherit; text-decoration: none; }
+.pub-item__title a:hover { color: inherit; text-decoration: underline; }
+.pub-item__venue { color: var(--bs-ink-70); font-size: var(--bs-fs-small); }
+
+// -- mentor item ------------------------------------------------------------
+.mentor-list { list-style: none; margin: 0 0 var(--bs-space-4); padding: 0; }
+.mentor-list--grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--bs-space-6); }
+.mentor-item { padding: var(--bs-space-1) 0; font-size: var(--bs-fs-small); }
+.mentor-item__affil { color: var(--bs-ink-70); }
+
+// -- small text utilities ------------------------------------------------------------
+.kicker {
+  font: 600 0.72rem var(--bs-font-serif);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: var(--bs-space-2);
+}
+.two-col { columns: 2; column-gap: var(--bs-space-6); }
+.pub-item__links { display: flex; gap: var(--bs-space-3); font-size: var(--bs-fs-small); margin-top: var(--bs-space-1); }
+.pub-item__links a { color: var(--bs-cyan); }
+
+// -- paper landing page ------------------------------------------------------------
+.paper { max-width: var(--bs-wide-width); margin: 0 auto; padding: 0 var(--bs-space-4) var(--bs-space-12); }
+.paper__header { margin-bottom: var(--bs-space-8); }
+.paper__authors { font-size: var(--bs-fs-small); margin: var(--bs-space-2) 0; }
+.paper__affiliations { font-size: var(--bs-fs-small); margin: 0 0 var(--bs-space-4); }
+.paper__teaser { margin: 0 0 var(--bs-space-8); }
+.paper__teaser img,
+.paper__teaser video { width: 100%; height: auto; border-radius: var(--bs-radius-md); display: block; }
+.paper__teaser figcaption { margin-top: var(--bs-space-2); font-size: var(--bs-fs-small); }
+
+// -- footer ------------------------------------------------------------
+.footer {
+  max-width: var(--bs-wide-width);
+  margin: 0 auto;
+  padding: var(--bs-space-8) var(--bs-space-4) var(--bs-space-12);
+  font-size: var(--bs-fs-small);
+  color: var(--bs-ink-70);
+  display: flex; gap: var(--bs-space-4); flex-wrap: wrap; align-items: center;
+}
+.footer a { text-decoration: none; }
+
+// -- blog list / post ------------------------------------------------------------
+.post-list { list-style: none; margin: 0; padding: 0; }
+.post-list__item { padding: var(--bs-space-4) 0; border-top: 1px solid var(--bs-ink-15); }
+.post-list__item:first-child { border-top: none; }
+.post-list__date { font-size: var(--bs-fs-small); color: var(--bs-ink-70); }
+.post-list__item h2 a { color: inherit; text-decoration: none; }
+.post-list__item h2 a:hover { text-decoration: underline; }
+
+.post-header { margin-bottom: var(--bs-space-8); }
+.post-body { font-size: 1.05rem; }
+.post-body h2 { margin-top: var(--bs-space-8); }
+.post-body pre {
+  background: var(--bs-ink);
+  color: var(--bs-paper);
+  padding: var(--bs-space-4);
+  border-radius: var(--bs-radius-md);
+  overflow-x: auto;
+  font-family: var(--bs-font-mono);
+  font-size: 0.85rem;
+}

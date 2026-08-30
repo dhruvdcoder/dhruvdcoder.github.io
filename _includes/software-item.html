@@ -1,0 +1,12 @@
+{% comment %} Usage: {% include software-item.html item=item %} {% endcomment %}
+{% assign item = include.item %}
+<div class="card" style="margin-bottom: var(--bs-space-4);">
+  <div class="pub-item__meta">
+    {% if item.tag %}<span class="tag tag--outline">{{ item.tag }}</span>{% endif %}
+    {% if item.stars %}<span class="text-faint" style="font-size: 12px;">★ {{ item.stars }}</span>{% endif %}
+  </div>
+  <h3 style="margin-bottom: var(--bs-space-1);">
+    <a href="{{ item.url }}" class="mono">{{ item.name }}</a>
+  </h3>
+  {% if item.description and item.description != "" %}<p class="text-muted" style="margin: 0;">{{ item.description }}</p>{% endif %}
+</div>

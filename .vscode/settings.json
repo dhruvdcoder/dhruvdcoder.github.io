@@ -1,0 +1,15 @@
+{
+    "editor.snippetSuggestions": "top",
+    "[markdown]": {
+        "editor.unicodeHighlight.ambiguousCharacters": false,
+        "editor.unicodeHighlight.invisibleCharacters": false,
+        "diffEditor.ignoreTrimWhitespace": false,
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "on",
+            "other": "on"
+        }
+    },
+    "specstory.cloudSync.enabled": "never"
+}

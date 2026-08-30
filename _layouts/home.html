@@ -1,0 +1,63 @@
+---
+layout: default
+---
+<div class="content">
+  <h1 class="blog-title cmyk-head" data-text="{{ page.title | default: 'Blog' }}">{{ page.title | default: "Blog" }}</h1>
+  {% if page.deck %}<p class="blog-deck">{{ page.deck }}</p>{% endif %}
+
+  {% assign total_posts = site.posts.size %}
+
+  {% if content and content != "" %}{{ content }}{% endif %}
+
+  {% if site.posts.size > 0 %}
+    {% assign featured = site.posts.first %}
+    <div class="featured-post">
+      <div class="blog-section-label" style="color: var(--bs-cyan);">Featured</div>
+      <a href="{{ featured.url | relative_url }}" style="text-decoration: none; color: inherit;"><h2>{{ featured.title }}</h2></a>
+      {% if featured.subtitle %}<p class="featured-post__excerpt">{{ featured.subtitle }}</p>{% endif %}
+      <div class="featured-post__meta">
+        {% if featured.tags.first %}<span class="tag">{{ featured.tags.first | upcase }} &middot; {{ featured.date | date: "%Y" }}</span>{% endif %}
+        <span>{{ featured.date | date: "%b %-d" }}{% if featured.read_time %} &middot; {{ featured.read_time }} min{% endif %}</span>
+        <a href="{{ featured.url | relative_url }}" class="btn">Read article</a>
+      </div>
+    </div>
+
+    {% assign rest = site.posts | offset: 1 %}
+    {% if rest.size > 0 %}
+      <div class="blog-section-label">More writing</div>
+      <div class="post-grid">
+        {% for post in rest %}
+          {% assign post_word_count = post.content | strip_html | split: " " | size %}
+          {% assign post_est_minutes = post_word_count | divided_by: 200 | at_least: 1 %}
+          {% assign post_read_time = post.read_time | default: post_est_minutes %}
+          <a href="{{ post.url | relative_url }}" style="display: block; text-decoration: none; color: inherit;">
+            <div class="card">
+              {% if post.tags.first %}<div class="card-kicker">{{ post.tags.first | upcase }}</div>{% endif %}
+              <div class="card-title">{{ post.title }}</div>
+              {% if post.excerpt %}<p class="card-body">{{ post.excerpt | strip_html | truncatewords: 24 }}</p>{% endif %}
+              <div class="card-meta"><span>{{ post.date | date: "%b %-d, %Y" }}</span><span>&middot; {{ post_read_time }} min</span></div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% else %}
+    <p class="text-muted">No essays published yet — add a Markdown file under <code>_posts/</code> to get started.</p>
+  {% endif %}
+
+  {% assign blog_tags = site.tags | sort %}
+  {% if blog_tags.size > 0 %}
+    <div class="blog-topics">
+      <div class="blog-topics__heading">
+        <span class="blog-topics__label">Topics</span>
+        <span class="blog-topics__count">{{ total_posts }} essay{% unless total_posts == 1 %}s{% endunless %}</span>
+      </div>
+      <div class="blog-topics__pills">
+        {% for tag in blog_tags %}
+          {% assign tag_name = tag[0] %}
+          <a href="{{ '/tags/' | append: tag_name | append: '/' | relative_url }}" class="tag tag--outline">{{ tag_name }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</div>

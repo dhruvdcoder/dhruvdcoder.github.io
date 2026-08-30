@@ -1,0 +1,114 @@
+theme: broadsheet-jekyll-theme
+
+title: Dhruvesh Patel
+tagline: PhD Researcher — UMass Amherst / IESL
+description: >-
+  Personal academic homepage of Dhruvesh Patel, PhD researcher at the
+  Information Extraction and Synthesis Laboratory (IESL), UMass Amherst.
+url: "https://dhruveshp.com"
+baseurl: ""
+
+author:
+  name: Dhruvesh Patel
+  email: dhruveshpate@umass.edu
+  github: dhruvdcoder
+  scholar: https://scholar.google.com/citations?user=6F2CvwoAAAAJ
+  twitter: _dhruveshp
+  affiliation: UMass Amherst / IESL
+
+social:
+  - name: Email
+    url: "mailto:dhruveshpate@umass.edu"
+    icon: email
+  - name: GitHub
+    url: "https://github.com/dhruvdcoder"
+    icon: github
+  - name: Google Scholar
+    url: "https://scholar.google.com/citations?user=6F2CvwoAAAAJ"
+    icon: scholar
+  - name: Twitter
+    url: "https://twitter.com/_dhruveshp"
+    icon: twitter
+
+# Primary navigation, rendered by _includes/nav.html from _data/nav.yml,
+# duplicated here only as a fallback default.
+nav:
+  - title: About
+    url: /
+  - title: Publications
+    url: /publications/
+  - title: Mentorship
+    url: /mentorship/
+  - title: Software
+    url: /software/
+  - title: Blog
+    url: /blog/
+
+# Feature toggles
+reveal_animation: true      # scramble-reveal heading effect (assets/js/reveal.js)
+enable_math: true            # math typesetting via MathJax (_includes/mathjax.html)
+
+mathjax:
+  version: "3.2.0"
+
+# Comments (giscus.app). Fill in repo/repo_id/category_id after installing the
+# giscus GitHub app on the target repo and generating config at giscus.app.
+# Per-post opt-in via front matter: `giscus_comments: true`.
+giscus:
+  repo: "" # e.g. "dhruvdcoder/broadsheet-jekyll-theme"
+  repo_id: ""
+  category: "Comments"
+  category_id: ""
+  mapping: pathname
+  strict: 0
+  reactions_enabled: 1
+  emit_metadata: 0
+  input_position: bottom
+  theme: light
+  lang: en
+
+collections:
+  publications:
+    output: false
+    sort_by: year
+  projects:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: publications
+    values:
+      layout: none
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: paper
+
+markdown: kramdown
+permalink: pretty
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules
+  - vendor
+  - broadsheet-jekyll-theme.gemspec
+  - About.dc.html

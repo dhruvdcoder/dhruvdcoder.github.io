@@ -1,0 +1,415 @@
+// Article layout: full-width reading column with a table of contents
+// that lives inline beside the header, then collapses into a floating
+// dropdown once the header scrolls out of view — see assets/js/toc.js.
+
+// -- article column ------------------------------------------------------------
+// Derived from the prose measure rather than set independently, so the frame
+// always hugs its contents: the measure plus the header's toc column, its
+// gap, and the side padding. Widening --bs-measure widens the frame with it.
+.article {
+  max-width: calc(var(--bs-measure) + 14rem);
+  margin: 0 auto;
+  padding: var(--bs-space-2) var(--bs-space-4) var(--bs-space-16);
+}
+
+// -- header: inline contents list beside the title/byline -----------------
+// Capped narrower than the outer article frame — like a masthead — so the
+// title/byline don't trail off into empty space on wide screens, and
+// closed off with a rule so the body reads as a clear new section.
+.post-header {
+  display: flex;
+  gap: var(--bs-space-8);
+  align-items: flex-start;
+  max-width: calc(var(--bs-measure) + 8rem);
+  padding-bottom: var(--bs-space-6);
+  margin-bottom: var(--bs-space-8);
+  border-bottom: 1px solid var(--bs-ink-15);
+}
+.post-header__toc { flex: 0 0 10rem; }
+.post-header__main { flex: 1 1 auto; min-width: 0; }
+@media (max-width: 40rem) {
+  .post-header { flex-direction: column; gap: var(--bs-space-4); }
+  .post-header__toc { flex: none; order: 2; }
+}
+
+// -- body prose measure ------------------------------------------------
+// Everything in the body shares one measure (--bs-measure) so the running
+// text, the display math, and the figures/widgets all line up on the same
+// left and right edges instead of the wide blocks bleeding past the prose.
+// Tune --bs-measure in _tokens.scss to change line length globally.
+.post-body > p,
+.post-body > ul,
+.post-body > ol,
+.post-body > blockquote,
+.post-body > figure,
+.post-body > table,
+.post-body > .widget-box,
+.post-body > .footnotes,
+.post-body > div,
+.post-body h2,
+.post-body h3,
+.post-body h4 {
+  max-width: var(--bs-measure);
+}
+
+// Display math centers on the prose measure like everything else. An
+// equation that is intrinsically wider than the column — common on phones,
+// where a 540px derivation cannot fit a 375px screen — scrolls sideways
+// inside its own box instead of pushing the whole page wider. overflow-y
+// stays visible-equivalent via the padding, so tall integrals/limits aren't
+// clipped by the scroll container.
+.post-body > mjx-container[display="true"] {
+  max-width: var(--bs-measure);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-top: 0.35em;
+  padding-bottom: 0.35em;
+}
+// The browser's default 40px <figure> margin would inset figures from the
+// prose edge; zero it so they align with the text column.
+.post-body > figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+// Populated by assets/js/toc.js from the post body's <h2 id> headings.
+// Empty (and hidden) until JS runs, so it never shows a broken/empty box.
+.post-toc {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: var(--bs-fs-small);
+}
+.post-toc:empty { display: none; }
+.post-toc__label {
+  font: 600 0.6875rem var(--bs-font-serif);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: var(--bs-space-2);
+}
+.post-toc a {
+  color: inherit;
+  text-decoration: none;
+  padding: 0.2rem 0;
+  border-left: 2px solid transparent;
+  padding-left: var(--bs-space-2);
+  margin-left: -0.6rem;
+}
+.post-toc a:hover { color: var(--bs-cyan); }
+.post-toc a.is-active { color: var(--bs-cyan); border-left-color: var(--bs-cyan); }
+
+// -- floating "Contents" menu ------------------------------------------------
+// Hidden until toc.js reveals it (once the header above has scrolled out
+// of view), so a reader who scrolls past the header can still jump
+// between sections without a permanently reserved sidebar column.
+.post-toc-float {
+  position: fixed;
+  top: var(--bs-space-4);
+  right: var(--bs-space-4);
+  z-index: 50;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-0.25rem);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+}
+.post-toc-float.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.post-toc-float__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bs-space-2);
+  padding: var(--bs-space-2) var(--bs-space-3);
+  border: 1px solid var(--bs-ink-15);
+  border-radius: var(--bs-radius-md);
+  background: var(--bs-paper);
+  box-shadow: var(--bs-shadow-card);
+  font: 600 var(--bs-fs-small) var(--bs-font-serif);
+  color: var(--bs-ink);
+  cursor: pointer;
+}
+.post-toc-float__toggle:hover { border-color: var(--bs-cyan-500); color: var(--bs-cyan); }
+.post-toc-float__icon {
+  width: 0.85em;
+  height: 0.6em;
+  position: relative;
+  display: inline-block;
+}
+.post-toc-float__icon::before,
+.post-toc-float__icon::after,
+.post-toc-float__icon {
+  content: "";
+}
+.post-toc-float__icon::before,
+.post-toc-float__icon::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: currentColor;
+}
+.post-toc-float__icon { border-top: 1px solid currentColor; }
+.post-toc-float__icon::before { top: 50%; }
+.post-toc-float__icon::after { bottom: 0; }
+.post-toc-float__panel {
+  display: none;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: var(--bs-space-2);
+  padding: var(--bs-space-3);
+  max-width: 16rem;
+  max-height: 70vh;
+  overflow-y: auto;
+  border: 1px solid var(--bs-ink-15);
+  border-radius: var(--bs-radius-md);
+  background: var(--bs-paper);
+  box-shadow: var(--bs-shadow-lg);
+  font-size: var(--bs-fs-small);
+}
+.post-toc-float__panel.is-open { display: flex; }
+.post-toc-float__panel a {
+  color: inherit;
+  text-decoration: none;
+  padding: 0.3rem 0.4rem;
+  border-radius: var(--bs-radius-sm);
+}
+.post-toc-float__panel a:hover { background: var(--bs-cyan-100); color: var(--bs-cyan); }
+.post-toc-float__panel a.is-active { color: var(--bs-cyan); font-weight: 600; }
+
+// -- byline / header ------------------------------------------------------------
+.post-kicker {
+  font: 600 0.6875rem var(--bs-font-serif);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bs-cyan);
+  margin-bottom: var(--bs-space-3);
+}
+.post-deck {
+  font-style: italic;
+  font-size: 1.1875rem;
+  line-height: 1.5;
+  color: var(--bs-ink-70);
+  max-width: 56ch;
+  margin: 0 0 var(--bs-space-4);
+}
+.post-byline {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--bs-space-2);
+  font-size: var(--bs-fs-small); color: var(--bs-ink-70);
+  margin-bottom: var(--bs-space-3);
+}
+.post-byline strong { color: var(--bs-ink); }
+.post-header__meta {
+  display: flex; align-items: center; gap: var(--bs-space-2); flex-wrap: wrap;
+  margin-bottom: var(--bs-space-8);
+}
+.post-cite-link { margin-left: auto; font-size: var(--bs-fs-small); color: var(--bs-cyan); text-decoration: none; }
+.post-cite-link:hover { color: var(--bs-magenta); }
+
+// -- foldable details blocks ({% details %} tag) --------------------------
+.post-body details {
+  margin: var(--bs-space-4) 0;
+  padding: var(--bs-space-3) var(--bs-space-4);
+  border: 1px solid var(--bs-ink-15);
+  border-radius: var(--bs-radius-md);
+}
+.post-body details summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--bs-ink);
+}
+.post-body details[open] summary { margin-bottom: var(--bs-space-2); }
+
+// -- comments (giscus.html) ------------------------------------------------
+.giscus-thread { margin-top: var(--bs-space-8); }
+
+// -- footnotes ------------------------------------------------------------
+// Kramdown's own bottom footnotes list, shown as-is now that the article
+// no longer reserves a margin column for Distill-style sidenotes.
+.footnotes { margin-top: var(--bs-space-12); font-size: var(--bs-fs-small); }
+
+// -- "try it" widget box ------------------------------------------------------------
+.widget-box {
+  background: var(--bs-surface);
+  border-radius: var(--bs-radius-md);
+  padding: var(--bs-space-6);
+  margin: var(--bs-space-8) 0;
+}
+.widget-box__label {
+  font: 600 0.6875rem var(--bs-font-serif);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bs-cyan);
+  margin-bottom: var(--bs-space-4);
+}
+.widget-box input[type="range"] { width: 100%; accent-color: var(--bs-cyan-500); display: block; margin-bottom: var(--bs-space-2); }
+.widget-box__scale { display: flex; justify-content: space-between; font-size: 0.6875rem; color: var(--bs-ink-70); margin-bottom: var(--bs-space-4); }
+.widget-box__tokens { display: flex; gap: var(--bs-space-2); flex-wrap: wrap; margin-bottom: var(--bs-space-4); }
+.widget-box__token {
+  padding: 0.4rem 0.7rem; border-radius: var(--bs-radius-sm);
+  font-family: var(--bs-font-mono); font-size: 0.875rem;
+  background: transparent; transition: background 0.2s ease, color 0.2s ease;
+}
+.widget-box__token.is-masked { background: var(--bs-magenta-100); color: var(--bs-magenta-800); font-weight: 600; }
+.widget-box svg { display: block; overflow: visible; }
+
+// -- cite box ------------------------------------------------------------
+.cite-box {
+  background: var(--bs-surface);
+  border-radius: var(--bs-radius-md);
+  padding: var(--bs-space-6);
+  margin-top: var(--bs-space-12);
+}
+.cite-box__label {
+  font: 600 0.6875rem var(--bs-font-serif);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bs-cyan);
+  margin-bottom: var(--bs-space-4);
+}
+.cite-box pre {
+  background: var(--bs-paper);
+  padding: var(--bs-space-4);
+  border-radius: var(--bs-radius-sm);
+  overflow-x: auto;
+  font-size: 0.8125rem;
+  margin: 0 0 var(--bs-space-4);
+}
+
+// -- blog home masthead ------------------------------------------------------------
+.blog-kicker {
+  font: 600 0.75rem var(--bs-font-serif);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bs-cyan);
+  margin-bottom: var(--bs-space-4);
+}
+.blog-title {
+  margin: 0 0 var(--bs-space-4);
+  font-size: clamp(2.375rem, 5.2vw, 3.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.blog-title.cmyk-head { display: block; max-width: 20ch; }
+.blog-deck { font-size: 1.0625rem; line-height: 1.6; color: var(--bs-ink-70); max-width: 56ch; margin: 0 0 var(--bs-space-6); }
+
+// Aggregate topic cloud, one pill per tag across all posts, with a total
+// post count standing in for the masthead stats table it replaced.
+.blog-topics { margin-top: var(--bs-space-12); padding-top: var(--bs-space-6); border-top: 1px solid var(--bs-ink-15); }
+.blog-topics__heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--bs-space-3);
+  margin-bottom: var(--bs-space-2);
+}
+.blog-topics__label {
+  font: 600 0.6875rem var(--bs-font-serif);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bs-ink-70);
+}
+.blog-topics__count { font-size: var(--bs-fs-small); color: var(--bs-ink-70); }
+.blog-topics__pills { display: flex; flex-wrap: wrap; gap: var(--bs-space-2); }
+
+.blog-actions { display: flex; gap: var(--bs-space-3); margin-bottom: var(--bs-space-10); }
+
+.blog-section-label {
+  font: 600 0.6875rem var(--bs-font-serif);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--bs-space-4);
+}
+.featured-post { margin-top: var(--bs-space-8); margin-bottom: var(--bs-space-16); }
+.featured-post h2 { font-size: 2.125rem; max-width: 20ch; margin-bottom: var(--bs-space-3); }
+.featured-post__excerpt { font-style: italic; font-size: 1.0625rem; line-height: 1.55; color: var(--bs-ink-70); max-width: 62ch; margin: 0 0 var(--bs-space-4); }
+.featured-post__meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--bs-space-3); font-size: var(--bs-fs-small); color: var(--bs-ink-70); }
+.featured-post__meta a { color: var(--bs-cyan); text-decoration: none; font-weight: 600; }
+.featured-post__meta a.btn { color: var(--bs-ink); font-weight: 600; }
+
+.post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: var(--bs-space-6); }
+.post-grid .card { height: 100%; }
+
+// -- callout boxes (definitions, proofs, asides) inside post bodies --------
+.callout {
+  max-width: var(--bs-measure);
+  margin: var(--bs-space-6) 0;
+  padding: var(--bs-space-4) var(--bs-space-6);
+  border: 1px solid var(--bs-ink-15);
+  border-left-width: 4px;
+  border-left-color: var(--bs-cyan-500);
+  border-radius: var(--bs-radius-md);
+  background: var(--bs-cyan-100);
+}
+.callout > :first-child { margin-top: 0; }
+.callout > :last-child { margin-bottom: 0; }
+.callout__label {
+  font-weight: 600;
+  margin-bottom: var(--bs-space-2);
+  color: var(--bs-cyan-800);
+}
+.callout--note {
+  border-left-color: var(--bs-ink-70);
+  background: var(--bs-surface);
+}
+.callout--note .callout__label { color: var(--bs-ink); }
+.callout--proof {
+  border-left-color: var(--bs-ink-70);
+  background: var(--bs-surface);
+}
+.callout--proof .callout__label {
+  color: var(--bs-ink);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.callout--proof .callout__label::-webkit-details-marker { display: none; }
+.callout--proof .callout__label::marker { content: ""; }
+.callout--proof .callout__label::before {
+  content: "▸";
+  font-size: 0.85em;
+  transition: transform 0.15s ease;
+}
+.callout--proof[open] .callout__label::before { transform: rotate(90deg); }
+.callout__qed { float: right; color: var(--bs-ink-70); font-size: 1.1em; line-height: 1; }
+
+// -- stochviz widgets (interactive D3 figures embedded in post bodies) -----
+// The widget JS reads these off document.documentElement (not the panel
+// itself), so they must live on :root to be picked up by getComputedStyle.
+:root {
+  --stochviz-bar-fill: rgba(0, 136, 176, 0.4);
+  --stochviz-bar-stroke: var(--bs-cyan-500);
+  --stochviz-ref-fill: var(--bs-magenta-500);
+  --stochviz-axis: var(--bs-ink-70);
+  --stochviz-text: var(--bs-ink-70);
+  --stochviz-grid: var(--bs-ink-15);
+  --stochviz-interval-fill: rgba(0, 136, 176, 0.3);
+  --stochviz-interval-stroke: var(--bs-cyan-500);
+}
+.stochviz-panel {
+  background: var(--bs-surface);
+  border: 1px solid var(--bs-ink-15);
+  border-radius: var(--bs-radius-md);
+  padding: var(--bs-space-4) var(--bs-space-4) var(--bs-space-3);
+  text-align: left;
+}
+.stochviz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--bs-space-3) var(--bs-space-6);
+  margin-bottom: var(--bs-space-2);
+  font-size: 0.9rem;
+  color: var(--bs-ink);
+}
+.stochviz-control-group { display: flex; align-items: center; gap: var(--bs-space-2); flex: 1 1 220px; min-width: 200px; }
+.stochviz-n-slider { flex: 1; min-width: 120px; accent-color: var(--bs-cyan-500); }
+.stochviz-meta { font-variant-numeric: tabular-nums; color: var(--bs-ink-70); }
+.stochviz-interval { margin: 0 0 0.65rem; height: 1.75rem; }
+.stochviz-interval svg { display: block; width: 100%; height: 1.75rem; }
+.stochviz-plot { width: 100%; overflow-x: auto; }
+.stochviz-plot svg { display: block; max-width: 100%; height: auto; }

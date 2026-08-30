@@ -1,0 +1,18 @@
+{% comment %}
+  Citation box: rendered automatically by _layouts/post.html when the
+  page front matter sets `bibtex` and `cite`. Usage in a post's front
+  matter:
+    cite: "Patel, D. (2026). Post title. Working Notes."
+    bibtex: |
+      @misc{key,
+        author = {...},
+        title  = {...},
+        year   = {2026}
+      }
+{% endcomment %}
+<div class="cite-box" id="cite">
+  <div class="cite-box__label">Cite this article</div>
+  <p>{{ page.cite }}</p>
+  <pre class="mono">{{ page.bibtex }}</pre>
+  <button type="button" class="btn" data-copy-bibtex>Copy BibTeX</button>
+</div>

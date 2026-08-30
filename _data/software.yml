@@ -1,0 +1,47 @@
+# Software projects for the Software page, grouped by section.
+research_code:
+  - name: "dhruvdcoder/xlm-core"
+    description: "A modular, research-friendly framework for developing and comparing non-autoregressive language models. Built on PyTorch and PyTorch Lightning, with Hydra for configuration management."
+    url: "https://github.com/dhruvdcoder/xlm-core"
+    stars: 28
+  - name: "dhruvdcoder/LoFlexMDM"
+    description: 'Official implementation for "Insertion Based Sequence Generation with Learnable Order Dynamics."'
+    url: "https://github.com/dhruvdcoder/LoFlexMDM"
+    stars: 0
+  - name: "dhruvdcoder/ctmc_dilm"
+    description: 'Official implementation for "A Continuous-Time Markov Chain Framework for Insertion Language Models."'
+    url: "https://github.com/dhruvdcoder/ctmc_dilm"
+    stars: 3
+  - name: "dhruvdcoder/ILM"
+    description: 'The official implementation for "Insertion Language Models: Sequence Generation with Arbitrary-Position Insertions."'
+    url: "https://github.com/dhruvdcoder/ILM"
+    stars: 6
+  - name: "dhruvdcoder/HyperA"
+    description: "Started as a team project for CS690D at UMass Amherst, now a PyTorch implementation of hyperbolic neural networks using the Poincaré ball model."
+    url: "https://github.com/dhruvdcoder/HyperA"
+    stars: 12
+  - name: "iesl/box-embeddings"
+    description: "Box Embeddings as modules."
+    url: "https://github.com/iesl/box-embeddings"
+    stars: 114
+  - name: "iesl/box-mlc-iclr-2022"
+    description: 'Official repository for "Modeling Label Space Interactions in Multi-label Classification using Box Embeddings."'
+    url: "https://github.com/iesl/box-mlc-iclr-2022"
+    stars: 13
+tools:
+  - name: "dhruvdcoder/wandb-utils"
+    description: "Utility functions for Weights & Biases (wandb)."
+    url: "https://github.com/dhruvdcoder/wandb-utils"
+    stars: 11
+  - name: "dhruvdcoder/wandb-allennlp"
+    description: "Utilities and boilerplate code to use wandb with AllenNLP."
+    url: "https://github.com/dhruvdcoder/wandb-allennlp"
+    stars: 21
+  - name: "dhruvdcoder/poly-metic"
+    description: "A C++ library for polynomial and matrix arithmetic, focused on applications in kinematics."
+    url: "https://github.com/dhruvdcoder/poly-metic"
+    stars: 1
+  - name: "dhruvdcoder/manimpress"
+    description: "Impress.js presentations from Markdown."
+    url: "https://github.com/dhruvdcoder/manimpress"
+    stars: 0

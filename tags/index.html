@@ -1,0 +1,24 @@
+---
+layout: default
+title: Tags
+permalink: /tags/
+---
+<div class="content">
+  <div style="position: relative; z-index: 1;">
+    <h1>Tags</h1>
+
+    {% assign tags = site.tags | sort %}
+    <ul class="post-list">
+      {% for tag in tags %}
+        {% assign tag_name = tag[0] %}
+        {% assign tag_posts = tag[1] %}
+        <li class="post-list__item">
+          <a href="{{ '/tags/' | append: tag_name | append: '/' | relative_url }}">{{ tag_name }}</a>
+          <span>({{ tag_posts | size }})</span>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <p><a href="{{ '/blog/' | relative_url }}">&larr; All posts</a></p>
+  </div>
+</div>

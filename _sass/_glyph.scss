@@ -1,0 +1,39 @@
+// Decorative glyph-pulse icon (3x3 pixel grid before each <h2>), rendered
+// as inline SVG by _includes/glyph-icon.html.
+
+.glyph-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 1em;
+  height: 1em;
+  font-size: 1.1em;
+}
+// Matches the source glyphPulse curve exactly: each square sits at full
+// opacity (--o2) most of the cycle and only briefly dips to a low value
+// (--o1) near the end — a flicker/dip, not a smooth breathing fade.
+.glyph-icon rect {
+  --o1: 0.14;
+  --o2: 1;
+  opacity: var(--o1);
+  animation: glyphPulse 3s ease-in-out infinite;
+}
+.glyph-icon rect:nth-child(1) { animation-delay: -0.4s; animation-duration: 3.2s; }
+.glyph-icon rect:nth-child(2) { animation-delay: -1.6s; animation-duration: 2.8s; }
+.glyph-icon rect:nth-child(3) { animation-delay: -2.1s; animation-duration: 3.6s; }
+.glyph-icon rect:nth-child(4) { animation-delay: -0.9s; animation-duration: 2.6s; }
+.glyph-icon rect:nth-child(5) { animation-delay: -2.8s; animation-duration: 3.4s; }
+.glyph-icon rect:nth-child(6) { animation-delay: -0.2s; animation-duration: 3s; }
+.glyph-icon rect:nth-child(7) { animation-delay: -1.3s; animation-duration: 2.9s; }
+.glyph-icon rect:nth-child(8) { animation-delay: -2.4s; animation-duration: 3.3s; }
+.glyph-icon rect:nth-child(9) { animation-delay: -0.6s; animation-duration: 3.1s; }
+
+@keyframes glyphPulse {
+  0%, 60% { opacity: var(--o2); }
+  65%, 95% { opacity: var(--o1); }
+  100% { opacity: var(--o2); }
+}
+
+// data-reveal scramble text (assets/js/reveal.js). Plain text if JS is
+// disabled or reduced-motion is on; the script only swaps character
+// content, no layout shift.
+[data-reveal] { display: inline-block; }

@@ -1,0 +1,41 @@
+---
+layout: default
+---
+<article class="article">
+  <div class="post-header">
+    <div class="post-header__toc">
+      <nav class="post-toc" aria-label="Table of contents"></nav>
+    </div>
+    <div class="post-header__main">
+      {% if page.kicker or page.tags %}<div class="post-kicker">{{ page.kicker | default: page.tags | first | default: "Blog" }}</div>{% endif %}
+      <h1>{{ page.title }}</h1>
+      {% if page.subtitle %}<p class="post-deck">{{ page.subtitle }}</p>{% endif %}
+      <div class="post-byline">
+        <strong>{{ page.author | default: site.author.name }}</strong>
+        <span>&middot;</span><span>{{ page.date | date: "%b %-d, %Y" }}</span>
+        {% assign word_count = content | strip_html | split: " " | size %}
+        {% assign est_time = word_count | divided_by: 200 | at_least: 1 %}
+        {% assign read_time = page.read_time | default: est_time %}
+        <span>&middot;</span><span>{{ read_time }} min read</span>
+      </div>
+      <div class="post-header__meta">
+        {% for tag in page.tags %}<a class="tag" href="{{ '/tags/' | append: tag | relative_url }}">{{ tag }}</a>{% endfor %}
+        {% if page.bibtex %}<a class="post-cite-link" href="#cite">Cite this article &darr;</a>{% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="post-toc-float">
+    <button type="button" class="post-toc-float__toggle" aria-expanded="false">
+      <span class="post-toc-float__icon" aria-hidden="true"></span>
+      Contents
+    </button>
+    <nav class="post-toc-float__panel" aria-label="Table of contents"></nav>
+  </div>
+
+  <div class="post-body">
+    {{ content }}
+  </div>
+  {% if page.bibtex %}{% include cite-box.html %}{% endif %}
+  {% if site.giscus.repo and page.giscus_comments %}{% include giscus.html %}{% endif %}
+</article>

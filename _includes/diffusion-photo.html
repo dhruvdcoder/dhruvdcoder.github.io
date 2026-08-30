@@ -1,0 +1,160 @@
+{% comment %}
+  Discrete-diffusion pixel portrait: samples the headshot's luminance into
+  a coarse grid, then loops a denoise -> hold -> remask cycle, swapping
+  each cell between a "noise" color (randomly flickering through the
+  palette) and its sampled "revealed" color. Replaces the old static
+  photo + decorative pixel-flicker background.
+
+  Usage: {% include diffusion-photo.html src="/assets/img/headshot.jpg" %}
+{% endcomment %}
+<div class="hero__photo-frame">
+  <canvas class="hero__diffusion-canvas" data-diffusion-src="{{ include.src | relative_url }}" aria-hidden="true"></canvas>
+</div>
+<script>
+(function () {
+  function initDiffusionCanvas(el) {
+    var ctx = el.getContext('2d');
+    var paletteVars = ['--bs-cyan-100', '--bs-cyan-500', '--bs-cyan', '--bs-cyan-800', '--bs-magenta-100', '--bs-magenta-500', '--bs-magenta', '--bs-magenta-800', '--bs-ink-45', '--bs-ink'];
+    var palette = null;
+    function resolvePalette() {
+      var cs = getComputedStyle(document.documentElement);
+      var vals = paletteVars.map(function (v) { return cs.getPropertyValue(v).trim(); });
+      if (vals.every(function (v) { return v; })) palette = vals;
+    }
+    function hash(s) { var x = Math.sin(s * 12.9898) * 43758.5453; return x - Math.floor(x); }
+
+    var pitch = 4, cellSize = 3.5;
+    var w = 0, h = 0, gx0 = 0, gy0 = 0, cols = 0, rows = 0;
+    var grid = [];
+    var faceSample = null, faceSize = 96, lumMin = 0, lumMax = 1;
+    var usedIdxPool = [0, 4];
+
+    var img = new Image();
+    img.onload = function () {
+      var oc = document.createElement('canvas'); oc.width = faceSize; oc.height = faceSize;
+      var octx = oc.getContext('2d');
+      var side = Math.min(img.width, img.height) * 0.9;
+      var sx = img.width / 2 - side / 2, sy = img.height * 0.42 - side / 2;
+      octx.drawImage(img, sx, sy, side, side, 0, 0, faceSize, faceSize);
+      faceSample = octx.getImageData(0, 0, faceSize, faceSize).data;
+      var mn = 1, mx = 0;
+      for (var i = 0; i < faceSample.length; i += 4) {
+        var rr = faceSample[i], gg = faceSample[i + 1], bb = faceSample[i + 2];
+        var isFoliage = gg > rr + 14 && gg > bb + 14;
+        var lum = (0.299 * rr + 0.587 * gg + 0.114 * bb) / 255;
+        if (!isFoliage && lum < 0.95) { if (lum < mn) mn = lum; if (lum > mx) mx = lum; }
+      }
+      if (mx - mn > 0.08) { lumMin = mn; lumMax = mx; }
+      buildGrid();
+    };
+    img.src = el.getAttribute('data-diffusion-src');
+
+    function buildGrid() {
+      grid = [];
+      for (var r = 0; r < rows; r++) for (var c = 0; c < cols; c++) {
+        var paletteIdx = null;
+        if (faceSample) {
+          var sx = Math.min(faceSize - 1, Math.floor((c / Math.max(cols - 1, 1)) * (faceSize - 1)));
+          var sy = Math.min(faceSize - 1, Math.floor((r / Math.max(rows - 1, 1)) * (faceSize - 1)));
+          var idx = (sy * faceSize + sx) * 4;
+          var rr = faceSample[idx], gg = faceSample[idx + 1], bb = faceSample[idx + 2];
+          var lum = (0.299 * rr + 0.587 * gg + 0.114 * bb) / 255;
+          var isFoliage = gg > rr + 14 && gg > bb + 14;
+          if (lum <= 0.9 && !isFoliage) {
+            var nl = Math.min(1, Math.max(0, (lum - lumMin) / (lumMax - lumMin)));
+            if (nl < 0.24) {
+              paletteIdx = 9;
+            } else {
+              var warm = rr - bb;
+              var fam = warm > 25 ? [5, 6, 7] : [1, 2, 3];
+              var level = nl < 0.48 ? 2 : nl < 0.72 ? 1 : 0;
+              paletteIdx = fam[level];
+            }
+          }
+        }
+        grid.push({ unmaskAt: Math.random(), paletteIdx: paletteIdx, seed: Math.random() * 1000 });
+      }
+      usedIdxPool = grid.filter(function (c) { return c.paletteIdx !== null; }).map(function (c) { return c.paletteIdx; });
+      if (!usedIdxPool.length) usedIdxPool = [0, 4];
+    }
+
+    function resize() {
+      var rect = el.parentElement.getBoundingClientRect();
+      var dpr = window.devicePixelRatio || 1;
+      w = rect.width; h = rect.height;
+      el.width = Math.max(1, w * dpr); el.height = Math.max(1, h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      cols = Math.max(1, Math.floor(w / pitch));
+      rows = Math.max(1, Math.floor(h / pitch));
+      gx0 = (w - cols * pitch) / 2;
+      gy0 = (h - rows * pitch) / 2;
+      buildGrid();
+    }
+    resize();
+    var ro = new ResizeObserver(resize);
+    ro.observe(el.parentElement);
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var denoiseFrac = 0.42, holdFrac = 0.4, remaskFrac = 0.18;
+    var cycleMs = 7000;
+    var lastT = denoiseFrac + 0.01;
+    var start = performance.now() - cycleMs * (denoiseFrac + 0.01);
+    var raf = null;
+
+    function draw(p, flickerBucket) {
+      ctx.clearRect(0, 0, w, h);
+      grid.forEach(function (cell, i) {
+        var r = Math.floor(i / cols), c = i % cols;
+        var x = gx0 + c * pitch, y = gy0 + r * pitch;
+        var revealed = p >= cell.unmaskAt;
+        if (revealed) {
+          if (cell.paletteIdx === null) return;
+          ctx.globalAlpha = 0.9;
+          ctx.fillStyle = palette ? palette[cell.paletteIdx] : '#0088b0';
+        } else {
+          var noiseIdx = usedIdxPool[Math.floor(hash(cell.seed + flickerBucket) * usedIdxPool.length)];
+          ctx.globalAlpha = 0.55;
+          ctx.fillStyle = palette ? palette[noiseIdx] : '#0088b0';
+        }
+        ctx.fillRect(x, y, cellSize, cellSize);
+      });
+      ctx.globalAlpha = 1;
+    }
+
+    if (reduceMotion) {
+      var stepStatic = function () {
+        if (!palette) resolvePalette();
+        if (palette && faceSample) { draw(1, 0); return; }
+        raf = requestAnimationFrame(stepStatic);
+      };
+      raf = requestAnimationFrame(stepStatic);
+      return;
+    }
+
+    function step() {
+      if (!palette) resolvePalette();
+      var elapsed = performance.now() - start;
+      var t = (elapsed % cycleMs) / cycleMs;
+      if (t < lastT) buildGrid();
+      lastT = t;
+      var p;
+      if (t < denoiseFrac) p = t / denoiseFrac;
+      else if (t < denoiseFrac + holdFrac) p = 1;
+      else p = 1 - (t - denoiseFrac - holdFrac) / remaskFrac;
+      var flickerBucket = Math.floor(elapsed / 170);
+      draw(p, flickerBucket);
+      raf = requestAnimationFrame(step);
+    }
+    raf = requestAnimationFrame(step);
+  }
+
+  function init() {
+    document.querySelectorAll('.hero__diffusion-canvas').forEach(initDiffusionCanvas);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>

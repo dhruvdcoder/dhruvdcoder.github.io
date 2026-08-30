@@ -1,0 +1,17 @@
+{% comment %}
+  Reusable "glyph pulse" icon placed before section headings: 8 squares
+  in a scattered (not full-grid) pattern, mostly cyan with two magenta
+  accents — ported 1:1 from About.dc.html's inline SVG, coordinates and
+  colors included.
+  Usage: {% include glyph-icon.html %}
+{% endcomment %}
+<svg class="glyph-icon" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <rect x="0" y="0" width="3.2" height="3.2" fill="var(--bs-cyan-500)"></rect>
+  <rect x="8.8" y="0" width="3.2" height="3.2" fill="var(--bs-cyan-500)"></rect>
+  <rect x="13.2" y="0" width="3.2" height="3.2" fill="var(--bs-magenta-500)"></rect>
+  <rect x="4.4" y="4.4" width="3.2" height="3.2" fill="var(--bs-cyan-500)"></rect>
+  <rect x="0" y="8.8" width="3.2" height="3.2" fill="var(--bs-magenta-500)"></rect>
+  <rect x="13.2" y="8.8" width="3.2" height="3.2" fill="var(--bs-cyan-500)"></rect>
+  <rect x="4.4" y="13.2" width="3.2" height="3.2" fill="var(--bs-cyan-500)"></rect>
+  <rect x="8.8" y="13.2" width="3.2" height="3.2" fill="var(--bs-cyan-500)"></rect>
+</svg>

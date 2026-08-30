@@ -1,0 +1,9 @@
+---
+layout: default
+---
+<div class="content{% if page.wide %} content--wide{% endif %}">
+  {% if page.title and page.hide_title != true %}
+    <h1 data-reveal>{{ page.title }}</h1>
+  {% endif %}
+  {{ content }}
+</div>
