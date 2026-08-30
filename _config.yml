@@ -14,6 +14,7 @@ author:
   github: dhruvdcoder
   scholar: https://scholar.google.com/citations?user=6F2CvwoAAAAJ
   twitter: _dhruveshp
+  linkedin: https://www.linkedin.com/in/dhruveshp/
   affiliation: UMass Amherst / IESL
 
 social:
@@ -29,6 +30,9 @@ social:
   - name: Twitter
     url: "https://twitter.com/_dhruveshp"
     icon: twitter
+  - name: LinkedIn
+    url: "https://www.linkedin.com/in/dhruveshp/"
+    icon: linkedin
 
 # Primary navigation, rendered by _includes/nav.html from _data/nav.yml,
 # duplicated here only as a fallback default.

@@ -32,6 +32,7 @@ wide: true
       <a href="https://scholar.google.com/citations?user=6F2CvwoAAAAJ" class="btn btn--ghost">Google Scholar</a>
       <a href="https://github.com/dhruvdcoder" class="btn btn--ghost">GitHub</a>
       <a href="https://twitter.com/_dhruveshp" class="btn btn--ghost">Twitter</a>
+      <a href="https://www.linkedin.com/in/dhruveshp/" class="btn btn--ghost">LinkedIn</a>
     </div>
   </div>
   {% include diffusion-photo.html src="/assets/img/headshot.jpg" %}
