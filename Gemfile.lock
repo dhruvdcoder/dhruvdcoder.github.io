@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    broadsheet-jekyll-theme (0.1.0)
+    tma-theme (0.1.0)
       jekyll (>= 3.9, < 5.0)
       jekyll-feed (~> 0.12)
       jekyll-redirect-from (~> 0.16)
@@ -108,7 +108,6 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  broadsheet-jekyll-theme!
   bundler (>= 2.0)
   http_parser.rb (~> 0.6.0)
   httparty
@@ -116,6 +115,7 @@ DEPENDENCIES
   jekyll-redirect-from
   jekyll-seo-tag
   jekyll-sitemap
+  tma-theme!
   tzinfo (>= 1, < 3)
   tzinfo-data
   wdm (~> 0.1.1)

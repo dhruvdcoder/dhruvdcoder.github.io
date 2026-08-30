@@ -1,15 +1,6 @@
-// Process-plate photo treatments: .cmyk, .halftone, .cmyk-num, .cmyk-head
-//
-// NOTE: In the original Claude Design system these classes are driven by an
-// optional `print-plates.js` script that adds a live "press register" hover
-// animation (the CMYK plates visibly nudge out of registration on
-// hover/focus, simulating a mis-printed broadsheet). That interactive
-// driver is editor tooling and is intentionally NOT ported here. What
-// follows is a pure-CSS approximation: a static duotone/quadtone filter
-// for `.cmyk` and a dot-screen halftone overlay for `.halftone`, plus the
-// misregistered-plate type styles `.cmyk-num` / `.cmyk-head`. If you want
-// the live register-shift hover, add a small script that toggles a
-// `.is-registered` class and animates a text-shadow / background-position
+// Process-plate photo treatments: .cmyk, .halftone, .cmyk-num, .cmyk-head.
+// Static CSS only. To add a live register-shift hover, toggle
+// `.is-registered` and animate text-shadow / background-position
 // offset on interaction — the classes below already provide the static
 // look to build that on top of.
 

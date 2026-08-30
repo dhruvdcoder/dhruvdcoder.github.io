@@ -1,4 +1,4 @@
-theme: broadsheet-jekyll-theme
+theme: tma-theme
 
 title: Dhruvesh Patel
 tagline: PhD Researcher — UMass Amherst / IESL
@@ -55,7 +55,7 @@ mathjax:
 # giscus GitHub app on the target repo and generating config at giscus.app.
 # Per-post opt-in via front matter: `giscus_comments: true`.
 giscus:
-  repo: "" # e.g. "dhruvdcoder/broadsheet-jekyll-theme"
+  repo: "" # e.g. "dhruvdcoder/dhruvdcoder.github.io"
   repo_id: ""
   category: "Comments"
   category_id: ""
@@ -110,5 +110,4 @@ exclude:
   - README.md
   - node_modules
   - vendor
-  - broadsheet-jekyll-theme.gemspec
-  - About.dc.html
+  - tma-theme.gemspec

@@ -1,11 +1,11 @@
 Gem::Specification.new do |spec|
-  spec.name          = "broadsheet-jekyll-theme"
+  spec.name          = "tma-theme"
   spec.version       = "0.1.0"
   spec.authors       = ["Dhruvesh Patel"]
   spec.email         = ["dhruveshpate@umass.edu"]
 
-  spec.summary       = "Broadsheet: a print-inspired Jekyll theme for academic homepages."
-  spec.homepage      = "https://github.com/dhruvdcoder/broadsheet-jekyll-theme"
+  spec.summary       = "Jekyll theme for dhruveshp.com (The Middle Author)."
+  spec.homepage      = "https://github.com/dhruvdcoder/dhruvdcoder.github.io"
   spec.license       = "MIT"
 
   spec.metadata["plugin_type"] = "theme"
