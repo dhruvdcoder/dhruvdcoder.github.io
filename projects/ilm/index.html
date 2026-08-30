@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insertion Language Models: Sequence Generation with Arbitrary-Position Insertions — Dhruvesh Patel</title>
+<meta name="description" content="Personal academic homepage of Dhruvesh Patel, PhD researcher at the Information Extraction and Synthesis Laboratory (IESL), UMass Amherst.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+<link rel="canonical" href="https://dhruveshp.com/projects/ilm/">
+<link type="application/atom+xml" rel="alternate" href="https://dhruveshp.com/feed.xml" title="Dhruvesh Patel" />
+<!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Insertion Language Models: Sequence Generation with Arbitrary-Position Insertions | Dhruvesh Patel</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Insertion Language Models: Sequence Generation with Arbitrary-Position Insertions" />
+<meta name="author" content="Dhruvesh Patel" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Personal academic homepage of Dhruvesh Patel, PhD researcher at the Information Extraction and Synthesis Laboratory (IESL), UMass Amherst." />
+<meta name="twitter:description" property="og:description" content="Personal academic homepage of Dhruvesh Patel, PhD researcher at the Information Extraction and Synthesis Laboratory (IESL), UMass Amherst." />
+<link rel="canonical" href="https://dhruveshp.com/projects/ilm/" />
+<meta property="og:url" content="https://dhruveshp.com/projects/ilm/" />
+<meta property="og:site_name" content="Dhruvesh Patel" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-08-30T21:17:14+00:00" />
+<meta property="article:modified_time" content="2026-08-30T21:17:14+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Insertion Language Models: Sequence Generation with Arbitrary-Position Insertions" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Dhruvesh Patel","url":"https://dhruveshp.com"},"dateModified":"2026-08-30T21:17:14+00:00","datePublished":"2026-08-30T21:17:14+00:00","description":"Personal academic homepage of Dhruvesh Patel, PhD researcher at the Information Extraction and Synthesis Laboratory (IESL), UMass Amherst.","headline":"Insertion Language Models: Sequence Generation with Arbitrary-Position Insertions","mainEntityOfPage":{"@type":"WebPage","@id":"https://dhruveshp.com/projects/ilm/"},"url":"https://dhruveshp.com/projects/ilm/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+
+<body class="has-particle-layer">
+  <nav class="nav">
+  <a class="nav__brand" href="/">Dhruvesh Patel</a>
+  <ul class="nav__links">
+    
+      
+      
+      <li>
+        <a href="/" >About</a>
+      </li>
+    
+      
+      
+      <li>
+        <a href="/publications/" >Publications</a>
+      </li>
+    
+      
+      
+      <li>
+        <a href="/mentorship/" >Mentorship</a>
+      </li>
+    
+      
+      
+      <li>
+        <a href="/software/" >Software</a>
+      </li>
+    
+      
+      
+      <li>
+        <a href="/blog/" >Blog</a>
+      </li>
+    
+  </ul>
+</nav>
+
+  <main id="main">
+    <article class="paper">
+  <header class="paper__header">
+    <h1 data-reveal>Insertion Language Models: Sequence Generation with Arbitrary-Position Insertions</h1>
+    
+    <p class="paper__authors">
+      
+        <a href="https://dhruveshp.com">Dhruvesh Patel</a>, 
+      
+        <a href="https://www.linkedin.com/in/aishwarya-sahoo-x/">Aishwarya Sahoo</a>, 
+      
+        <a href="https://www.linkedin.com/in/avinashamballa/">Avinash Amballa</a>, 
+      
+        <a href="https://scholar.google.com/citations?user=IoVlb40AAAAJ&hl=en">Tahira Naseem</a>, 
+      
+        <a href="https://timrudner.com/">Tim G. J. Rudner</a>, 
+      
+        <a href="https://people.cs.umass.edu/~mccallum/">Andrew McCallum</a>
+      
+    </p>
+    
+    
+    <p class="paper__affiliations text-muted">
+      UMass Amherst · IBM Research · New York University
+    </p>
+    
+    
+    <div class="hero__actions">
+      
+        <a href="https://arxiv.org/pdf/2505.05755.pdf" class="btn">Paper</a>
+      
+        <a href="https://arxiv.org/abs/2505.05755" class="btn">arXiv</a>
+      
+        <a href="https://github.com/dhruvdcoder/ILM" class="btn">Code</a>
+      
+    </div>
+    
+  </header>
+
+  
+  <figure class="paper__teaser">
+    <img src="/assets/img/publication_preview/ilm_teaser.png" alt="Teaser figure for Insertion Language Models: Sequence Generation with Arbitrary-Position Insertions" data-lightbox="/assets/img/publication_preview/ilm_teaser.png">
+    <figcaption class="text-muted">ARMs generate variable-length sequences left to right. MDMs can add tokens in arbitrary order but require a fixed number of masks. ILMs generate sequences of arbitrary lengths in arbitrary order by inserting tokens.</figcaption>
+  </figure>
+  
+
+  
+
+  
+  <section class="section">
+    <div class="section-heading">
+      
+<svg class="glyph-icon" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <rect x="0" y="0" width="3.2" height="3.2" fill="var(--bs-cyan-500)"></rect>
+  <rect x="8.8" y="0" width="3.2" height="3.2" fill="var(--bs-cyan-500)"></rect>
+  <rect x="13.2" y="0" width="3.2" height="3.2" fill="var(--bs-magenta-500)"></rect>
+  <rect x="4.4" y="4.4" width="3.2" height="3.2" fill="var(--bs-cyan-500)"></rect>
+  <rect x="0" y="8.8" width="3.2" height="3.2" fill="var(--bs-magenta-500)"></rect>
+  <rect x="13.2" y="8.8" width="3.2" height="3.2" fill="var(--bs-cyan-500)"></rect>
+  <rect x="4.4" y="13.2" width="3.2" height="3.2" fill="var(--bs-cyan-500)"></rect>
+  <rect x="8.8" y="13.2" width="3.2" height="3.2" fill="var(--bs-cyan-500)"></rect>
+</svg>
+
+      <h2 data-reveal>Abstract</h2>
+    </div>
+    <p>Autoregressive models (ARMs), which predict subsequent tokens one-by-one "from left to right," have achieved significant success across a wide range of sequence generation tasks. However, they struggle to accurately represent sequences that require satisfying sophisticated constraints or whose sequential dependencies are better addressed by out-of-order generation. Masked Diffusion Models (MDMs) address some of these limitations, but the process of unmasking multiple tokens simultaneously in MDMs can introduce incoherences, and MDMs cannot handle arbitrary infilling constraints when the number of tokens to be filled in is not known in advance. In this work, we introduce Insertion Language Models (ILMs), which learn to insert tokens at arbitrary positions in a sequence—that is, they select jointly both the position and the vocabulary element to be inserted. By inserting tokens one at a time, ILMs can represent strong dependencies between tokens, and their ability to generate sequences in arbitrary order allows them to accurately model sequences where token dependencies do not follow a left-to-right sequential structure. To train ILMs, we propose a tailored network parameterization and use a simple denoising objective. Our empirical evaluation demonstrates that ILMs outperform both ARMs and MDMs on common planning tasks. Furthermore, we show that ILMs outperform MDMs and perform on par with ARMs in an unconditional text generation task while offering greater flexibility than MDMs in arbitrary-length text infilling.
+</p>
+  </section>
+  
+
+  
+
+
+  
+  <section class="section" id="cite">
+    <div class="section-heading">
+      
+<svg class="glyph-icon" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <rect x="0" y="0" width="3.2" height="3.2" fill="var(--bs-cyan-500)"></rect>
+  <rect x="8.8" y="0" width="3.2" height="3.2" fill="var(--bs-cyan-500)"></rect>
+  <rect x="13.2" y="0" width="3.2" height="3.2" fill="var(--bs-magenta-500)"></rect>
+  <rect x="4.4" y="4.4" width="3.2" height="3.2" fill="var(--bs-cyan-500)"></rect>
+  <rect x="0" y="8.8" width="3.2" height="3.2" fill="var(--bs-magenta-500)"></rect>
+  <rect x="13.2" y="8.8" width="3.2" height="3.2" fill="var(--bs-cyan-500)"></rect>
+  <rect x="4.4" y="13.2" width="3.2" height="3.2" fill="var(--bs-cyan-500)"></rect>
+  <rect x="8.8" y="13.2" width="3.2" height="3.2" fill="var(--bs-cyan-500)"></rect>
+</svg>
+
+      <h2 data-reveal>Cite</h2>
+    </div>
+    <pre class="mono">@misc{patel2025insertion,
+  title={Insertion Language Models: Sequence Generation with Arbitrary-Position Insertions},
+  author={Dhruvesh Patel and Aishwarya Sahoo and Avinash Amballa and Tahira Naseem and Tim G. J. Rudner and Andrew McCallum},
+  year={2025},
+  eprint={2505.05755},
+  archivePrefix={arXiv},
+  primaryClass={cs.CL}
+}
+</pre>
+  </section>
+  
+</article>
+
+  </main>
+  <footer class="footer">
+  
+    <a href="mailto:dhruveshpate@umass.edu">Email</a>
+  
+    <a href="https://github.com/dhruvdcoder">GitHub</a>
+  
+    <a href="https://scholar.google.com/citations?user=6F2CvwoAAAAJ">Google Scholar</a>
+  
+    <a href="https://twitter.com/_dhruveshp">Twitter</a>
+  
+  <span class="text-faint">&copy; 2026 Dhruvesh Patel</span>
+</footer>
+
+  <script type="text/javascript">
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script defer type="text/javascript" id="MathJax-script"
+  src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+
+  
+  <script src="/assets/js/reveal.js" defer></script>
+  <script src="/assets/js/lightbox.js" defer></script>
+  
+</body>
+</html>

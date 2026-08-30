@@ -1,137 +1,116 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://dhruveshp.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dhruveshp.com/" rel="alternate" type="text/html" /><updated>2026-08-30T21:17:14+00:00</updated><id>https://dhruveshp.com/feed.xml</id><title type="html">Dhruvesh Patel</title><subtitle>Personal academic homepage of Dhruvesh Patel, PhD researcher at the Information Extraction and Synthesis Laboratory (IESL), UMass Amherst.</subtitle><author><name>Dhruvesh Patel</name><email>dhruveshpate@umass.edu</email></author><entry><title type="html">Discrete Diffusion Language Models, Explained</title><link href="https://dhruveshp.com/2026/08/21/discrete-diffusion-language-models-explained/" rel="alternate" type="text/html" title="Discrete Diffusion Language Models, Explained" /><published>2026-08-21T00:00:00+00:00</published><updated>2026-08-21T00:00:00+00:00</updated><id>https://dhruveshp.com/2026/08/21/discrete-diffusion-language-models-explained</id><content type="html" xml:base="https://dhruveshp.com/2026/08/21/discrete-diffusion-language-models-explained/"><![CDATA[<table>
-  <thead>
-    <tr>
-      <th>Property</th>
-      <th>Autoregressive</th>
-      <th>Discrete diffusion</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Decoding order</td>
-      <td>Left-to-right, fixed</td>
-      <td>Parallel, no fixed order</td>
-    </tr>
-    <tr>
-      <td>Steps at inference</td>
-      <td>≈ one per output token</td>
-      <td>T, set independently of length</td>
-    </tr>
-    <tr>
-      <td>Attention pattern</td>
-      <td>Causal</td>
-      <td>Bidirectional</td>
-    </tr>
-    <tr>
-      <td>Infilling a fixed template</td>
-      <td>Needs special training</td>
-      <td>Native to the objective</td>
-    </tr>
-    <tr>
-      <td>Exact likelihood</td>
-      <td>Exact, via the chain rule</td>
-      <td>A variational bound</td>
-    </tr>
-  </tbody>
-</table>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Continuous-Time Markov Chains: An Intuitive Guide — Dhruvesh Patel</title>
+<meta name="description" content="Personal academic homepage of Dhruvesh Patel, PhD researcher at the Information Extraction and Synthesis Laboratory (IESL), UMass Amherst.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+<link rel="shortcut icon" href="/assets/img/favicon.ico">
+<link rel="canonical" href="https://dhruveshp.com/2026/05/10/continuous-time-markov-chains/">
+<link type="application/atom+xml" rel="alternate" href="https://dhruveshp.com/feed.xml" title="Dhruvesh Patel" />
+<!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Continuous-Time Markov Chains: An Intuitive Guide | Dhruvesh Patel</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Continuous-Time Markov Chains: An Intuitive Guide" />
+<meta name="author" content="Dhruvesh Patel" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="We go over the basics of continuous-time Markov chains, building intuition from the Poisson process up. The proofs use only basic calculus — no measure theory required." />
+<meta name="twitter:description" property="og:description" content="We go over the basics of continuous-time Markov chains, building intuition from the Poisson process up. The proofs use only basic calculus — no measure theory required." />
+<link rel="canonical" href="https://dhruveshp.com/2026/05/10/continuous-time-markov-chains/" />
+<meta property="og:url" content="https://dhruveshp.com/2026/05/10/continuous-time-markov-chains/" />
+<meta property="og:site_name" content="Dhruvesh Patel" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-05-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2026-05-10T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Continuous-Time Markov Chains: An Intuitive Guide" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Dhruvesh Patel"},"dateModified":"2026-05-10T00:00:00+00:00","datePublished":"2026-05-10T00:00:00+00:00","description":"We go over the basics of continuous-time Markov chains, building intuition from the Poisson process up. The proofs use only basic calculus — no measure theory required.","headline":"Continuous-Time Markov Chains: An Intuitive Guide","mainEntityOfPage":{"@type":"WebPage","@id":"https://dhruveshp.com/2026/05/10/continuous-time-markov-chains/"},"url":"https://dhruveshp.com/2026/05/10/continuous-time-markov-chains/"}</script>
+<!-- End Jekyll SEO tag -->
 
-<p><em>Table 1 — Two decoding paradigms at a glance.</em></p>
 
-<h2 id="1-two-ways-to-write-a-sentence">1. Two ways to write a sentence</h2>
+</head>
 
-<p>A standard language model writes left to right. At each step it looks at everything written so far and predicts the next token; string enough predictions together and you have a paragraph. This is autoregressive generation, and it is the basis of essentially every widely deployed chat model today.</p>
+<body>
+  <nav class="nav">
+  <a class="nav__brand" href="/">Dhruvesh Patel</a>
+  <ul class="nav__links">
+    
+      
+      
+      <li>
+        <a href="/" >About</a>
+      </li>
+    
+      
+      
+      <li>
+        <a href="/publications/" >Publications</a>
+      </li>
+    
+      
+      
+      <li>
+        <a href="/mentorship/" >Mentorship</a>
+      </li>
+    
+      
+      
+      <li>
+        <a href="/software/" >Software</a>
+      </li>
+    
+      
+      
+      <li>
+        <a href="/blog/" >Blog</a>
+      </li>
+    
+  </ul>
+</nav>
 
-<p>It has a structural consequence: generation is sequential.<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup> Producing N tokens takes roughly N forward passes, and the model can only condition on what comes before a position, never after. Editing the middle of a passage, or filling a blank surrounded by fixed text on both sides, doesn’t fit the left-to-right story naturally.</p>
-
-<p>Diffusion models, dominant in image generation, offer a different shape. They start from pure noise and repeatedly denoise it, refining the whole canvas at once rather than piece by piece. Applying the same idea to text means defining what “noise” means for a sequence of discrete tokens — and that turns out to be the interesting part.</p>
-
-<h2 id="2-adding-noise-to-tokens">2. Adding noise to tokens</h2>
-
-<p>Images are continuous — a pixel value can be nudged by a small amount, so Gaussian noise makes sense. Tokens are discrete: there’s no “slightly wrong” word, only the right one or a different one entirely. So discrete diffusion models define corruption differently. The formulation used by nearly every discrete diffusion language model in practice is absorbing-state, or masking, diffusion — as the corruption level <em>t</em> increases from 0 to 1, each token independently has a chance of being replaced by a special <code class="language-plaintext highlighter-rouge">[MASK]</code> token, and once masked it stays masked until the reverse process restores it.<sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup> At <em>t</em> = 1, the entire sequence is <code class="language-plaintext highlighter-rouge">[MASK]</code>; at <em>t</em> = 0, it’s the untouched original.</p>
-
-\[q(x_t^i \mid x_0^i) = (1 - t) \cdot \mathbb{1}[x_t^i = x_0^i] + t \cdot \mathbb{1}[x_t^i = \texttt{MASK}]\]
-
-<p>Each position independently keeps its original token with probability $1-t$, or becomes <code class="language-plaintext highlighter-rouge">MASK</code> with probability $t$.</p>
-
-<p>This absorbing-state formulation is a special case of the general discrete diffusion framework <a href="#references">[1]</a>, and recent theoretical work shows it implicitly models many conditional distributions of the clean data at once <a href="#references">[4]</a>.</p>
-
-<div class="widget-box widget-mask-demo" data-words="the model learns to predict masked tokens">
-  <div class="widget-box__label">Try it — masking schedule</div>
-  <div class="widget-box__tokens"></div>
-  <input type="range" min="0" max="100" step="1" value="40" aria-label="Corruption level t" />
-  <div class="widget-box__scale">
-    <span>t = 0</span>
-    <span data-scale-t="">t = 40%</span>
-    <span>t = 100</span>
+  <main id="main">
+    <article class="article">
+  <div class="post-header">
+    <div class="post-header__toc">
+      <nav class="post-toc" aria-label="Table of contents"></nav>
+    </div>
+    <div class="post-header__main">
+      <div class="post-kicker">Blog</div>
+      <h1>Continuous-Time Markov Chains: An Intuitive Guide</h1>
+      <p class="post-deck">A gentle introduction to continuous-time Markov chains, built up from the Poisson process.</p>
+      <div class="post-byline">
+        <strong>Dhruvesh Patel</strong>
+        <span>&middot;</span><span>May 10, 2026</span>
+        
+        
+        
+        <span>&middot;</span><span>7 min read</span>
+      </div>
+      <div class="post-header__meta">
+        <a class="tag" href="/tags/stochastic-processes">stochastic-processes</a><a class="tag" href="/tags/markov-chains">markov-chains</a>
+        <a class="post-cite-link" href="#cite">Cite this article &darr;</a>
+      </div>
+    </div>
   </div>
-  <svg viewBox="0 0 280 120" width="100%" height="130">
-    <path data-step-path="" fill="none" stroke="var(--bs-ink)" stroke-width="1.5" opacity="0.4"></path>
-    <line data-marker-line="" x1="0" y1="8" x2="0" y2="98" stroke="var(--bs-magenta-500)" stroke-width="1" stroke-dasharray="2,3"></line>
-    <circle data-marker="" cx="0" cy="0" r="4" fill="var(--bs-magenta-500)"></circle>
-    <text x="2" y="10" font-size="9.5" fill="currentColor" opacity="0.55">fraction masked</text>
-    <text x="200" y="112" font-size="9.5" fill="currentColor" opacity="0.55">corruption t &rarr;</text>
-  </svg>
-  <p class="text-muted" style="font-size: 0.78125rem; margin: var(--bs-space-3) 0 0;">A simplified, word-level stand-in for what happens to sub-word tokens during training.</p>
-</div>
 
-<h2 id="3-learning-to-reverse-it">3. Learning to reverse it</h2>
+  <div class="post-toc-float">
+    <button type="button" class="post-toc-float__toggle" aria-expanded="false">
+      <span class="post-toc-float__icon" aria-hidden="true"></span>
+      Contents
+    </button>
+    <nav class="post-toc-float__panel" aria-label="Table of contents"></nav>
+  </div>
 
-<p>Training a discrete diffusion model means teaching a network to undo this corruption: given a partially masked sequence at some level <em>t</em>, predict the original tokens underneath the masks. Unlike an autoregressive model, which can only attend to earlier positions, this network sees the entire corrupted sequence at once and predicts every masked position in parallel, conditioning freely on tokens before and after it.</p>
-
-<p>That objective looks a lot like masked language modeling — the pretraining task behind BERT.<sup id="fnref:a"><a href="#fn:a" class="footnote" rel="footnote" role="doc-noteref">3</a></sup> The diffusion framing adds a principled loss derived from a variational bound on the data likelihood, which reweights the masked-token cross-entropy by how corrupted the input was <a href="#references">[2]</a>:</p>
-
-\[\mathcal{L} = \mathbb{E}_t \left[ \frac{1}{t} \sum_{i \,\in\, \text{masked}} -\log p_\theta(x_0^i \mid x_t) \right]\]
-
-<p>A cross-entropy loss over the masked positions only, upweighted at low corruption and downweighted near $t=1$.</p>
-
-<h2 id="4-trading-steps-for-quality">4. Trading steps for quality</h2>
-
-<p>Generation starts from a sequence that’s entirely <code class="language-plaintext highlighter-rouge">[MASK]</code> and runs the reverse process for T steps,<sup id="fnref:3"><a href="#fn:3" class="footnote" rel="footnote" role="doc-noteref">4</a></sup> each one filling in — or firming up — a subset of positions based on the model’s predictions, until nothing is left masked. Fewer steps means faster generation but coarser output; more steps means slower generation that tracks the model’s real distribution more closely.</p>
-
-<p>This is a genuinely different failure mode than autoregressive decoding. An autoregressive model can’t change its mind about a token once it’s written; a diffusion model can revise a low-confidence guess in a later step, but it can also lock in a wrong token early and never revisit it if the sampler commits too aggressively.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x = [MASK] * length            # start fully masked
-for t in linspace(1.0, 0.0, steps):
-    p = model(x)                # predict a distribution for every position
-    x = remask(x, p, t)         # commit confident predictions, leave
-                                 # the rest masked for the next round
-return x
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">steps</code> is chosen at inference time — independent of sequence length.</p>
-
-<h2 id="5-why-bother">5. Why bother</h2>
-
-<p>Three things fall out of this shape almost for free. Infilling — generating into a fixed template, or fixing the middle of a passage without rewriting everything after it — is native to a model that never assumed a left-to-right order, rather than a special case bolted on. Parallel decoding means wall-clock generation time can, in principle, decouple from sequence length, since many positions update per step instead of one token per forward pass. And reusing the same diffusion machinery already proven on images and audio moves language modeling closer to a shared framework across modalities, instead of a separate autoregressive special case.</p>
-
-<h2 id="6-whats-still-unsettled">6. What’s still unsettled</h2>
-
-<p>None of this is a settled replacement for autoregressive modeling yet. Early discrete diffusion language models trailed well-tuned autoregressive baselines by a wide margin; that gap has narrowed substantially at scale — an 8-billion-parameter diffusion model trained from scratch has been shown to perform comparably to a same-sized autoregressive baseline on general, math, and code benchmarks <a href="#references">[3]</a> — but it isn’t fully closed. Inference now carries an extra knob, the number of sampling steps and the schedule for unmasking, that autoregressive decoding doesn’t need. And tooling built around next-token prediction — constrained decoding, KV-caching, most serving infrastructure — doesn’t transfer directly to a model that predicts every position at once.</p>
-
-<h3 id="references">References</h3>
-
-<ol>
-  <li>Austin, J., Johnson, D. D., Ho, J., Tarlow, D., &amp; van den Berg, R. (2021). Structured Denoising Diffusion Models in Discrete State-Spaces. <em>Advances in Neural Information Processing Systems</em>, 34, 17981–17993.</li>
-  <li>Sahoo, S. S., Arriola, M., Schiff, Y., Gokaslan, A., Marroquin, E., Chiu, J. T., Rush, A. M., &amp; Kuleshov, V. (2024). Simple and Effective Masked Diffusion Language Models. <em>Advances in Neural Information Processing Systems</em>.</li>
-  <li>Nie, S., Zhu, F., You, Z., Zhang, X., Ou, J., Hu, J., Zhou, J., Lin, Y., Wen, J.-R., &amp; Li, C. (2025). Large Language Diffusion Models. <em>International Conference on Machine Learning</em>. arXiv:2502.09992.</li>
-  <li>Ou, J., Nie, S., Xue, K., Zhu, F., Sun, J., Li, Z., &amp; Li, C. (2025). Your Absorbing Discrete Diffusion Secretly Models the Conditional Distributions of Clean Data. <em>International Conference on Learning Representations</em>.</li>
-</ol>
-<div class="footnotes" role="doc-endnotes">
-  <ol>
-    <li id="fn:1">
-      <p>Speculative decoding drafts several tokens with a small model and verifies them with the large one — it speeds up autoregressive decoding, but doesn’t remove the sequential dependency. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p>An “absorbing” state, in Markov-chain terms, is one you can enter but never leave on your own — the chain exits it only when the reverse process intervenes. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-    <li id="fn:a">
-      <p>BERT masks a fixed ~15% of tokens once; diffusion training samples t uniformly and can mask anywhere from none to all of them, so the model learns to denoise at every corruption level, not just one. <a href="#fnref:a" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-      <p>T is unrelated to sequence length — a 40-token passage and a 400-token one can both be generated in, say, 32 steps; more steps buys quality, not more tokens. <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-  </ol>
-</div>]]></content><author><name>Dhruvesh Patel</name><email>dhruveshpate@umass.edu</email></author><category term="generative-models" /><category term="language-models" /><summary type="html"><![CDATA[Property Autoregressive Discrete diffusion Decoding order Left-to-right, fixed Parallel, no fixed order Steps at inference ≈ one per output token T, set independently of length Attention pattern Causal Bidirectional Infilling a fixed template Needs special training Native to the objective Exact likelihood Exact, via the chain rule A variational bound]]></summary></entry><entry><title type="html">Continuous-Time Markov Chains: An Intuitive Guide</title><link href="https://dhruveshp.com/2026/05/10/continuous-time-markov-chains/" rel="alternate" type="text/html" title="Continuous-Time Markov Chains: An Intuitive Guide" /><published>2026-05-10T00:00:00+00:00</published><updated>2026-05-10T00:00:00+00:00</updated><id>https://dhruveshp.com/2026/05/10/continuous-time-markov-chains</id><content type="html" xml:base="https://dhruveshp.com/2026/05/10/continuous-time-markov-chains/"><![CDATA[<h2 id="overview">Overview</h2>
+  <div class="post-body">
+    <h2 id="overview">Overview</h2>
 
 <p>In this post, we will go over the basics of continuous-time Markov chains (CTMCs).
 The main goal is to provide an intuitive view of CTMCs.
@@ -448,4 +427,58 @@ To obtain a genuine one-event process, stop it at $T_1$, or equivalently use the
 
 <ol>
   <li>Ross, S. M. (2007). <em>Stochastic Processes</em> (2nd ed.). Wiley.</li>
-</ol>]]></content><author><name>Dhruvesh Patel</name><email>dhruveshpate@umass.edu</email></author><category term="stochastic-processes" /><category term="markov-chains" /><summary type="html"><![CDATA[We go over the basics of continuous-time Markov chains, building intuition from the Poisson process up. The proofs use only basic calculus — no measure theory required.]]></summary></entry></feed>
+</ol>
+
+  </div>
+  
+<div class="cite-box" id="cite">
+  <div class="cite-box__label">Cite this article</div>
+  <p>Patel, D. (2026). Continuous-time Markov chains: an intuitive guide. Working Notes.</p>
+  <pre class="mono">@misc{patel2026ctmc,
+  author = {Patel, Dhruvesh},
+  title  = {Continuous-Time Markov Chains: An Intuitive Guide},
+  year   = {2026},
+  note   = {Working Notes}
+}
+</pre>
+  <button type="button" class="btn" data-copy-bibtex>Copy BibTeX</button>
+</div>
+
+  
+</article>
+
+  </main>
+  <footer class="footer">
+  
+    <a href="mailto:dhruveshpate@umass.edu">Email</a>
+  
+    <a href="https://github.com/dhruvdcoder">GitHub</a>
+  
+    <a href="https://scholar.google.com/citations?user=6F2CvwoAAAAJ">Google Scholar</a>
+  
+    <a href="https://twitter.com/_dhruveshp">Twitter</a>
+  
+  <span class="text-faint">&copy; 2026 Dhruvesh Patel</span>
+</footer>
+
+  <script type="text/javascript">
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script defer type="text/javascript" id="MathJax-script"
+  src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+
+  
+  <script src="/assets/js/reveal.js" defer></script>
+  <script src="/assets/js/lightbox.js" defer></script>
+  
+  <script src="/assets/js/toc.js" defer></script>
+  <script src="/assets/js/widgets.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js" defer></script>
+  
+</body>
+</html>
