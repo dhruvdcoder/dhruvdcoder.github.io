@@ -54,10 +54,7 @@ Static figures in the same post can still use `tikzjax: true`; the two flags are
     <div class="stochviz-control-group">
       <label for="my-slider">$n$</label>
       <input class="stochviz-n-slider" id="my-slider" type="range" min="5" max="500" step="5" value="10">
-      <span class="stochviz-meta"><span class="stochviz-n-out">10</span> trials</span>
-    </div>
-    <div class="stochviz-presets" role="group" aria-label="Preset values">
-      <button type="button" class="stochviz-preset active" data-stochviz-preset="10">$n=10$</button>
+      <span class="stochviz-meta"><span class="stochviz-n-out">10</span> subintervals</span>
     </div>
   </div>
   <div class="stochviz-plot"></div>
@@ -106,16 +103,15 @@ Keep only **reusable** code here. When a widget is tied to one post, put it unde
 
 | Function | Description |
 |----------|-------------|
-| `createBinomialPoissonConvergenceWidget(container, opts)` | CTMC post Figure 1: Binomial$(n, \lambda/n)$ bars vs Poisson$(\lambda)$ dots |
+| `createBinomialPoissonConvergenceWidget(container, opts)` | CTMC post Figure 1: unit interval subdivision + Binomial$(n, \lambda/n)$ vs Poisson$(\lambda)$ |
 
-**Options:** `lambda` (default 3), `n` (default 10), `nMin`, `nMax`, `nStep`, `presets`, `maxK`, `width`, `height`.
+**Options:** `lambda` (default 3), `n` (default 10), `nMin`, `nMax`, `nStep`, `maxK`, `width`, `pmfHeight`, `intervalHeight`.
 
 **Required DOM inside container:**
 
-- `.stochviz-plot` — SVG mount point
+- `.stochviz-plot` — SVG mount point (interval strip + PMF plot)
 - `.stochviz-n-slider` — range input
 - `.stochviz-n-out`, `.stochviz-p-out` — readouts (optional)
-- `[data-stochviz-preset]` buttons — preset values
 
 ## Styling and dark mode
 
@@ -162,8 +158,8 @@ Keep both in the same post when helpful: static TikZ figure for at-a-glance comp
 - **Grid column**: widgets inside `<d-figure>` inherit `grid-column: text` from Distill; no extra wrapper needed.
 - **Log-space binomial**: use log factorials for $n > 100$ to avoid overflow; verified against precomputed TikZ values at $n=50$.
 - **Y-axis domain**: fix domain to cover Poisson$(\lambda)$ peak (e.g. $[0, 0.28]$ for $\lambda=3$) so bars don't rescale distractingly.
-- **Preset button state**: toggle `.active` class on click so the active preset is visible.
-- **Accessibility**: add `aria-label` on slider; `role="group"` on presets; `role="img"` + `aria-label` on SVG.
+- **Interval strip**: draw $n$ equal cells on $[0,1]$ above the PMF; thin stroke when $n$ is large.
+- **Accessibility**: add `aria-label` on slider; `role="img"` + `aria-label` on SVG.
 
 ## Checklist
 

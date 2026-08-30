@@ -7,9 +7,8 @@
 
   var SV = global.StochViz;
 
-  function cssVar(name, fallback) {
-    var value = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-    return value || fallback;
+  function cssVar(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   }
 
   function readTheme() {
@@ -20,7 +19,14 @@
       axis: cssVar('--stochviz-axis'),
       text: cssVar('--stochviz-text'),
       grid: cssVar('--stochviz-grid'),
+      intervalFill: cssVar('--stochviz-interval-fill'),
+      intervalStroke: cssVar('--stochviz-interval-stroke'),
     };
+  }
+
+  function formatP(p) {
+    if (p < 0.001) return p.toExponential(2);
+    return p.toFixed(4).replace(/0+$/, '').replace(/\.$/, '.0');
   }
 
   /**
@@ -31,7 +37,6 @@
    * @param {number} [opts.nMin=5]
    * @param {number} [opts.nMax=500]
    * @param {number} [opts.nStep=5]
-   * @param {number[]} [opts.presets=[10,50,200]]
    * @param {number} [opts.maxK=12]
    * @param {number} [opts.width=640]
    * @param {number} [opts.height=280]
@@ -48,19 +53,18 @@
     var nMin = opts.nMin != null ? opts.nMin : 5;
     var nMax = opts.nMax != null ? opts.nMax : 500;
     var nStep = opts.nStep != null ? opts.nStep : 5;
-    var presets = opts.presets || [10, 50, 200];
     var maxK = opts.maxK != null ? opts.maxK : 12;
     var width = opts.width != null ? opts.width : 640;
     var height = opts.height != null ? opts.height : 280;
-    var margin = { top: 16, right: 16, bottom: 44, left: 48 };
+    var margin = { top: 20, right: 16, bottom: 44, left: 48 };
     var innerW = width - margin.left - margin.right;
     var innerH = height - margin.top - margin.bottom;
 
+    var intervalEl = container.querySelector('.stochviz-interval');
     var plotEl = container.querySelector('.stochviz-plot');
     var sliderEl = container.querySelector('.stochviz-n-slider');
     var nOutEl = container.querySelector('.stochviz-n-out');
     var pOutEl = container.querySelector('.stochviz-p-out');
-    var presetBtns = container.querySelectorAll('[data-stochviz-preset]');
 
     if (!plotEl || !sliderEl) {
       console.warn('createBinomialPoissonConvergenceWidget: missing plot or slider element');
@@ -71,6 +75,44 @@
     sliderEl.max = String(nMax);
     sliderEl.step = String(nStep);
     sliderEl.value = String(n);
+
+    var intervalWidth = width;
+    var intervalHeight = 28;
+    var intervalInnerW = intervalWidth - 8;
+    var cellBarHeight = 12;
+
+    var intervalSvg = intervalEl
+      ? d3.select(intervalEl)
+          .append('svg')
+          .attr('viewBox', '0 0 ' + intervalWidth + ' ' + intervalHeight)
+          .attr('width', '100%')
+          .attr('height', intervalHeight)
+          .attr('role', 'img')
+          .attr('aria-label', 'Unit interval divided into n equal subintervals')
+      : null;
+
+    var intervalG = intervalSvg
+      ? intervalSvg.append('g').attr('transform', 'translate(4, 2)')
+      : null;
+
+    var intervalCellsG = intervalG ? intervalG.append('g').attr('class', 'stochviz-interval-cells') : null;
+
+    if (intervalG) {
+      intervalG.append('text')
+        .attr('class', 'stochviz-interval-end')
+        .attr('x', 0)
+        .attr('y', intervalHeight - 4)
+        .attr('font-size', 9)
+        .text('0');
+
+      intervalG.append('text')
+        .attr('class', 'stochviz-interval-end')
+        .attr('x', intervalInnerW)
+        .attr('y', intervalHeight - 4)
+        .attr('text-anchor', 'end')
+        .attr('font-size', 9)
+        .text('1');
+    }
 
     var svg = d3.select(plotEl)
       .append('svg')
@@ -119,7 +161,7 @@
 
     var legend = g.append('g')
       .attr('class', 'stochviz-legend')
-      .attr('transform', 'translate(0, -4)');
+      .attr('transform', 'translate(0, -8)');
 
     legend.append('rect')
       .attr('class', 'stochviz-legend-bar')
@@ -162,14 +204,21 @@
 
     function applyTheme() {
       var theme = readTheme();
-      g.selectAll('.stochviz-axis path, .stochviz-axis line').attr('stroke', theme.axis);
-      g.selectAll('.stochviz-axis text, .stochviz-axis-label, .stochviz-legend-text')
+      svg.selectAll('.stochviz-axis path, .stochviz-axis line').attr('stroke', theme.axis);
+      svg.selectAll('.stochviz-axis text, .stochviz-axis-label, .stochviz-legend-text')
         .attr('fill', theme.text);
       g.selectAll('.stochviz-grid line').attr('stroke', theme.grid);
       g.selectAll('.stochviz-bars rect').attr('fill', theme.barFill).attr('stroke', theme.barStroke);
       g.selectAll('.stochviz-ref circle').attr('fill', theme.refFill);
       legend.select('.stochviz-legend-bar').attr('fill', theme.barFill).attr('stroke', theme.barStroke);
       legend.select('.stochviz-legend-dot').attr('fill', theme.refFill);
+
+      if (intervalCellsG) {
+        intervalCellsG.selectAll('rect')
+          .attr('fill', theme.intervalFill)
+          .attr('stroke', theme.intervalStroke);
+        intervalG.selectAll('.stochviz-interval-end').attr('fill', theme.text);
+      }
     }
 
     function drawAxes() {
@@ -177,10 +226,9 @@
       xAxisG.call(d3.axisBottom(xScale).tickFormat(function (d) { return d; }));
       yAxisG.call(d3.axisLeft(yScale).ticks(5).tickFormat(d3.format('.2f')));
 
-      var yTicks = yScale.ticks(5);
       g.select('.stochviz-grid')
         .selectAll('line')
-        .data(yTicks)
+        .data(yScale.ticks(5))
         .join('line')
         .attr('x1', 0)
         .attr('x2', innerW)
@@ -193,10 +241,9 @@
     }
 
     function drawReference() {
-      var data = poissonData();
       g.select('.stochviz-ref')
         .selectAll('circle')
-        .data(data, function (d) { return d.k; })
+        .data(poissonData(), function (d) { return d.k; })
         .join('circle')
         .attr('cx', function (d) { return xScale(String(d.k)) + xScale.bandwidth() / 2; })
         .attr('cy', function (d) { return yScale(d.prob); })
@@ -204,13 +251,29 @@
       applyTheme();
     }
 
-    function updateBars(nVal) {
-      var p = lambda / nVal;
-      var data = binomialData(nVal);
+    function updateInterval(nVal) {
+      if (!intervalCellsG) return;
 
+      var cellWidth = intervalInnerW / nVal;
+      var strokeWidth = nVal > 120 ? 0.25 : nVal > 40 ? 0.5 : 0.75;
+
+      intervalCellsG
+        .selectAll('rect')
+        .data(d3.range(nVal))
+        .join('rect')
+        .attr('x', function (i) { return i * cellWidth; })
+        .attr('y', 2)
+        .attr('width', Math.max(cellWidth, 0))
+        .attr('height', cellBarHeight)
+        .attr('stroke-width', strokeWidth);
+
+      applyTheme();
+    }
+
+    function updateBars(nVal) {
       g.select('.stochviz-bars')
         .selectAll('rect')
-        .data(data, function (d) { return d.k; })
+        .data(binomialData(nVal), function (d) { return d.k; })
         .join('rect')
         .attr('x', function (d) { return xScale(String(d.k)); })
         .attr('y', function (d) { return yScale(d.prob); })
@@ -219,11 +282,7 @@
         .attr('rx', 1);
 
       if (nOutEl) nOutEl.textContent = String(nVal);
-      if (pOutEl) {
-        pOutEl.textContent = p < 0.001
-          ? p.toExponential(2)
-          : p.toFixed(4).replace(/0+$/, '').replace(/\.$/, '.0');
-      }
+      if (pOutEl) pOutEl.textContent = formatP(lambda / nVal);
       applyTheme();
     }
 
@@ -231,21 +290,12 @@
       nVal = Math.max(nMin, Math.min(nMax, Math.round(nVal / nStep) * nStep));
       n = nVal;
       sliderEl.value = String(nVal);
+      updateInterval(nVal);
       updateBars(nVal);
-      presetBtns.forEach(function (btn) {
-        var preset = Number(btn.getAttribute('data-stochviz-preset'));
-        btn.classList.toggle('active', preset === nVal);
-      });
     }
 
     sliderEl.addEventListener('input', function () {
       setN(Number(sliderEl.value));
-    });
-
-    presetBtns.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        setN(Number(btn.getAttribute('data-stochviz-preset')));
-      });
     });
 
     var themeObserver = new MutationObserver(function () {
@@ -261,6 +311,7 @@
       setN: setN,
       destroy: function () {
         themeObserver.disconnect();
+        if (intervalSvg) intervalSvg.remove();
         svg.remove();
       },
     };

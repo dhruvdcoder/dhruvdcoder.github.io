@@ -14,7 +14,7 @@
   --global-footer-text-color: #{$grey-color-light};
   --global-footer-link-color: #{$white-color};
   --global-distill-app-color: #{$grey-color};
-  --global-divider-color: rgba(0,0,0,.1);
+  --global-divider-color: rgba(0, 0, 0, .1);
   --global-card-bg-color: #{$white-color};
 
   --global-tip-block: #42b983;
@@ -48,17 +48,19 @@
   --mathbox-proof-bg: #fafafa;
 
   .fa-sun {
-    display : none;
+    display: none;
   }
+
   .fa-moon {
     padding-left: 10px;
     padding-top: 12px;
-    display : block;
+    display: block;
   }
 
   .repo-img-light {
     display: block;
   }
+
   .repo-img-dark {
     display: none;
   }
@@ -112,15 +114,17 @@ html[data-theme='dark'] {
   .fa-sun {
     padding-left: 10px;
     padding-top: 12px;
-    display : block;
+    display: block;
   }
+
   .fa-moon {
-    display : none;
+    display: none;
   }
 
   .repo-img-light {
     display: none;
   }
+
   .repo-img-dark {
     display: block;
   }
@@ -135,4 +139,6 @@ html[data-theme='dark'] {
   --stochviz-axis: var(--mathbox-remark-accent);
   --stochviz-text: var(--global-distill-app-color);
   --stochviz-grid: color-mix(in srgb, var(--global-divider-color) 80%, transparent);
+  --stochviz-interval-fill: color-mix(in srgb, var(--global-theme-color) 30%, transparent);
+  --stochviz-interval-stroke: var(--global-theme-color);
 }

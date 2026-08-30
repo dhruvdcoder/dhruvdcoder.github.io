@@ -31,12 +31,21 @@ module Jekyll
         body = converter.convert(super(context))
         label = header_label(title)
         qed = @env == 'proof' ? '<span class="mathbox-qed" aria-hidden="true">&#8718;</span>' : ''
-        <<~HTML
-          <div class="mathbox mathbox-#{@env}">
-            <div class="mathbox-header"><span class="mathbox-label">#{label}</span></div>
-            <div class="mathbox-body">#{body}#{qed}</div>
-          </div>
-        HTML
+        if @env == 'proof'
+          <<~HTML
+            <details class="mathbox mathbox-#{@env}">
+              <summary class="mathbox-header"><span class="mathbox-label">#{label}</span></summary>
+              <div class="mathbox-body">#{body}#{qed}</div>
+            </details>
+          HTML
+        else
+          <<~HTML
+            <div class="mathbox mathbox-#{@env}">
+              <div class="mathbox-header"><span class="mathbox-label">#{label}</span></div>
+              <div class="mathbox-body">#{body}#{qed}</div>
+            </div>
+          HTML
+        end
       end
 
       private

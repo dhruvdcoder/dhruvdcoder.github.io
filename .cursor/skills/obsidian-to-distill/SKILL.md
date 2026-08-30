@@ -70,6 +70,8 @@ toc:
 | `#tag` / block ids (`^feff9e`) | Drop |
 | `t'`, `\Lambda'(t)` in math | `t^{\prime}`, `\Lambda^{\prime}(t)` — see **Kramdown smart quotes** below |
 | `\{...\}` literal braces in math | `\\{...\\}` or `\lbrace...\rbrace` — see **Kramdown escaped braces** below |
+| `\begin{equation}...\end{equation}` | `$$... \qquad (n)$$` — see **Equation numbering** below |
+| `\label{...}` / `\eqref{...}` / `\ref{...}` | Prose (“Equation (1)”) or manual `\qquad (n)` — no auto cross-refs in Distill |
 | Incomplete Anki prompts with no answer | Skip or leave a short TODO only if the user asks to keep drafts |
 
 ### Citations
@@ -86,6 +88,42 @@ Add matching BibTeX keys to the post’s `.bib`. Prefer real bibliographic entri
 - Prefer `$$` for single-line display equations.
 - Multi-line math: use `$$\begin{aligned} ... \end{aligned}$$`. **`aligned` inside `$$`** — not `align`. In KaTeX, `align` is a top-level display environment; nesting it inside `$$`/`\[...\]` (what Kramdown emits) fails silently. `aligned` is designed for use inside math delimiters.
 - Site macros (already in `_layouts/distill.html`): `\R`, `\N`, `\E`, `\Prob` — prefer `\Prob` over `\mathbb{P}` / `P(...)` for probability.
+
+#### Equation numbering
+
+Distill posts use **KaTeX** (configured in `_layouts/distill.html`), not MathJax. MathJax is intentionally **not** loaded on Distill pages — it conflicts with KaTeX delimiters and macros.
+
+The KaTeX version bundled in `assets/js/distillpub/transforms.v2.js` is **0.9.x** (2018 Distill template). It does **not** support `\tag` — using `\tag{n}` causes a KaTeX parse error and the **entire equation disappears** (no fallback).
+
+**Works** — manual numbers via `\qquad (n)` at the end of a line:
+
+```markdown
+$$
+\Prob(N(t) = 1) = \lambda t + o(t) \qquad (1)
+$$
+```
+
+Multi-line: use `aligned` inside `$$`, and number the tagged line:
+
+```markdown
+$$
+\begin{aligned}
+\Prob(N(t) = 1) &= \lambda t + o(t) \\
+\Prob(N(t) \geq 2) &= o(t) \qquad (2)
+\end{aligned}
+$$
+```
+
+**Does not work** in Distill/KaTeX:
+
+- `\tag{n}` — unsupported in bundled KaTeX 0.9.x; breaks the whole display block
+- `\begin{equation}...\end{equation}` with automatic numbering
+- `\begin{align}...\end{align}` with automatic numbering (and nested `align` inside `$$` fails anyway — use `aligned`)
+- `\label{...}`, `\eqref{...}`, `\ref{...}` for cross-references
+
+When importing Obsidian/LaTeX notes that use `\tag`, `\label`, or `\eqref`, convert to `\qquad (n)` and prose references (“Equation (1) above”). Do not expect clickable `\eqref` links.
+
+Non-Distill layouts (`default`, etc.) load MathJax with AMS-style numbering (`_includes/scripts/mathjax.html`); that full LaTeX numbering stack is **not** available on `layout: distill` posts.
 
 #### Kramdown smart quotes (primes in math)
 
@@ -201,6 +239,7 @@ For creating diagrams, use the **distill-tikz** skill (`tikzjax: true` + `<d-fig
 - [ ] Headings + `toc:` names aligned
 - [ ] Citations via `d-cite` + `assets/bibliography/<slug>.bib`
 - [ ] Math delimiters valid for Distill/KaTeX (multiline uses `$$\begin{aligned}...\end{aligned}$$`)
+- [ ] Equation numbers use `\qquad (n)` (not `\tag{n}`, `\label`/`\eqref`/`\begin{equation}`)
 - [ ] Primes in math use `^{\prime}` (no bare `'` inside math — Kramdown smart quotes)
 - [ ] Literal braces in math use `\\{...\\}` or `\lbrace...\rbrace` (not bare `\{...\}`)
 - [ ] Incomplete stubs skipped (or explicitly kept per user)
