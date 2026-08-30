@@ -41,8 +41,6 @@ nav:
     url: /mentorship/
   - title: Software
     url: /software/
-  - title: Blog
-    url: /blog/
 
 # Feature toggles
 reveal_animation: true      # scramble-reveal heading effect (assets/js/reveal.js)

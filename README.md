@@ -18,7 +18,7 @@ Pushes to `master` deploy to [dhruveshp.com](https://dhruveshp.com) via `.github
 | Mentees | `_data/mentees.yml` (rendered by `mentorship.md`) |
 | Publications | `_publications/*.md` — one file per paper |
 | Paper landing pages | `_projects/*.md` |
-| Blog posts | `_posts/YYYY-MM-DD-title.md` |
+| Blog posts | `_drafts/` for now (`jekyll serve --drafts`); move to `_posts/` to publish |
 | Mentorship / software page copy | `mentorship.md`, `software.md` |
 
 A new publication is a file in `_publications/` with `title`, `authors`, `venue`, `tag`, `year`, `href`, optional `thumbnail`, `links`, and `selected: true` to appear on the About page. Add a `_projects/` page only when the paper needs its own HTML URL.
