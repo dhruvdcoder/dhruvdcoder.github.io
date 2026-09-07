@@ -11,7 +11,7 @@ layout: default
     <ul class="post-list">
       {% for post in filtered %}
         <li class="post-list__item">
-          <span class="post-list__date">{{ post.date | date: "%b %-d, %Y" }}</span>
+          <span class="post-list__date">{% include post-dates.html post=post style="compact" %}</span>
           <h2 style="margin-bottom: 0;"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
         </li>
       {% endfor %}

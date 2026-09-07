@@ -1,6 +1,10 @@
 ---
 title: "Weakly Supervised Medication Regimen Extraction from Medical Conversations"
-authors: "Dhruvesh Patel, Sandeep Konam, and Sai Prabhakar Selvaraj"
+authors:
+  - name: Dhruvesh Patel
+    highlight: true
+  - name: Sandeep Konam
+  - name: Sai Prabhakar Selvaraj
 venue: "Proc. of the 3rd Clinical NLP Workshop"
 tag: "EMNLP"
 year: 2020

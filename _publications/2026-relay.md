@@ -1,6 +1,17 @@
 ---
 title: "Learned Relay Representations for Forward-Thinking Discrete Diffusion Models"
-authors: "Benjamin Rozonoyer, Jacopo Minniti, Dhruvesh Patel, Neil Band, Joey Bose, Tim G. J. Rudner, and Andrew McCallum"
+authors:
+  - name: Benjamin Rozonoyer
+    equal_first: true
+  - name: Jacopo Minniti
+    equal_first: true
+  - name: Dhruvesh Patel
+    equal_first: true
+    highlight: true
+  - name: Neil Band
+  - name: Joey Bose
+  - name: Tim G. J. Rudner
+  - name: Andrew McCallum
 venue: "ICML 2026 Workshop on Foundations of Deep Generative Models"
 tag: "ICML"
 year: 2026

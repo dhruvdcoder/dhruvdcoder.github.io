@@ -1,6 +1,16 @@
 ---
 title: "Word2Box: Capturing Set-Theoretic Semantics of Words using Box Embeddings"
-authors: "Shib Dasgupta, Michael Boratko, Siddhartha Mishra, Shriya Atmakuri, Dhruvesh Patel, Xiang Li, and Andrew McCallum"
+authors:
+  - name: Shib Dasgupta
+    equal_first: true
+  - name: Michael Boratko
+    equal_first: true
+  - name: Siddhartha Mishra
+  - name: Shriya Atmakuri
+  - name: Dhruvesh Patel
+    highlight: true
+  - name: Xiang Li
+  - name: Andrew McCallum
 venue: "Proc. of the 60th Annual Meeting of the ACL"
 tag: "ACL"
 year: 2022

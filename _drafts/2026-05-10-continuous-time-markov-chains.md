@@ -1,7 +1,7 @@
 ---
 title: "Continuous-Time Markov Chains: An Intuitive Guide"
 subtitle: "A gentle introduction to continuous-time Markov chains, built up from the Poisson process."
-kicker: "Probability Theory"
+category: probability-theory
 role: "PhD Researcher, UMass Amherst"
 date: 2026-05-10
 tags: [stochastic-processes, markov-chains]
@@ -9,13 +9,14 @@ excerpt: "We go over the basics of continuous-time Markov chains, building intui
 d3: true
 redirect_from:
   - /blog/2026/ctmc/
-cite: "Patel, D. (2026). Continuous-time Markov chains: an intuitive guide. Working Notes."
 bibtex: |
-  @misc{patel2026ctmc,
-    author = {Patel, Dhruvesh},
-    title  = {Continuous-Time Markov Chains: An Intuitive Guide},
-    year   = {2026},
-    note   = {Working Notes}
+  @article{patel2026ctmc,
+    title   = {Continuous-Time Markov Chains: An Intuitive Guide},
+    author  = {Patel, Dhruvesh},
+    journal = {The Middle Author},
+    year    = {2026},
+    month   = may,
+    url     = {https://dhruveshp.com/2026/05/10/continuous-time-markov-chains/}
   }
 ---
 

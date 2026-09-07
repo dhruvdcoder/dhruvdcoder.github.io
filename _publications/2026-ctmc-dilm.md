@@ -1,6 +1,13 @@
 ---
 title: "A Continuous Time Markov Chain framework for Insertion Language Models"
-authors: "Dhruvesh Patel, Benjamin Rozonoyer, Soumitra Das, Tahira Naseem, Tim G. J. Rudner, and Andrew McCallum"
+authors:
+  - name: Dhruvesh Patel
+    highlight: true
+  - name: Benjamin Rozonoyer
+  - name: Soumitra Das
+  - name: Tahira Naseem
+  - name: Tim G. J. Rudner
+  - name: Andrew McCallum
 venue: "AISTATS (Spotlight, Top 6%)"
 tag: "AISTATS"
 year: 2026

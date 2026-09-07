@@ -6,6 +6,7 @@ teaser: /assets/img/publication_preview/ctmc_insertion.gif
 authors:
   - name: "Dhruvesh Patel"
     url: "https://dhruveshp.com"
+    highlight: true
   - name: "Benjamin Rozonoyer"
     url: "https://brozonoyer.github.io/"
   - name: "Soumitra Das"

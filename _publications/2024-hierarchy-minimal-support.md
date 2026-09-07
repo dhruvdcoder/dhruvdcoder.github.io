@@ -1,6 +1,14 @@
 ---
 title: "Learning Representations for Hierarchies with Minimal Support"
-authors: "Benjamin Rozonoyer, Michael Boratko, Dhruvesh Patel, Wenlong Zhao, Shib Dasgupta, Hung Le, and Andrew McCallum"
+authors:
+  - name: Benjamin Rozonoyer
+  - name: Michael Boratko
+  - name: Dhruvesh Patel
+    highlight: true
+  - name: Wenlong Zhao
+  - name: Shib Dasgupta
+  - name: Hung Le
+  - name: Andrew McCallum
 venue: "Advances in Neural Information Processing Systems"
 tag: "NeurIPS"
 year: 2024

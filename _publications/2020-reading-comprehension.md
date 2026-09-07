@@ -1,6 +1,16 @@
 ---
 title: "Reading Comprehension as Natural Language Inference: A Semantic Analysis"
-authors: "Anshuman Mishra, Dhruvesh Patel, Aparna Vijayakumar, Xiang Li, Pavan Kapanipathi, and Kartik Talamadupula"
+authors:
+  - name: Anshuman Mishra
+    equal_first: true
+  - name: Dhruvesh Patel
+    equal_first: true
+    highlight: true
+  - name: Aparna Vijayakumar
+    equal_first: true
+  - name: Xiang Li
+  - name: Pavan Kapanipathi
+  - name: Kartik Talamadupula
 venue: "StarSem 2020 Workshop at COLING"
 tag: "COLING"
 year: 2020

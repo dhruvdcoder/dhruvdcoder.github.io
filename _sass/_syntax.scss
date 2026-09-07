@@ -1,0 +1,69 @@
+// Rouge syntax highlighting, colored from the theme tokens.
+// Jekyll wraps fenced blocks as:
+//   div.language-python.highlighter-rouge > div.highlight > pre.highlight > code
+// Inline backticks become <code class="language-plaintext highlighter-rouge">.
+
+code {
+  font-family: var(--bs-font-mono);
+  font-size: 0.88em;
+  background: var(--bs-surface);
+  padding: 0.12em 0.35em;
+  border-radius: var(--bs-radius-sm);
+}
+
+pre code {
+  font-family: var(--bs-font-mono);
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+.post-body .highlighter-rouge,
+.post-body figure.highlight {
+  margin: var(--bs-space-6) 0;
+}
+
+.post-body pre,
+.post-body .highlight {
+  background: var(--bs-ink);
+  color: var(--bs-syn-fg);
+  padding: var(--bs-space-4);
+  border-radius: var(--bs-radius-md);
+  overflow-x: auto;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  tab-size: 4;
+}
+
+// Rouge nests .highlight > pre.highlight; keep one padded plate, not two.
+.post-body .highlight {
+  padding: 0;
+}
+.post-body .highlight pre,
+.post-body pre.highlight {
+  margin: 0;
+  padding: var(--bs-space-4);
+}
+
+.highlight {
+  .c, .ch, .cm, .cp, .cpf, .c1, .cs { color: var(--bs-syn-muted); font-style: italic; }
+
+  .k, .kc, .kd, .kn, .kp, .kr, .kt,
+  .ow, .bp, .nb { color: var(--bs-syn-keyword); }
+
+  .s, .sa, .sb, .sc, .dl, .sd, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss { color: var(--bs-syn-string); }
+
+  .m, .mb, .mf, .mh, .mi, .il, .mo { color: var(--bs-syn-number); }
+
+  .nf, .fm, .nc, .nn { color: var(--bs-syn-fn); }
+
+  .na, .nd { color: var(--bs-syn-keyword); }
+
+  .o { color: var(--bs-syn-muted); }
+  .p { color: var(--bs-syn-fg); }
+
+  .err { color: var(--bs-magenta-500); }
+
+  .gd { color: var(--bs-magenta-500); }
+  .gi { color: var(--bs-syn-keyword); }
+}

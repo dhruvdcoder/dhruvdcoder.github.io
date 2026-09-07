@@ -1,6 +1,13 @@
 ---
 title: "Pretrained Language Models as Visual Planners for Human Assistance"
-authors: "Dhruvesh Patel, Hamid Eghbalzadeh, Nitin Kamra, Michael Louis Iuzzolino, Unnat Jain, and Ruta Desai"
+authors:
+  - name: Dhruvesh Patel
+    highlight: true
+  - name: Hamid Eghbalzadeh
+  - name: Nitin Kamra
+  - name: Michael Louis Iuzzolino
+  - name: Unnat Jain
+  - name: Ruta Desai
 venue: "Proc. of the IEEE/CVF ICCV"
 tag: "ICCV"
 year: 2023

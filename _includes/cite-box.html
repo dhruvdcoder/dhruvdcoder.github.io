@@ -1,18 +1,29 @@
 {% comment %}
-  Citation box: rendered automatically by _layouts/post.html when the
-  page front matter sets `bibtex` and `cite`. Usage in a post's front
-  matter:
-    cite: "Patel, D. (2026). Post title. Working Notes."
+  Citation box: rendered by _layouts/post.html when the page sets `bibtex`.
+  The prose line is built from title / date / permalink unless `cite` is set.
+  Front-matter bibtex should look like:
+
     bibtex: |
-      @misc{key,
-        author = {...},
-        title  = {...},
-        year   = {2026}
+      @article{patel2023slug,
+        title   = {Post Title},
+        author  = {Patel, Dhruvesh},
+        journal = {The Middle Author},
+        year    = {2023},
+        month   = jun,
+        url     = {https://dhruveshp.com/2023/06/21/slug/}
       }
 {% endcomment %}
+{% assign cite_name = page.author | default: site.author.name %}
+{% assign cite_parts = cite_name | split: " " %}
+{% assign cite_family = cite_parts | last %}
+{% assign cite_given = cite_parts | first %}
+{% assign cite_venue = site.blog.title | default: "The Middle Author" %}
+{% assign cite_when = page.date | date: "%b %Y" %}
+{% assign cite_url = site.url | append: page.url %}
+{% capture cite_generated %}{{ cite_family }}, {{ cite_given }}. "{{ page.title }}". {{ cite_venue }} ({{ cite_when }}). {{ cite_url }}{% endcapture %}
 <div class="cite-box" id="cite">
   <div class="cite-box__label">Cite this article</div>
-  <p>{{ page.cite }}</p>
+  <p>{{ page.cite | default: cite_generated }}</p>
   <pre class="mono">{{ page.bibtex }}</pre>
   <button type="button" class="btn" data-copy-bibtex>Copy BibTeX</button>
 </div>

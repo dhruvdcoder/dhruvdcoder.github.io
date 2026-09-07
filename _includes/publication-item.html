@@ -18,7 +18,7 @@
     <h3 class="pub-item__title">
       {% if pub.href %}<a href="{{ pub.href }}">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}
     </h3>
-    {% if pub.authors %}<p class="text-muted mono" style="font-size: var(--bs-fs-small)">{{ pub.authors }}</p>{% endif %}
+    {% include publication-authors.html authors=pub.authors class="pub-item__authors" %}
     {% if pub.links %}
       <div class="pub-item__links">
         {% for link in pub.links %}<a href="{{ link.url }}">{{ link.label }}</a>{% endfor %}

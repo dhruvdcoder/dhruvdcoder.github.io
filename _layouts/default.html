@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   {% include head.html %}
+  {% include scripts/tikzjax.html %}
 </head>
 {% assign has_particle_layer = page.permalink == "/" or page.permalink == "/blog/" %}
 <body{% if has_particle_layer %} class="has-particle-layer"{% endif %}>

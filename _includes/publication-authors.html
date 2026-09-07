@@ -1,0 +1,31 @@
+{% comment %}
+  Render an author list from a string or from hashes:
+    - name, highlight (underline self), equal_first (joint-first *), corresponding (†), url
+    Use equal_first, not first — Liquid's author.first is the first hash entry.
+  Usage: {% include publication-authors.html authors=pub.authors class="pub-item__authors" %}
+{% endcomment %}
+{% assign authors = include.authors %}
+{% if authors %}
+{% assign first_item = authors | first %}
+<p class="{{ include.class | default: 'pub-item__authors' }}">
+{% if first_item.name %}
+  {% assign first_authors = authors | where: "equal_first", true %}
+  {% assign corresponding_authors = authors | where: "corresponding", true %}
+  {% assign show_first_star = false %}
+  {% if first_authors.size > 1 %}{% assign show_first_star = true %}{% endif %}
+  {% for author in authors %}
+    {% unless forloop.first %}{% if forloop.last %} and {% else %}, {% endif %}{% endunless %}
+    {% if author.url %}<a href="{{ author.url }}">{% endif %}
+    {% if author.highlight %}<span class="pub-author--self">{{ author.name }}</span>{% else %}{{ author.name }}{% endif %}
+    {% if author.url %}</a>{% endif %}
+    {% if show_first_star and author.equal_first %}<sup class="pub-author__mark">*</sup>{% endif %}
+    {% if author.corresponding %}<sup class="pub-author__mark">†</sup>{% endif %}
+  {% endfor %}
+  {% if show_first_star or corresponding_authors.size > 0 %}
+    <span class="pub-item__author-note">{% if show_first_star %}* Equal contribution{% endif %}{% if show_first_star and corresponding_authors.size > 0 %}. {% endif %}{% if corresponding_authors.size > 0 %}† Corresponding author{% endif %}</span>
+  {% endif %}
+{% else %}
+  {{ authors }}
+{% endif %}
+</p>
+{% endif %}

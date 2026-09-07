@@ -1,6 +1,13 @@
 ---
 title: "Looking Beyond Sentence-Level Natural Language Inference for Question Answering and Text Summarization"
-authors: "Anshuman Mishra, Dhruvesh Patel, Aparna Vijayakumar, Xiang Lorraine Li, Pavan Kapanipathi, and Kartik Talamadupula"
+authors:
+  - name: Anshuman Mishra
+  - name: Dhruvesh Patel
+    highlight: true
+  - name: Aparna Vijayakumar
+  - name: Xiang Lorraine Li
+  - name: Pavan Kapanipathi
+  - name: Kartik Talamadupula
 venue: "Proc. of NAACL: Human Language Technologies"
 tag: "NAACL"
 year: 2021

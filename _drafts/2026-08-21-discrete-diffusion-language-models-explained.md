@@ -1,18 +1,19 @@
 ---
 title: "Discrete Diffusion Language Models, Explained"
 subtitle: "Most language models write one token at a time, left to right. A newer family writes the whole sequence at once, then refines it — borrowing an idea from image generation and applying it to text."
-kicker: "Machine Learning"
+category: machine-learning
 role: "PhD Researcher, UMass Amherst"
 read_time: 10
 date: 2026-08-21
 tags: [generative-models, language-models]
-cite: "Patel, D. (2026). Discrete diffusion language models, explained. Working Notes."
 bibtex: |
-  @misc{patel2026diffusionlm,
-    author = {Patel, Dhruvesh},
-    title  = {Discrete Diffusion Language Models, Explained},
-    year   = {2026},
-    note   = {Working Notes}
+  @article{patel2026diffusionlm,
+    title   = {Discrete Diffusion Language Models, Explained},
+    author  = {Patel, Dhruvesh},
+    journal = {The Middle Author},
+    year    = {2026},
+    month   = aug,
+    url     = {https://dhruveshp.com/2026/08/21/discrete-diffusion-language-models-explained/}
   }
 ---
 

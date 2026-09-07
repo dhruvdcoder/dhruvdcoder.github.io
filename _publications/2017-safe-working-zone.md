@@ -1,6 +1,12 @@
 ---
 title: "Computing the Safe Working Zone of a 3-RRS Parallel Manipulator"
-authors: "Dhruvesh Patel, Rohit Kalla, Tetik Halil, Kiper Gökhan, and Sandipan Bandyopadhyay"
+authors:
+  - name: Dhruvesh Patel
+    highlight: true
+  - name: Rohit Kalla
+  - name: Tetik Halil
+  - name: Kiper Gökhan
+  - name: Sandipan Bandyopadhyay
 venue: "New Trends in Mechanism and Machine Science"
 tag: "NTMM"
 year: 2017

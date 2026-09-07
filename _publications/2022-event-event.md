@@ -1,6 +1,13 @@
 ---
 title: "Event-Event Relation Extraction using Probabilistic Box Embedding"
-authors: "EunJeong Hwang, Jay-Yoon Lee, Tianyi Yang, Dhruvesh Patel, Dongxu Zhang, and Andrew McCallum"
+authors:
+  - name: EunJeong Hwang
+  - name: Jay-Yoon Lee
+  - name: Tianyi Yang
+  - name: Dhruvesh Patel
+    highlight: true
+  - name: Dongxu Zhang
+  - name: Andrew McCallum
 venue: "Proc. of the 60th Annual Meeting of the ACL"
 tag: "ACL"
 year: 2022

@@ -26,7 +26,16 @@
   // The system sets everything — headings, body, and nav/UI chrome —
   // in the serif; there is no separate sans-serif or mono UI font.
   --bs-font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
-  --bs-font-mono: ui-monospace, "SF Mono", Menlo, monospace; // code blocks only
+  --bs-font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace; // already loaded in head.html
+
+  // Syntax tokens for inverted (ink) code blocks. Mixed from the
+  // accent 500s so keywords/strings stay on-palette and readable on --bs-ink.
+  --bs-syn-fg: var(--bs-paper);
+  --bs-syn-muted: rgba(243, 242, 242, 0.45);
+  --bs-syn-keyword: color-mix(in srgb, var(--bs-cyan-500) 70%, var(--bs-paper));
+  --bs-syn-string: color-mix(in srgb, var(--bs-magenta-500) 65%, var(--bs-paper));
+  --bs-syn-number: var(--bs-syn-string);
+  --bs-syn-fn: var(--bs-syn-keyword);
 
   --bs-fs-body: 1rem;
   --bs-fs-small: 0.875rem;

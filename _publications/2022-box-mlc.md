@@ -1,6 +1,12 @@
 ---
 title: "Modeling Label Space Interactions in Multi-label Classification using Box Embeddings"
-authors: "Dhruvesh Patel, Pavitra Dangati, Jay-Yoon Lee, Michael Boratko, and Andrew McCallum"
+authors:
+  - name: Dhruvesh Patel
+    highlight: true
+  - name: Pavitra Dangati
+  - name: Jay-Yoon Lee
+  - name: Michael Boratko
+  - name: Andrew McCallum
 venue: "The Tenth ICLR"
 tag: "ICLR"
 year: 2022

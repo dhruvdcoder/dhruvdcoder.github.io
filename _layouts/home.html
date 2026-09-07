@@ -17,7 +17,7 @@ layout: default
       {% if featured.subtitle %}<p class="featured-post__excerpt">{{ featured.subtitle }}</p>{% endif %}
       <div class="featured-post__meta">
         {% if featured.tags.first %}<span class="tag">{{ featured.tags.first | upcase }} &middot; {{ featured.date | date: "%Y" }}</span>{% endif %}
-        <span>{{ featured.date | date: "%b %-d" }}{% if featured.read_time %} &middot; {{ featured.read_time }} min{% endif %}</span>
+        <span>{% include post-dates.html post=featured style="compact" format="%b %-d" %}{% if featured.read_time %} &middot; {{ featured.read_time }} min{% endif %}</span>
         <a href="{{ featured.url | relative_url }}" class="btn">Read article</a>
       </div>
     </div>
@@ -32,10 +32,9 @@ layout: default
           {% assign post_read_time = post.read_time | default: post_est_minutes %}
           <a href="{{ post.url | relative_url }}" style="display: block; text-decoration: none; color: inherit;">
             <div class="card">
-              {% if post.tags.first %}<div class="card-kicker">{{ post.tags.first | upcase }}</div>{% endif %}
               <div class="card-title">{{ post.title }}</div>
               {% if post.excerpt %}<p class="card-body">{{ post.excerpt | strip_html | truncatewords: 24 }}</p>{% endif %}
-              <div class="card-meta"><span>{{ post.date | date: "%b %-d, %Y" }}</span><span>&middot; {{ post_read_time }} min</span></div>
+              <div class="card-meta">{% include post-dates.html post=post style="compact" %}<span>&middot; {{ post_read_time }} min</span></div>
             </div>
           </a>
         {% endfor %}

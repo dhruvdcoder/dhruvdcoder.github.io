@@ -1,6 +1,13 @@
 ---
 title: "Improved Sampling from Masked Diffusion Models with Position Contrastive Guidance"
-authors: "Dhruvesh Patel, Tahira Naseem, Gaurav Pandey, Md Arafat Sultan, Andrew McCallum, and Ramón Fernandez Astudillo"
+authors:
+  - name: Dhruvesh Patel
+    highlight: true
+  - name: Tahira Naseem
+  - name: Gaurav Pandey
+  - name: Md Arafat Sultan
+  - name: Andrew McCallum
+  - name: Ramón Fernandez Astudillo
 venue: "NeurIPS 2025 Workshop on Structured Probabilistic Inference & Generative Modeling"
 tag: "NeurIPS"
 year: 2025

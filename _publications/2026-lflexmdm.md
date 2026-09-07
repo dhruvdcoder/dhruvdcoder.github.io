@@ -1,6 +1,16 @@
 ---
 title: "Insertion Based Sequence Generation with Learnable Order Dynamics"
-authors: "Dhruvesh Patel, Benjamin Rozonoyer, Gaurav Pandey, Tahira Naseem, Ramón Fernandez Astudillo, and Andrew McCallum"
+authors:
+  - name: Dhruvesh Patel
+    equal_first: true
+    highlight: true
+    corresponding: true
+  - name: Benjamin Rozonoyer
+    equal_first: true
+  - name: Gaurav Pandey
+  - name: Tahira Naseem
+  - name: Ramón Fernandez Astudillo
+  - name: Andrew McCallum
 venue: "ICML"
 tag: "ICML"
 year: 2026

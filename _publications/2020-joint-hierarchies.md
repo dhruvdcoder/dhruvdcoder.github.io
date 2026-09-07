@@ -1,6 +1,15 @@
 ---
 title: "Representing Joint Hierarchies with Box Embeddings"
-authors: "Dhruvesh Patel, Shib Sankar Dasgupta, Michael Boratko, Xiang Li, Luke Vilnis, and Andrew McCallum"
+authors:
+  - name: Dhruvesh Patel
+    highlight: true
+    equal_first: true
+  - name: Shib Sankar Dasgupta
+    equal_first: true
+  - name: Michael Boratko
+  - name: Xiang Li
+  - name: Luke Vilnis
+  - name: Andrew McCallum
 venue: "Automated Knowledge Base Construction (AKBC)"
 tag: "AKBC"
 year: 2020

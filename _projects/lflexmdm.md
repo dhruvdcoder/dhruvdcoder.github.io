@@ -6,8 +6,12 @@ teaser: /assets/img/publication_preview/lflexmdm_generation.gif
 authors:
   - name: "Dhruvesh Patel"
     url: "https://dhruveshp.com"
+    highlight: true
+    equal_first: true
+    corresponding: true
   - name: "Benjamin Rozonoyer"
     url: "https://brozonoyer.github.io/"
+    equal_first: true
   - name: "Gaurav Pandey"
     url: "https://scholar.google.com/citations?user=MjYpRw8AAAAJ&hl=en"
   - name: "Tahira Naseem"

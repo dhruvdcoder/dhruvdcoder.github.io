@@ -7,6 +7,7 @@ teaser_caption: "ARMs generate variable-length sequences left to right. MDMs can
 authors:
   - name: "Dhruvesh Patel"
     url: "https://dhruveshp.com"
+    highlight: true
   - name: "Aishwarya Sahoo"
     url: "https://www.linkedin.com/in/aishwarya-sahoo-x/"
   - name: "Avinash Amballa"

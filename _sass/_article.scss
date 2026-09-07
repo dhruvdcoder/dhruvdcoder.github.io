@@ -46,11 +46,38 @@
 .post-body > .widget-box,
 .post-body > .footnotes,
 .post-body > div,
+.post-body > pre,
 .post-body h2,
 .post-body h3,
 .post-body h4 {
   max-width: var(--bs-measure);
 }
+
+// Booktabs-style tables: no vertical rules, a heavier top/bottom rule,
+// and a lighter midrule under the header. Row hairlines stay off.
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1.5px solid var(--bs-ink);
+  border-bottom: 1.5px solid var(--bs-ink);
+  margin: var(--bs-space-6) 0;
+  font-size: var(--bs-fs-small);
+}
+.post-body table th,
+.post-body table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.4em 0.85em 0.4em 0;
+  border: none;
+}
+.post-body table th:last-child,
+.post-body table td:last-child { padding-right: 0; }
+.post-body table thead th {
+  font-weight: 600;
+  padding-bottom: 0.55em;
+  border-bottom: 0.75px solid var(--bs-ink);
+}
+.post-body table tbody td { padding-top: 0.45em; }
 
 // Display math centers on the prose measure like everything else. An
 // equation that is intrinsically wider than the column — common on phones,
@@ -180,13 +207,6 @@
 .post-toc-float__panel a.is-active { color: var(--bs-cyan); font-weight: 600; }
 
 // -- byline / header ------------------------------------------------------------
-.post-kicker {
-  font: 600 0.6875rem var(--bs-font-serif);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--bs-cyan);
-  margin-bottom: var(--bs-space-3);
-}
 .post-deck {
   font-style: italic;
   font-size: 1.1875rem;
@@ -229,6 +249,47 @@
 // Kramdown's own bottom footnotes list, shown as-is now that the article
 // no longer reserves a margin column for Distill-style sidenotes.
 .footnotes { margin-top: var(--bs-space-12); font-size: var(--bs-fs-small); }
+
+// -- jekyll-scholar bibliography (ordered list; IEEE [n] stripped) --------
+.post-body .bibliography {
+  max-width: var(--bs-measure);
+  margin: var(--bs-space-4) 0 0;
+  padding-left: 1.5rem;
+}
+.post-body .bibliography li {
+  margin-bottom: var(--bs-space-2);
+  padding-left: 0.25rem;
+}
+.post-body a.citation,
+.post-body .citation {
+  color: var(--bs-cyan);
+  text-decoration: none;
+}
+.post-body a.citation:hover { color: var(--bs-magenta); }
+
+// -- TikZJax figures -------------------------------------------------------
+// Transparent panel so the page ground shows through. Padding lives on the
+// div, not the replaced <svg> (explicit SVG dimensions overflow if padded).
+.tikz-figure {
+  margin: var(--bs-space-8) 0;
+  text-align: center;
+}
+.tikz-figure figcaption {
+  margin-top: var(--bs-space-3);
+  text-align: left;
+  font-size: var(--bs-fs-small);
+  color: var(--bs-ink-70);
+}
+.tikz-panel {
+  background-color: transparent;
+  border: 1px solid var(--bs-ink-15);
+  border-radius: var(--bs-radius-md);
+  padding: 1.25rem 1rem;
+}
+.tikz-figure svg {
+  max-width: 100%;
+  height: auto;
+}
 
 // -- "try it" widget box ------------------------------------------------------------
 .widget-box {
@@ -279,13 +340,6 @@
 }
 
 // -- blog home masthead ------------------------------------------------------------
-.blog-kicker {
-  font: 600 0.75rem var(--bs-font-serif);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--bs-cyan);
-  margin-bottom: var(--bs-space-4);
-}
 .blog-title {
   margin: 0 0 var(--bs-space-4);
   font-size: clamp(2.375rem, 5.2vw, 3.75rem);

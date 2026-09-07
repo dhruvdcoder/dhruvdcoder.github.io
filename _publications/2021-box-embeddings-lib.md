@@ -1,6 +1,17 @@
 ---
 title: "Box Embeddings: An open-source library for representation learning using geometric structures"
-authors: "Tejas Chheda, Purujit Goyal, Trang Tran, Dhruvesh Patel, Michael Boratko, Shib Sankar Dasgupta, and Andrew McCallum"
+authors:
+  - name: Tejas Chheda
+    equal_first: true
+  - name: Purujit Goyal
+    equal_first: true
+  - name: Trang Tran
+    equal_first: true
+  - name: Dhruvesh Patel
+    highlight: true
+  - name: Michael Boratko
+  - name: Shib Sankar Dasgupta
+  - name: Andrew McCallum
 venue: "Proc. of EMNLP: System Demonstrations"
 tag: "EMNLP"
 year: 2021

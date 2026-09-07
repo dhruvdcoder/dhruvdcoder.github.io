@@ -1,0 +1,22 @@
+{%- assign created_date = include.post.date -%}
+{%- assign updated_date = include.post.updated | default: include.post.last_modified_at -%}
+{%- assign created_day = created_date | date: "%F" -%}
+{%- assign updated_day = updated_date | date: "%F" -%}
+{%- assign date_format = include.format | default: "%b %-d, %Y" -%}
+{%- assign revised = false -%}
+{%- if updated_date and updated_day != created_day -%}
+  {%- assign revised = true -%}
+{%- endif -%}
+{%- if include.style == "byline" -%}
+  <span>Created {{ created_date | date: date_format }}</span>
+  {%- if revised -%}
+    <span>&middot;</span>
+    <span>Updated {{ updated_date | date: date_format }}</span>
+  {%- endif -%}
+{%- else -%}
+  <span>{{ created_date | date: date_format }}</span>
+  {%- if revised -%}
+    <span>&middot;</span>
+    <span>Updated {{ updated_date | date: date_format }}</span>
+  {%- endif -%}
+{%- endif -%}

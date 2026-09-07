@@ -9,6 +9,7 @@ teaser: /assets/img/publication_preview/vlamp_teaser.png
 authors:
   - name: "Dhruvesh Patel"
     url: "https://dhruveshp.com"
+    highlight: true
   - name: "Hamid Eghbalzadeh"
     url: "https://eghbalz.github.io/"
   - name: "Nitin Kamra"

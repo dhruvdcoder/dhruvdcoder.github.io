@@ -1,6 +1,12 @@
 ---
 title: "Language Guided Exploration for RL Agents in Text Environments"
-authors: "Hitesh Golchha, Sahil Yerawar, Dhruvesh Patel, Soham Dan, and Keerthiram Murugesan"
+authors:
+  - name: Hitesh Golchha
+  - name: Sahil Yerawar
+  - name: Dhruvesh Patel
+    highlight: true
+  - name: Soham Dan
+  - name: Keerthiram Murugesan
 venue: "Findings of the ACL: NAACL 2024"
 tag: "NAACL"
 year: 2024
