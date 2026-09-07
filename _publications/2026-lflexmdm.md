@@ -4,7 +4,6 @@ authors:
   - name: Dhruvesh Patel
     equal_first: true
     highlight: true
-    corresponding: true
   - name: Benjamin Rozonoyer
     equal_first: true
   - name: Gaurav Pandey

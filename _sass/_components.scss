@@ -272,12 +272,6 @@ a:has(> .card):hover .card { box-shadow: var(--bs-shadow-sm); }
   text-decoration-thickness: 1px;
 }
 .pub-author__mark { font-size: 0.75em; }
-.pub-item__author-note {
-  display: block;
-  margin-top: 0.2em;
-  font-size: 0.8em;
-  color: var(--bs-ink-70);
-}
 
 // -- mentor item ------------------------------------------------------------
 .mentor-list { list-style: none; margin: 0 0 var(--bs-space-4); padding: 0; }
