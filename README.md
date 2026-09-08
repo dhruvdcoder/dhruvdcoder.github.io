@@ -21,6 +21,6 @@ Pushes to `master` deploy to [dhruveshp.com](https://dhruveshp.com) via `.github
 | Blog posts | `_drafts/` for now (`jekyll serve --drafts`); move to `_posts/` to publish |
 | Mentorship / software page copy | `mentorship.md`, `software.md` |
 
-A new publication is a file in `_publications/` with `title`, `authors`, `venue`, `tag`, `year`, `href`, optional `thumbnail`, `links`, and `selected: true` to appear on the About page. Authors are a list of `{name, highlight, equal_first, corresponding}` — `highlight` underlines your name, `equal_first` marks joint first authors (`*`), `corresponding` marks `†`. A plain string still works. Add a `_projects/` page only when the paper needs its own HTML URL.
+A new publication is a file in `_publications/` with `title`, `authors`, `venue`, `tag`, `year`, `href`, optional `thumbnail`, `links`, and `selected: true` to appear on the About page. Authors are a list of `{name, highlight, equal_first}` — `highlight` underlines your name, `equal_first` marks joint first authors with `*`. A plain string still works. Add a `_projects/` page only when the paper needs its own HTML URL.
 
 Thumbnails go in `assets/img/publication_preview/`. The headshot is `assets/img/headshot.jpg`.

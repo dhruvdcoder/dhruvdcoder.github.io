@@ -8,7 +8,6 @@ authors:
     url: "https://dhruveshp.com"
     highlight: true
     equal_first: true
-    corresponding: true
   - name: "Benjamin Rozonoyer"
     url: "https://brozonoyer.github.io/"
     equal_first: true
