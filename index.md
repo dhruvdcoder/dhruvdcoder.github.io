@@ -97,7 +97,7 @@ wide: true
     {% include glyph-icon.html %}
     <h2 data-reveal>News</h2>
   </div>
-  {% for item in site.data.news %}
+  {% for item in site.data.news limit: 8 %}
     {% include news-item.html item=item %}
   {% endfor %}
 </section>

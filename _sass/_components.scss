@@ -87,12 +87,12 @@ a:has(> .card):hover .card { box-shadow: var(--bs-shadow-sm); }
 .card-body { margin: 0; font-size: 0.8125rem; color: var(--bs-ink-70); flex: 1; }
 .card-meta { display: flex; align-items: center; gap: var(--bs-space-2); font-size: 0.6875rem; color: var(--bs-ink-70); }
 
-// -- table (booktabs: top / mid / bottom rules, no verticals) ---------
-.table { width: 100%; border-collapse: collapse; font-size: var(--bs-fs-small); border-top: 1.5px solid var(--bs-ink); border-bottom: 1.5px solid var(--bs-ink); }
-.table th, .table td { text-align: left; vertical-align: top; padding: 0.4em 0.85em 0.4em 0; border: none; }
+// -- table (light rules: hairline dividers, no verticals) --------------
+.table { width: 100%; border-collapse: collapse; font-size: var(--bs-fs-small); border-top: 1px solid var(--bs-ink-15); border-bottom: 1px solid var(--bs-ink-15); }
+.table th, .table td { text-align: left; vertical-align: top; padding: 0.5em 0.85em 0.5em 0; border: none; }
 .table th:last-child, .table td:last-child { padding-right: 0; }
-.table thead th { font-family: var(--bs-font-serif); font-weight: 600; padding-bottom: 0.55em; border-bottom: 0.75px solid var(--bs-ink); }
-.table tbody td { padding-top: 0.45em; }
+.table thead th { font-family: var(--bs-font-serif); font-weight: 600; color: var(--bs-ink-70); padding-bottom: 0.55em; border-bottom: 1px solid var(--bs-ink-15); }
+.table tbody tr + tr td { border-top: 1px solid var(--bs-ink-15); }
 
 // -- dialog / lightbox ------------------------------------------------------------
 // Timings/easing match the source design's lbFade/lbZoom keyframes exactly.
@@ -157,7 +157,7 @@ a:has(> .card):hover .card { box-shadow: var(--bs-shadow-sm); }
 .has-particle-layer .featured-post {
   position: relative;
   z-index: 1;
-  background: rgba(243, 242, 242, 0.82);
+  background: rgba(248, 250, 251, 0.82);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   border-radius: var(--bs-radius-lg);
@@ -199,7 +199,7 @@ a:has(> .card):hover .card { box-shadow: var(--bs-shadow-sm); }
 .has-particle-layer .card {
   position: relative;
   z-index: 1;
-  background: rgba(243, 242, 242, 0.82);
+  background: rgba(248, 250, 251, 0.82);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   box-shadow: var(--bs-shadow-card);
