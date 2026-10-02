@@ -1,5 +1,9 @@
 # Talks for the About page "Talks" section. date + tag + text.
 # sort_date (YYYY-MM-DD) drives ordering; date is the display string.
+- date: "Oct 2, 2026"
+  sort_date: "2026-10-02"
+  tag: "Invited"
+  text: "Insertion Language Models: Flexible Sequence Generation Beyond the Fixed Canvas — Microsoft AI Safety & Security Science Speaker Series"
 - date: "Aug 21, 2026"
   sort_date: "2026-08-21"
   tag: "Invited"
